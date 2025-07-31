@@ -23,6 +23,11 @@
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
 		53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */; };
+		686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A52E3B951A00BF8EA8 /* MealType.swift */; };
+		686027A82E3B954300BF8EA8 /* Intensity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A72E3B954300BF8EA8 /* Intensity.swift */; };
+		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
+		686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AB2E3B9F8900BF8EA8 /* Gender.swift */; };
+		686027AE2E3BA3D700BF8EA8 /* User+Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AD2E3BA3D700BF8EA8 /* User+Extensions.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -62,6 +67,11 @@
 		53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
 		53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryViewModel.swift; sourceTree = "<group>"; };
+		686027A52E3B951A00BF8EA8 /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
+		686027A72E3B954300BF8EA8 /* Intensity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Intensity.swift; sourceTree = "<group>"; };
+		686027A92E3B973100BF8EA8 /* ExerciceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceType.swift; sourceTree = "<group>"; };
+		686027AB2E3B9F8900BF8EA8 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
+		686027AD2E3BA3D700BF8EA8 /* User+Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Extensions.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,9 +122,9 @@
 		53E5872F2B235E8F00E4EF99 /* Arista */ = {
 			isa = PBXGroup;
 			children = (
+				686027A42E3B94F800BF8EA8 /* Model */,
 				53E587612B235FDC00E4EF99 /* ViewModels */,
 				53E587602B235FD700E4EF99 /* Views */,
-				53E5875F2B235FD200E4EF99 /* Models */,
 				53E587302B235E8F00E4EF99 /* AristaApp.swift */,
 				53E587342B235E9000E4EF99 /* Assets.xcassets */,
 				53E587392B235E9000E4EF99 /* Persistence.swift */,
@@ -149,13 +159,6 @@
 			path = AristaUITests;
 			sourceTree = "<group>";
 		};
-		53E5875F2B235FD200E4EF99 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
 		53E587602B235FD700E4EF99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
@@ -176,6 +179,18 @@
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		686027A42E3B94F800BF8EA8 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				686027A52E3B951A00BF8EA8 /* MealType.swift */,
+				686027A72E3B954300BF8EA8 /* Intensity.swift */,
+				686027A92E3B973100BF8EA8 /* ExerciceType.swift */,
+				686027AB2E3B9F8900BF8EA8 /* Gender.swift */,
+				686027AD2E3BA3D700BF8EA8 /* User+Extensions.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -312,12 +327,17 @@
 				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,
 				53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */,
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
+				686027AE2E3BA3D700BF8EA8 /* User+Extensions.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
+				686027A82E3B954300BF8EA8 /* Intensity.swift in Sources */,
+				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
 				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
+				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
+				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,
 				53E587692B23616A00E4EF99 /* UserDataViewModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -482,6 +502,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Arista/Preview Content\"";
+				DEVELOPMENT_TEAM = F435NP2676;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -494,7 +515,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arista.Arista;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cotte.Arista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -510,6 +531,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "\"Arista/Preview Content\"";
+				DEVELOPMENT_TEAM = F435NP2676;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
@@ -522,7 +544,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.arista.Arista;
+				PRODUCT_BUNDLE_IDENTIFIER = com.cotte.Arista;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
