@@ -10,12 +10,12 @@
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="intensity" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="type" attributeType="String"/>
+        <attribute name="type" attributeType="String" customClassName="ExerciceType"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>
     </entity>
     <entity name="Meal" representedClassName="Meal" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="type" attributeType="String"/>
+        <attribute name="type" attributeType="String" customClassName="MealType"/>
         <relationship name="mealContents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MealContent" inverseName="meal" inverseEntity="MealContent"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="meals" inverseEntity="User"/>
     </entity>
@@ -25,8 +25,9 @@
         <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meal" inverseName="mealContents" inverseEntity="Meal"/>
     </entity>
     <entity name="SleepCycle" representedClassName="SleepCycle" syncable="YES" codeGenerationType="class">
-        <attribute name="dateBegging" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateBegging" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="dateEnding" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="quality" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="sleepCycles" inverseEntity="User"/>
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
@@ -35,6 +36,7 @@
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
         <attribute name="gender" attributeType="String"/>
+        <attribute name="hashPassword" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>

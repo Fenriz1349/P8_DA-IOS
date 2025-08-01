@@ -5,7 +5,7 @@
 //  Created by Julien Cotte on 31/07/2025.
 //
 
-enum ExerciceType: String, CaseIterable {
+public enum ExerciceType: String, CaseIterable {
     case running
     case swimming
     case cycling

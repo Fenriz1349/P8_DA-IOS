@@ -14,10 +14,4 @@ extension Exercice {
         get { ExerciceType(rawValue: type ?? "") ?? .other}
         set { type = newValue.rawValue}
     }
-    
-    /// Used to convert the Int64 from coreData into Intensity enum
-    var intensityEnum: Intensity {
-        get { Intensity(rawValue: Int(intensity)) ?? .zero}
-        set { intensity = Int64(newValue.rawValue)}
-    }
 }
