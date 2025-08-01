@@ -33,9 +33,10 @@
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="calorieGoal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="email" attributeType="String"/>
+        <attribute name="firstName" attributeType="String"/>
         <attribute name="gender" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
-        <attribute name="login" attributeType="String"/>
+        <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="sleepGoal" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="waterGoal" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
