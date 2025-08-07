@@ -32,16 +32,17 @@
     </entity>
     <entity name="User" representedClassName="User" syncable="YES" codeGenerationType="class">
         <attribute name="birthdate" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="calorieGoal" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="calorieGoal" attributeType="Integer 64" defaultValueString="2000" usesScalarValueType="YES"/>
         <attribute name="email" attributeType="String"/>
         <attribute name="firstName" attributeType="String"/>
-        <attribute name="gender" attributeType="String"/>
+        <attribute name="gender" attributeType="String" defaultValueString="other"/>
         <attribute name="hashPassword" optional="YES" attributeType="String"/>
         <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="isLogged" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
         <attribute name="lastName" optional="YES" attributeType="String"/>
         <attribute name="size" optional="YES" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="sleepGoal" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="waterGoal" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="sleepGoal" attributeType="Integer 64" defaultValueString="480" usesScalarValueType="YES"/>
+        <attribute name="waterGoal" attributeType="Integer 64" defaultValueString="25" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 64" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercice" inverseName="user" inverseEntity="Exercice"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Meal" inverseName="user" inverseEntity="Meal"/>
