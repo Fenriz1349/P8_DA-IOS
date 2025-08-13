@@ -23,12 +23,18 @@
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
 		53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */; };
+		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
 		686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A52E3B951A00BF8EA8 /* MealType.swift */; };
 		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
 		686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AB2E3B9F8900BF8EA8 /* Gender.swift */; };
 		686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AF2E3C913F00BF8EA8 /* User+Ext.swift */; };
 		686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */; };
 		686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */; };
+		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
+		68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */; };
+		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
+		68CA52042E45FFD700178C72 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52032E45FFD700178C72 /* CreateUserView.swift */; };
+		68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52052E4625F900178C72 /* AddUserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -74,6 +80,11 @@
 		686027AF2E3C913F00BF8EA8 /* User+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Ext.swift"; sourceTree = "<group>"; };
 		686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercice+Ext.swift"; sourceTree = "<group>"; };
 		686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Ext.swift"; sourceTree = "<group>"; };
+		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSleepCycleView.swift; sourceTree = "<group>"; };
+		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		68CA52032E45FFD700178C72 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
+		68CA52052E4625F900178C72 /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +92,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -168,6 +180,10 @@
 				53E587642B23600400E4EF99 /* ExerciseListView.swift */,
 				53E587662B23600C00E4EF99 /* SleepHistoryView.swift */,
 				53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */,
+				68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */,
+				68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */,
+				68CA52012E45FF5800178C72 /* AddMealView.swift */,
+				68CA52032E45FFD700178C72 /* CreateUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,6 +195,7 @@
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
+				68CA52052E4625F900178C72 /* AddUserViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -284,6 +301,9 @@
 				Base,
 			);
 			mainGroup = 53E587242B235E8F00E4EF99;
+			packageReferences = (
+				684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */,
+			);
 			productRefGroup = 53E5872E2B235E8F00E4EF99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -329,10 +349,14 @@
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,
 				53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */,
+				68CA52042E45FFD700178C72 /* CreateUserView.swift in Sources */,
+				68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */,
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
 				686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */,
+				68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */,
 				686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
+				68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */,
 				686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */,
 				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
@@ -340,6 +364,7 @@
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
+				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
 				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,
 				53E587692B23616A00E4EF99 /* UserDataViewModel.swift in Sources */,
@@ -668,6 +693,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Fenriz1349/CustomTextFields";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6843211B2E49B945003FDAEE /* CustomTextFields */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */;
+			productName = CustomTextFields;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */ = {
