@@ -1,0 +1,38 @@
+{
+  "configurations" : [
+    {
+      "id" : "842110CE-4716-45B2-8ADB-C571311FB730",
+      "name" : "Test Scheme Action",
+      "options" : {
+
+      }
+    }
+  ],
+  "defaultOptions" : {
+    "targetForVariableExpansion" : {
+      "containerPath" : "container:Arista.xcodeproj",
+      "identifier" : "53E5872C2B235E8F00E4EF99",
+      "name" : "Arista"
+    },
+    "testExecutionOrdering" : "random"
+  },
+  "testTargets" : [
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Arista.xcodeproj",
+        "identifier" : "53E587412B235E9000E4EF99",
+        "name" : "AristaTests"
+      }
+    },
+    {
+      "parallelizable" : true,
+      "target" : {
+        "containerPath" : "container:Arista.xcodeproj",
+        "identifier" : "53E5874B2B235E9000E4EF99",
+        "name" : "AristaUITests"
+      }
+    }
+  ],
+  "version" : 1
+}
