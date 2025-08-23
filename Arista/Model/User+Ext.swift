@@ -8,7 +8,11 @@
 import Foundation
 
 extension User {
-    
+    /// in User goals will use this format to always use Int:
+    /// calorieGoal - unit: kCal, default value: 2000 kCal
+    /// sleeepGoal - unit: minute, default value: 480 minutes (8hours)
+    /// waterGoal - unit: deciliter, default valut: 25 dl (2,5 liter)
+
     /// Used to convert the String from coreData into Gender enum
     var genderEnum: Gender {
         get { Gender(rawValue: gender ?? "") ?? .other}

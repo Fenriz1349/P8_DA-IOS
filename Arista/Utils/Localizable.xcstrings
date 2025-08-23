@@ -1,0 +1,89 @@
+{
+  "sourceLanguage" : "en",
+  "strings" : {
+    "%@ %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%lld" : {
+
+    },
+    "AddMealView" : {
+
+    },
+    "AddSleepCycleView" : {
+
+    },
+    "Ajouter l'exercice" : {
+
+    },
+    "Bouton" : {
+
+    },
+    "Catégorie" : {
+
+    },
+    "CreateAccountView" : {
+
+    },
+    "Début : %@" : {
+
+    },
+    "Durée : %lld heures" : {
+
+    },
+    "Durée (en minutes)" : {
+
+    },
+    "Durée: %lld min" : {
+
+    },
+    "Exercices" : {
+
+    },
+    "Hello" : {
+
+    },
+    "Heure de démarrage" : {
+
+    },
+    "Historique de Sommeil" : {
+
+    },
+    "Intensité (0 à 10)" : {
+
+    },
+    "Nouvel Exercice ..." : {
+
+    },
+    "Sommeil" : {
+
+    },
+    "Utilisateur" : {
+
+    },
+    "welcome" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome !"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue !"
+          }
+        }
+      }
+    }
+  },
+  "version" : "1.0"
+}

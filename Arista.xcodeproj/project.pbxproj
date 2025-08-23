@@ -12,7 +12,7 @@
 		53E587382B235E9000E4EF99 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 53E587372B235E9000E4EF99 /* Preview Assets.xcassets */; };
 		53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587392B235E9000E4EF99 /* Persistence.swift */; };
 		53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */; };
-		53E587472B235E9000E4EF99 /* AristaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587462B235E9000E4EF99 /* AristaTests.swift */; };
+		53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587462B235E9000E4EF99 /* PersistenceTests.swift */; };
 		53E587512B235E9000E4EF99 /* AristaUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587502B235E9000E4EF99 /* AristaUITests.swift */; };
 		53E587532B235E9000E4EF99 /* AristaUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587522B235E9000E4EF99 /* AristaUITestsLaunchTests.swift */; };
 		53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* UserDataView.swift */; };
@@ -23,12 +23,22 @@
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
 		53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */; };
+		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
+		6843211F2E4CC0BC003FDAEE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */; };
+		684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321222E4CC534003FDAEE /* Persistence+Ext.swift */; };
+		684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */; };
+		684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321262E4DB076003FDAEE /* SharedTestHelper.swift */; };
 		686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A52E3B951A00BF8EA8 /* MealType.swift */; };
 		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
 		686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AB2E3B9F8900BF8EA8 /* Gender.swift */; };
 		686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AF2E3C913F00BF8EA8 /* User+Ext.swift */; };
 		686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */; };
 		686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */; };
+		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
+		68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */; };
+		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
+		68CA52042E45FFD700178C72 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52032E45FFD700178C72 /* CreateUserView.swift */; };
+		68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52052E4625F900178C72 /* AddUserViewModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -56,7 +66,7 @@
 		53E587392B235E9000E4EF99 /* Persistence.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Persistence.swift; sourceTree = "<group>"; };
 		53E5873C2B235E9000E4EF99 /* Arista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Arista.xcdatamodel; sourceTree = "<group>"; };
 		53E587422B235E9000E4EF99 /* AristaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AristaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		53E587462B235E9000E4EF99 /* AristaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AristaTests.swift; sourceTree = "<group>"; };
+		53E587462B235E9000E4EF99 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		53E5874C2B235E9000E4EF99 /* AristaUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AristaUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E587502B235E9000E4EF99 /* AristaUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AristaUITests.swift; sourceTree = "<group>"; };
 		53E587522B235E9000E4EF99 /* AristaUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AristaUITestsLaunchTests.swift; sourceTree = "<group>"; };
@@ -68,12 +78,22 @@
 		53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
 		53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryViewModel.swift; sourceTree = "<group>"; };
+		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		684321222E4CC534003FDAEE /* Persistence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Ext.swift"; sourceTree = "<group>"; };
+		684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataProvider.swift; sourceTree = "<group>"; };
+		684321262E4DB076003FDAEE /* SharedTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelper.swift; sourceTree = "<group>"; };
+		684321282E4DB2BD003FDAEE /* Arista.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arista.xctestplan; sourceTree = "<group>"; };
 		686027A52E3B951A00BF8EA8 /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
 		686027A92E3B973100BF8EA8 /* ExerciceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceType.swift; sourceTree = "<group>"; };
 		686027AB2E3B9F8900BF8EA8 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		686027AF2E3C913F00BF8EA8 /* User+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Ext.swift"; sourceTree = "<group>"; };
 		686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercice+Ext.swift"; sourceTree = "<group>"; };
 		686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Ext.swift"; sourceTree = "<group>"; };
+		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
+		68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSleepCycleView.swift; sourceTree = "<group>"; };
+		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		68CA52032E45FFD700178C72 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
+		68CA52052E4625F900178C72 /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +101,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -104,6 +125,7 @@
 		53E587242B235E8F00E4EF99 = {
 			isa = PBXGroup;
 			children = (
+				684321282E4DB2BD003FDAEE /* Arista.xctestplan */,
 				53E5872F2B235E8F00E4EF99 /* Arista */,
 				53E587452B235E9000E4EF99 /* AristaTests */,
 				53E5874F2B235E9000E4EF99 /* AristaUITests */,
@@ -124,13 +146,14 @@
 		53E5872F2B235E8F00E4EF99 /* Arista */ = {
 			isa = PBXGroup;
 			children = (
+				68E529972E5857A100371833 /* Security */,
+				68E529962E58577500371833 /* CoreData */,
+				6843211D2E4CC07D003FDAEE /* Utils */,
 				686027A42E3B94F800BF8EA8 /* Model */,
 				53E587612B235FDC00E4EF99 /* ViewModels */,
 				53E587602B235FD700E4EF99 /* Views */,
 				53E587302B235E8F00E4EF99 /* AristaApp.swift */,
 				53E587342B235E9000E4EF99 /* Assets.xcassets */,
-				53E587392B235E9000E4EF99 /* Persistence.swift */,
-				53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */,
 				53E587362B235E9000E4EF99 /* Preview Content */,
 			);
 			path = Arista;
@@ -140,6 +163,7 @@
 			isa = PBXGroup;
 			children = (
 				53E587372B235E9000E4EF99 /* Preview Assets.xcassets */,
+				684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -147,7 +171,9 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
-				53E587462B235E9000E4EF99 /* AristaTests.swift */,
+				68E529982E5857F800371833 /* Security */,
+				53E587462B235E9000E4EF99 /* PersistenceTests.swift */,
+				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
 			);
 			path = AristaTests;
 			sourceTree = "<group>";
@@ -168,6 +194,10 @@
 				53E587642B23600400E4EF99 /* ExerciseListView.swift */,
 				53E587662B23600C00E4EF99 /* SleepHistoryView.swift */,
 				53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */,
+				68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */,
+				68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */,
+				68CA52012E45FF5800178C72 /* AddMealView.swift */,
+				68CA52032E45FFD700178C72 /* CreateUserView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -179,8 +209,18 @@
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
+				68CA52052E4625F900178C72 /* AddUserViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6843211D2E4CC07D003FDAEE /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */,
+				684321222E4CC534003FDAEE /* Persistence+Ext.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		686027A42E3B94F800BF8EA8 /* Model */ = {
@@ -194,6 +234,29 @@
 				686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		68E529962E58577500371833 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */,
+				53E587392B235E9000E4EF99 /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		68E529972E5857A100371833 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		68E529982E5857F800371833 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -282,8 +345,12 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = 53E587242B235E8F00E4EF99;
+			packageReferences = (
+				684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */,
+			);
 			productRefGroup = 53E5872E2B235E8F00E4EF99 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -302,6 +369,7 @@
 			files = (
 				53E587382B235E9000E4EF99 /* Preview Assets.xcassets in Resources */,
 				53E587352B235E9000E4EF99 /* Assets.xcassets in Resources */,
+				6843211F2E4CC0BC003FDAEE /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,10 +397,15 @@
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,
 				53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */,
+				68CA52042E45FFD700178C72 /* CreateUserView.swift in Sources */,
+				68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */,
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
 				686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */,
+				68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */,
 				686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
+				68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */,
+				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
 				686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */,
 				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
@@ -340,7 +413,9 @@
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
+				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
+				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,
 				53E587692B23616A00E4EF99 /* UserDataViewModel.swift in Sources */,
 			);
@@ -350,7 +425,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				53E587472B235E9000E4EF99 /* AristaTests.swift in Sources */,
+				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
+				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -438,6 +514,7 @@
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = "DEBUG $(inherited)";
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 			};
 			name = Debug;
@@ -494,6 +571,7 @@
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
 				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_EMIT_LOC_STRINGS = YES;
 				VALIDATE_PRODUCT = YES;
 			};
 			name = Release;
@@ -668,6 +746,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Fenriz1349/CustomTextFields";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		6843211B2E49B945003FDAEE /* CustomTextFields */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */;
+			productName = CustomTextFields;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */ = {
