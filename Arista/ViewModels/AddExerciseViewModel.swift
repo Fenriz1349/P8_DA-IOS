@@ -21,7 +21,6 @@ class AddExerciseViewModel: ObservableObject {
     }
 
     func addExercise() -> Bool {
-        // TODO: Ajouter ici la logique pour créer et sauvegarder un nouvel exercice dans CoreData
         return true
     }
 }

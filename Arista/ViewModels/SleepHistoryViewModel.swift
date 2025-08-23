@@ -10,17 +10,17 @@ import CoreData
 
 class SleepHistoryViewModel: ObservableObject {
     @Published var sleepSessions = [FakeSleepSession]()
-    
+
     private var viewContext: NSManagedObjectContext
-    
+
     init(context: NSManagedObjectContext) {
         self.viewContext = context
         fetchSleepSessions()
     }
-    
+
     private func fetchSleepSessions() {
-        
-        sleepSessions = [FakeSleepSession(), 
+
+        sleepSessions = [FakeSleepSession(),
                          FakeSleepSession(),
                          FakeSleepSession(),
                          FakeSleepSession(),

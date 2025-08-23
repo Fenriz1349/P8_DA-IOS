@@ -20,7 +20,6 @@ class UserDataViewModel: ObservableObject {
     }
 
     private func fetchUserData() {
-        // TODO: fetch data in CoreData and replace dumb value below with appropriate information
         firstName = "Charlotte"
         lastName = "Corino"
     }

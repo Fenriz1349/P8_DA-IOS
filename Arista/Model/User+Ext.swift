@@ -18,5 +18,4 @@ extension User {
         get { Gender(rawValue: gender ?? "") ?? .other}
         set { gender = newValue.rawValue}
     }
-    
 }

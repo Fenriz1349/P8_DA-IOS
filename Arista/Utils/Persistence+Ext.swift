@@ -35,7 +35,7 @@ extension PersistenceController {
     func clearAllData() {
            let request: NSFetchRequest<NSFetchRequestResult> = User.fetchRequest()
            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-           
+
            do {
                try container.viewContext.execute(deleteRequest)
                try container.viewContext.save()

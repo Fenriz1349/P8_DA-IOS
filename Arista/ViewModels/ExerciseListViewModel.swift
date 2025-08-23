@@ -20,14 +20,13 @@ class ExerciseListViewModel: ObservableObject {
     }
 
     private func fetchExercises() {
-        // TODO: fetch data in CoreData and replace dumb value below with appropriate information
         exercises = [FakeExercise(), FakeExercise(), FakeExercise()]
     }
 }
 
 struct FakeExercise: Identifiable {
     var id = UUID()
-    
+
     var category: String = "Football"
     var duration: Int = 120
     var intensity: Int = 8
