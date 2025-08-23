@@ -146,14 +146,14 @@
 		53E5872F2B235E8F00E4EF99 /* Arista */ = {
 			isa = PBXGroup;
 			children = (
+				68E529972E5857A100371833 /* Security */,
+				68E529962E58577500371833 /* CoreData */,
 				6843211D2E4CC07D003FDAEE /* Utils */,
 				686027A42E3B94F800BF8EA8 /* Model */,
 				53E587612B235FDC00E4EF99 /* ViewModels */,
 				53E587602B235FD700E4EF99 /* Views */,
 				53E587302B235E8F00E4EF99 /* AristaApp.swift */,
 				53E587342B235E9000E4EF99 /* Assets.xcassets */,
-				53E587392B235E9000E4EF99 /* Persistence.swift */,
-				53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */,
 				53E587362B235E9000E4EF99 /* Preview Content */,
 			);
 			path = Arista;
@@ -171,6 +171,7 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				68E529982E5857F800371833 /* Security */,
 				53E587462B235E9000E4EF99 /* PersistenceTests.swift */,
 				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
 			);
@@ -233,6 +234,29 @@
 				686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		68E529962E58577500371833 /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */,
+				53E587392B235E9000E4EF99 /* Persistence.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
+		68E529972E5857A100371833 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		68E529982E5857F800371833 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Security;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

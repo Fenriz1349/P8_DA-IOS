@@ -18,7 +18,6 @@ struct AuthenticationView: View {
                 Image("AppLogo")
                     .resizable()
                     .frame(width: 200, height: 200)
-                    
                 Text("welcome")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
