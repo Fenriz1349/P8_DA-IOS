@@ -34,6 +34,7 @@
 		686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */; };
 		689510082E60473600461030 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689510072E60473600461030 /* UserDataManager.swift */; };
 		6895100B2E60711600461030 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100A2E60711600461030 /* UserTests.swift */; };
+		6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100D2E607DF600461030 /* UserDataManagerTests.swift */; };
 		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
 		68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */; };
 		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
@@ -81,6 +82,7 @@
 		686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Ext.swift"; sourceTree = "<group>"; };
 		689510072E60473600461030 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		6895100A2E60711600461030 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
+		6895100D2E607DF600461030 /* UserDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManagerTests.swift; sourceTree = "<group>"; };
 		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSleepCycleView.swift; sourceTree = "<group>"; };
 		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
@@ -155,9 +157,10 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				68E529982E5857F800371833 /* Security */,
 				689510092E6070F600461030 /* Model */,
 				68923A562E599F8500D81620 /* CoreData */,
-				68E529982E5857F800371833 /* Security */,
+				6895100C2E607DCB00461030 /* DataManagers */,
 				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
 			);
 			path = AristaTests;
@@ -233,6 +236,14 @@
 				6895100A2E60711600461030 /* UserTests.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		6895100C2E607DCB00461030 /* DataManagers */ = {
+			isa = PBXGroup;
+			children = (
+				6895100D2E607DF600461030 /* UserDataManagerTests.swift */,
+			);
+			path = DataManagers;
 			sourceTree = "<group>";
 		};
 		68E529962E58577500371833 /* CoreData */ = {
@@ -396,6 +407,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */,
 				6895100B2E60711600461030 /* UserTests.swift in Sources */,
 				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
