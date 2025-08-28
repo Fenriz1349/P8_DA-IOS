@@ -11,18 +11,18 @@ import CoreData
 extension PersistenceController {
 
     func handlePersistentStoreError(_ error: NSError) {
-        print("Erreur CoreData: \(error.localizedDescription)")
+        print("error.coreDataMessage\(error.localizedDescription)")
         switch error.code {
         case NSPersistentStoreIncompatibleVersionHashError:
-            print("Migration nécessaire")
+            print(String(localized: "error.migrationDescription"))
         case NSFileReadNoPermissionError, NSFileWriteNoPermissionError:
-            print("Permission refusée")
+            print(String(localized: "error.permissionDescription"))
         case NSFileReadNoSuchFileError:
-            print("Fichier manquant")
+            print(String(localized: "error.missingFileDescription"))
         case NSPersistentStoreOpenError:
-            print("Erreur stockage / ouverture")
+            print(String(localized: "error.openStoreDescription"))
         default:
-            print("Erreur inconnue")
+            print(String(localized: "error.unknownDescription"))
         }
     }
 
@@ -40,7 +40,7 @@ extension PersistenceController {
                try container.viewContext.execute(deleteRequest)
                try container.viewContext.save()
            } catch {
-               print("Erreur lors du nettoyage: \(error)")
+               print(String.localizedStringWithFormat(NSLocalizedString("error.cleaningMessage", comment: ""), error as CVarArg))
            }
        }
 
@@ -50,8 +50,8 @@ extension PersistenceController {
         do {
             return try container.viewContext.count(for: request)
         } catch {
-            print("Erreur lors du comptage: \(error)")
-            return 0
+            print(String.localizedStringWithFormat(NSLocalizedString("error.countMessage", comment: ""), error as CVarArg))
+            return -1
         }
     }
 }

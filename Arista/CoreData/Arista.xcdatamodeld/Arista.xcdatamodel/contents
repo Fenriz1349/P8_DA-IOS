@@ -9,7 +9,7 @@
     <entity name="Exercice" representedClassName="Exercice" syncable="YES" codeGenerationType="class">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="intensity" attributeType="Integer 64" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="intensity" attributeType="Integer 64" minValueString="0" maxValueString="10" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" attributeType="String" customClassName="ExerciceType"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>
     </entity>
@@ -48,5 +48,16 @@
         <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercice" inverseName="user" inverseEntity="Exercice"/>
         <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Meal" inverseName="user" inverseEntity="Meal"/>
         <relationship name="sleepCycles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SleepCycle" inverseName="user" inverseEntity="SleepCycle"/>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="email"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="id"/>
+            </uniquenessConstraint>
+            <uniquenessConstraint>
+                <constraint value="salt"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
     </entity>
 </model>

@@ -16,12 +16,12 @@ struct SleepHistoryView: View {
                     QualityIndicator(quality: session.quality)
                         .padding()
                     VStack(alignment: .leading) {
-                        Text("Début : \(session.startDate.formatted())")
-                        Text("Durée : \(session.duration/60) heures")
+                        Text("beginning\(session.startDate.formatted())")
+                        Text("length\(session.duration/60)hours")
                     }
                 }
             }
-            .navigationTitle("Historique de Sommeil")
+            .navigationTitle("sleepHistory")
         }
 }
 

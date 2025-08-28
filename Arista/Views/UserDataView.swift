@@ -13,7 +13,7 @@ struct UserDataView: View {
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
-            Text("Hello")
+            Text("hello")
                 .font(.largeTitle)
             Text("\(viewModel.firstName) \(viewModel.lastName)")
                 .font(.largeTitle)

@@ -183,39 +183,63 @@ final class AristaTests: XCTestCase {
     
     // MARK: - Context Save Error Tests
         
-        func testSaveContextWithValidationError_ShouldThrowError() {
-            // Given - Créer un utilisateur avec des données invalides
-            let user = User(context: context)
-            user.id = UUID()
-            
-            // When/Then
-            XCTAssertThrowsError(try SharedTestHelper.saveContext(context)) { error in
-                XCTAssertTrue(error is NSError)
-                let nsError = error as! NSError
-                XCTAssertEqual(nsError.domain, NSCocoaErrorDomain)
-            }
-        }
+    func testSaveContextWithValidationError_ShouldThrowError() {
+        // Given - Créer un utilisateur avec des données invalides
+        let user = User(context: context)
+        user.id = UUID()
         
-    func testSaveContextWithConstraintViolation_ShouldThrowError() throws {
-          // Given - Créer deux utilisateurs avec le même email (si contrainte unique)
-          let user1 = SharedTestHelper.createUser(
-              firstName: "John",
-              email: "duplicate@test.com",
-              in: context
-          )
-          try SharedTestHelper.saveContext(context)
-          
-          let user2 = SharedTestHelper.createUser(
-              firstName: "Jane",
-              email: "duplicate@test.com",
-              in: context
-          )
-          
-          // When/Then
-          do {
-              try SharedTestHelper.saveContext(context)
-          } catch {
-              XCTAssertTrue(error is NSError)
-          }
-      }
+        // When/Then
+        XCTAssertThrowsError(try SharedTestHelper.saveContext(context)) { error in
+            let nsError = error as NSError
+            XCTAssertEqual(nsError.code, 1560) // NS Error Code for missing datas
+        }
+    }
+        
+    func testSaveContextWithDuplicateEmail_ShouldThrowError() throws {
+        // Given
+        let _ = SharedTestHelper.createUser(
+            firstName: "John",
+            email: "duplicate@test.com",
+            in: context
+        )
+        try SharedTestHelper.saveContext(context)
+        
+        let _ = SharedTestHelper.createUser(
+            firstName: "Jane",
+            email: "duplicate@test.com",
+            in: context
+        )
+        
+        // When/Then
+        XCTAssertThrowsError(try SharedTestHelper.saveContext(context)) { error in
+            let nsError = error as NSError
+            XCTAssertEqual(nsError.domain, NSCocoaErrorDomain)
+            XCTAssertEqual(nsError.code, 133021) // NS Error Code for validation contraint
+        }
+    }
+
+    func testSaveContextWithDuplicateSalt_ShouldThrowError() throws {
+        // Given
+        let duplicateSalt = UUID()
+
+        let user1 = User(context: context)
+        user1.id = UUID()
+        user1.firstName = "John"
+        user1.email = "john@test.com"
+        user1.salt = duplicateSalt
+        try SharedTestHelper.saveContext(context)
+
+        let user2 = User(context: context)
+        user2.id = UUID()
+        user2.firstName = "Jane"
+        user2.email = "jane@test.com"
+        user2.salt = duplicateSalt
+        
+        // When/Then
+        XCTAssertThrowsError(try SharedTestHelper.saveContext(context)) { error in
+            let nsError = error as NSError
+            XCTAssertEqual(nsError.domain, NSCocoaErrorDomain)
+            XCTAssertEqual(nsError.code, 133021) // NS Error Code for validation contraint
+        }
+    }
 }

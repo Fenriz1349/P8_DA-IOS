@@ -19,7 +19,7 @@ struct ExerciseListView: View {
                     VStack(alignment: .leading) {
                         Text(exercise.category)
                             .font(.headline)
-                        Text("Durée: \(exercise.duration) min")
+                        Text("length\(exercise.duration)min")
                             .font(.subheadline)
                         Text(exercise.date.formatted())
                             .font(.subheadline)
@@ -29,7 +29,7 @@ struct ExerciseListView: View {
                     IntensityIndicator(intensity: exercise.intensity)
                 }
             }
-            .navigationTitle("Exercices")
+            .navigationTitle("exercices")
             .navigationBarItems(trailing: Button(action: {
                 showingAddExerciseView = true
             }) {
