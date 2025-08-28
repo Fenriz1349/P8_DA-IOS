@@ -35,12 +35,13 @@ extension PersistenceController {
     func clearAllData() {
            let request: NSFetchRequest<NSFetchRequestResult> = User.fetchRequest()
            let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
-           
+
            do {
                try container.viewContext.execute(deleteRequest)
                try container.viewContext.save()
            } catch {
-               print(String.localizedStringWithFormat(NSLocalizedString("error.cleaningMessage", comment: ""), error as CVarArg))
+               print(String.localizedStringWithFormat(NSLocalizedString("error.cleaningMessage", comment: ""),
+                                                      error as CVarArg))
            }
        }
 
@@ -50,7 +51,8 @@ extension PersistenceController {
         do {
             return try container.viewContext.count(for: request)
         } catch {
-            print(String.localizedStringWithFormat(NSLocalizedString("error.countMessage", comment: ""), error as CVarArg))
+            print(String.localizedStringWithFormat(NSLocalizedString("error.countMessage", comment: ""),
+                                                   error as CVarArg))
             return -1
         }
     }

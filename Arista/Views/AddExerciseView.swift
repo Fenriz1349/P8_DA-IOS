@@ -26,10 +26,9 @@ struct AddExerciseView: View {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }.buttonStyle(.borderedProminent)
-                    
             }
             .navigationTitle("newExercice")
-            
+
         }
     }
 }

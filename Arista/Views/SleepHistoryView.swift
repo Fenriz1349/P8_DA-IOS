@@ -40,7 +40,7 @@ struct QualityIndicator: View {
     }
 
     func qualityColor(_ quality: Int) -> Color {
-        switch (10-quality) {
+        switch 10-quality {
         case 0...3:
             return .green
         case 4...6:

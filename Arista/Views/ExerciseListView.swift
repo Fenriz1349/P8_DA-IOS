@@ -10,7 +10,7 @@ import SwiftUI
 struct ExerciseListView: View {
     @ObservedObject var viewModel: ExerciseListViewModel
     @State private var showingAddExerciseView = false
-    
+
     var body: some View {
         NavigationView {
             List(viewModel.exercises) { exercise in
@@ -23,7 +23,6 @@ struct ExerciseListView: View {
                             .font(.subheadline)
                         Text(exercise.date.formatted())
                             .font(.subheadline)
-                        
                     }
                     Spacer()
                     IntensityIndicator(intensity: exercise.intensity)
@@ -39,9 +38,8 @@ struct ExerciseListView: View {
         .sheet(isPresented: $showingAddExerciseView) {
             AddExerciseView(viewModel: AddExerciseViewModel(context: viewModel.viewContext))
         }
-        
     }
-    
+
     func iconForCategory(_ category: String) -> String {
         switch category {
         case "Football":
@@ -62,13 +60,13 @@ struct ExerciseListView: View {
 
 struct IntensityIndicator: View {
     var intensity: Int
-    
+
     var body: some View {
         Circle()
             .fill(colorForIntensity(intensity))
             .frame(width: 10, height: 10)
     }
-    
+
     func colorForIntensity(_ intensity: Int) -> Color {
         switch intensity {
         case 0...3:

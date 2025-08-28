@@ -33,4 +33,3 @@ final class UserDataManager {
         return user
     }
 }
-

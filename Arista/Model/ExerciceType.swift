@@ -18,7 +18,7 @@ public enum ExerciceType: String, CaseIterable {
     case tennis
     case yoga
     case other
-    
+
     var iconName: String {
         switch self {
         case .running: "figure.run"
