@@ -32,6 +32,8 @@
 		686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AF2E3C913F00BF8EA8 /* User+Ext.swift */; };
 		686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */; };
 		686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */; };
+		689510082E60473600461030 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689510072E60473600461030 /* UserDataManager.swift */; };
+		6895100B2E60711600461030 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100A2E60711600461030 /* UserTests.swift */; };
 		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
 		68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */; };
 		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
@@ -77,6 +79,8 @@
 		686027AF2E3C913F00BF8EA8 /* User+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Ext.swift"; sourceTree = "<group>"; };
 		686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercice+Ext.swift"; sourceTree = "<group>"; };
 		686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Ext.swift"; sourceTree = "<group>"; };
+		689510072E60473600461030 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
+		6895100A2E60711600461030 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSleepCycleView.swift; sourceTree = "<group>"; };
 		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
@@ -126,10 +130,10 @@
 			isa = PBXGroup;
 			children = (
 				68E529972E5857A100371833 /* Security */,
+				686027A42E3B94F800BF8EA8 /* Model */,
 				68E529962E58577500371833 /* CoreData */,
 				68923A572E599FB900D81620 /* DataManagers */,
 				6843211D2E4CC07D003FDAEE /* Utils */,
-				686027A42E3B94F800BF8EA8 /* Model */,
 				53E587612B235FDC00E4EF99 /* ViewModels */,
 				53E587602B235FD700E4EF99 /* Views */,
 				53E587302B235E8F00E4EF99 /* AristaApp.swift */,
@@ -151,6 +155,7 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				689510092E6070F600461030 /* Model */,
 				68923A562E599F8500D81620 /* CoreData */,
 				68E529982E5857F800371833 /* Security */,
 				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
@@ -217,8 +222,17 @@
 		68923A572E599FB900D81620 /* DataManagers */ = {
 			isa = PBXGroup;
 			children = (
+				689510072E60473600461030 /* UserDataManager.swift */,
 			);
 			path = DataManagers;
+			sourceTree = "<group>";
+		};
+		689510092E6070F600461030 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				6895100A2E60711600461030 /* UserTests.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		68E529962E58577500371833 /* CoreData */ = {
@@ -367,6 +381,7 @@
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
 				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
+				689510082E60473600461030 /* UserDataManager.swift in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
@@ -381,6 +396,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6895100B2E60711600461030 /* UserTests.swift in Sources */,
 				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
 			);

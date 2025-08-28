@@ -36,9 +36,9 @@ struct SharedTestHelper {
     }
 
     static func createUser(
-        firstName: String,
-        lastName: String? = nil,
-        email: String,
+        firstName: String?,
+        lastName: String?,
+        email: String?,
         in context: NSManagedObjectContext
     ) -> User {
         let user = User(context: context)

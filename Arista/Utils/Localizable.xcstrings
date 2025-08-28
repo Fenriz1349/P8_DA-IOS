@@ -19,6 +19,12 @@
     },
     "%lld" : {
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
@@ -88,21 +94,17 @@
       "shouldTranslate" : false
     },
     "error.cleaningMessage" : {
-
-    },
-    "error.cleaningMessage%@" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error during cleaning %@"
+            "value" : "Error during cleaning"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur pendant le nettoyage %@"
+            "value" : "Erreur pendant le nettoyage"
           }
         }
       }
@@ -125,21 +127,17 @@
       }
     },
     "error.countMessage" : {
-
-    },
-    "error.countMessage%@" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error during counting %@"
+            "value" : "Error during counting"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur de comptage %@"
+            "value" : "Erreur de comptage"
           }
         }
       }
@@ -225,6 +223,57 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Erreur inconnu"
+          }
+        }
+      }
+    },
+    "error.UserFirstNameIsNil" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User.firstName should never be nil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User.firstName ne doit jamais être nil"
+          }
+        }
+      }
+    },
+    "error.UserLastNameIsNil" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User.firstName should never be nil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User.lastName ne doit jamais être nil"
+          }
+        }
+      }
+    },
+    "error.UserloginIsNil" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User.login should never be nil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User.login ne doit jamais être nil"
           }
         }
       }

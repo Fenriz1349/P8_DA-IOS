@@ -49,11 +49,13 @@ final class AristaTests: XCTestCase {
         // Given
         let user1 = SharedTestHelper.createUser(
             firstName: "John",
+            lastName: "Cena",
             email: "john@test.com",
             in: context
         )
         let user2 = SharedTestHelper.createUser(
             firstName: "Jane",
+            lastName: "Cena",
             email: "jane@test.com",
             in: context
         )
@@ -199,6 +201,7 @@ final class AristaTests: XCTestCase {
         // Given
         let _ = SharedTestHelper.createUser(
             firstName: "John",
+            lastName: "Cena",
             email: "duplicate@test.com",
             in: context
         )
@@ -206,6 +209,7 @@ final class AristaTests: XCTestCase {
         
         let _ = SharedTestHelper.createUser(
             firstName: "Jane",
+            lastName: "Cena",
             email: "duplicate@test.com",
             in: context
         )
