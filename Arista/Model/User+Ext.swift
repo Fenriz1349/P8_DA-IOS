@@ -18,4 +18,17 @@ extension User {
         get { Gender(rawValue: gender ?? "") ?? .other}
         set { gender = newValue.rawValue}
     }
+
+    /// CoreData don't handle nil value for Int64
+    /// So O will be used as undefined value
+    var hasWeight: Bool { weight > 0 }
+
+    var hasSize: Bool { size > 0 }
+
+    /// CoreData don't handle natively non optionnal String, so we use those var to simplify display
+    var login: String { return email ?? "" }
+
+    var firstNameSafe: String { return firstName ?? "" }
+
+    var lastNameSafe: String { return lastName ?? "" }
 }
