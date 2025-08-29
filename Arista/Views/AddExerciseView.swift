@@ -15,19 +15,20 @@ struct AddExerciseView: View {
         NavigationView {
             VStack {
                 Form {
-                    TextField("Catégorie", text: $viewModel.category)
-                    TextField("Heure de démarrage", text: $viewModel.startTime)
-                    TextField("Durée (en minutes)", text: $viewModel.duration)
-                    TextField("Intensité (0 à 10)", text: $viewModel.intensity)
+                    TextField("category", text: $viewModel.category)
+                    TextField("hourStart", text: $viewModel.startTime)
+                    TextField("length", text: $viewModel.duration)
+                    TextField("intensity", text: $viewModel.intensity)
                 }.formStyle(.grouped)
                 Spacer()
-                Button("Ajouter l'exercice") {
+                Button("addExercice") {
                     if viewModel.addExercise() {
                         presentationMode.wrappedValue.dismiss()
                     }
                 }.buttonStyle(.borderedProminent)
             }
-            .navigationTitle("Nouvel Exercice ...")
+            .navigationTitle("newExercice")
+
         }
     }
 }

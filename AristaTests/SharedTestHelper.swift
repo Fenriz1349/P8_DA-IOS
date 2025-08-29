@@ -14,14 +14,16 @@ struct SharedTestHelper {
     // MARK: - Sample Data
     static let sampleUserData = (
         firstName: "John",
-        lastName: "Doe",
-        email: "john.doe@test.com"
+        lastName: "Cena",
+        email: "john.Cena@test.com",
+        password: "password"
     )
 
     static let sampleUserData2 = (
         firstName: "Jane",
-        lastName: "Smith",
-        email: "jane.smith@test.com"
+        lastName: "Cena",
+        email: "jane.Cena@test.com",
+        password: "password"
     )
 
     // MARK: - User Creation Helpers
@@ -29,16 +31,29 @@ struct SharedTestHelper {
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
+        user.salt = UUID()
         user.firstName = sampleUserData.firstName
         user.lastName = sampleUserData.lastName
         user.email = sampleUserData.email
+        user.hashPassword = sampleUserData.password
+        return user
+    }
+
+    static func createSampleUser2(in context: NSManagedObjectContext) -> User {
+        let user = User(context: context)
+        user.id = UUID()
+        user.salt = UUID()
+        user.firstName = sampleUserData2.firstName
+        user.lastName = sampleUserData2.lastName
+        user.email = sampleUserData2.email
+        user.hashPassword = sampleUserData2.password
         return user
     }
 
     static func createUser(
-        firstName: String,
-        lastName: String? = nil,
-        email: String,
+        firstName: String?,
+        lastName: String?,
+        email: String?,
         in context: NSManagedObjectContext
     ) -> User {
         let user = User(context: context)

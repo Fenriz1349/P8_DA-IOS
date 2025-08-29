@@ -17,19 +17,19 @@ struct AristaApp: App {
                 UserDataView(viewModel: UserDataViewModel(context: persistenceController.container.viewContext))
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem {
-                        Label("Utilisateur", systemImage: "person")
+                        Label("user", systemImage: "person")
                     }
 
                 ExerciseListView(viewModel: ExerciseListViewModel(context: persistenceController.container.viewContext))
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem {
-                        Label("Exercices", systemImage: "flame")
+                        Label("exercice", systemImage: "flame")
                     }
 
                 SleepHistoryView(viewModel: SleepHistoryViewModel(context: persistenceController.container.viewContext))
                     .environment(\.managedObjectContext, persistenceController.container.viewContext)
                     .tabItem {
-                        Label("Sommeil", systemImage: "moon")
+                        Label("sleep", systemImage: "moon")
                     }
             }
         }
