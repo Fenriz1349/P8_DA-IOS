@@ -71,7 +71,7 @@ private extension PreviewDataProvider {
         user.waterGoal = 25 // 2.5L
         user.genderEnum = .female
         user.birthdate = Calendar.current.date(from: DateComponents(year: 1990, month: 3, day: 15))
-        user.size = 165
+        user.height = 165
         user.weight = 60
         user.isLogged = true
         return user

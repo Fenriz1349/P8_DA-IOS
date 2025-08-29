@@ -77,6 +77,10 @@ struct SharedTestHelper {
 
         return users
     }
+    static func createRandomUsers(in context: NSManagedObjectContext) -> [User] {
+        let randomCount: Int = Int.random(in: 1...100)
+        return createUsers(count: randomCount, in: context)
+    }
     
     static func createInvalidUser(in context: NSManagedObjectContext) -> User {
            let user = User(context: context)

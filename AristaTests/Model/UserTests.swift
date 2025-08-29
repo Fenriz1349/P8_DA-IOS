@@ -36,11 +36,11 @@ final class UserTests: XCTestCase {
         )
         
         // When
-        user.size = 0
+        user.height = 0
         user.weight = 0
         
         // Then
-        XCTAssertFalse(user.hasSize)
+        XCTAssertFalse(user.hasHeight)
         XCTAssertFalse(user.hasWeight)
     }
     
@@ -54,11 +54,11 @@ final class UserTests: XCTestCase {
         )
         
         // When
-        user.size = 1
+        user.height = 1
         user.weight = 1
         
         // Then
-        XCTAssertTrue(user.hasSize)
+        XCTAssertTrue(user.hasHeight)
         XCTAssertTrue(user.hasWeight)
     }
 
