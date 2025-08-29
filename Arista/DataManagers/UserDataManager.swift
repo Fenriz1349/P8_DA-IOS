@@ -74,13 +74,21 @@ final class UserDataManager {
         return users
     }
 
-    // MARK: - Unlog Method
+    // MARK: - Logging Off Method
     func loggedOffAllUsers() throws {
         let users = fetchAllUsers()
         for user in users {
             let builder = UserUpdateBuilder(user: user, dataManager: self)
             try builder.isLogged(false).save()
         }
+    }
+
+    // MARK: - Delete User Method
+    func deleteUser(by id: UUID) throws {
+        let user = try fetchUser(by: id)
+        let context = container.viewContext
+        context.delete(user)
+        try context.save()
     }
 }
 
