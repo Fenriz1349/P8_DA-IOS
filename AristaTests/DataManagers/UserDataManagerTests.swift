@@ -129,12 +129,13 @@ final class UserDataManagerTests: XCTestCase {
     }
     
     func testFetchUser_withoutExistingUser_throwError() throws {
-        // Given / When
+        // Given
         SharedTestHelper.createRandomUsers(in: context)
         try context.save()
         let testUUID: UUID = UUID()
         
         XCTAssertThrowsError(
+            //When
             try manager.fetchUser(by: testUUID)
             // Then
         ) { error in
@@ -195,11 +196,12 @@ final class UserDataManagerTests: XCTestCase {
     }
 
     func testFetchLoggedUser_NoLoggedUser_throwError() throws {
-        // Given / When
+        // Given
         SharedTestHelper.createRandomUsers(in: context)
         try context.save()
 
         XCTAssertThrowsError(
+            // When
             try manager.fetchLoggedUser()
             // Then
         ) { error in
@@ -221,6 +223,42 @@ final class UserDataManagerTests: XCTestCase {
         
         // Then
         XCTAssertTrue(manager.noUserLogged)
+    }
 
+    func testDeleteUser_userNotFound_throwError() throws {
+        // Given
+        SharedTestHelper.createRandomUsers(in: context)
+        try context.save()
+        let testUUID: UUID = UUID()
+        let usersCount = manager.allUsers.count
+        
+        XCTAssertThrowsError(
+            // When
+            try manager.deleteUser(by: testUUID)
+            // Then
+        ) { error in
+            guard let userError = error as? UserDataManagerError else {
+                XCTFail("Expected URLError, got \(type(of: error))")
+                return
+            }
+            XCTAssertEqual(manager.allUsers.count, usersCount)
+            XCTAssertEqual(userError, .userNotFound)
+        }
+    }
+
+    func testDeleteUser_deletedWithSuccess() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        let userId = user.id!
+        SharedTestHelper.createRandomUsers(in: context)
+        try context.save()
+        let usersCount = manager.allUsers.count
+        
+        // When
+        try manager.deleteUser(by: userId)
+        
+        // Then
+        XCTAssertEqual(manager.allUsers.count, usersCount - 1)
+        XCTAssertThrowsError(try manager.fetchUser(by: userId))
     }
 }
