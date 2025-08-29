@@ -37,6 +37,7 @@
 		6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100D2E607DF600461030 /* UserDataManagerTests.swift */; };
 		68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */; };
 		68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */; };
+		68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9762E61D3E000108FE9 /* Date+Ext.swift */; };
 		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
 		68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */; };
 		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
@@ -88,6 +89,7 @@
 		68C6C9712E618E2A00108FE9 /* Arista.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arista.xctestplan; sourceTree = "<group>"; };
 		68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBuilder.swift; sourceTree = "<group>"; };
 		68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBuilderTests.swift; sourceTree = "<group>"; };
+		68C6C9762E61D3E000108FE9 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
 		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSleepCycleView.swift; sourceTree = "<group>"; };
 		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
@@ -203,6 +205,7 @@
 			isa = PBXGroup;
 			children = (
 				6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */,
+				68C6C9762E61D3E000108FE9 /* Date+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -383,6 +386,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,
 				53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */,

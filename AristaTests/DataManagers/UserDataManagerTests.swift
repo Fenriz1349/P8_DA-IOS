@@ -107,7 +107,7 @@ final class UserDataManagerTests: XCTestCase {
         XCTAssertEqual(user.waterGoal, 25)
         XCTAssertEqual(user.gender, "other")
         XCTAssertEqual(user.genderEnum, .other)
-        XCTAssertEqual(user.size, 0)
+        XCTAssertEqual(user.height, 0)
         XCTAssertEqual(user.weight, 0)
     }
     

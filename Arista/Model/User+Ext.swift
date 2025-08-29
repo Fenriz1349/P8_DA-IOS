@@ -23,7 +23,7 @@ extension User {
     /// So O will be used as undefined value
     var hasWeight: Bool { weight > 0 }
 
-    var hasSize: Bool { size > 0 }
+    var hasHeight: Bool { height > 0 }
 
     /// CoreData don't handle natively non optionnal String, so we use those var to simplify display
     var login: String { return email ?? "" }

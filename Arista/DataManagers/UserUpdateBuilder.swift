@@ -12,6 +12,11 @@ enum UserUpdateBuilderError: Error, Equatable {
     case emptyFirstName
     case emptyLastName
     case emptyEmail
+    case emptyPassword
+    case nullCalorieGoal
+    case nullSleepGoal
+    case nullWaterGoal
+    case invalidBirthDate
 }
 
 class UserUpdateBuilder {
@@ -42,6 +47,12 @@ class UserUpdateBuilder {
     }
 
     @discardableResult
+    func gender(_ value: Gender) -> UserUpdateBuilder {
+        user.gender = value.rawValue
+        return self
+    }
+
+    @discardableResult
     func email(_ value: String) throws -> UserUpdateBuilder {
         guard !value.isEmpty else {
             throw UserUpdateBuilderError.emptyEmail
@@ -51,8 +62,68 @@ class UserUpdateBuilder {
     }
 
     @discardableResult
-    func isLogged(_ value: Bool) throws -> UserUpdateBuilder {
+    func password(_ value: String) throws -> UserUpdateBuilder {
+        guard !value.isEmpty else {
+            throw UserUpdateBuilderError.emptyPassword
+        }
+        user.hashPassword = value
+        return self
+    }
+
+    @discardableResult
+    func isLogged(_ value: Bool) -> UserUpdateBuilder {
         user.isLogged = value
+        return self
+    }
+
+    @discardableResult
+    func calorieGoal(_ value: Int) throws -> UserUpdateBuilder {
+        guard value > 0 else {
+            throw UserUpdateBuilderError.nullCalorieGoal
+        }
+        user.calorieGoal = Int64(value)
+        return self
+    }
+
+    @discardableResult
+    func sleepGoal(_ value: Int) throws -> UserUpdateBuilder {
+        guard value > 0 else {
+            throw UserUpdateBuilderError.nullSleepGoal
+        }
+        user.sleepGoal = Int64(value)
+        return self
+    }
+
+    @discardableResult
+    func waterGoal(_ value: Int) throws -> UserUpdateBuilder {
+        guard value > 0 else {
+            throw UserUpdateBuilderError.nullWaterGoal
+        }
+        user.waterGoal = Int64(value)
+        return self
+    }
+
+    @discardableResult
+    func height(_ value: Int) throws -> UserUpdateBuilder {
+        guard value > 0 else {
+            throw UserUpdateBuilderError.nullWaterGoal
+        }
+        user.height = Int64(value)
+        return self
+    }
+
+    @discardableResult
+    func weight(_ value: Int) throws -> UserUpdateBuilder {
+        guard value > 0 else {
+            throw UserUpdateBuilderError.nullWaterGoal
+        }
+        user.weight = Int64(value)
+        return self
+    }
+
+    @discardableResult
+    func birthDate(_ value: Date) -> UserUpdateBuilder {
+        user.birthdate = value
         return self
     }
 
