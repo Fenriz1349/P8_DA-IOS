@@ -61,48 +61,5 @@ final class UserTests: XCTestCase {
         XCTAssertTrue(user.hasHeight)
         XCTAssertTrue(user.hasWeight)
     }
-
-    // MARK: - Creation with nil tests
-    func testCreateUserWithNilEmail() throws {
-        // Given/When
-        let user = SharedTestHelper.createUser(
-            firstName: "John",
-            lastName: "Doe",
-            email: nil,
-            in: context
-        )
-
-        // Then
-        XCTAssertNil(user.email)
-        XCTAssertEqual(user.login, "")
-    }
-    
-    func testCreateUserWithNilLastName() throws {
-        // Given/When
-        let user = SharedTestHelper.createUser(
-            firstName: "John",
-            lastName: nil,
-            email: "test@test.com",
-            in: context
-        )
-
-        // Then
-        XCTAssertNil(user.lastName)
-        XCTAssertEqual(user.lastNameSafe, "")
-    }
-    
-    func testCreateUserWithNilFirstName() throws {
-        // Given/When
-        let user = SharedTestHelper.createUser(
-            firstName: nil,
-            lastName: "Doe",
-            email: "test@test.com",
-            in: context
-        )
-
-        // Then
-        XCTAssertNil(user.firstName)
-        XCTAssertEqual(user.firstNameSafe, "")
-    }
 }
 

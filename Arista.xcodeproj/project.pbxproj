@@ -29,9 +29,6 @@
 		686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A52E3B951A00BF8EA8 /* MealType.swift */; };
 		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
 		686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AB2E3B9F8900BF8EA8 /* Gender.swift */; };
-		686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AF2E3C913F00BF8EA8 /* User+Ext.swift */; };
-		686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */; };
-		686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */; };
 		689510082E60473600461030 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689510072E60473600461030 /* UserDataManager.swift */; };
 		6895100B2E60711600461030 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100A2E60711600461030 /* UserTests.swift */; };
 		6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100D2E607DF600461030 /* UserDataManagerTests.swift */; };
@@ -49,6 +46,12 @@
 		68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52052E4625F900178C72 /* AddUserViewModel.swift */; };
 		68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */; };
 		68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */; };
+		68E89C7C2E6AE5B80004F6DA /* Aliment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C722E6AE5B80004F6DA /* Aliment.swift */; };
+		68E89C7E2E6AE5B80004F6DA /* Exercice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C742E6AE5B80004F6DA /* Exercice.swift */; };
+		68E89C802E6AE5B80004F6DA /* Meal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C762E6AE5B80004F6DA /* Meal.swift */; };
+		68E89C822E6AE5B80004F6DA /* MealContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C782E6AE5B80004F6DA /* MealContent.swift */; };
+		68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */; };
+		68E89C872E6AE8C40004F6DA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C862E6AE8C40004F6DA /* User.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -85,9 +88,6 @@
 		686027A52E3B951A00BF8EA8 /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
 		686027A92E3B973100BF8EA8 /* ExerciceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceType.swift; sourceTree = "<group>"; };
 		686027AB2E3B9F8900BF8EA8 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
-		686027AF2E3C913F00BF8EA8 /* User+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Ext.swift"; sourceTree = "<group>"; };
-		686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Exercice+Ext.swift"; sourceTree = "<group>"; };
-		686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Meal+Ext.swift"; sourceTree = "<group>"; };
 		689510072E60473600461030 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		6895100A2E60711600461030 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		6895100D2E607DF600461030 /* UserDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManagerTests.swift; sourceTree = "<group>"; };
@@ -107,6 +107,12 @@
 		68CA52052E4625F900178C72 /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 		68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+Password.swift"; sourceTree = "<group>"; };
 		68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+PasswordTests.swift"; sourceTree = "<group>"; };
+		68E89C722E6AE5B80004F6DA /* Aliment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliment.swift; sourceTree = "<group>"; };
+		68E89C742E6AE5B80004F6DA /* Exercice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercice.swift; sourceTree = "<group>"; };
+		68E89C762E6AE5B80004F6DA /* Meal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meal.swift; sourceTree = "<group>"; };
+		68E89C782E6AE5B80004F6DA /* MealContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealContent.swift; sourceTree = "<group>"; };
+		68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCycle.swift; sourceTree = "<group>"; };
+		68E89C862E6AE8C40004F6DA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -225,12 +231,15 @@
 		686027A42E3B94F800BF8EA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				68E89C722E6AE5B80004F6DA /* Aliment.swift */,
+				68E89C742E6AE5B80004F6DA /* Exercice.swift */,
+				68E89C762E6AE5B80004F6DA /* Meal.swift */,
+				68E89C782E6AE5B80004F6DA /* MealContent.swift */,
+				68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */,
 				686027A52E3B951A00BF8EA8 /* MealType.swift */,
 				686027A92E3B973100BF8EA8 /* ExerciceType.swift */,
 				686027AB2E3B9F8900BF8EA8 /* Gender.swift */,
-				686027AF2E3C913F00BF8EA8 /* User+Ext.swift */,
-				686027B12E3C940300BF8EA8 /* Exercice+Ext.swift */,
-				686027B32E3C94A000BF8EA8 /* Meal+Ext.swift */,
+				68E89C862E6AE8C40004F6DA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -413,13 +422,15 @@
 				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
 				68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */,
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
-				686027B02E3C913F00BF8EA8 /* User+Ext.swift in Sources */,
 				68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */,
-				686027B22E3C940300BF8EA8 /* Exercice+Ext.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
 				68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */,
 				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
-				686027B42E3C94A000BF8EA8 /* Meal+Ext.swift in Sources */,
+				68E89C7C2E6AE5B80004F6DA /* Aliment.swift in Sources */,
+				68E89C7E2E6AE5B80004F6DA /* Exercice.swift in Sources */,
+				68E89C802E6AE5B80004F6DA /* Meal.swift in Sources */,
+				68E89C822E6AE5B80004F6DA /* MealContent.swift in Sources */,
+				68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */,
 				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
 				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
@@ -434,6 +445,7 @@
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,
 				53E587692B23616A00E4EF99 /* UserDataViewModel.swift in Sources */,
+				68E89C872E6AE8C40004F6DA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -9,6 +9,7 @@ import Foundation
 import CoreData
 
 enum UserDataManagerError: Error, Equatable {
+    case invalidInput
     case userNotFound
     case noLoggedUser
 }
@@ -28,7 +29,7 @@ final class UserDataManager {
     // MARK: - User Creation Method
     func createUser(email: String, password: String, firstName: String, lastName: String) throws -> User {
         guard !email.isEmpty, !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty else {
-            throw URLError(.cannotParseResponse)
+            throw UserDataManagerError.invalidInput
         }
         let context = container.viewContext
         let user = User(context: context)

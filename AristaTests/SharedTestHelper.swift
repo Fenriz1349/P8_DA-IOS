@@ -35,7 +35,7 @@ struct SharedTestHelper {
         user.firstName = sampleUserData.firstName
         user.lastName = sampleUserData.lastName
         user.email = sampleUserData.email
-        user.hashPassword = PasswordHasher.hash(password: sampleUserData.password, salt: user.salt!)
+        user.hashPassword = PasswordHasher.hash(password: sampleUserData.password, salt: user.salt)
         return user
     }
 
@@ -46,14 +46,14 @@ struct SharedTestHelper {
         user.firstName = sampleUserData2.firstName
         user.lastName = sampleUserData2.lastName
         user.email = sampleUserData2.email
-        user.hashPassword = PasswordHasher.hash(password: sampleUserData2.password, salt: user.salt!)
+        user.hashPassword = PasswordHasher.hash(password: sampleUserData2.password, salt: user.salt)
         return user
     }
 
     static func createUser(
-        firstName: String?,
-        lastName: String?,
-        email: String?,
+        firstName: String,
+        lastName: String,
+        email: String,
         in context: NSManagedObjectContext
     ) -> User {
         let user = User(context: context)

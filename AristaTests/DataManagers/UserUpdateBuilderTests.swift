@@ -55,7 +55,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.firstName("Alice").save()
         
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(updatedUser.firstName, "Alice")
     }
     
@@ -85,7 +85,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.lastName("Batman").save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(updatedUser.lastName, "Batman")
     }
 
@@ -98,7 +98,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.gender(randomGender).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(updatedUser.gender, randomGender.rawValue)
     }
 
@@ -128,20 +128,20 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.email("Autremail@test.com").save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(updatedUser.email, "Autremail@test.com")
     }
     func testUpdateSalt() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
         let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        let oldSalt = user.safeSalt
+        let oldSalt = user.salt
         
         // When
         try builder.salt().save()
 
         // Then
-        XCTAssertNotEqual(user.safeSalt, oldSalt)
+        XCTAssertNotEqual(user.salt, oldSalt)
     }
 
     func testUpdatePassword_emptyString_throwError() throws {
@@ -170,7 +170,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.password("NewPassword").save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(updatedUser.hashPassword, "NewPassword")
     }
 
@@ -201,7 +201,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.calorieGoal(randomCalorieGoal).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.calorieGoal), randomCalorieGoal)
     }
     
@@ -232,7 +232,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.sleepGoal(randomCalorieGoal).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.sleepGoal), randomCalorieGoal)
     }
 
@@ -263,7 +263,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.waterGoal(randomCalorieGoal).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
     }
 
@@ -294,7 +294,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.waterGoal(randomCalorieGoal).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
     }
     
@@ -325,7 +325,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.waterGoal(randomCalorieGoal).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
     }
 
@@ -337,7 +337,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         try builder.birthDate(Date()).save()
 
         // Then
-        let updatedUser = try manager.fetchUser(by: user.id!)
+        let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertTrue(updatedUser.birthdate!.isSameDay(as: Date()))
     }
     
@@ -345,8 +345,8 @@ final class UserUpdateBuilderTests: XCTestCase {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
         let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        let oldId = user.id!
-        let oldSalt = user.salt!
+        let oldId = user.id
+        let oldSalt = user.salt
         
         // When
         try builder.firstName("Selina")
@@ -372,7 +372,7 @@ final class UserUpdateBuilderTests: XCTestCase {
         XCTAssertEqual(user.id, oldId)
         XCTAssertNotEqual(oldSalt,user.salt)
         XCTAssertTrue(user.isLogged)
-        XCTAssertEqual(user.birthdate?.ymdComponents, Date().ymdComponents)
+        XCTAssertEqual(user.birthdate!.ymdComponents, Date().ymdComponents)
         XCTAssertEqual(user.calorieGoal, 1000)
         XCTAssertEqual(user.sleepGoal, 800)
         XCTAssertEqual(user.waterGoal, 10)

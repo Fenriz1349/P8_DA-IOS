@@ -33,26 +33,26 @@ final class UserDataManagerPasswordTests: XCTestCase {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
         let newPassword = "newSecret123"
-        let oldSalt = user.safeSalt
+        let oldSalt = user.salt
         
         // When
         try manager.changePassword(for: user, currentPassword: "password", newPassword: newPassword)
         
         // Then
-        XCTAssertNotEqual(oldSalt, user.safeSalt)
+        XCTAssertNotEqual(oldSalt, user.salt)
     }
     
     func testChangePassword_hashIsChanged() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
         let newPassword = "newSecret123"
-        let oldHash = user.safePassword
+        let oldHash = user.hashPassword
         
         // When
         try manager.changePassword(for: user, currentPassword: "password", newPassword: newPassword)
         
         // Then
-        XCTAssertNotEqual(oldHash, user.safePassword)
+        XCTAssertNotEqual(oldHash, user.hashPassword)
     }
     
     func testChangePassword_invalidCurrentPassword_ThrowsError() throws {
@@ -84,7 +84,7 @@ final class UserDataManagerPasswordTests: XCTestCase {
         try manager.changePassword(for: user, currentPassword: "password", newPassword: newPassword)
         
         // Then
-        let savedUser = try manager.fetchUser(by: user.id!)
+        let savedUser = try manager.fetchUser(by: user.id)
         XCTAssertTrue(savedUser.verifyPassword(newPassword))
         XCTAssertFalse(savedUser.verifyPassword( "password"))
     }

@@ -10,6 +10,6 @@ import Foundation
 extension User {
 
     func verifyPassword(_ password: String) -> Bool {
-        return PasswordHasher.verify(password: password, salt: self.safeSalt, against: self.hashPassword ?? "")
+        return PasswordHasher.verify(password: password, salt: self.salt, against: self.hashPassword)
     }
 }

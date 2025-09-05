@@ -31,7 +31,7 @@ extension UserDataManager {
         let builder = UserUpdateBuilder(user: user, dataManager: self)
         try builder
             .salt()
-            .password(PasswordHasher.hash(password: password, salt: user.safeSalt))
+            .password(PasswordHasher.hash(password: password, salt: user.salt))
             .save()
     }
 }
