@@ -35,7 +35,7 @@ struct SharedTestHelper {
         user.firstName = sampleUserData.firstName
         user.lastName = sampleUserData.lastName
         user.email = sampleUserData.email
-        user.hashPassword = sampleUserData.password
+        user.hashPassword = PasswordHasher.hash(password: sampleUserData.password, salt: user.salt!)
         return user
     }
 
@@ -46,7 +46,7 @@ struct SharedTestHelper {
         user.firstName = sampleUserData2.firstName
         user.lastName = sampleUserData2.lastName
         user.email = sampleUserData2.email
-        user.hashPassword = sampleUserData2.password
+        user.hashPassword = PasswordHasher.hash(password: sampleUserData2.password, salt: user.salt!)
         return user
     }
 

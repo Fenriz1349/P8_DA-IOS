@@ -131,6 +131,18 @@ final class UserUpdateBuilderTests: XCTestCase {
         let updatedUser = try manager.fetchUser(by: user.id!)
         XCTAssertEqual(updatedUser.email, "Autremail@test.com")
     }
+    func testUpdateSalt() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        let builder = UserUpdateBuilder(user: user, dataManager: manager)
+        let oldSalt = user.safeSalt
+        
+        // When
+        try builder.salt().save()
+
+        // Then
+        XCTAssertNotEqual(user.safeSalt, oldSalt)
+    }
 
     func testUpdatePassword_emptyString_throwError() throws {
         // Given / When
@@ -327,5 +339,45 @@ final class UserUpdateBuilderTests: XCTestCase {
         // Then
         let updatedUser = try manager.fetchUser(by: user.id!)
         XCTAssertTrue(updatedUser.birthdate!.isSameDay(as: Date()))
+    }
+    
+    func testUpdate_allvalues_success() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        let builder = UserUpdateBuilder(user: user, dataManager: manager)
+        let oldId = user.id!
+        let oldSalt = user.salt!
+        
+        // When
+        try builder.firstName("Selina")
+            .lastName("Kyle")
+            .email("catwoman@test.com")
+            .password("newPassword")
+            .salt()
+            .isLogged(true)
+            .birthDate(Date())
+            .calorieGoal(1000)
+            .sleepGoal(800)
+            .waterGoal(10)
+            .gender(.female)
+            .height(180)
+            .weight(80)
+            .save()
+        
+        // Then
+        XCTAssertEqual(user.email, "catwoman@test.com")
+        XCTAssertEqual(user.hashPassword, "newPassword")
+        XCTAssertEqual(user.firstName, "Selina")
+        XCTAssertEqual(user.lastName, "Kyle")
+        XCTAssertEqual(user.id, oldId)
+        XCTAssertNotEqual(oldSalt,user.salt)
+        XCTAssertTrue(user.isLogged)
+        XCTAssertEqual(user.birthdate?.ymdComponents, Date().ymdComponents)
+        XCTAssertEqual(user.calorieGoal, 1000)
+        XCTAssertEqual(user.sleepGoal, 800)
+        XCTAssertEqual(user.waterGoal, 10)
+        XCTAssertEqual(user.gender, "female")
+        XCTAssertEqual(user.height, 180)
+        XCTAssertEqual(user.weight, 80)
     }
 }
