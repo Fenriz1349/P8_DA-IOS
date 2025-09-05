@@ -92,7 +92,7 @@ private extension PreviewDataProvider {
         for (name, calories, isSolid) in alimentsData {
             let aliment = Aliment(context: context)
             aliment.name = name
-            aliment.calPerPortion = Int64(calories)
+            aliment.calPerPortion = Int16(calories)
             aliment.isSolid = isSolid
         }
     }
@@ -109,8 +109,8 @@ private extension PreviewDataProvider {
         for data in exercisesData {
             let exercise = Exercice(context: context)
             exercise.typeEnum = data.type
-            exercise.duration = data.duration
-            exercise.intensity = data.intensity
+            exercise.duration = Int16(data.duration)
+            exercise.intensity = Int16(data.intensity)
             exercise.date = Calendar.current.date(byAdding: .day, value: data.daysAgo, to: Date()) ?? Date()
             exercise.user = user
         }
@@ -138,9 +138,9 @@ private extension PreviewDataProvider {
             let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
 
             let sleepCycle = SleepCycle(context: context)
-            sleepCycle.dateBegging = Int64(bedtime.timeIntervalSince1970)
+            sleepCycle.dateBegging = Int16(bedtime.timeIntervalSince1970)
             sleepCycle.dateEnding = wakeupTime
-            sleepCycle.quality = quality
+            sleepCycle.quality = Int16(quality)
             sleepCycle.user = user
         }
     }
@@ -165,7 +165,7 @@ private extension PreviewDataProvider {
 
                 for aliment in selectedAliments {
                     let mealContent = MealContent(context: context)
-                    mealContent.quantity = Int64.random(in: 1...2)
+                    mealContent.quantity = Int16.random(in: 1...2)
                     mealContent.aliment = aliment
                     mealContent.meal = meal
                 }

@@ -1,5 +1,5 @@
 //
-//  Meal+CoreDataClass.swift
+//  Meal.swift
 //  Arista
 //
 //  Created by Julien Cotte on 05/09/2025.
@@ -18,6 +18,11 @@ public class Meal: NSManagedObject {
 }
 
 extension Meal {
+    /// Used to convert the String from coreData into MealType enum
+    var mealTypeEnum: MealType {
+        get { MealType(rawValue: type) ?? .snack}
+        set { type = newValue.rawValue}
+    }
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<Meal> {
         return NSFetchRequest<Meal>(entityName: "Meal")
