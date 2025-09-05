@@ -86,7 +86,7 @@ final class UserDataManagerTests: XCTestCase {
         }
     }
 
-    func testCreateUser_withAllDatas_doesNotThrow() throws {
+    func testCreateUser_withAllDatas_success() throws {
         // Given / When
         let user = try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John",lastName: "Cena")
 
@@ -100,6 +100,7 @@ final class UserDataManagerTests: XCTestCase {
         XCTAssertEqual(user.lastNameSafe, "Cena")
         XCTAssertNotNil(user.id)
         XCTAssertNotNil(user.salt)
+        XCTAssertEqual(user.safeSalt, user.salt!)
         XCTAssertFalse(user.isLogged)
         XCTAssertNil(user.birthdate)
         XCTAssertEqual(user.calorieGoal, 2000)

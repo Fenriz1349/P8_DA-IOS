@@ -71,6 +71,12 @@ class UserUpdateBuilder {
     }
 
     @discardableResult
+    func salt() -> UserUpdateBuilder {
+        user.salt = UUID()
+        return self
+    }
+
+    @discardableResult
     func isLogged(_ value: Bool) -> UserUpdateBuilder {
         user.isLogged = value
         return self
