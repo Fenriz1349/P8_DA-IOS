@@ -70,7 +70,7 @@ private extension PreviewDataProvider {
         user.sleepGoal = 480 // 8 heures
         user.waterGoal = 25 // 2.5L
         user.genderEnum = .female
-        user.birthdate = Calendar.current.date(from: DateComponents(year: 1990, month: 3, day: 15))
+        user.birthdate = Calendar.current.date(from: DateComponents(year: 1990, month: 3, day: 15))!
         user.height = 165
         user.weight = 60
         user.isLogged = true

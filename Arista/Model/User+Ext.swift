@@ -15,7 +15,7 @@ extension User {
 
     /// Used to convert the String from coreData into Gender enum
     var genderEnum: Gender {
-        get { Gender(rawValue: gender ?? "") ?? .other}
+        get { Gender(rawValue: gender) ?? .other}
         set { gender = newValue.rawValue}
     }
 
@@ -24,20 +24,4 @@ extension User {
     var hasWeight: Bool { weight > 0 }
 
     var hasHeight: Bool { height > 0 }
-
-    /// CoreData don't handle natively non optionnal String, so we use those var to simplify display
-    var login: String { email ?? "" }
-
-    var firstNameSafe: String { firstName ?? "" }
-
-    var lastNameSafe: String { lastName ?? "" }
-
-    var safeSalt: UUID {
-        guard let salt = salt else {
-            fatalError("User salt is nil - this should never happen. User ID: \(id?.uuidString ?? "unknown")")
-        }
-        return salt
-    }
-
-    var safePassword: String { hashPassword ?? "" }
 }

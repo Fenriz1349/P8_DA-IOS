@@ -87,7 +87,7 @@ class UserUpdateBuilder {
         guard value > 0 else {
             throw UserUpdateBuilderError.nullCalorieGoal
         }
-        user.calorieGoal = Int64(value)
+        user.calorieGoal = Int16(value)
         return self
     }
 
@@ -96,7 +96,7 @@ class UserUpdateBuilder {
         guard value > 0 else {
             throw UserUpdateBuilderError.nullSleepGoal
         }
-        user.sleepGoal = Int64(value)
+        user.sleepGoal = Int16(value)
         return self
     }
 
@@ -105,7 +105,7 @@ class UserUpdateBuilder {
         guard value > 0 else {
             throw UserUpdateBuilderError.nullWaterGoal
         }
-        user.waterGoal = Int64(value)
+        user.waterGoal = Int16(value)
         return self
     }
 
@@ -114,7 +114,7 @@ class UserUpdateBuilder {
         guard value > 0 else {
             throw UserUpdateBuilderError.nullWaterGoal
         }
-        user.height = Int64(value)
+        user.height = Int16(value)
         return self
     }
 
@@ -123,7 +123,7 @@ class UserUpdateBuilder {
         guard value > 0 else {
             throw UserUpdateBuilderError.nullWaterGoal
         }
-        user.weight = Int64(value)
+        user.weight = Int16(value)
         return self
     }
 

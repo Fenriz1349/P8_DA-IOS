@@ -30,45 +30,27 @@ final class UserDataManagerTests: XCTestCase {
         super.tearDown()
     }
 
-    func testCreateUser_withEmptyEmail_throwError() throws {
-        // Given / When
+    func testCreateUser_withEmptyEmail_throwsInvalidInput() throws {
         XCTAssertThrowsError(
-            try manager.createUser(email: "", password: "password", firstName: "", lastName: "Cena")
-            // Then
+            try manager.createUser(email: "", password: "password", firstName: "John", lastName: "Cena")
         ) { error in
-            guard let urlError = error as? URLError else {
-                XCTFail("Expected URLError, got \(type(of: error))")
-                return
-            }
-            XCTAssertEqual(urlError.code, .cannotParseResponse)
+            XCTAssertEqual(error as? UserDataManagerError, .invalidInput)
         }
     }
 
-    func testCreateUser_withEmptyPassword_throwError() throws {
-        // Given / When
+    func testCreateUser_withEmptyPassword_throwsInvalidInput() throws {
         XCTAssertThrowsError(
-            // Then
-            try manager.createUser(email: "john.Cena@test.com", password: "", firstName: "", lastName: "Cena")
+            try manager.createUser(email: "john.cena@test.com", password: "", firstName: "John", lastName: "Cena")
         ) { error in
-            guard let urlError = error as? URLError else {
-                XCTFail("Expected URLError, got \(type(of: error))")
-                return
-            }
-            XCTAssertEqual(urlError.code, .cannotParseResponse)
+            XCTAssertEqual(error as? UserDataManagerError, .invalidInput)
         }
     }
 
-    func testCreateUser_withEmptyFirstName_throwError() throws {
-        // Given / When
+    func testCreateUser_withEmptyFirstName_throwsInvalidInput() throws {
         XCTAssertThrowsError(
-            try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "", lastName: "Cena")
-            // Then
+            try manager.createUser(email: "john.cena@test.com", password: "password", firstName: "", lastName: "Cena")
         ) { error in
-            guard let urlError = error as? URLError else {
-                XCTFail("Expected URLError, got \(type(of: error))")
-                return
-            }
-            XCTAssertEqual(urlError.code, .cannotParseResponse)
+            XCTAssertEqual(error as? UserDataManagerError, .invalidInput)
         }
     }
 
@@ -92,15 +74,11 @@ final class UserDataManagerTests: XCTestCase {
 
         // Then
         XCTAssertEqual(user.email, "john.Cena@test.com")
-        XCTAssertEqual(user.login, "john.Cena@test.com")
         XCTAssertEqual(user.hashPassword, "password")
         XCTAssertEqual(user.firstName, "John")
-        XCTAssertEqual(user.firstNameSafe, "John")
         XCTAssertEqual(user.lastName, "Cena")
-        XCTAssertEqual(user.lastNameSafe, "Cena")
         XCTAssertNotNil(user.id)
         XCTAssertNotNil(user.salt)
-        XCTAssertEqual(user.safeSalt, user.salt!)
         XCTAssertFalse(user.isLogged)
         XCTAssertNil(user.birthdate)
         XCTAssertEqual(user.calorieGoal, 2000)
@@ -120,7 +98,7 @@ final class UserDataManagerTests: XCTestCase {
         try context.save()
         
         // When
-        if let fetchedUser = try? manager.fetchUser(by: user.id!) {
+        if let fetchedUser = try? manager.fetchUser(by: user.id) {
             XCTAssertEqual(fetchedUser.email, user.email)
             XCTAssertEqual(fetchedUser.hashPassword, user.hashPassword)
             XCTAssertEqual(fetchedUser.firstName, user.firstName)
@@ -250,7 +228,7 @@ final class UserDataManagerTests: XCTestCase {
     func testDeleteUser_deletedWithSuccess() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
-        let userId = user.id!
+        let userId = user.id
         SharedTestHelper.createRandomUsers(in: context)
         try context.save()
         let usersCount = manager.allUsers.count
