@@ -177,6 +177,12 @@ private extension PreviewDataProvider {
 // MARK: - Convenience Accessors
 extension PreviewDataProvider {
 
+    static var sampleUser: User {
+        let context = PreviewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        return try! context.fetch(request).first!
+    }
+
     static var PreviewContext: NSManagedObjectContext {
         previewData.container.viewContext
     }

@@ -1,5 +1,5 @@
 //
-//  UserDataView.swift
+//  AccountView.swift
 //  Arista
 //
 //  Created by Vincent Saluzzo on 08/12/2023.
@@ -7,15 +7,15 @@
 
 import SwiftUI
 
-struct UserDataView: View {
-    @ObservedObject var viewModel: UserDataViewModel
+struct AccountView: View {
+//   let viewModel: AccountViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
             Spacer()
             Text("hello")
                 .font(.largeTitle)
-            Text("\(viewModel.firstName) \(viewModel.lastName)")
+//            Text("\(viewModel.currentUser.firstName) \(viewModel.currentUser.lastName)")
                 .font(.largeTitle)
                 .fontWeight(.bold)
                 .foregroundColor(.blue)
@@ -29,5 +29,5 @@ struct UserDataView: View {
 }
 
 #Preview {
-    UserDataView(viewModel: UserDataViewModel(context: PreviewDataProvider.PreviewContext))
+    AccountView()
 }

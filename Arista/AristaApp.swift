@@ -13,25 +13,7 @@ struct AristaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            TabView {
-                UserDataView(viewModel: UserDataViewModel(context: persistenceController.container.viewContext))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("user", systemImage: "person")
-                    }
-
-                ExerciseListView(viewModel: ExerciseListViewModel(context: persistenceController.container.viewContext))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("exercice", systemImage: "flame")
-                    }
-
-                SleepHistoryView(viewModel: SleepHistoryViewModel(context: persistenceController.container.viewContext))
-                    .environment(\.managedObjectContext, persistenceController.container.viewContext)
-                    .tabItem {
-                        Label("sleep", systemImage: "moon")
-                    }
-            }
+            ContentView()
         }
     }
 }

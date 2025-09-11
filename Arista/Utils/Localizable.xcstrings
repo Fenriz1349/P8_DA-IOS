@@ -2,6 +2,7 @@
   "sourceLanguage" : "en",
   "strings" : {
     "%@ %@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -279,6 +280,7 @@
       }
     },
     "exercice" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -309,6 +311,9 @@
           }
         }
       }
+    },
+    "Exercices" : {
+
     },
     "hello" : {
       "localizations" : {
@@ -422,7 +427,11 @@
         }
       }
     },
+    "Profil" : {
+
+    },
     "sleep" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -454,7 +463,11 @@
         }
       }
     },
+    "Sommeil" : {
+
+    },
     "user" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

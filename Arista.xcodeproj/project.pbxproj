@@ -13,10 +13,10 @@
 		53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587392B235E9000E4EF99 /* Persistence.swift */; };
 		53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */; };
 		53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587462B235E9000E4EF99 /* PersistenceTests.swift */; };
-		53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* UserDataView.swift */; };
+		53E587632B235FF600E4EF99 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* AccountView.swift */; };
 		53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587642B23600400E4EF99 /* ExerciseListView.swift */; };
 		53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587662B23600C00E4EF99 /* SleepHistoryView.swift */; };
-		53E587692B23616A00E4EF99 /* UserDataViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587682B23616A00E4EF99 /* UserDataViewModel.swift */; };
+		53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587682B23616A00E4EF99 /* AccountViewModel.swift */; };
 		53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */; };
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
@@ -42,8 +42,6 @@
 		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
 		68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */; };
 		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
-		68CA52042E45FFD700178C72 /* CreateUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52032E45FFD700178C72 /* CreateUserView.swift */; };
-		68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52052E4625F900178C72 /* AddUserViewModel.swift */; };
 		68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */; };
 		68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */; };
 		68E89C7C2E6AE5B80004F6DA /* Aliment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C722E6AE5B80004F6DA /* Aliment.swift */; };
@@ -52,6 +50,9 @@
 		68E89C822E6AE5B80004F6DA /* MealContent.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C782E6AE5B80004F6DA /* MealContent.swift */; };
 		68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */; };
 		68E89C872E6AE8C40004F6DA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C862E6AE8C40004F6DA /* User.swift */; };
+		68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C882E6B03450004F6DA /* AppCoordinator.swift */; };
+		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
+		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -73,10 +74,10 @@
 		53E5873C2B235E9000E4EF99 /* Arista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Arista.xcdatamodel; sourceTree = "<group>"; };
 		53E587422B235E9000E4EF99 /* AristaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AristaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E587462B235E9000E4EF99 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
-		53E587622B235FF600E4EF99 /* UserDataView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataView.swift; sourceTree = "<group>"; };
+		53E587622B235FF600E4EF99 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		53E587642B23600400E4EF99 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
 		53E587662B23600C00E4EF99 /* SleepHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryView.swift; sourceTree = "<group>"; };
-		53E587682B23616A00E4EF99 /* UserDataViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataViewModel.swift; sourceTree = "<group>"; };
+		53E587682B23616A00E4EF99 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
 		53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
@@ -103,8 +104,6 @@
 		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddSleepCycleView.swift; sourceTree = "<group>"; };
 		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
-		68CA52032E45FFD700178C72 /* CreateUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateUserView.swift; sourceTree = "<group>"; };
-		68CA52052E4625F900178C72 /* AddUserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddUserViewModel.swift; sourceTree = "<group>"; };
 		68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+Password.swift"; sourceTree = "<group>"; };
 		68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+PasswordTests.swift"; sourceTree = "<group>"; };
 		68E89C722E6AE5B80004F6DA /* Aliment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliment.swift; sourceTree = "<group>"; };
@@ -113,6 +112,9 @@
 		68E89C782E6AE5B80004F6DA /* MealContent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealContent.swift; sourceTree = "<group>"; };
 		68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCycle.swift; sourceTree = "<group>"; };
 		68E89C862E6AE8C40004F6DA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		68E89C882E6B03450004F6DA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
+		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
+		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -195,14 +197,14 @@
 		53E587602B235FD700E4EF99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				53E587622B235FF600E4EF99 /* UserDataView.swift */,
+				53E587622B235FF600E4EF99 /* AccountView.swift */,
 				53E587642B23600400E4EF99 /* ExerciseListView.swift */,
 				53E587662B23600C00E4EF99 /* SleepHistoryView.swift */,
 				53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */,
 				68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */,
 				68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */,
 				68CA52012E45FF5800178C72 /* AddMealView.swift */,
-				68CA52032E45FFD700178C72 /* CreateUserView.swift */,
+				68E89C8E2E6B0D060004F6DA /* ContentView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -210,11 +212,12 @@
 		53E587612B235FDC00E4EF99 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				53E587682B23616A00E4EF99 /* UserDataViewModel.swift */,
+				53E587682B23616A00E4EF99 /* AccountViewModel.swift */,
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
-				68CA52052E4625F900178C72 /* AddUserViewModel.swift */,
+				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
+				68E89C882E6B03450004F6DA /* AppCoordinator.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -415,14 +418,14 @@
 			files = (
 				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,
 				68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */,
+				68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */,
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,
-				53E587632B235FF600E4EF99 /* UserDataView.swift in Sources */,
-				68CA52042E45FFD700178C72 /* CreateUserView.swift in Sources */,
+				53E587632B235FF600E4EF99 /* AccountView.swift in Sources */,
 				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
 				68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */,
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
-				68CA52062E4625F900178C72 /* AddUserViewModel.swift in Sources */,
+				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
 				68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */,
 				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
@@ -436,6 +439,7 @@
 				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
 				68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
+				68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */,
 				689510082E60473600461030 /* UserDataManager.swift in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
 				68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */,
@@ -444,7 +448,7 @@
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,
-				53E587692B23616A00E4EF99 /* UserDataViewModel.swift in Sources */,
+				53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */,
 				68E89C872E6AE8C40004F6DA /* User.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

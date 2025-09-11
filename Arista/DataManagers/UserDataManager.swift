@@ -66,7 +66,7 @@ final class UserDataManager {
         return user
     }
 
-    private func fetchAllUsers() -> [User] {
+    func fetchAllUsers() -> [User] {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
         guard let users = try? context.fetch(request) else {
