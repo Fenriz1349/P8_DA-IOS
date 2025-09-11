@@ -55,7 +55,6 @@ final class UserDataManagerTests: XCTestCase {
     }
 
     func testCreateUser_withEmptyLastName_throwError() throws {
-        
         XCTAssertThrowsError(
             // Given / When
             try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John", lastName: "")
@@ -202,6 +201,19 @@ final class UserDataManagerTests: XCTestCase {
         
         // Then
         XCTAssertTrue(manager.noUserLogged)
+    }
+
+    func testLoggingInUser_onlyOneLogged() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        
+        // When
+        try manager.loggedIn(id: user.id)
+        
+        // Then
+        XCTAssertFalse(manager.noUserLogged)
+        XCTAssertEqual(manager.fetchAllUsers().filter{$0.isLogged}.count, 1)
     }
 
     func testDeleteUser_userNotFound_throwError() throws {

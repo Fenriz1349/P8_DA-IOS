@@ -21,11 +21,11 @@ final class AccountViewModel: ObservableObject {
         self.appCoordinator = appCoordinator
     }
     
-    func logout() {
-        appCoordinator.logout()
+    func logout() throws {
+        try appCoordinator.logout()
     }
     
-    func deleteAccount() {
-        appCoordinator.deleteCurrentUser()
+    func deleteAccount() throws {
+       try appCoordinator.deleteCurrentUser()
     }
 }

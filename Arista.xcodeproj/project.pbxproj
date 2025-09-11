@@ -21,6 +21,8 @@
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
 		53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */; };
+		6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */; };
+		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
 		6843211F2E4CC0BC003FDAEE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */; };
 		684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321222E4CC534003FDAEE /* Persistence+Ext.swift */; };
@@ -82,6 +84,8 @@
 		53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
 		53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryViewModel.swift; sourceTree = "<group>"; };
+		6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
+		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		684321222E4CC534003FDAEE /* Persistence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Ext.swift"; sourceTree = "<group>"; };
 		684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataProvider.swift; sourceTree = "<group>"; };
@@ -189,6 +193,7 @@
 				689510092E6070F600461030 /* Model */,
 				68923A562E599F8500D81620 /* CoreData */,
 				6895100C2E607DCB00461030 /* DataManagers */,
+				6840AF4F2E7313EB0098F325 /* ViewModels */,
 				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
 			);
 			path = AristaTests;
@@ -218,6 +223,15 @@
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
 				68E89C882E6B03450004F6DA /* AppCoordinator.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6840AF4F2E7313EB0098F325 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */,
+				6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -457,12 +471,14 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */,
 				6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */,
 				6895100B2E60711600461030 /* UserTests.swift in Sources */,
 				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
 				68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
 				68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */,
+				6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */,
 				68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */,
 				68C6C97B2E61E35600108FE9 /* PasswordHasherTest.swift in Sources */,
 			);

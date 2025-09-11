@@ -91,9 +91,6 @@
         }
       }
     },
-    "CreateAccountView" : {
-      "shouldTranslate" : false
-    },
     "error.cleaningMessage" : {
       "localizations" : {
         "en" : {

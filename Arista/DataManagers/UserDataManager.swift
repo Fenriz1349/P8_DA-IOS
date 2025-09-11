@@ -75,6 +75,14 @@ final class UserDataManager {
         return users
     }
 
+    // MARK: - Loggin In Method
+    func loggedIn(id: UUID) throws {
+        try loggedOffAllUsers()
+        let user = try fetchUser(by: id)
+        let builder = UserUpdateBuilder(user: user, dataManager: self)
+        try builder.isLogged(true).save()
+    }
+
     // MARK: - Logging Off Method
     func loggedOffAllUsers() throws {
         let users = fetchAllUsers()
