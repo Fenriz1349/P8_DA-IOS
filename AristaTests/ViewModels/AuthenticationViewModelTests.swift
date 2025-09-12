@@ -5,10 +5,119 @@
 //  Created by Julien Cotte on 11/09/2025.
 //
 
-import Foundation
 @testable import Arista
 import XCTest
+import CoreData
 
+@MainActor
 final class AuthenticationViewModelTests: XCTestCase {
-  
+    var sut: AuthenticationViewModel!
+    var testContainer: PersistenceController!
+    var context: NSManagedObjectContext!
+    var dataManager: UserDataManager!
+    var coordinator: AppCoordinator!
+    
+    override func setUp() {
+        super.setUp()
+        
+        testContainer = PersistenceController.createTestContainer()
+        context = testContainer.container.viewContext
+        
+        dataManager = UserDataManager(container: testContainer.container)
+        
+        coordinator = AppCoordinator(dataManager: dataManager)
+        
+        sut = AuthenticationViewModel(appCoordinator: coordinator)
+    }
+    
+    override func tearDown() {
+        testContainer.clearAllData()
+        super.tearDown()
+    }
+    
+    // MARK: - Initial State
+    func test_initialState_shouldHaveEmptyFields() {
+        XCTAssertEqual(sut.email, "")
+        XCTAssertEqual(sut.password, "")
+    }
+    
+    // MARK: - Form Validation
+    func test_isFormValid_withEmptyFields_shouldBeFalse() {
+        XCTAssertFalse(sut.isFormValid)
+    }
+    
+    func test_isFormValid_withBothFields_shouldBeTrue() {
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+        XCTAssertTrue(sut.isFormValid)
+    }
+    
+    // MARK: - Login Success
+    func test_login_withValidCredentials_shouldSucceed() throws {
+        // Given
+        let testUser = SharedTestHelper.createSampleUser(in: context)
+        try SharedTestHelper.saveContext(context)
+        
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+        
+        // When
+        try sut.login()
+        
+        // Then
+        XCTAssertEqual(coordinator.currentUser?.id, testUser.id)
+        XCTAssertTrue(coordinator.isAuthenticated)
+    }
+    
+    // MARK: - Login Failure
+    func test_login_withWrongEmail_throwError() throws {
+        // Given
+        SharedTestHelper.createSampleUser(in: context)
+        try SharedTestHelper.saveContext(context)
+        
+        sut.email = "wrong@email.com"
+        sut.password = SharedTestHelper.sampleUserData.password
+        
+        // When / Then
+        XCTAssertThrowsError(try sut.login()) { error in
+            XCTAssertEqual(error as? AuthenticationError, .invalidCredentials)
+        }
+        XCTAssertNil(coordinator.currentUser)
+        XCTAssertFalse(coordinator.isAuthenticated)
+    }
+    
+    func test_login_withWrongPassword_throwError() throws {
+        // Given
+        SharedTestHelper.createSampleUser(in: context)
+        try SharedTestHelper.saveContext(context)
+        
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = "Wrongpassword123!"
+        
+        let storedUser = try coordinator.dataManager.fetchAllUsers().first!
+        print("Expected email:", storedUser.email)
+        print("Stored salt:", storedUser.salt)
+        print("Stored hashPassword:", storedUser.hashPassword ?? "nil")
+        print("Check verify('wrongpassword'):", storedUser.verifyPassword("wrongpassword"))
+        
+        // When / Then
+        XCTAssertThrowsError(try sut.login()) { error in
+            XCTAssertEqual(error as? AuthenticationError, .invalidCredentials)
+        }
+        XCTAssertNil(coordinator.currentUser)
+        XCTAssertFalse(coordinator.isAuthenticated)
+    }
+    
+    func test_login_withInvalidForm_shouldNotAttemptLogin() throws {
+        // Given - empty fields
+        sut.email = ""
+        sut.password = ""
+        
+        // When
+        try sut.login()
+        
+        // Then
+        XCTAssertNil(coordinator.currentUser)
+        XCTAssertFalse(coordinator.isAuthenticated)
+    }
 }

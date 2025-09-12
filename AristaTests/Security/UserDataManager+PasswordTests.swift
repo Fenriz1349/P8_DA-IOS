@@ -36,7 +36,7 @@ final class UserDataManagerPasswordTests: XCTestCase {
         let oldSalt = user.salt
         
         // When
-        try manager.changePassword(for: user, currentPassword: "password", newPassword: newPassword)
+        try manager.changePassword(for: user, currentPassword: SharedTestHelper.sampleUserData.password, newPassword: newPassword)
         
         // Then
         XCTAssertNotEqual(oldSalt, user.salt)
@@ -49,7 +49,7 @@ final class UserDataManagerPasswordTests: XCTestCase {
         let oldHash = user.hashPassword
         
         // When
-        try manager.changePassword(for: user, currentPassword: "password", newPassword: newPassword)
+        try manager.changePassword(for: user, currentPassword: SharedTestHelper.sampleUserData.password, newPassword: newPassword)
         
         // Then
         XCTAssertNotEqual(oldHash, user.hashPassword)
@@ -70,7 +70,8 @@ final class UserDataManagerPasswordTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         
         // When/Then
-        XCTAssertThrowsError(try manager.changePassword(for: user, currentPassword: "password", newPassword: "password")) { error in
+        XCTAssertThrowsError(try manager.changePassword(for: user, currentPassword: SharedTestHelper.sampleUserData.password,
+                                                        newPassword: SharedTestHelper.sampleUserData.password)) { error in
             XCTAssertEqual(error as? PasswordChangeError, .sameAsCurrentPassword)
         }
     }
@@ -81,12 +82,12 @@ final class UserDataManagerPasswordTests: XCTestCase {
         let newPassword = "newSecret123"
         
         // When
-        try manager.changePassword(for: user, currentPassword: "password", newPassword: newPassword)
+        try manager.changePassword(for: user, currentPassword: SharedTestHelper.sampleUserData.password, newPassword: newPassword)
         
         // Then
         let savedUser = try manager.fetchUser(by: user.id)
         XCTAssertTrue(savedUser.verifyPassword(newPassword))
-        XCTAssertFalse(savedUser.verifyPassword( "password"))
+        XCTAssertFalse(savedUser.verifyPassword( SharedTestHelper.sampleUserData.password))
     }
 }
 

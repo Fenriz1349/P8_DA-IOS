@@ -9,6 +9,7 @@ import SwiftUI
 import CustomTextFields
 
 struct AuthenticationView: View {
+    
     @State private var username: String = ""
     @State private var password: String = ""
 
