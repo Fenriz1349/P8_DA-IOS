@@ -139,7 +139,7 @@ private extension PreviewDataProvider {
             let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
 
             let sleepCycle = SleepCycle(context: context)
-            sleepCycle.dateBegging = Int16(bedtime.timeIntervalSince1970)
+            sleepCycle.dateBegging = bedtime
             sleepCycle.dateEnding = wakeupTime
             sleepCycle.quality = Int16(quality)
             sleepCycle.user = user
@@ -199,20 +199,23 @@ extension PreviewDataProvider {
 
 extension PreviewDataProvider {
     // MARK: - Preview AppCoordinator
-    static var sampleCoordinator: AppCoordinator {
-        let dataManager = UserDataManager(container: previewData.container)
-        let coordinator = AppCoordinator(dataManager: dataManager)
+//    static var sampleCoordinator: AppCoordinator {
+//        let dataManager = UserDataManager(container: previewData.container)
+//        let coordinator = AppCoordinator(dataManager: dataManager)
+//
+//        let context = previewData.container.viewContext
+//        let user = createSampleUser(in: context)
+//        try? coordinator.login(id: user.id)
+//        return coordinator
+//    }
 
-        let context = previewData.container.viewContext
-        let user = createSampleUser(in: context)
-        if let user = try? dataManager.fetchUser(by: user.id) {
-            try? coordinator.login(id: user.id)
-        }
-        return coordinator
+    static var simpleCoordinator: AppCoordinator {
+        let dataManager = UserDataManager(container: userOnly.container)
+        return AppCoordinator(dataManager: dataManager)
     }
 
     // MARK: - Preview ViewModels
     static var sampleAuthenticationViewModel: AuthenticationViewModel {
-        AuthenticationViewModel(appCoordinator: sampleCoordinator)
+        AuthenticationViewModel(appCoordinator: simpleCoordinator)
     }
 }

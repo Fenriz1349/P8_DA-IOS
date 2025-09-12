@@ -14,7 +14,7 @@ struct AuthenticationView: View {
 
     var body: some View {
         ZStack {
-            ScrollView {
+            VStack(spacing: 20) {
                 Image("AppLogo")
                     .resizable()
                     .frame(width: 200, height: 200)

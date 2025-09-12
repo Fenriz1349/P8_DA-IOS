@@ -251,6 +251,7 @@
 		686027A42E3B94F800BF8EA8 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				68E89C862E6AE8C40004F6DA /* User.swift */,
 				68E89C722E6AE5B80004F6DA /* Aliment.swift */,
 				68E89C742E6AE5B80004F6DA /* Exercice.swift */,
 				68E89C762E6AE5B80004F6DA /* Meal.swift */,
@@ -259,7 +260,6 @@
 				686027A52E3B951A00BF8EA8 /* MealType.swift */,
 				686027A92E3B973100BF8EA8 /* ExerciceType.swift */,
 				686027AB2E3B9F8900BF8EA8 /* Gender.swift */,
-				68E89C862E6AE8C40004F6DA /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
