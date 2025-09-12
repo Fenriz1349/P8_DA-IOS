@@ -31,6 +31,7 @@
 		686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A52E3B951A00BF8EA8 /* MealType.swift */; };
 		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
 		686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AB2E3B9F8900BF8EA8 /* Gender.swift */; };
+		686D56902E7447110088AD98 /* CustomLabels in Frameworks */ = {isa = PBXBuildFile; productRef = 686D568F2E7447110088AD98 /* CustomLabels */; };
 		689510082E60473600461030 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689510072E60473600461030 /* UserDataManager.swift */; };
 		6895100B2E60711600461030 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100A2E60711600461030 /* UserTests.swift */; };
 		6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100D2E607DF600461030 /* UserDataManagerTests.swift */; };
@@ -126,6 +127,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				686D56902E7447110088AD98 /* CustomLabels in Frameworks */,
 				6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,6 +149,7 @@
 				6895100F2E618C5700461030 /* Arista.xctestplan */,
 				53E5872F2B235E8F00E4EF99 /* Arista */,
 				53E587452B235E9000E4EF99 /* AristaTests */,
+				686D568E2E7447110088AD98 /* Frameworks */,
 				53E5872E2B235E8F00E4EF99 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -259,6 +262,13 @@
 				68E89C862E6AE8C40004F6DA /* User.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		686D568E2E7447110088AD98 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 		68923A562E599F8500D81620 /* CoreData */ = {
@@ -394,6 +404,7 @@
 			mainGroup = 53E587242B235E8F00E4EF99;
 			packageReferences = (
 				684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */,
+				686D568D2E7418FB0088AD98 /* XCRemoteSwiftPackageReference "CustomLabels" */,
 			);
 			productRefGroup = 53E5872E2B235E8F00E4EF99 /* Products */;
 			projectDirPath = "";
@@ -755,6 +766,14 @@
 				kind = branch;
 			};
 		};
+		686D568D2E7418FB0088AD98 /* XCRemoteSwiftPackageReference "CustomLabels" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Fenriz1349/CustomLabels";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -762,6 +781,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 684320FC2E49B87A003FDAEE /* XCRemoteSwiftPackageReference "CustomTextFields" */;
 			productName = CustomTextFields;
+		};
+		686D568F2E7447110088AD98 /* CustomLabels */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 686D568D2E7418FB0088AD98 /* XCRemoteSwiftPackageReference "CustomLabels" */;
+			productName = CustomLabels;
 		};
 /* End XCSwiftPackageProductDependency section */
 

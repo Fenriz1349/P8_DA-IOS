@@ -1,23 +1,6 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
-    "%@ %@" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      }
-    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -72,9 +55,6 @@
         }
       }
     },
-    "Bouton" : {
-      "shouldTranslate" : false
-    },
     "category" : {
       "localizations" : {
         "en" : {
@@ -87,6 +67,22 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Type d’activité: "
+          }
+        }
+      }
+    },
+    "createProfile.question" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Profile ?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un Profil ?"
           }
         }
       }
@@ -276,23 +272,6 @@
         }
       }
     },
-    "exercice" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercice"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercice"
-          }
-        }
-      }
-    },
     "exercices" : {
       "localizations" : {
         "en" : {
@@ -308,9 +287,6 @@
           }
         }
       }
-    },
-    "Exercices" : {
-
     },
     "hello" : {
       "localizations" : {
@@ -408,6 +384,23 @@
         }
       }
     },
+    "login" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Login"
+          }
+        }
+      }
+    },
     "newExercice" : {
       "localizations" : {
         "en" : {
@@ -424,11 +417,23 @@
         }
       }
     },
-    "Profil" : {
-
+    "profil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
     },
     "sleep" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -456,26 +461,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Historique de sommeil"
-          }
-        }
-      }
-    },
-    "Sommeil" : {
-
-    },
-    "user" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilisateur"
           }
         }
       }

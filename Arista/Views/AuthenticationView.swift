@@ -6,36 +6,49 @@
 //
 
 import SwiftUI
+import CustomLabels
 import CustomTextFields
 
 struct AuthenticationView: View {
     @StateObject var viewModel: AuthenticationViewModel
-    @State private var username: String = ""
-    @State private var password: String = ""
 
     var body: some View {
         ZStack {
-            VStack(spacing: 20) {
+            ScrollView {
                 Image("AppLogo")
                     .resizable()
                     .frame(width: 200, height: 200)
                 Text("welcome")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
+                Toggle("createProfile.question", isOn: $viewModel.creationMode)
                 CustomTextField(placeholder: "mailAdress",
-                                text: $username,
+                                text: $viewModel.email,
                                 type: .email)
                 CustomTextField(placeholder: "password",
-                                text: $password,
+                                text: $viewModel.password,
                                 type: .password)
+                if viewModel.creationMode {
+                    CustomTextField(placeholder: "firstName",
+                                    text: $viewModel.firstName,
+                                    type: .alphaNumber)
+                    CustomTextField(placeholder: "lastName",
+                                    text: $viewModel.lastName,
+                                    type: .alphaNumber)
+                }
                 Button(action: {
                     Task {
+                        viewModel.creationMode ?
+                        try viewModel.createUserAndLogin() :
                         try viewModel.login()
                     }
                 }) {
-                    Text("login")
-//                    CustomButton(icon: nil, message: "login".localized, color: .black)
+                    viewModel.creationMode ?
+                    CustomButtonLabel(message: "createProfile") :
+                    CustomButtonLabel(message: "login")
                 }
+                .disabled(!viewModel.isFormValid)
+                .opacity(viewModel.isFormValid ? 1 : 0.6)
             }
             .padding(.horizontal, 40)
         }

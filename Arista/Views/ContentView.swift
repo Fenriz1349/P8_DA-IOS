@@ -15,17 +15,17 @@ struct ContentView: View {
             TabView {
                 AccountView()
                     .tabItem {
-                        Label("Profil", systemImage: "person")
+                        Label("profil", systemImage: "person")
                     }
 
-                Text("Exercices")
+                Text("exercices")
                     .tabItem {
-                        Label("Exercices", systemImage: "flame")
+                        Label("exercices", systemImage: "flame")
                     }
 
-                Text("Sommeil")
+                Text("sleep")
                     .tabItem {
-                        Label("Sommeil", systemImage: "moon")
+                        Label("sleep", systemImage: "moon")
                     }
             }
             .environmentObject(appCoordinator)

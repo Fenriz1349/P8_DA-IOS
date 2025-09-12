@@ -34,9 +34,9 @@ final class UserDataManager {
         let context = container.viewContext
         let user = User(context: context)
         user.email = email
-        user.hashPassword = password
         user.id = UUID()
         user.salt = UUID()
+        user.hashPassword = PasswordHasher.hash(password: password, salt: user.salt)
         user.firstName = firstName
         user.lastName = lastName
 

@@ -16,16 +16,27 @@ enum AuthenticationError: Error {
 final class AuthenticationViewModel: ObservableObject {
     @Published var email: String = ""
     @Published var password: String = ""
+    @Published var firstName: String = ""
+    @Published var lastName: String = ""
+    @Published var creationMode: Bool = false
 
     private let appCoordinator: AppCoordinator
 
     @MainActor
-    init(appCoordinator: AppCoordinator = AppCoordinator.shared) {
+    init(appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
 
     var isFormValid: Bool {
+        creationMode ? isCreationFormValid : isLoginFormValid
+    }
+
+    var isLoginFormValid: Bool {
         return !email.isEmpty && !password.isEmpty && isMailValid && isPasswordValid
+    }
+
+    var isCreationFormValid: Bool {
+        return !email.isEmpty && !password.isEmpty && !firstName.isEmpty && !lastName.isEmpty && isMailValid && isPasswordValid
     }
 
     var isMailValid: Bool {
@@ -37,7 +48,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
 
     func login() throws {
-        guard isFormValid else { return }
+        guard isLoginFormValid else { return }
 
         let users = appCoordinator.dataManager.fetchAllUsers()
 
@@ -50,5 +61,13 @@ final class AuthenticationViewModel: ObservableObject {
         }
 
         try appCoordinator.login(id: user.id)
+    }
+
+    func createUserAndLogin() throws {
+        try appCoordinator.dataManager.createUser(email: email,
+                                                  password: password,
+                                                  firstName: firstName,
+                                                  lastName: lastName)
+        try login()
     }
 }

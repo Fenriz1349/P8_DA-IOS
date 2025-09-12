@@ -69,13 +69,16 @@ final class UserDataManagerTests: XCTestCase {
 
     func testCreateUser_withAllDatas_success() throws {
         // Given / When
-        let user = try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John",lastName: "Cena")
+        let user = try manager.createUser(email: SharedTestHelper.sampleUserData.email,
+                                          password:SharedTestHelper.sampleUserData.password,
+                                          firstName: SharedTestHelper.sampleUserData.firstName,
+                                          lastName: SharedTestHelper.sampleUserData.lastName)
 
         // Then
-        XCTAssertEqual(user.email, "john.Cena@test.com")
-        XCTAssertEqual(user.hashPassword, "password")
-        XCTAssertEqual(user.firstName, "John")
-        XCTAssertEqual(user.lastName, "Cena")
+        XCTAssertEqual(user.email, SharedTestHelper.sampleUserData.email)
+        XCTAssertTrue(user.verifyPassword(SharedTestHelper.sampleUserData.password))
+        XCTAssertEqual(user.firstName, SharedTestHelper.sampleUserData.firstName)
+        XCTAssertEqual(user.lastName, SharedTestHelper.sampleUserData.lastName)
         XCTAssertNotNil(user.id)
         XCTAssertNotNil(user.salt)
         XCTAssertFalse(user.isLogged)

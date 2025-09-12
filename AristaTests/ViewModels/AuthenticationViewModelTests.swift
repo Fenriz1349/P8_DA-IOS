@@ -93,13 +93,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = "Wrongpassword123!"
-        
-        let storedUser = try coordinator.dataManager.fetchAllUsers().first!
-        print("Expected email:", storedUser.email)
-        print("Stored salt:", storedUser.salt)
-        print("Stored hashPassword:", storedUser.hashPassword ?? "nil")
-        print("Check verify('wrongpassword'):", storedUser.verifyPassword("wrongpassword"))
-        
+
         // When / Then
         XCTAssertThrowsError(try sut.login()) { error in
             XCTAssertEqual(error as? AuthenticationError, .invalidCredentials)
@@ -119,5 +113,22 @@ final class AuthenticationViewModelTests: XCTestCase {
         // Then
         XCTAssertNil(coordinator.currentUser)
         XCTAssertFalse(coordinator.isAuthenticated)
+    }
+    
+    // MARK: - Create Account
+    func test_createAccount_ShouldSucceed() throws {
+        // Given
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+        sut.firstName = SharedTestHelper.sampleUserData.firstName
+        sut.lastName = SharedTestHelper.sampleUserData.lastName
+        
+        // When
+        try sut.createUserAndLogin()
+
+        // Then
+        XCTAssertNotNil(coordinator.currentUser)
+        XCTAssertTrue(coordinator.isAuthenticated)
+        XCTAssertEqual(coordinator.currentUser?.email, sut.email)
     }
 }
