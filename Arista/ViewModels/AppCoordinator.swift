@@ -32,6 +32,10 @@ final class AppCoordinator: ObservableObject {
         self.dataManager = dataManager
     }
 
+    var makeAuthenticationViewModel: AuthenticationViewModel {
+        AuthenticationViewModel(appCoordinator: AppCoordinator.shared)
+    }
+
     func login(id: UUID) throws {
         try dataManager.loggedIn(id: id)
         currentUser = try dataManager.fetchUser(by: id)

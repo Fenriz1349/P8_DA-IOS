@@ -9,7 +9,7 @@ import SwiftUI
 import CustomTextFields
 
 struct AuthenticationView: View {
-    
+    @StateObject var viewModel: AuthenticationViewModel
     @State private var username: String = ""
     @State private var password: String = ""
 
@@ -30,9 +30,10 @@ struct AuthenticationView: View {
                                 type: .password)
                 Button(action: {
                     Task {
+                        try viewModel.login()
                     }
                 }) {
-                    Text("Bouton")
+                    Text("login")
 //                    CustomButton(icon: nil, message: "login".localized, color: .black)
                 }
             }
@@ -42,5 +43,7 @@ struct AuthenticationView: View {
 }
 
 #Preview {
-    AuthenticationView()
+    AuthenticationView(
+        viewModel: PreviewDataProvider.sampleAuthenticationViewModel
+    )
 }

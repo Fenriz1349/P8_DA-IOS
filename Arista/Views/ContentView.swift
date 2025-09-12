@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @StateObject private var appCoordinator = AppCoordinator.shared
-    
+
     var body: some View {
         if appCoordinator.isAuthenticated {
             TabView {
@@ -17,12 +17,12 @@ struct ContentView: View {
                     .tabItem {
                         Label("Profil", systemImage: "person")
                     }
-                
+
                 Text("Exercices")
                     .tabItem {
                         Label("Exercices", systemImage: "flame")
                     }
-                
+
                 Text("Sommeil")
                     .tabItem {
                         Label("Sommeil", systemImage: "moon")
@@ -30,7 +30,7 @@ struct ContentView: View {
             }
             .environmentObject(appCoordinator)
         } else {
-            AuthenticationView()
+            AuthenticationView(viewModel: appCoordinator.makeAuthenticationViewModel)
                 .environmentObject(appCoordinator)
         }
     }

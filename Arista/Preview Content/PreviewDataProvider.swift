@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+@MainActor
 struct PreviewDataProvider {
 
     private struct ExerciseTestData {
@@ -193,5 +194,25 @@ extension PreviewDataProvider {
 
     static var emptyContext: NSManagedObjectContext {
         empty.container.viewContext
+    }
+}
+
+extension PreviewDataProvider {
+    // MARK: - Preview AppCoordinator
+    static var sampleCoordinator: AppCoordinator {
+        let dataManager = UserDataManager(container: previewData.container)
+        let coordinator = AppCoordinator(dataManager: dataManager)
+
+        let context = previewData.container.viewContext
+        let user = createSampleUser(in: context)
+        if let user = try? dataManager.fetchUser(by: user.id) {
+            try? coordinator.login(id: user.id)
+        }
+        return coordinator
+    }
+
+    // MARK: - Preview ViewModels
+    static var sampleAuthenticationViewModel: AuthenticationViewModel {
+        AuthenticationViewModel(appCoordinator: sampleCoordinator)
     }
 }
