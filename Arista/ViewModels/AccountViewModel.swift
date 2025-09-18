@@ -10,22 +10,20 @@ import CoreData
 
 @MainActor
 final class AccountViewModel: ObservableObject {
-
     private let appCoordinator: AppCoordinator
 
     var currentUser: User? {
         appCoordinator.currentUser
     }
 
-    init(appCoordinator: AppCoordinator = AppCoordinator.shared) {
+    init(appCoordinator: AppCoordinator ) {
         self.appCoordinator = appCoordinator
     }
+
+    // MARK: - Auth
 
     func logout() throws {
         try appCoordinator.logout()
     }
-
-    func deleteAccount() throws {
-       try appCoordinator.deleteCurrentUser()
-    }
 }
+
