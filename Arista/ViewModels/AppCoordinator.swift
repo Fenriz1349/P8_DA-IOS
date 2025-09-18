@@ -39,6 +39,10 @@ final class AppCoordinator: ObservableObject {
         AuthenticationViewModel(appCoordinator: self)
     }
 
+    var makeAccountViewModel: AccountViewModel {
+        AccountViewModel(appCoordinator: self)
+    }
+
     private func restoreUserSession() {
         if let userIdString = UserDefaults.standard.string(forKey: currentUserIdKey),
            let userId = UUID(uuidString: userIdString) {

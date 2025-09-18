@@ -12,8 +12,8 @@ import CoreData
 final class AccountViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
 
-    var currentUser: User? {
-        appCoordinator.currentUser
+    var user: User {
+        return appCoordinator.currentUser ?? PreviewDataProvider.sampleUser
     }
 
     init(appCoordinator: AppCoordinator ) {
@@ -26,4 +26,3 @@ final class AccountViewModel: ObservableObject {
         try appCoordinator.logout()
     }
 }
-

@@ -18,7 +18,7 @@ struct PreviewDataProvider {
         let daysAgo: Int
     }
 
-    /// Container principal avec des données complètes pour la plupart des previews
+    /// Main Container for preview
     static var previewData: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
         let context = controller.container.viewContext
@@ -58,15 +58,27 @@ struct PreviewDataProvider {
     }()
 }
 
-// MARK: - Private Data Creation Methods
-private extension PreviewDataProvider {
+extension PreviewDataProvider {
+
+    static var sampleUser: User {
+        let context = PreviewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        if let user = try? context.fetch(request).first {
+            return user
+        } else {
+            let newUser = createSampleUser(in: context)
+            return newUser
+        }
+    }
 
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
+        user.salt = UUID()
         user.firstName = "Charlotte"
         user.lastName = "Corino"
         user.email = "charlotte.corino@preview.com"
+        user.hashPassword = PasswordHasher.hash(password: "Password123!", salt: user.salt)
         user.calorieGoal = 2000
         user.sleepGoal = 480 // 8 heures
         user.waterGoal = 25 // 2.5L
@@ -75,6 +87,7 @@ private extension PreviewDataProvider {
         user.height = 165
         user.weight = 60
         user.isLogged = true
+        try? context.save()
         return user
     }
 
@@ -178,12 +191,6 @@ private extension PreviewDataProvider {
 // MARK: - Convenience Accessors
 extension PreviewDataProvider {
 
-    static var sampleUser: User {
-        let context = PreviewContext
-        let request: NSFetchRequest<User> = User.fetchRequest()
-        return try! context.fetch(request).first!
-    }
-
     static var PreviewContext: NSManagedObjectContext {
         previewData.container.viewContext
     }
@@ -199,23 +206,25 @@ extension PreviewDataProvider {
 
 extension PreviewDataProvider {
     // MARK: - Preview AppCoordinator
-//    static var sampleCoordinator: AppCoordinator {
-//        let dataManager = UserDataManager(container: previewData.container)
-//        let coordinator = AppCoordinator(dataManager: dataManager)
-//
-//        let context = previewData.container.viewContext
-//        let user = createSampleUser(in: context)
-//        try? coordinator.login(id: user.id)
-//        return coordinator
-//    }
-
-    static var simpleCoordinator: AppCoordinator {
-        let dataManager = UserDataManager(container: userOnly.container)
-        return AppCoordinator(dataManager: dataManager)
+    static var sampleCoordinator: AppCoordinator {
+        let dataManager = UserDataManager(container: previewData.container)
+        let coordinator = AppCoordinator(dataManager: dataManager)
+        
+        let context = previewData.container.viewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        if let user = try? context.fetch(request).first {
+            try? coordinator.login(id: user.id)
+        }
+        
+        return coordinator
     }
-
+    
     // MARK: - Preview ViewModels
     static var sampleAuthenticationViewModel: AuthenticationViewModel {
-        AuthenticationViewModel(appCoordinator: simpleCoordinator)
+        AuthenticationViewModel(appCoordinator: sampleCoordinator)
+    }
+    
+    static var sampleAccountViewModel: AccountViewModel {
+        AccountViewModel(appCoordinator: sampleCoordinator)
     }
 }

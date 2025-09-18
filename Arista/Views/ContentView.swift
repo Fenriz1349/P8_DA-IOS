@@ -13,7 +13,7 @@ struct ContentView: View {
     var body: some View {
         if appCoordinator.isAuthenticated {
             TabView {
-                AccountView()
+                AccountView(viewModel: appCoordinator.makeAccountViewModel)
                     .tabItem {
                         Label("profil", systemImage: "person")
                     }
