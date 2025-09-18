@@ -9,7 +9,8 @@
             "value" : "%1$@ %2$@"
           }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld" : {
       "localizations" : {
@@ -390,23 +391,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Durée: %lld min"
-          }
-        }
-      }
-    },
-    "login" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Login"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Login"
           }
         }
       }

@@ -67,6 +67,7 @@ extension PreviewDataProvider {
             return user
         } else {
             let newUser = createSampleUser(in: context)
+            try? context.save()
             return newUser
         }
     }
@@ -87,7 +88,6 @@ extension PreviewDataProvider {
         user.height = 165
         user.weight = 60
         user.isLogged = true
-        try? context.save()
         return user
     }
 
