@@ -26,6 +26,23 @@
             "value" : "%lld"
           }
         }
+      },
+      "shouldTranslate" : false
+    },
+    "%lld dl" : {
+
+    },
+    "%lld kcal" : {
+
+    },
+    "%lldh %lldmin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lldh %2$lldmin"
+          }
+        }
       }
     },
     "addExercice" : {
@@ -66,6 +83,15 @@
         }
       }
     },
+    "Calorie Goal" : {
+
+    },
+    "Calories" : {
+
+    },
+    "Cancel" : {
+
+    },
     "category" : {
       "localizations" : {
         "en" : {
@@ -97,6 +123,9 @@
           }
         }
       }
+    },
+    "Edit Profile" : {
+
     },
     "error.cleaningMessage" : {
       "localizations" : {
@@ -299,6 +328,9 @@
         }
       }
     },
+    "Gender" : {
+
+    },
     "hello" : {
       "localizations" : {
         "en" : {
@@ -443,6 +475,12 @@
         }
       }
     },
+    "Sleep" : {
+
+    },
+    "Sleep Goal" : {
+
+    },
     "sleepHistory" : {
       "localizations" : {
         "en" : {
@@ -458,6 +496,12 @@
           }
         }
       }
+    },
+    "Water" : {
+
+    },
+    "Water Goal" : {
+
     },
     "welcome" : {
       "localizations" : {

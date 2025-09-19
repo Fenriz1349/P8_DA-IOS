@@ -59,6 +59,7 @@
 		68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C882E6B03450004F6DA /* AppCoordinator.swift */; };
 		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
 		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
+		68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4DA082E7C522500CFECA5 /* EditAccountView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -126,6 +127,7 @@
 		68E89C882E6B03450004F6DA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		68F4DA082E7C522500CFECA5 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -219,6 +221,7 @@
 				68CA51FF2E45FF3D00178C72 /* AddSleepCycleView.swift */,
 				68CA52012E45FF5800178C72 /* AddMealView.swift */,
 				68E89C8E2E6B0D060004F6DA /* ContentView.swift */,
+				68F4DA082E7C522500CFECA5 /* EditAccountView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -480,6 +483,7 @@
 				68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
+				68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */,
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,

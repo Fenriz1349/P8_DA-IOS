@@ -7,65 +7,110 @@
 
 import Foundation
 
-@MainActor
+enum EditAccountViewModelError: Error {
+    case noLoggedUser
+}
 
+@MainActor
 final class EditAccountViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
+    private let user: User
 
-    var currentUser: User? {
-        appCoordinator.currentUser
+    @Published var firstName: String = ""
+    @Published var lastName: String = ""
+    @Published var email: String = ""
+    @Published var selectedGender: Gender = .other
+    @Published var height: String = ""
+    @Published var weight: String = ""
+    @Published var calorieGoal: String = ""
+    @Published var sleepGoal: String = ""
+    @Published var waterGoal: String = ""
+    @Published var birthdate: Date = Date()
+
+    init(appCoordinator: AppCoordinator) throws {
+        self.appCoordinator = appCoordinator
+        self.user = try Self.getCurrentUser(from: appCoordinator)
+        try loadUserData()
     }
 
-    init(appCoordinator: AppCoordinator ) {
-        self.appCoordinator = appCoordinator
+    private static func getCurrentUser(from coordinator: AppCoordinator) throws -> User {
+        guard let currentUser = coordinator.currentUser else {
+            throw EditAccountViewModelError.noLoggedUser
+        }
+        return currentUser
+    }
+
+    private func loadUserData() throws {
+        self.firstName = user.firstName
+        self.lastName = user.lastName
+        self.email = user.email
+        self.selectedGender = user.genderEnum
+        self.height = user.hasHeight ? String(user.height) : ""
+        self.weight = user.hasWeight ? String(user.weight) : ""
+        self.calorieGoal = String(user.calorieGoal)
+        self.sleepGoal = String(user.sleepGoal)
+        self.waterGoal = String(user.waterGoal)
+        self.birthdate = user.birthdate ?? Date()
     }
 
     private func builder() throws -> UserUpdateBuilder {
-        guard let user = currentUser else {
-            throw AppCoordinatorError.errorLogout
-        }
         return UserUpdateBuilder(user: user, dataManager: appCoordinator.dataManager)
     }
 
     // MARK: - Update Methods
-    func updateFirstName(_ value: String) throws {
-        try builder().firstName(value).save()
-    }
 
-    func updateLastName(_ value: String) throws {
-        try builder().lastName(value).save()
-    }
+    func saveChanges() throws {
+        let builder = try builder()
+        var hasChanges = false
 
-    func updatePassword(_ value: String) throws {
-        try builder().password(value).save()
-    }
+        if firstName != user.firstName {
+            try builder.firstName(firstName)
+            hasChanges = true
+        }
 
-    func updateGender(_ value: Gender) throws {
-        try builder().gender(value).save()
-    }
+        if lastName != user.lastName {
+            try builder.lastName(lastName)
+            hasChanges = true
+        }
 
-    func updateCalorieGoal(_ value: Int) throws {
-        try builder().calorieGoal(value).save()
-    }
+        if selectedGender != user.genderEnum {
+            builder.gender(selectedGender)
+            hasChanges = true
+        }
 
-    func updateSleepGoal(_ value: Int) throws {
-        try builder().sleepGoal(value).save()
-    }
+        if !Calendar.current.isDate(birthdate, inSameDayAs: user.birthdate ?? Date()) {
+            builder.birthDate(birthdate)
+            hasChanges = true
+        }
 
-    func updateWaterGoal(_ value: Int) throws {
-        try builder().waterGoal(value).save()
-    }
+        if let heightValue = Int(height), heightValue > 0, heightValue != user.height {
+            try builder.height(heightValue)
+            hasChanges = true
+        }
 
-    func updateHeight(_ value: Int) throws {
-        try builder().height(value).save()
-    }
+        if let weightValue = Int(weight), weightValue > 0, weightValue != user.weight {
+            try builder.weight(weightValue)
+            hasChanges = true
+        }
 
-    func updateWeight(_ value: Int) throws {
-        try builder().weight(value).save()
-    }
+        if let calorieValue = Int(calorieGoal), calorieValue > 0, calorieValue != user.calorieGoal {
+            try builder.calorieGoal(calorieValue)
+            hasChanges = true
+        }
 
-    func updateBirthDate(_ value: Date) throws {
-        try builder().birthDate(value).save()
+        if let sleepValue = Int(sleepGoal), sleepValue > 0, sleepValue != user.sleepGoal {
+            try builder.sleepGoal(sleepValue)
+            hasChanges = true
+        }
+
+        if let waterValue = Int(waterGoal), waterValue > 0, waterValue != user.waterGoal {
+            try builder.waterGoal(waterValue)
+            hasChanges = true
+        }
+
+        if hasChanges {
+            try builder.save()
+        }
     }
     
     func deleteAccount() throws {

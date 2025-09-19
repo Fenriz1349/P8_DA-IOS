@@ -12,23 +12,29 @@ struct ContentView: View {
 
     var body: some View {
         if appCoordinator.isAuthenticated {
-            TabView {
-                AccountView(viewModel: appCoordinator.makeAccountViewModel)
+            NavigationStack {
+                TabView {
+                    Group {
+                        if let accountVM = try? appCoordinator.makeAccountViewModel() {
+                            AccountView(viewModel: accountVM)
+                        }
+                    }
                     .tabItem {
                         Label("profil", systemImage: "person")
                     }
 
-                Text("exercices")
-                    .tabItem {
-                        Label("exercices", systemImage: "flame")
-                    }
+                    Text("exercices")
+                        .tabItem {
+                            Label("exercices", systemImage: "flame")
+                        }
 
-                Text("sleep")
-                    .tabItem {
-                        Label("sleep", systemImage: "moon")
-                    }
+                    Text("sleep")
+                        .tabItem {
+                            Label("sleep", systemImage: "moon")
+                        }
+                }
+                .environmentObject(appCoordinator)
             }
-            .environmentObject(appCoordinator)
         } else {
             AuthenticationView(viewModel: appCoordinator.makeAuthenticationViewModel)
                 .environmentObject(appCoordinator)

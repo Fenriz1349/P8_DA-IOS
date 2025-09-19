@@ -224,7 +224,11 @@ extension PreviewDataProvider {
         AuthenticationViewModel(appCoordinator: sampleCoordinator)
     }
     
-    static var sampleAccountViewModel: AccountViewModel {
-        AccountViewModel(appCoordinator: sampleCoordinator)
+    static func makeSampleAccountViewModel() -> AccountViewModel {
+        return try! AccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+    }
+
+    static func makeSampleEditAccountViewModel() -> EditAccountViewModel {
+        return try! EditAccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
     }
 }

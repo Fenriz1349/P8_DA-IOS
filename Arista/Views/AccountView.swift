@@ -9,10 +9,19 @@ import SwiftUI
 import CustomLabels
 
 struct AccountView: View {
-   let viewModel: AccountViewModel
+    @ObservedObject var viewModel: AccountViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
+            Button(action: {
+                viewModel.showEditAccount = true
+            }) {
+                Image(systemName: "gear")
+                    .foregroundColor(.gray)
+                    .font(.title2)
+            }
+            .frame(maxWidth: .infinity, alignment: .trailing)
+
             Spacer()
             Text("hello")
                 .font(.largeTitle)
@@ -24,6 +33,7 @@ struct AccountView: View {
                 .scaleEffect(1.2)
                 .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: UUID())
             Spacer()
+
             Button(action: {
                 Task {
                     try viewModel.logout()
@@ -32,12 +42,18 @@ struct AccountView: View {
                 CustomButtonLabel(message: "logout", color: .red)
                     .frame(width: 200, height: 50)
             }
+            .frame(maxWidth: .infinity)
             Spacer()
         }
-        .edgesIgnoringSafeArea(.all)
+        .sheet(isPresented: $viewModel.showEditAccount) {
+            if let editAccountViewModel = try? AppCoordinator.shared.makeEditAccountViewModel() {
+                EditAccountView(viewModel: editAccountViewModel)
+            }
+        }
+        .padding(.horizontal)
     }
 }
 
 #Preview {
-    AccountView(viewModel: PreviewDataProvider.sampleAccountViewModel)
+    AccountView(viewModel: PreviewDataProvider.makeSampleAccountViewModel())
 }

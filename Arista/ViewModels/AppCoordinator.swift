@@ -39,8 +39,12 @@ final class AppCoordinator: ObservableObject {
         AuthenticationViewModel(appCoordinator: self)
     }
 
-    var makeAccountViewModel: AccountViewModel {
-        AccountViewModel(appCoordinator: self)
+    func makeAccountViewModel() throws -> AccountViewModel {
+        return try AccountViewModel(appCoordinator: self)
+    }
+
+    func makeEditAccountViewModel() throws -> EditAccountViewModel {
+        return try EditAccountViewModel(appCoordinator: self)
     }
 
     private func restoreUserSession() {
