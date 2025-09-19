@@ -112,7 +112,7 @@ final class EditAccountViewModel: ObservableObject {
             try builder.save()
         }
     }
-    
+
     func deleteAccount() throws {
         try appCoordinator.deleteCurrentUser()
     }

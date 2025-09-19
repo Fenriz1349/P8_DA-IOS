@@ -209,21 +209,21 @@ extension PreviewDataProvider {
     static var sampleCoordinator: AppCoordinator {
         let dataManager = UserDataManager(container: previewData.container)
         let coordinator = AppCoordinator(dataManager: dataManager)
-        
+
         let context = previewData.container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
         if let user = try? context.fetch(request).first {
             try? coordinator.login(id: user.id)
         }
-        
+
         return coordinator
     }
-    
+
     // MARK: - Preview ViewModels
     static var sampleAuthenticationViewModel: AuthenticationViewModel {
         AuthenticationViewModel(appCoordinator: sampleCoordinator)
     }
-    
+
     static func makeSampleAccountViewModel() -> AccountViewModel {
         return try! AccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
     }

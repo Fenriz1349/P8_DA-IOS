@@ -35,9 +35,7 @@ struct AccountView: View {
             Spacer()
 
             Button(action: {
-                Task {
-                    try viewModel.logout()
-                }
+                    try? viewModel.logout()
             }) {
                 CustomButtonLabel(message: "logout", color: .red)
                     .frame(width: 200, height: 50)

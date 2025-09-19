@@ -33,6 +33,7 @@ struct EditAccountView: View {
                         Text(gender.rawValue.capitalized).tag(gender)
                     }
                 }
+                .pickerStyle(.segmented)
 
                 HStack {
                     Text("Calorie Goal")
@@ -78,7 +79,7 @@ struct EditAccountView: View {
                     .pickerStyle(.wheel)
                     .frame(width: 100, height: 80)
                 }
-                
+
                 VStack(spacing: 12) {
                     Button(action: {
                         try? viewModel.saveChanges()

@@ -36,7 +36,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
 
     var isCreationFormValid: Bool {
-        return !email.isEmpty && !password.isEmpty && !firstName.isEmpty && !lastName.isEmpty && isMailValid && isPasswordValid
+        return !firstName.isEmpty && !lastName.isEmpty && isLoginFormValid
     }
 
     var isMailValid: Bool {

@@ -16,7 +16,14 @@ enum AppCoordinatorError: Error {
 final class AppCoordinator: ObservableObject {
     static let shared = AppCoordinator()
 
-    @Published var currentUser: User?
+    @Published var currentUser: User? {
+        didSet {
+            if currentUser == nil && oldValue != nil {
+                print("User was deleted! Old user ID: \(oldValue!.id)")
+                print("Stack trace: \(Thread.callStackSymbols)")
+            }
+        }
+     }
 
     let dataManager: UserDataManager
     private let currentUserIdKey = "currentUserId"
@@ -50,7 +57,7 @@ final class AppCoordinator: ObservableObject {
     private func restoreUserSession() {
         if let userIdString = UserDefaults.standard.string(forKey: currentUserIdKey),
            let userId = UUID(uuidString: userIdString) {
-            
+
             do {
                 let user = try dataManager.fetchUser(by: userId)
                 if user.isLogged {

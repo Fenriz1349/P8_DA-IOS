@@ -1,5 +1,5 @@
 //
-//  EditAccountViewModel.swift
+//  EditAccountViewModelTests.swift
 //  AristaTests
 //
 //  Created by Julien Cotte on 16/09/2025.
