@@ -52,11 +52,8 @@ final class AuthenticationViewModel: ObservableObject {
 
         let users = appCoordinator.dataManager.fetchAllUsers()
 
-        guard let user = users.first(where: { $0.email == email }) else {
-            throw AuthenticationError.invalidCredentials
-        }
-
-        guard user.verifyPassword(password) else {
+        guard let user = users.first(where: { $0.email == email }),
+              user.verifyPassword(password) else {
             throw AuthenticationError.invalidCredentials
         }
 
@@ -68,6 +65,10 @@ final class AuthenticationViewModel: ObservableObject {
                                                   password: password,
                                                   firstName: firstName,
                                                   lastName: lastName)
+        
+        let all = appCoordinator.dataManager.fetchAllUsers()
+        print("📌 Après création:", all.map(\.email))
+        
         try login()
     }
 }

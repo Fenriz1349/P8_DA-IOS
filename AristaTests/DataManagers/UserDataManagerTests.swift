@@ -138,27 +138,6 @@ final class UserDataManagerTests: XCTestCase {
         XCTAssertEqual(manager.allUsers.count, randomCount)
 
     }
-
-    func testNoUserLogged_shouldReturnTrue() throws {
-        // Given / When
-        SharedTestHelper.createRandomUsers(in: context)
-        try context.save()
-        
-        // Then
-        XCTAssertTrue(manager.noUserLogged)
-    }
-    
-    func testNoUserLogged_shouldReturnFalse() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        try context.save()
-        
-        // When
-        try builder.isLogged(true)
-        // Then
-        XCTAssertFalse(manager.noUserLogged)
-    }
     
     func testFetchLoggedUser_returnsTheLoggedUser() throws {
         // Given
@@ -192,31 +171,6 @@ final class UserDataManagerTests: XCTestCase {
             }
             XCTAssertEqual(userError, .noLoggedUser)
         }
-    }
-    
-    func testLoggedOffAllUsers_NoLoggedUser_throwError() throws {
-        // Given
-        SharedTestHelper.createRandomUsers(in: context)
-        try context.save()
-        
-        // When
-       try manager.loggedOffAllUsers()
-        
-        // Then
-        XCTAssertTrue(manager.noUserLogged)
-    }
-
-    func testLoggingInUser_onlyOneLogged() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        try context.save()
-        
-        // When
-        try manager.loggedIn(id: user.id)
-        
-        // Then
-        XCTAssertFalse(manager.noUserLogged)
-        XCTAssertEqual(manager.fetchAllUsers().filter{$0.isLogged}.count, 1)
     }
 
     func testDeleteUser_userNotFound_throwError() throws {

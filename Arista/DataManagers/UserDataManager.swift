@@ -12,6 +12,7 @@ enum UserDataManagerError: Error, Equatable {
     case invalidInput
     case userNotFound
     case noLoggedUser
+    case emailAlreadyUsed
 }
 
 final class UserDataManager {
@@ -22,16 +23,20 @@ final class UserDataManager {
         self.container = container
     }
 
-    var noUserLogged: Bool {
-        fetchAllUsers().allSatisfy { $0.isLogged == false }
-    }
-
     // MARK: - User Creation Method
     func createUser(email: String, password: String, firstName: String, lastName: String) throws -> User {
         guard !email.isEmpty, !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty else {
             throw UserDataManagerError.invalidInput
         }
+
         let context = container.viewContext
+        
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        request.predicate = NSPredicate(format: "email == %@", email)
+        if let existing = try context.fetch(request).first {
+            throw UserDataManagerError.emailAlreadyUsed
+        }
+
         let user = User(context: context)
         user.email = email
         user.id = UUID()
@@ -41,6 +46,7 @@ final class UserDataManager {
         user.lastName = lastName
 
         try context.save()
+        context.refreshAllObjects()
 
         return user
     }

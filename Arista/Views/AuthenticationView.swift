@@ -36,16 +36,20 @@ struct AuthenticationView: View {
                                     text: $viewModel.lastName,
                                     type: .alphaNumber)
                 }
-                Button(action: {
+                Button {
                     Task {
-                        viewModel.creationMode ?
-                        try viewModel.createUserAndLogin() :
-                        try viewModel.login()
+                        do {
+                            try viewModel.creationMode
+                            ? viewModel.createUserAndLogin()
+                            : viewModel.login()
+                        } catch {
+                            print("❌ Auth error:", error)
+                        }
                     }
-                }) {
-                    viewModel.creationMode ?
-                    CustomButtonLabel(message: "createProfile") :
-                    CustomButtonLabel(message: "login")
+                } label: {
+                    viewModel.creationMode
+                    ? CustomButtonLabel(message: "createProfile")
+                    : CustomButtonLabel(message: "login")
                 }
                 .disabled(!viewModel.isFormValid)
                 .opacity(viewModel.isFormValid ? 1 : 0.6)

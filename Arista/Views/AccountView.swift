@@ -44,7 +44,7 @@ struct AccountView: View {
             Spacer()
         }
         .sheet(isPresented: $viewModel.showEditAccount) {
-            if let editAccountViewModel = try? AppCoordinator.shared.makeEditAccountViewModel() {
+            if let editAccountViewModel = viewModel.editAccountViewModel {
                 EditAccountView(viewModel: editAccountViewModel)
             }
         }

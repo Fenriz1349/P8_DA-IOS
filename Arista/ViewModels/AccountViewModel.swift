@@ -30,6 +30,13 @@ final class AccountViewModel: ObservableObject {
         return currentUser
     }
 
+    var editAccountViewModel: EditAccountViewModel? {
+        guard let editVM = try? appCoordinator.makeEditAccountViewModel() else {
+            return nil
+        }
+        return editVM
+    }
+
     func logout() throws {
         try appCoordinator.logout()
     }

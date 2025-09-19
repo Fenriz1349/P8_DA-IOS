@@ -14,16 +14,7 @@ enum AppCoordinatorError: Error {
 
 @MainActor
 final class AppCoordinator: ObservableObject {
-    static let shared = AppCoordinator()
-
-    @Published var currentUser: User? {
-        didSet {
-            if currentUser == nil && oldValue != nil {
-                print("User was deleted! Old user ID: \(oldValue!.id)")
-                print("Stack trace: \(Thread.callStackSymbols)")
-            }
-        }
-     }
+    @Published var currentUser: User?
 
     let dataManager: UserDataManager
     private let currentUserIdKey = "currentUserId"
@@ -32,12 +23,7 @@ final class AppCoordinator: ObservableObject {
         currentUser != nil
     }
 
-    private init() {
-        self.dataManager = UserDataManager()
-        restoreUserSession()
-    }
-
-    init(dataManager: UserDataManager) {
+    init(dataManager: UserDataManager = UserDataManager()) {
         self.dataManager = dataManager
         restoreUserSession()
     }

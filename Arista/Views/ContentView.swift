@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ContentView: View {
-    @StateObject private var appCoordinator = AppCoordinator.shared
+    @StateObject private var appCoordinator = AppCoordinator()
 
     var body: some View {
         if appCoordinator.isAuthenticated {

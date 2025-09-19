@@ -47,7 +47,6 @@ final class AppCoordinatorTests: XCTestCase {
         // Then
         XCTAssertEqual(coordinator.currentUser?.id, user.id)
         XCTAssertTrue(coordinator.isAuthenticated)
-        XCTAssertFalse(coordinator.dataManager.noUserLogged)
     }
     
     // MARK: - Logout
@@ -64,7 +63,6 @@ final class AppCoordinatorTests: XCTestCase {
         
         // Then
         XCTAssertNil(coordinator.currentUser)
-        XCTAssertTrue(manager.noUserLogged)
     }
     
     // MARK: - Delete User
