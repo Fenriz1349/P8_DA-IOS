@@ -15,7 +15,7 @@ struct EditAccountView: View {
 
     var body: some View {
         NavigationStack {
-            Form {
+            VStack {
                 CustomTextField(
                     placeholder: "First Name",
                     text: $viewModel.firstName,
@@ -79,8 +79,8 @@ struct EditAccountView: View {
                     .pickerStyle(.wheel)
                     .frame(width: 100, height: 80)
                 }
-
-                VStack(spacing: 12) {
+                
+                HStack(spacing: 12) {
                     Button(action: {
                         try? viewModel.saveChanges()
                         dismiss()
@@ -101,6 +101,7 @@ struct EditAccountView: View {
                 }
                 .listRowBackground(Color.clear)
             }
+            .padding()
             .navigationTitle("Edit Profile")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {

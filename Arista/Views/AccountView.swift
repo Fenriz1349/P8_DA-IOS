@@ -31,7 +31,6 @@ struct AccountView: View {
                 .foregroundColor(.blue)
                 .padding()
                 .scaleEffect(1.2)
-                .animation(.easeInOut(duration: 1.5).repeatForever(autoreverses: true), value: UUID())
             Spacer()
 
             Button(action: {

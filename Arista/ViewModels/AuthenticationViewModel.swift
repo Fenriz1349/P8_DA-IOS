@@ -65,9 +65,7 @@ final class AuthenticationViewModel: ObservableObject {
                                                   password: password,
                                                   firstName: firstName,
                                                   lastName: lastName)
-        
-        let all = appCoordinator.dataManager.fetchAllUsers()
-        print("📌 Après création:", all.map(\.email))
+
         
         try login()
     }
