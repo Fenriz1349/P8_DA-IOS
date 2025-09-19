@@ -6,11 +6,11 @@
 //
 
 import SwiftUI
+import CustomLabels
 import CustomTextFields
 
 struct AuthenticationView: View {
-    @State private var username: String = ""
-    @State private var password: String = ""
+    @StateObject var viewModel: AuthenticationViewModel
 
     var body: some View {
         ZStack {
@@ -21,19 +21,38 @@ struct AuthenticationView: View {
                 Text("welcome")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
+                Toggle("createProfile.question", isOn: $viewModel.creationMode)
                 CustomTextField(placeholder: "mailAdress",
-                                text: $username,
+                                text: $viewModel.email,
                                 type: .email)
                 CustomTextField(placeholder: "password",
-                                text: $password,
+                                text: $viewModel.password,
                                 type: .password)
-                Button(action: {
-                    Task {
-                    }
-                }) {
-                    Text("Bouton")
-//                    CustomButton(icon: nil, message: "login".localized, color: .black)
+                if viewModel.creationMode {
+                    CustomTextField(placeholder: "firstName",
+                                    text: $viewModel.firstName,
+                                    type: .alphaNumber)
+                    CustomTextField(placeholder: "lastName",
+                                    text: $viewModel.lastName,
+                                    type: .alphaNumber)
                 }
+                Button {
+                    Task {
+                        do {
+                            try viewModel.creationMode
+                            ? viewModel.createUserAndLogin()
+                            : viewModel.login()
+                        } catch {
+                            print("❌ Auth error:", error)
+                        }
+                    }
+                } label: {
+                    viewModel.creationMode
+                    ? CustomButtonLabel(message: "createProfile")
+                    : CustomButtonLabel(message: "login")
+                }
+                .disabled(!viewModel.isFormValid)
+                .opacity(viewModel.isFormValid ? 1 : 0.6)
             }
             .padding(.horizontal, 40)
         }
@@ -41,5 +60,7 @@ struct AuthenticationView: View {
 }
 
 #Preview {
-    AuthenticationView()
+    AuthenticationView(
+        viewModel: PreviewDataProvider.sampleAuthenticationViewModel
+    )
 }

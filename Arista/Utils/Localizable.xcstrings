@@ -8,14 +8,9 @@
             "state" : "new",
             "value" : "%1$@ %2$@"
           }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%1$@ %2$@"
-          }
         }
-      }
+      },
+      "shouldTranslate" : false
     },
     "%lld" : {
       "localizations" : {
@@ -29,6 +24,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%lld"
+          }
+        }
+      },
+      "shouldTranslate" : false
+    },
+    "%lld dl" : {
+
+    },
+    "%lld kcal" : {
+
+    },
+    "%lldh %lldmin" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lldh %2$lldmin"
           }
         }
       }
@@ -71,8 +83,14 @@
         }
       }
     },
-    "Bouton" : {
-      "shouldTranslate" : false
+    "Calorie Goal" : {
+
+    },
+    "Calories" : {
+
+    },
+    "Cancel" : {
+
     },
     "category" : {
       "localizations" : {
@@ -90,8 +108,24 @@
         }
       }
     },
-    "CreateAccountView" : {
-      "shouldTranslate" : false
+    "createProfile.question" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create Profile ?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un Profil ?"
+          }
+        }
+      }
+    },
+    "Edit Profile" : {
+
     },
     "error.cleaningMessage" : {
       "localizations" : {
@@ -278,22 +312,6 @@
         }
       }
     },
-    "exercice" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercice"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercice"
-          }
-        }
-      }
-    },
     "exercices" : {
       "localizations" : {
         "en" : {
@@ -309,6 +327,9 @@
           }
         }
       }
+    },
+    "Gender" : {
+
     },
     "hello" : {
       "localizations" : {
@@ -422,6 +443,22 @@
         }
       }
     },
+    "profil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
+    },
     "sleep" : {
       "localizations" : {
         "en" : {
@@ -437,6 +474,12 @@
           }
         }
       }
+    },
+    "Sleep" : {
+
+    },
+    "Sleep Goal" : {
+
     },
     "sleepHistory" : {
       "localizations" : {
@@ -454,21 +497,11 @@
         }
       }
     },
-    "user" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilisateur"
-          }
-        }
-      }
+    "Water" : {
+
+    },
+    "Water Goal" : {
+
     },
     "welcome" : {
       "localizations" : {

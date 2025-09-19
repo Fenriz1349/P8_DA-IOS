@@ -8,6 +8,7 @@
 import Foundation
 import CoreData
 
+@MainActor
 struct PreviewDataProvider {
 
     private struct ExerciseTestData {
@@ -17,7 +18,7 @@ struct PreviewDataProvider {
         let daysAgo: Int
     }
 
-    /// Container principal avec des données complètes pour la plupart des previews
+    /// Main Container for preview
     static var previewData: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
         let context = controller.container.viewContext
@@ -57,15 +58,28 @@ struct PreviewDataProvider {
     }()
 }
 
-// MARK: - Private Data Creation Methods
-private extension PreviewDataProvider {
+extension PreviewDataProvider {
+
+    static var sampleUser: User {
+        let context = PreviewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        if let user = try? context.fetch(request).first {
+            return user
+        } else {
+            let newUser = createSampleUser(in: context)
+            try? context.save()
+            return newUser
+        }
+    }
 
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
+        user.salt = UUID()
         user.firstName = "Charlotte"
         user.lastName = "Corino"
         user.email = "charlotte.corino@preview.com"
+        user.hashPassword = PasswordHasher.hash(password: "Password123!", salt: user.salt)
         user.calorieGoal = 2000
         user.sleepGoal = 480 // 8 heures
         user.waterGoal = 25 // 2.5L
@@ -138,7 +152,7 @@ private extension PreviewDataProvider {
             let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
 
             let sleepCycle = SleepCycle(context: context)
-            sleepCycle.dateBegging = Int16(bedtime.timeIntervalSince1970)
+            sleepCycle.dateBegging = bedtime
             sleepCycle.dateEnding = wakeupTime
             sleepCycle.quality = Int16(quality)
             sleepCycle.user = user
@@ -187,5 +201,34 @@ extension PreviewDataProvider {
 
     static var emptyContext: NSManagedObjectContext {
         empty.container.viewContext
+    }
+}
+
+extension PreviewDataProvider {
+    // MARK: - Preview AppCoordinator
+    static var sampleCoordinator: AppCoordinator {
+        let dataManager = UserDataManager(container: previewData.container)
+        let coordinator = AppCoordinator(dataManager: dataManager)
+
+        let context = previewData.container.viewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        if let user = try? context.fetch(request).first {
+            try? coordinator.login(id: user.id)
+        }
+
+        return coordinator
+    }
+
+    // MARK: - Preview ViewModels
+    static var sampleAuthenticationViewModel: AuthenticationViewModel {
+        AuthenticationViewModel(appCoordinator: sampleCoordinator)
+    }
+
+    static func makeSampleAccountViewModel() -> AccountViewModel {
+        return try! AccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+    }
+
+    static func makeSampleEditAccountViewModel() -> EditAccountViewModel {
+        return try! EditAccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
     }
 }

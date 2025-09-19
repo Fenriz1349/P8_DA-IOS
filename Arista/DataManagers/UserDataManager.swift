@@ -12,6 +12,7 @@ enum UserDataManagerError: Error, Equatable {
     case invalidInput
     case userNotFound
     case noLoggedUser
+    case emailAlreadyUsed
 }
 
 final class UserDataManager {
@@ -22,25 +23,30 @@ final class UserDataManager {
         self.container = container
     }
 
-    var noUserLogged: Bool {
-        fetchAllUsers().allSatisfy { $0.isLogged == false }
-    }
-
     // MARK: - User Creation Method
     func createUser(email: String, password: String, firstName: String, lastName: String) throws -> User {
         guard !email.isEmpty, !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty else {
             throw UserDataManagerError.invalidInput
         }
+
         let context = container.viewContext
+        
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        request.predicate = NSPredicate(format: "email == %@", email)
+        guard try context.fetch(request).isEmpty else {
+            throw UserDataManagerError.emailAlreadyUsed
+        }
+
         let user = User(context: context)
         user.email = email
-        user.hashPassword = password
         user.id = UUID()
         user.salt = UUID()
+        user.hashPassword = PasswordHasher.hash(password: password, salt: user.salt)
         user.firstName = firstName
         user.lastName = lastName
 
         try context.save()
+        context.refreshAllObjects()
 
         return user
     }
@@ -66,13 +72,21 @@ final class UserDataManager {
         return user
     }
 
-    private func fetchAllUsers() -> [User] {
+    func fetchAllUsers() -> [User] {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
         guard let users = try? context.fetch(request) else {
             return []
         }
         return users
+    }
+
+    // MARK: - Loggin In Method
+    func loggedIn(id: UUID) throws {
+        try loggedOffAllUsers()
+        let user = try fetchUser(by: id)
+        let builder = UserUpdateBuilder(user: user, dataManager: self)
+        try builder.isLogged(true).save()
     }
 
     // MARK: - Logging Off Method

@@ -16,6 +16,8 @@ enum UserUpdateBuilderError: Error, Equatable {
     case nullCalorieGoal
     case nullSleepGoal
     case nullWaterGoal
+    case nullWeight
+    case nullHeight
     case invalidBirthDate
 }
 
@@ -112,7 +114,7 @@ class UserUpdateBuilder {
     @discardableResult
     func height(_ value: Int) throws -> UserUpdateBuilder {
         guard value > 0 else {
-            throw UserUpdateBuilderError.nullWaterGoal
+            throw UserUpdateBuilderError.nullHeight
         }
         user.height = Int16(value)
         return self
@@ -121,7 +123,7 @@ class UserUpdateBuilder {
     @discardableResult
     func weight(_ value: Int) throws -> UserUpdateBuilder {
         guard value > 0 else {
-            throw UserUpdateBuilderError.nullWaterGoal
+            throw UserUpdateBuilderError.nullWeight
         }
         user.weight = Int16(value)
         return self

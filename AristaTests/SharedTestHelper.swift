@@ -16,14 +16,14 @@ struct SharedTestHelper {
         firstName: "John",
         lastName: "Cena",
         email: "john.Cena@test.com",
-        password: "password"
+        password: "Password123!"
     )
 
     static let sampleUserData2 = (
         firstName: "Jane",
         lastName: "Cena",
         email: "jane.Cena@test.com",
-        password: "password"
+        password: "Password123!"
     )
 
     // MARK: - User Creation Helpers

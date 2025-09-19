@@ -55,7 +55,6 @@ final class UserDataManagerTests: XCTestCase {
     }
 
     func testCreateUser_withEmptyLastName_throwError() throws {
-        
         XCTAssertThrowsError(
             // Given / When
             try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John", lastName: "")
@@ -68,15 +67,35 @@ final class UserDataManagerTests: XCTestCase {
         }
     }
 
+    func testCreateUser_withUsedEmail_throwError() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        
+        XCTAssertThrowsError(
+           // When
+            try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John", lastName: "Cena")
+            // Then
+        ) { error in
+            guard let urlError = error as? URLError else {
+                return
+            }
+            XCTAssertEqual(urlError.code, .cannotParseResponse)
+        }
+    }
+
     func testCreateUser_withAllDatas_success() throws {
         // Given / When
-        let user = try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John",lastName: "Cena")
+        let user = try manager.createUser(email: SharedTestHelper.sampleUserData.email,
+                                          password:SharedTestHelper.sampleUserData.password,
+                                          firstName: SharedTestHelper.sampleUserData.firstName,
+                                          lastName: SharedTestHelper.sampleUserData.lastName)
 
         // Then
-        XCTAssertEqual(user.email, "john.Cena@test.com")
-        XCTAssertEqual(user.hashPassword, "password")
-        XCTAssertEqual(user.firstName, "John")
-        XCTAssertEqual(user.lastName, "Cena")
+        XCTAssertEqual(user.email, SharedTestHelper.sampleUserData.email)
+        XCTAssertTrue(user.verifyPassword(SharedTestHelper.sampleUserData.password))
+        XCTAssertEqual(user.firstName, SharedTestHelper.sampleUserData.firstName)
+        XCTAssertEqual(user.lastName, SharedTestHelper.sampleUserData.lastName)
         XCTAssertNotNil(user.id)
         XCTAssertNotNil(user.salt)
         XCTAssertFalse(user.isLogged)
@@ -136,27 +155,6 @@ final class UserDataManagerTests: XCTestCase {
         XCTAssertEqual(manager.allUsers.count, randomCount)
 
     }
-
-    func testNoUserLogged_shouldReturnTrue() throws {
-        // Given / When
-        SharedTestHelper.createRandomUsers(in: context)
-        try context.save()
-        
-        // Then
-        XCTAssertTrue(manager.noUserLogged)
-    }
-    
-    func testNoUserLogged_shouldReturnFalse() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        try context.save()
-        
-        // When
-        try builder.isLogged(true)
-        // Then
-        XCTAssertFalse(manager.noUserLogged)
-    }
     
     func testFetchLoggedUser_returnsTheLoggedUser() throws {
         // Given
@@ -190,18 +188,6 @@ final class UserDataManagerTests: XCTestCase {
             }
             XCTAssertEqual(userError, .noLoggedUser)
         }
-    }
-    
-    func testLoggedOffAllUsers_NoLoggedUser_throwError() throws {
-        // Given
-        SharedTestHelper.createRandomUsers(in: context)
-        try context.save()
-        
-        // When
-       try manager.loggedOffAllUsers()
-        
-        // Then
-        XCTAssertTrue(manager.noUserLogged)
     }
 
     func testDeleteUser_userNotFound_throwError() throws {
