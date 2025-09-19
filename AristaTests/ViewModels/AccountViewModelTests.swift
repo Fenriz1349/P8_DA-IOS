@@ -80,4 +80,17 @@ final class AccountViewModelTests: XCTestCase {
         // Then
         XCTAssertFalse(sut.showEditAccount)
     }
+    
+    func test_makeEditAccountViewModel_withLoggedUser_returnsViewModel() throws {
+        //Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        
+        // When
+        let sut = try AccountViewModel(appCoordinator: coordinator)
+        
+        // Then
+        XCTAssertNotNil(sut.editAccountViewModel)
+    }
 }

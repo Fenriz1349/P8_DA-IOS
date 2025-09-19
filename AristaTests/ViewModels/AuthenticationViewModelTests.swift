@@ -46,12 +46,34 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertFalse(sut.isFormValid)
     }
     
-    func test_isFormValid_withBothFields_shouldBeTrue() {
+    func test_isLoginFormValid_withBothFields_shouldBeTrue() {
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = SharedTestHelper.sampleUserData.password
         XCTAssertTrue(sut.isFormValid)
+        XCTAssertTrue(sut.isLoginFormValid)
+    }
+
+    func test_isCreationFormValid_withBothFields_shouldBeTrue() {
+        sut.creationMode = true
+        sut.firstName = SharedTestHelper.sampleUserData.firstName
+        sut.lastName = SharedTestHelper.sampleUserData.lastName
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+        XCTAssertTrue(sut.isFormValid)
+        XCTAssertTrue(sut.isLoginFormValid)
     }
     
+    func test_isCreationFormValid_withEmptyFields_shouldBeFalse() {
+        sut.creationMode = true
+        sut.firstName = ""
+        sut.lastName = SharedTestHelper.sampleUserData.lastName
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+        XCTAssertFalse(sut.isFormValid)
+        XCTAssertTrue(sut.isLoginFormValid)
+        XCTAssertFalse(sut.isCreationFormValid)
+    }
+
     // MARK: - Login Success
     func test_login_withValidCredentials_shouldSucceed() throws {
         // Given

@@ -275,13 +275,13 @@ final class UserUpdateBuilderTests: XCTestCase {
         
         // Then
         XCTAssertThrowsError(
-            try builder.waterGoal(randomNegative).save()
+            try builder.height(randomNegative).save()
         ) { error in
             guard let userError = error as? UserUpdateBuilderError else {
                 XCTFail("Expected URLError, got \(type(of: error))")
                 return
             }
-            XCTAssertEqual(userError, .nullWaterGoal)
+            XCTAssertEqual(userError, .nullHeight)
         }
     }
 
@@ -327,6 +327,24 @@ final class UserUpdateBuilderTests: XCTestCase {
         // Then
         let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
+    }
+
+    func testUpdateWeight_nullValue_throwError() throws {
+        // Given / When
+        let user = SharedTestHelper.createSampleUser(in: context)
+        let builder = UserUpdateBuilder(user: user, dataManager: manager)
+        let randomNegative: Int = Int.random(in: -1000...0)
+        
+        // Then
+        XCTAssertThrowsError(
+            try builder.weight(randomNegative).save()
+        ) { error in
+            guard let userError = error as? UserUpdateBuilderError else {
+                XCTFail("Expected URLError, got \(type(of: error))")
+                return
+            }
+            XCTAssertEqual(userError, .nullWeight)
+        }
     }
 
     func testUpdateBirthDate() throws {
