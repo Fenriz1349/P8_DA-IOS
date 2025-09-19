@@ -33,7 +33,7 @@ final class UserDataManager {
         
         let request: NSFetchRequest<User> = User.fetchRequest()
         request.predicate = NSPredicate(format: "email == %@", email)
-        if let existing = try context.fetch(request).first {
+        guard try context.fetch(request).isEmpty else {
             throw UserDataManagerError.emailAlreadyUsed
         }
 

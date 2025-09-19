@@ -67,6 +67,23 @@ final class UserDataManagerTests: XCTestCase {
         }
     }
 
+    func testCreateUser_withUsedEmail_throwError() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        
+        XCTAssertThrowsError(
+           // When
+            try manager.createUser(email: "john.Cena@test.com", password: "password", firstName: "John", lastName: "Cena")
+            // Then
+        ) { error in
+            guard let urlError = error as? URLError else {
+                return
+            }
+            XCTAssertEqual(urlError.code, .cannotParseResponse)
+        }
+    }
+
     func testCreateUser_withAllDatas_success() throws {
         // Given / When
         let user = try manager.createUser(email: SharedTestHelper.sampleUserData.email,
