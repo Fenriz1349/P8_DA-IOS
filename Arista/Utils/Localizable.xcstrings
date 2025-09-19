@@ -108,6 +108,9 @@
         }
       }
     },
+    "createProfile" : {
+
+    },
     "createProfile.question" : {
       "localizations" : {
         "en" : {
@@ -426,6 +429,9 @@
           }
         }
       }
+    },
+    "login" : {
+
     },
     "newExercice" : {
       "localizations" : {
