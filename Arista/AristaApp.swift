@@ -13,7 +13,9 @@ struct AristaApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ToastyContainer {
+                ContentView()
+            }
         }
     }
 }
