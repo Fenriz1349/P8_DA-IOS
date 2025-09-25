@@ -19,7 +19,6 @@ final class AuthenticationViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
     @Published var toastyManager: ToastyManager?
 
-
     enum ButtonState {
         case disabled, enabled, error
     }

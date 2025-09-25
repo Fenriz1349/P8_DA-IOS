@@ -11,6 +11,7 @@ import CustomLabels
 
 struct EditAccountView: View {
     @ObservedObject var viewModel: EditAccountViewModel
+    @EnvironmentObject private var toastyManager: ToastyManager
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -110,6 +111,8 @@ struct EditAccountView: View {
                         dismiss()
                     }
                 }
+            }.onAppear {
+                viewModel.configure(toastyManager: toastyManager)
             }
         }
     }
