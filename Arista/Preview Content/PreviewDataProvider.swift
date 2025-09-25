@@ -219,6 +219,10 @@ extension PreviewDataProvider {
         return coordinator
     }
 
+    static var sampleToastyManager: ToastyManager {
+        ToastyManager()
+    }
+
     // MARK: - Preview ViewModels
     static var sampleAuthenticationViewModel: AuthenticationViewModel {
         AuthenticationViewModel(appCoordinator: sampleCoordinator)

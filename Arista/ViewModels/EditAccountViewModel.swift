@@ -15,6 +15,7 @@ enum EditAccountViewModelError: Error {
 final class EditAccountViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
     private let user: User
+    @Published var toastyManager: ToastyManager?
 
     @Published var firstName: String = ""
     @Published var lastName: String = ""
@@ -31,6 +32,10 @@ final class EditAccountViewModel: ObservableObject {
         self.appCoordinator = appCoordinator
         self.user = try Self.getCurrentUser(from: appCoordinator)
         try loadUserData()
+    }
+
+    func configure(toastyManager: ToastyManager) {
+        self.toastyManager = toastyManager
     }
 
     private static func getCurrentUser(from coordinator: AppCoordinator) throws -> User {
@@ -115,5 +120,18 @@ final class EditAccountViewModel: ObservableObject {
 
     func deleteAccount() throws {
         try appCoordinator.deleteCurrentUser()
+    }
+    
+    private func handleEditError(_ error: Error) {
+        let errorMessage: String
+
+        if let editError = error as? EditAccountViewModelError {
+            switch editError {
+            case .noLoggedUser:
+                errorMessage = "There always be a looged User at this point. Please relaunch Arista."
+            }
+
+            toastyManager?.show(message: errorMessage)
+        }
     }
 }

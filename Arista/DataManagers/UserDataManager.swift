@@ -30,7 +30,7 @@ final class UserDataManager {
         }
 
         let context = container.viewContext
-        
+
         let request: NSFetchRequest<User> = User.fetchRequest()
         request.predicate = NSPredicate(format: "email == %@", email)
         guard try context.fetch(request).isEmpty else {

@@ -21,6 +21,15 @@
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
 		53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */; };
+		6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6652E852D7B00501E0E /* ToastyMessage.swift */; };
+		6802E6682E852E0E00501E0E /* ToastyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6672E852E0E00501E0E /* ToastyType.swift */; };
+		6802E66A2E852FC100501E0E /* ToastyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6692E852FC100501E0E /* ToastyManager.swift */; };
+		6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E66B2E85309A00501E0E /* ToastyView.swift */; };
+		6802E66E2E8530E900501E0E /* ToastyContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E66D2E8530E900501E0E /* ToastyContainer.swift */; };
+		6802E6742E8534F600501E0E /* ToastyTestHelpers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6732E8534F600501E0E /* ToastyTestHelpers.swift */; };
+		6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6762E85385A00501E0E /* ToastyMessageTests.swift */; };
+		6802E6792E85391C00501E0E /* ToastyTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6782E85391C00501E0E /* ToastyTypeTests.swift */; };
+		6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */; };
 		6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */; };
 		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
@@ -89,6 +98,15 @@
 		53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
 		53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryViewModel.swift; sourceTree = "<group>"; };
+		6802E6652E852D7B00501E0E /* ToastyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyMessage.swift; sourceTree = "<group>"; };
+		6802E6672E852E0E00501E0E /* ToastyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyType.swift; sourceTree = "<group>"; };
+		6802E6692E852FC100501E0E /* ToastyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManager.swift; sourceTree = "<group>"; };
+		6802E66B2E85309A00501E0E /* ToastyView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyView.swift; sourceTree = "<group>"; };
+		6802E66D2E8530E900501E0E /* ToastyContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyContainer.swift; sourceTree = "<group>"; };
+		6802E6732E8534F600501E0E /* ToastyTestHelpers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyTestHelpers.swift; sourceTree = "<group>"; };
+		6802E6762E85385A00501E0E /* ToastyMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyMessageTests.swift; sourceTree = "<group>"; };
+		6802E6782E85391C00501E0E /* ToastyTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyTypeTests.swift; sourceTree = "<group>"; };
+		6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManagerTests.swift; sourceTree = "<group>"; };
 		6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
 		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -174,8 +192,9 @@
 		53E5872F2B235E8F00E4EF99 /* Arista */ = {
 			isa = PBXGroup;
 			children = (
+				6802E6642E852D6700501E0E /* Toasty */,
 				68E529972E5857A100371833 /* Security */,
-				686027A42E3B94F800BF8EA8 /* Model */,
+				686027A42E3B94F800BF8EA8 /* Models */,
 				68E529962E58577500371833 /* CoreData */,
 				68923A572E599FB900D81620 /* DataManagers */,
 				6843211D2E4CC07D003FDAEE /* Utils */,
@@ -200,8 +219,9 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				6802E6722E8534DF00501E0E /* Toasty */,
 				68E529982E5857F800371833 /* Security */,
-				689510092E6070F600461030 /* Model */,
+				689510092E6070F600461030 /* Models */,
 				68923A562E599F8500D81620 /* CoreData */,
 				6895100C2E607DCB00461030 /* DataManagers */,
 				6840AF4F2E7313EB0098F325 /* ViewModels */,
@@ -229,15 +249,78 @@
 		53E587612B235FDC00E4EF99 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				68E89C882E6B03450004F6DA /* AppCoordinator.swift */,
 				53E587682B23616A00E4EF99 /* AccountViewModel.swift */,
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
-				68E89C882E6B03450004F6DA /* AppCoordinator.swift */,
 				685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */,
 			);
 			path = ViewModels;
+			sourceTree = "<group>";
+		};
+		6802E6642E852D6700501E0E /* Toasty */ = {
+			isa = PBXGroup;
+			children = (
+				6802E66F2E85334500501E0E /* Models */,
+				6802E6702E85334C00501E0E /* Manager */,
+				6802E6712E85335400501E0E /* Views */,
+			);
+			path = Toasty;
+			sourceTree = "<group>";
+		};
+		6802E66F2E85334500501E0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6802E6652E852D7B00501E0E /* ToastyMessage.swift */,
+				6802E6672E852E0E00501E0E /* ToastyType.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6802E6702E85334C00501E0E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6802E6692E852FC100501E0E /* ToastyManager.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		6802E6712E85335400501E0E /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				6802E66B2E85309A00501E0E /* ToastyView.swift */,
+				6802E66D2E8530E900501E0E /* ToastyContainer.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		6802E6722E8534DF00501E0E /* Toasty */ = {
+			isa = PBXGroup;
+			children = (
+				6802E6752E85384D00501E0E /* Models */,
+				6802E67A2E8539B300501E0E /* Manager */,
+				6802E6732E8534F600501E0E /* ToastyTestHelpers.swift */,
+			);
+			path = Toasty;
+			sourceTree = "<group>";
+		};
+		6802E6752E85384D00501E0E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				6802E6762E85385A00501E0E /* ToastyMessageTests.swift */,
+				6802E6782E85391C00501E0E /* ToastyTypeTests.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		6802E67A2E8539B300501E0E /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		6840AF4F2E7313EB0098F325 /* ViewModels */ = {
@@ -260,7 +343,7 @@
 			path = Utils;
 			sourceTree = "<group>";
 		};
-		686027A42E3B94F800BF8EA8 /* Model */ = {
+		686027A42E3B94F800BF8EA8 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				68E89C862E6AE8C40004F6DA /* User.swift */,
@@ -273,7 +356,7 @@
 				686027A92E3B973100BF8EA8 /* ExerciceType.swift */,
 				686027AB2E3B9F8900BF8EA8 /* Gender.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		686D568E2E7447110088AD98 /* Frameworks */ = {
@@ -300,12 +383,12 @@
 			path = DataManagers;
 			sourceTree = "<group>";
 		};
-		689510092E6070F600461030 /* Model */ = {
+		689510092E6070F600461030 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				6895100A2E60711600461030 /* UserTests.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		6895100C2E607DCB00461030 /* DataManagers */ = {
@@ -464,6 +547,7 @@
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
 				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
+				6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */,
 				68CA52002E45FF3D00178C72 /* AddSleepCycleView.swift in Sources */,
 				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
 				68E89C7C2E6AE5B80004F6DA /* Aliment.swift in Sources */,
@@ -474,6 +558,7 @@
 				68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */,
 				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
+				6802E66E2E8530E900501E0E /* ToastyContainer.swift in Sources */,
 				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
 				68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
@@ -486,9 +571,12 @@
 				68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */,
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
+				6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */,
 				686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */,
 				53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */,
+				6802E66A2E852FC100501E0E /* ToastyManager.swift in Sources */,
 				68E89C872E6AE8C40004F6DA /* User.swift in Sources */,
+				6802E6682E852E0E00501E0E /* ToastyType.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -501,12 +589,16 @@
 				6895100B2E60711600461030 /* UserTests.swift in Sources */,
 				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
 				68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */,
+				6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
 				68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */,
+				6802E6742E8534F600501E0E /* ToastyTestHelpers.swift in Sources */,
 				6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */,
+				6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */,
 				685B235D2E79AE32003CFFA3 /* EditAccountViewModelTests.swift in Sources */,
 				68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */,
 				68C6C97B2E61E35600108FE9 /* PasswordHasherTest.swift in Sources */,
+				6802E6792E85391C00501E0E /* ToastyTypeTests.swift in Sources */,
 				686D56922E7455900088AD98 /* AccountViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

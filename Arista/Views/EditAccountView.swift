@@ -11,6 +11,7 @@ import CustomLabels
 
 struct EditAccountView: View {
     @ObservedObject var viewModel: EditAccountViewModel
+    @EnvironmentObject private var toastyManager: ToastyManager
     @Environment(\.dismiss) var dismiss
 
     var body: some View {
@@ -79,7 +80,7 @@ struct EditAccountView: View {
                     .pickerStyle(.wheel)
                     .frame(width: 100, height: 80)
                 }
-                
+
                 HStack(spacing: 12) {
                     Button(action: {
                         try? viewModel.saveChanges()
@@ -110,6 +111,8 @@ struct EditAccountView: View {
                         dismiss()
                     }
                 }
+            }.onAppear {
+                viewModel.configure(toastyManager: toastyManager)
             }
         }
     }

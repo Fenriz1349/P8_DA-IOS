@@ -10,10 +10,13 @@ import SwiftUI
 @main
 struct AristaApp: App {
     let persistenceController = PersistenceController.shared
+    @StateObject private var toastyManager = ToastyManager()
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            ToastyContainer(toastyManager: toastyManager) {
+                ContentView()
+            }
         }
     }
 }
