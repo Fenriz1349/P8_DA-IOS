@@ -79,7 +79,7 @@ struct EditAccountView: View {
                     .pickerStyle(.wheel)
                     .frame(width: 100, height: 80)
                 }
-                
+
                 HStack(spacing: 12) {
                     Button(action: {
                         try? viewModel.saveChanges()

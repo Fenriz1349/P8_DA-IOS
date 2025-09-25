@@ -16,15 +16,15 @@ enum AuthenticationError: Error {
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
-    
+
     enum ButtonState {
         case disabled, enabled, error
     }
-    
+
     enum FieldType {
         case email, password, firstName, lastName
     }
-    
+
     var buttonBackgroundColor: Color {
         switch buttonState {
         case .disabled:
@@ -35,7 +35,7 @@ final class AuthenticationViewModel: ObservableObject {
             return .red
         }
     }
-    
+
     // MARK: - Properties
     @Published var email: String = ""
     @Published var password: String = ""
@@ -43,52 +43,52 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var lastName: String = ""
     @Published var creationMode: Bool = false
     @Published var buttonState: ButtonState = .disabled
-    
+
     // MARK: - Validation states for CustomTextFields
     @Published var emailValidationState: ValidationState = .neutral
     @Published var passwordValidationState: ValidationState = .neutral
     @Published var firstNameValidationState: ValidationState = .neutral
     @Published var lastNameValidationState: ValidationState = .neutral
-    
+
     @MainActor
     init(appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
-    
+
     // MARK: - Computed Properties
     var isFormValid: Bool {
         creationMode ? isCreationFormValid : isLoginFormValid
     }
-    
+
     var isLoginFormValid: Bool {
         return !email.isEmpty && !password.isEmpty && isMailValid && isPasswordValid
     }
-    
+
     var isCreationFormValid: Bool {
         return !firstName.isEmpty && !lastName.isEmpty && isFirstNameValid && isLastNameValid && isLoginFormValid
     }
-    
+
     var isMailValid: Bool {
         Validators.isValidEmail(email)
     }
-    
+
     var isPasswordValid: Bool {
         Validators.isStrongPassword(password)
     }
-    
+
     var isFirstNameValid: Bool {
         ExampleValidationRules.validateFirstName(firstName)
     }
-    
+
     var isLastNameValid: Bool {
         ExampleValidationRules.validateFirstName(lastName) // Même règle que firstName
     }
-    
+
     // MARK: - Button State Management
     func updateButtonState() {
         buttonState = isFormValid ? .enabled : .disabled
     }
-    
+
     // MARK: - Validation Management
     func resetFieldValidation(_ field: FieldType) {
         switch field {
@@ -110,31 +110,31 @@ final class AuthenticationViewModel: ObservableObject {
             }
         }
     }
-    
+
     func resetAllValidationStates() {
         emailValidationState = .neutral
         passwordValidationState = .neutral
         firstNameValidationState = .neutral
         lastNameValidationState = .neutral
     }
-    
+
     func validateAllFields() -> Bool {
         var hasErrors = false
-        
+
         // Validate email
         if !isMailValid {
             emailValidationState = .invalid
             hasErrors = true
             print("❌ Invalid email: \(email)")
         }
-        
+
         // Validate password
         if !isPasswordValid {
             passwordValidationState = .invalid
             hasErrors = true
             print("❌ Invalid password")
         }
-        
+
         // Validate creation mode fields
         if creationMode {
             if !isFirstNameValid {
@@ -142,17 +142,17 @@ final class AuthenticationViewModel: ObservableObject {
                 hasErrors = true
                 print("❌ Invalid first name: \(firstName)")
             }
-            
+
             if !isLastNameValid {
                 lastNameValidationState = .invalid
                 hasErrors = true
                 print("❌ Invalid last name: \(lastName)")
             }
         }
-        
+
         return !hasErrors
     }
-    
+
     // MARK: - Submit Handling
     func handleSubmit() {
         if validateAllFields() {
@@ -169,19 +169,19 @@ final class AuthenticationViewModel: ObservableObject {
             showValidationError()
         }
     }
-    
+
     private func showValidationError() {
         buttonState = .error
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
             self.updateButtonState()
         }
     }
-    
+
     private func showAuthError() {
         resetAllValidationStates()
         buttonState = .error
-        
+
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             self.updateButtonState()
         }

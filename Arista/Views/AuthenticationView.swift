@@ -19,13 +19,13 @@ struct AuthenticationView: View {
                         .resizable()
                         .frame(width: 200, height: 200)
                 }
-                
+
                 Text("welcome")
                     .font(.largeTitle)
                     .fontWeight(.semibold)
-                
+
                 Toggle("createProfile.question", isOn: $viewModel.creationMode)
-                
+
                 // Email Field
                 CustomTextField.triggered(
                     placeholder: "mailAdress",
@@ -38,7 +38,7 @@ struct AuthenticationView: View {
                     viewModel.updateButtonState()
                     viewModel.resetFieldValidation(.email)
                 }
-                
+
                 // Password Field
                 CustomTextField.triggered(
                     placeholder: "password",
@@ -51,7 +51,7 @@ struct AuthenticationView: View {
                     viewModel.updateButtonState()
                     viewModel.resetFieldValidation(.password)
                 }
-                
+
                 if viewModel.creationMode {
                     // First Name Field
                     CustomTextField.nameField(
@@ -63,7 +63,7 @@ struct AuthenticationView: View {
                         viewModel.updateButtonState()
                         viewModel.resetFieldValidation(.firstName)
                     }
-                    
+
                     // Last Name Field
                     CustomTextField.nameField(
                         placeholder: "lastName",
@@ -75,7 +75,7 @@ struct AuthenticationView: View {
                         viewModel.resetFieldValidation(.lastName)
                     }
                 }
-                
+
                 // Submit Button
                 Button {
                     viewModel.handleSubmit()
