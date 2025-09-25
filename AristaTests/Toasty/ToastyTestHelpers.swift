@@ -24,4 +24,20 @@ struct ToastyTestHelpers {
     static func createManager() -> ToastyManager {
         return ToastyManager()
     }
+
+    static func createSpyManager() -> SpyToastyManager {
+        return SpyToastyManager()
+    }
+}
+
+class SpyToastyManager: ToastyManager {
+    var showCallCount = 0
+    var lastMessage: String?
+    var lastType: ToastyType?
+    
+    override func show(message: String, type: ToastyType) {
+        showCallCount += 1
+        lastType = type
+        lastMessage = message
+    }
 }

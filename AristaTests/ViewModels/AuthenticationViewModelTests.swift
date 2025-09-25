@@ -17,23 +17,32 @@ final class AuthenticationViewModelTests: XCTestCase {
     var context: NSManagedObjectContext!
     var dataManager: UserDataManager!
     var coordinator: AppCoordinator!
-    
+    var spyToastyManager: SpyToastyManager!
+
     override func setUp() {
         super.setUp()
-        
+
         testContainer = PersistenceController.createTestContainer()
         context = testContainer.container.viewContext
         
         dataManager = UserDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: dataManager)
-        sut = AuthenticationViewModel(appCoordinator: coordinator)
+        
+        spyToastyManager = ToastyTestHelpers.createSpyManager()
+        
+        sut = AuthenticationViewModel(
+            appCoordinator: coordinator,
+        )
+        sut.configure(toastyManager: spyToastyManager)
     }
     
     override func tearDown() {
         testContainer.clearAllData()
+        spyToastyManager = nil
+        sut = nil
         super.tearDown()
     }
-    
+
     // MARK: - Initial State Tests
     func test_initialState_shouldHaveEmptyFieldsAndNeutralValidation() {
         XCTAssertEqual(sut.email, "")
@@ -42,19 +51,19 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.lastName, "")
         XCTAssertFalse(sut.creationMode)
         XCTAssertEqual(sut.buttonState, .disabled)
-        
+
         // Validation states should be neutral
         XCTAssertEqual(sut.emailValidationState, .neutral)
         XCTAssertEqual(sut.passwordValidationState, .neutral)
         XCTAssertEqual(sut.firstNameValidationState, .neutral)
         XCTAssertEqual(sut.lastNameValidationState, .neutral)
     }
-    
+
     // MARK: - Form Validation Tests
     func test_isFormValid_withEmptyFields_shouldBeFalse() {
         XCTAssertFalse(sut.isFormValid)
     }
-    
+
     func test_isLoginFormValid_withValidCredentials_shouldBeTrue() {
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = SharedTestHelper.sampleUserData.password
@@ -162,7 +171,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         sut.buttonState = .error
         XCTAssertEqual(sut.buttonBackgroundColor, .red)
     }
-    
+
     // MARK: - Validation State Management Tests
     func test_resetFieldValidation_shouldResetSpecificField() {
         // Given
@@ -193,7 +202,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.firstNameValidationState, .neutral)
         XCTAssertEqual(sut.lastNameValidationState, .neutral)
     }
-    
+
     func test_validateAllFields_withValidFields_shouldReturnTrue() {
         // Given
         sut.email = SharedTestHelper.sampleUserData.email
@@ -300,6 +309,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(coordinator.currentUser?.id, testUser.id)
         XCTAssertTrue(coordinator.isAuthenticated)
+        XCTAssertEqual(spyToastyManager.showCallCount, 0)
     }
     
     func test_login_withInvalidForm_shouldThrowValidationError() {
@@ -344,11 +354,12 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertNotNil(coordinator.currentUser)
         XCTAssertTrue(coordinator.isAuthenticated)
         XCTAssertEqual(coordinator.currentUser?.email, sut.email)
+        XCTAssertEqual(spyToastyManager.showCallCount, 0)
     }
     
     func test_createUserAndLogin_withInvalidForm_shouldThrowValidationError() {
         // Given
-        sut.firstName = ""  // Invalid
+        sut.firstName = ""
         sut.lastName = SharedTestHelper.sampleUserData.lastName
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = SharedTestHelper.sampleUserData.password

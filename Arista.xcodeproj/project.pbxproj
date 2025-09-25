@@ -221,7 +221,7 @@
 			children = (
 				6802E6722E8534DF00501E0E /* Toasty */,
 				68E529982E5857F800371833 /* Security */,
-				689510092E6070F600461030 /* Model */,
+				689510092E6070F600461030 /* Models */,
 				68923A562E599F8500D81620 /* CoreData */,
 				6895100C2E607DCB00461030 /* DataManagers */,
 				6840AF4F2E7313EB0098F325 /* ViewModels */,
@@ -249,12 +249,12 @@
 		53E587612B235FDC00E4EF99 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
+				68E89C882E6B03450004F6DA /* AppCoordinator.swift */,
 				53E587682B23616A00E4EF99 /* AccountViewModel.swift */,
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
-				68E89C882E6B03450004F6DA /* AppCoordinator.swift */,
 				685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */,
 			);
 			path = ViewModels;
@@ -383,12 +383,12 @@
 			path = DataManagers;
 			sourceTree = "<group>";
 		};
-		689510092E6070F600461030 /* Model */ = {
+		689510092E6070F600461030 /* Models */ = {
 			isa = PBXGroup;
 			children = (
 				6895100A2E60711600461030 /* UserTests.swift */,
 			);
-			path = Model;
+			path = Models;
 			sourceTree = "<group>";
 		};
 		6895100C2E607DCB00461030 /* DataManagers */ = {

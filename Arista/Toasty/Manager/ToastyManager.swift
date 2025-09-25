@@ -8,15 +8,11 @@
 import SwiftUI
 
 @MainActor
-final class ToastyManager: ObservableObject {
+class ToastyManager: ObservableObject {
     @Published var currentToast: ToastyMessage?
 
-    func show(message: String, type: ToastyType) {
+    func show(message: String, type: ToastyType = .error) {
         currentToast = ToastyMessage(message: message, type: type)
-    }
-
-    func showError(_ message: String) {
-        show(message: message, type: .error)
     }
 
     func dismiss() {

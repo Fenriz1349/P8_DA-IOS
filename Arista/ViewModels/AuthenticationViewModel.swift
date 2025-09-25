@@ -11,11 +11,14 @@ import CustomTextFields
 enum AuthenticationError: Error {
     case invalidCredentials
     case validationFailed
+    case emailAlreadyUsed
 }
 
 @MainActor
 final class AuthenticationViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
+    @Published var toastyManager: ToastyManager?
+
 
     enum ButtonState {
         case disabled, enabled, error
@@ -55,6 +58,10 @@ final class AuthenticationViewModel: ObservableObject {
         self.appCoordinator = appCoordinator
     }
 
+    func configure(toastyManager: ToastyManager) {
+        self.toastyManager = toastyManager
+    }
+
     // MARK: - Computed Properties
     var isFormValid: Bool {
         creationMode ? isCreationFormValid : isLoginFormValid
@@ -81,7 +88,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
 
     var isLastNameValid: Bool {
-        ExampleValidationRules.validateFirstName(lastName) // Même règle que firstName
+        ExampleValidationRules.validateLastName(lastName)
     }
 
     // MARK: - Button State Management
@@ -162,11 +169,30 @@ final class AuthenticationViewModel: ObservableObject {
                     print("✅ Authentication successful!")
                 } catch {
                     print("❌ Auth error:", error)
+                    handleAuthenticationError(error)
                     showAuthError()
                 }
             }
         } else {
+            print("❌ Form validation failed")
             showValidationError()
+        }
+    }
+
+    private func handleAuthenticationError(_ error: Error) {
+        let errorMessage: String
+
+        if let authError = error as? AuthenticationError {
+            switch authError {
+            case .invalidCredentials:
+                errorMessage = "Invalid email or password. Please check your credentials."
+            case .validationFailed:
+                errorMessage = "Please complete all required fields correctly."
+            case .emailAlreadyUsed:
+                errorMessage = "This email address is already registered. Please use a different email."
+            }
+
+            toastyManager?.show(message: errorMessage)
         }
     }
 
@@ -190,6 +216,7 @@ final class AuthenticationViewModel: ObservableObject {
     // MARK: - Authentication Methods
     func login() throws {
         guard isLoginFormValid else {
+            print("❌ Login form validation failed")
             throw AuthenticationError.validationFailed
         }
 
@@ -197,17 +224,26 @@ final class AuthenticationViewModel: ObservableObject {
 
         guard let user = users.first(where: { $0.email == email }),
               user.verifyPassword(password) else {
+            print("❌ Email already Used: \(email)")
             throw AuthenticationError.invalidCredentials
         }
 
+        print("✅ User found, attempting login")
         try appCoordinator.login(id: user.id)
     }
 
     func createUserAndLogin() throws {
         guard isCreationFormValid else {
+            print("❌ Creation form validation failed")
             throw AuthenticationError.validationFailed
         }
+        
+        guard !appCoordinator.isEmailAlreadyUsed(email) else {
+            print("❌ Invalid credentials for email: \(email)")
+            throw AuthenticationError.emailAlreadyUsed
+        }
 
+        print("🔄 Attempting to create user with email: \(email)")
         try appCoordinator.dataManager.createUser(
             email: email,
             password: password,
@@ -215,6 +251,7 @@ final class AuthenticationViewModel: ObservableObject {
             lastName: lastName
         )
 
+        print("✅ User created successfully, attempting login")
         try login()
     }
 }

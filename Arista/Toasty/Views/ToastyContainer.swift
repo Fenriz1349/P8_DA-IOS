@@ -8,23 +8,24 @@
 import SwiftUI
 
 struct ToastyContainer<Content: View>: View {
-    @StateObject private var toastManager = ToastyManager()
+    @ObservedObject var toastyManager: ToastyManager
     let content: Content
 
-    init(@ViewBuilder content: () -> Content) {
+    init(toastyManager: ToastyManager, @ViewBuilder content: () -> Content) {
+        self.toastyManager = toastyManager
         self.content = content()
     }
 
     var body: some View {
         ZStack {
             content
-                .environmentObject(toastManager)
+                .environmentObject(toastyManager)
 
             VStack {
-                if let toast = toastManager.currentToast {
+                if let toast = toastyManager.currentToast {
                     ErrorToastView(toast: toast) {
                         withAnimation(.easeOut(duration: 0.3)) {
-                            toastManager.dismiss()
+                            toastyManager.dismiss()
                         }
                     }
                     .transition(.asymmetric(
@@ -35,7 +36,7 @@ struct ToastyContainer<Content: View>: View {
 
                 Spacer()
             }
-            .animation(.spring(response: 0.6, dampingFraction: 0.8), value: toastManager.hasToast)
+            .animation(.spring(response: 0.6, dampingFraction: 0.8), value: toastyManager.hasToast)
             .zIndex(999)
         }
     }

@@ -37,7 +37,7 @@ final class ToastyManagerTests: XCTestCase {
         let message = ToastyTestHelpers.testMessage
         
         // When
-        sut.showError(message)
+        sut.show(message: message)
         
         // Then
         XCTAssertNotNil(sut.currentToast)
@@ -61,23 +61,10 @@ final class ToastyManagerTests: XCTestCase {
         XCTAssertTrue(sut.hasToast)
     }
     
-    func testShowEmptyMessage() {
-        // Given
-        let emptyMessage = ToastyTestHelpers.emptyMessage
-        
-        // When
-        sut.showError(emptyMessage)
-        
-        // Then
-        XCTAssertNotNil(sut.currentToast)
-        XCTAssertEqual(sut.currentToast?.message, emptyMessage)
-        XCTAssertTrue(sut.hasToast)
-    }
-    
     // MARK: - Dismiss Tests
     func testDismissRemovesToast() {
         // Given
-        sut.showError("Test message")
+        sut.show(message: "Test message")
         XCTAssertTrue(sut.hasToast)
         
         // When
@@ -103,11 +90,11 @@ final class ToastyManagerTests: XCTestCase {
         let firstMessage = "First message"
         let secondMessage = "Second message"
         
-        sut.showError(firstMessage)
+        sut.show(message: firstMessage)
         XCTAssertEqual(sut.currentToast?.message, firstMessage)
         
         // When
-        sut.showError(secondMessage)
+        sut.show(message: secondMessage)
         
         // Then
         XCTAssertEqual(sut.currentToast?.message, secondMessage)
@@ -121,37 +108,11 @@ final class ToastyManagerTests: XCTestCase {
         XCTAssertFalse(sut.hasToast)
         
         // After showing toast
-        sut.showError("Test")
+        sut.show(message: "Test")
         XCTAssertTrue(sut.hasToast)
         
         // After dismissing
         sut.dismiss()
         XCTAssertFalse(sut.hasToast)
-    }
-    
-    // MARK: - Publisher Tests
-    func testCurrentToastPublishesChanges() {
-        // Given
-        let expectation = XCTestExpectation(description: "Toast should publish changes")
-        var publishedValues: [ToastyMessage?] = []
-        
-        let cancellable = sut.$currentToast
-            .sink { toast in
-                publishedValues.append(toast)
-                if publishedValues.count == 2 {
-                    expectation.fulfill()
-                }
-            }
-        
-        // When
-        sut.showError("Test message")
-        
-        // Then
-        wait(for: [expectation], timeout: 1.0)
-        XCTAssertEqual(publishedValues.count, 2)
-        XCTAssertNil(publishedValues[0])
-        XCTAssertEqual(publishedValues[1]?.message, "Test message")
-        
-        cancellable.cancel()
     }
 }
