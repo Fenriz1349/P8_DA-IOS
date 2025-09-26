@@ -18,7 +18,7 @@ class ToastyManager: ObservableObject {
     func dismiss() {
         currentToast = nil
     }
-    
+
     var hasToast: Bool {
         currentToast != nil
     }

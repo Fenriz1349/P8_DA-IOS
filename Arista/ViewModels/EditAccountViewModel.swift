@@ -54,61 +54,36 @@ final class EditAccountViewModel: ObservableObject {
     // MARK: - Update Methods
 
     func saveChanges() {
+        guard hasUserChanges() else { return }
+
         do {
             let builder = try builder()
-            var hasChanges = false
 
-            if firstName != user.firstName {
-                try builder.firstName(firstName)
-                hasChanges = true
-            }
-
-            if lastName != user.lastName {
-                try builder.lastName(lastName)
-                hasChanges = true
-            }
-
-            if selectedGender != user.genderEnum {
-                builder.gender(selectedGender)
-                hasChanges = true
-            }
-
-            if !Calendar.current.isDate(birthdate, inSameDayAs: user.birthdate ?? Date()) {
-                builder.birthDate(birthdate)
-                hasChanges = true
-            }
-
-            if let heightValue = Int(height), heightValue > 0, heightValue != user.height {
-                try builder.height(heightValue)
-                hasChanges = true
-            }
-
-            if let weightValue = Int(weight), weightValue > 0, weightValue != user.weight {
-                try builder.weight(weightValue)
-                hasChanges = true
-            }
-
-            if let calorieValue = Int(calorieGoal), calorieValue > 0, calorieValue != user.calorieGoal {
-                try builder.calorieGoal(calorieValue)
-                hasChanges = true
-            }
-
-            if let sleepValue = Int(sleepGoal), sleepValue > 0, sleepValue != user.sleepGoal {
-                try builder.sleepGoal(sleepValue)
-                hasChanges = true
-            }
-
-            if let waterValue = Int(waterGoal), waterValue > 0, waterValue != user.waterGoal {
-                try builder.waterGoal(waterValue)
-                hasChanges = true
-            }
-
-            if hasChanges {
-                try builder.save()
-            }
+            try builder.firstName(firstName)
+                .lastName(lastName)
+                .gender(selectedGender)
+                .birthDate(birthdate)
+                .height(Int(height) ?? 0)
+                .weight(Int(weight) ?? 0)
+                .calorieGoal(Int(calorieGoal) ?? 0)
+                .sleepGoal(Int(sleepGoal) ?? 0)
+                .waterGoal(Int(waterGoal) ?? 0)
+                .save()
         } catch {
             toastyManager?.showError(error)
         }
+    }
+
+    private func hasUserChanges() -> Bool {
+        return firstName != user.firstName ||
+               lastName != user.lastName ||
+               selectedGender != user.genderEnum ||
+               !Calendar.current.isDate(birthdate, inSameDayAs: user.birthdate ?? Date()) ||
+               (Int(height) ?? 0) != user.height ||
+               (Int(weight) ?? 0) != user.weight ||
+               (Int(calorieGoal) ?? 0) != user.calorieGoal ||
+               (Int(sleepGoal) ?? 0) != user.sleepGoal ||
+               (Int(waterGoal) ?? 0) != user.waterGoal
     }
 
     func deleteAccount() {

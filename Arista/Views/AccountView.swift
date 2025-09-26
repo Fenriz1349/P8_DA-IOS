@@ -13,13 +13,11 @@ struct AccountView: View {
 
     var body: some View {
         VStack(alignment: .leading) {
-            Button(action: {
+            Button("", systemImage: "gear") {
                 viewModel.showEditAccount = true
-            }) {
-                Image(systemName: "gear")
-                    .foregroundColor(.gray)
-                    .font(.title2)
             }
+            .foregroundColor(.gray)
+            .font(.title2)
             .frame(maxWidth: .infinity, alignment: .trailing)
 
             Spacer()
@@ -33,12 +31,12 @@ struct AccountView: View {
                 .scaleEffect(1.2)
             Spacer()
 
-            Button(action: {
-                    try? viewModel.logout()
-            }) {
+            Button( action: {
+                try? viewModel.logout()
+            }, label: {
                 CustomButtonLabel(message: "logout", color: .red)
                     .frame(width: 200, height: 50)
-            }
+            })
             .frame(maxWidth: .infinity)
             Spacer()
         }.sheet(isPresented: $viewModel.showEditAccount) {

@@ -9,7 +9,7 @@ import Foundation
 
 enum DateValidationError: Error, LocalizedError {
     case endDateBeforeStartDate
-    
+
     var errorDescription: String? {
         switch self {
         case .endDateBeforeStartDate:
