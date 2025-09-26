@@ -30,6 +30,8 @@
 		6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6762E85385A00501E0E /* ToastyMessageTests.swift */; };
 		6802E6792E85391C00501E0E /* ToastyTypeTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6782E85391C00501E0E /* ToastyTypeTests.swift */; };
 		6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */; };
+		6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67D2E85897D00501E0E /* SleepDataManager.swift */; };
+		6802E6802E858DE000501E0E /* SleepDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */; };
 		6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */; };
 		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
@@ -107,6 +109,8 @@
 		6802E6762E85385A00501E0E /* ToastyMessageTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyMessageTests.swift; sourceTree = "<group>"; };
 		6802E6782E85391C00501E0E /* ToastyTypeTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyTypeTests.swift; sourceTree = "<group>"; };
 		6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManagerTests.swift; sourceTree = "<group>"; };
+		6802E67D2E85897D00501E0E /* SleepDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManager.swift; sourceTree = "<group>"; };
+		6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManagerTests.swift; sourceTree = "<group>"; };
 		6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
 		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -379,6 +383,7 @@
 			children = (
 				689510072E60473600461030 /* UserDataManager.swift */,
 				68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */,
+				6802E67D2E85897D00501E0E /* SleepDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -396,6 +401,7 @@
 			children = (
 				6895100D2E607DF600461030 /* UserDataManagerTests.swift */,
 				68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */,
+				6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -545,6 +551,7 @@
 				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
 				68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */,
 				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
+				6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */,
 				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
 				6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */,
@@ -592,6 +599,7 @@
 				6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
 				68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */,
+				6802E6802E858DE000501E0E /* SleepDataManagerTests.swift in Sources */,
 				6802E6742E8534F600501E0E /* ToastyTestHelpers.swift in Sources */,
 				6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */,
 				6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */,

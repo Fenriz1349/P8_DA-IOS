@@ -25,8 +25,8 @@
         <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meal" inverseName="mealContents" inverseEntity="Meal"/>
     </entity>
     <entity name="SleepCycle" representedClassName="SleepCycle" syncable="YES">
-        <attribute name="dateBegging" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateEnding" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="dateStart" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="quality" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="sleepCycles" inverseEntity="User"/>
     </entity>

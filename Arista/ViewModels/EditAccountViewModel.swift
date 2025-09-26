@@ -121,7 +121,7 @@ final class EditAccountViewModel: ObservableObject {
     func deleteAccount() throws {
         try appCoordinator.deleteCurrentUser()
     }
-    
+
     private func handleEditError(_ error: Error) {
         let errorMessage: String
 

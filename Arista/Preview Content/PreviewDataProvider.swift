@@ -146,13 +146,13 @@ extension PreviewDataProvider {
                                       second: 0,
                                       of: sleepDate) ?? sleepDate
 
-            let sleepDuration = Double.random(in: 6.5...9.0) * 3600 // en secondes
+            let sleepDuration = Double.random(in: 6.5...9.0) * 3600
             let wakeupTime = bedtime.addingTimeInterval(sleepDuration)
 
             let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
 
             let sleepCycle = SleepCycle(context: context)
-            sleepCycle.dateBegging = bedtime
+            sleepCycle.dateStart = bedtime
             sleepCycle.dateEnding = wakeupTime
             sleepCycle.quality = Int16(quality)
             sleepCycle.user = user

@@ -164,7 +164,11 @@ final class AuthenticationViewModel: ObservableObject {
         if validateAllFields() {
             Task {
                 do {
-                    try creationMode ? createUserAndLogin() : login()
+                    if creationMode {
+                        try createUserAndLogin()
+                    } else {
+                        try login()
+                    }
                     print("✅ Authentication successful!")
                 } catch {
                     print("❌ Auth error:", error)
@@ -236,7 +240,7 @@ final class AuthenticationViewModel: ObservableObject {
             print("❌ Creation form validation failed")
             throw AuthenticationError.validationFailed
         }
-        
+
         guard !appCoordinator.isEmailAlreadyUsed(email) else {
             print("❌ Invalid credentials for email: \(email)")
             throw AuthenticationError.emailAlreadyUsed

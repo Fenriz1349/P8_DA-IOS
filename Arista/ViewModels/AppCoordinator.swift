@@ -83,7 +83,7 @@ final class AppCoordinator: ObservableObject {
         currentUser = nil
         clearStoredSession()
     }
-    
+
     func isEmailAlreadyUsed(_ email: String) -> Bool {
         return dataManager.fetchAllUsers().contains { $0.email == email }
     }
