@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum EditAccountViewModelError: Error {
-    case noLoggedUser
-}
-
 @MainActor
 final class EditAccountViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
@@ -30,19 +26,12 @@ final class EditAccountViewModel: ObservableObject {
 
     init(appCoordinator: AppCoordinator) throws {
         self.appCoordinator = appCoordinator
-        self.user = try Self.getCurrentUser(from: appCoordinator)
+        self.user = try appCoordinator.validateCurrentUser()
         try loadUserData()
     }
 
-    func configure(toastyManager: ToastyManager) {
+    func configureToasty(toastyManager: ToastyManager) {
         self.toastyManager = toastyManager
-    }
-
-    private static func getCurrentUser(from coordinator: AppCoordinator) throws -> User {
-        guard let currentUser = coordinator.currentUser else {
-            throw EditAccountViewModelError.noLoggedUser
-        }
-        return currentUser
     }
 
     private func loadUserData() throws {
@@ -123,15 +112,6 @@ final class EditAccountViewModel: ObservableObject {
     }
 
     private func handleEditError(_ error: Error) {
-        let errorMessage: String
-
-        if let editError = error as? EditAccountViewModelError {
-            switch editError {
-            case .noLoggedUser:
-                errorMessage = "There always be a looged User at this point. Please relaunch Arista."
-            }
-
-            toastyManager?.show(message: errorMessage)
-        }
+        toastyManager?.showError(error)
     }
 }

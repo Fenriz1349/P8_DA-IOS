@@ -26,8 +26,11 @@ extension SleepCycle {
 
     var isActive: Bool { return dateEnding == nil }
 
-    var duration: TimeInterval? {
-        guard let endDate = dateEnding else { return nil }
-        return endDate.timeIntervalSince(dateStart)
+    var sleepQuality: SleepQuality {
+        return SleepQuality(from: quality)
+    }
+
+    var qualityDescription: String {
+        return sleepQuality.description
     }
 }

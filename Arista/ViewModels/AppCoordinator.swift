@@ -7,11 +7,6 @@
 
 import SwiftUI
 
-enum AppCoordinatorError: Error {
-    case errorLogout
-    case deleteCurrentUserError
-}
-
 @MainActor
 final class AppCoordinator: ObservableObject {
     @Published var currentUser: User?
@@ -19,13 +14,20 @@ final class AppCoordinator: ObservableObject {
     let dataManager: UserDataManager
     private let currentUserIdKey = "currentUserId"
 
+    init(dataManager: UserDataManager = UserDataManager()) {
+        self.dataManager = dataManager
+        restoreUserSession()
+    }
+
     var isAuthenticated: Bool {
         currentUser != nil
     }
 
-    init(dataManager: UserDataManager = UserDataManager()) {
-        self.dataManager = dataManager
-        restoreUserSession()
+    func validateCurrentUser() throws -> User {
+        guard let currentUser = currentUser else {
+            throw UserDataManagerError.noLoggedUser
+        }
+        return currentUser
     }
 
     var makeAuthenticationViewModel: AuthenticationViewModel {

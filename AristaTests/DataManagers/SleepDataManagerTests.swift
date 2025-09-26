@@ -18,7 +18,7 @@ final class SleepDataManagerTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        persistenceController = PersistenceController.createTestContainer()
+        persistenceController = SharedTestHelper.createTestContainer()
         context = persistenceController.container.viewContext
         manager = SleepDataManager(container: persistenceController.container)
         
@@ -89,20 +89,7 @@ final class SleepDataManagerTests: XCTestCase {
             XCTAssertEqual(error as? SleepDataManagerError, .sleepCycleNotFound)
         }
     }
-    
-    func test_endSleepCycle_withInvalidDates_shouldThrowInvalidDates() throws {
-        // Given
-        let startDate = Date()
-        let endDate = startDate.addingTimeInterval(-3600)
-        
-        try manager.startSleepCycle(for: testUser, startDate: startDate)
-        
-        // When / Then
-        XCTAssertThrowsError(try manager.endSleepCycle(for: testUser, endDate: endDate)) { error in
-            XCTAssertEqual(error as? SleepDataManagerError, .invalidDates)
-        }
-    }
-    
+
     func test_endSleepCycle_withoutQuality_shouldKeepDefaultQuality() throws {
         // Given
         let startDate = Date()

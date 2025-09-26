@@ -22,7 +22,7 @@ final class AuthenticationViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
 
-        testContainer = PersistenceController.createTestContainer()
+        testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         
         dataManager = UserDataManager(container: testContainer.container)

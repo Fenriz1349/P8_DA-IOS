@@ -8,11 +8,24 @@
 import Foundation
 import CoreData
 
-enum UserDataManagerError: Error, Equatable {
+enum UserDataManagerError: Error, Equatable, LocalizedError {
     case invalidInput
     case userNotFound
     case noLoggedUser
     case emailAlreadyUsed
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidInput:
+            return "Les données saisies ne sont pas valides."
+        case .userNotFound:
+            return "Utilisateur introuvable."
+        case .noLoggedUser:
+            return "Aucun utilisateur connecté trouvé."
+        case .emailAlreadyUsed:
+            return "Cette adresse email est déjà utilisée."
+        }
+    }
 }
 
 final class UserDataManager {

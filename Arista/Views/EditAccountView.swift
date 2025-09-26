@@ -112,7 +112,7 @@ struct EditAccountView: View {
                     }
                 }
             }.onAppear {
-                viewModel.configure(toastyManager: toastyManager)
+                viewModel.configureToasty(toastyManager: toastyManager)
             }
         }
     }

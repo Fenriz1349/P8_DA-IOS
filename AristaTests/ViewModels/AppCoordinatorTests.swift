@@ -19,7 +19,7 @@ final class AppCoordinatorTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        persistenceController = PersistenceController.createTestContainer()
+        persistenceController = SharedTestHelper.createTestContainer()
         manager = UserDataManager(container: persistenceController.container)
         
         coordinator = AppCoordinator(dataManager: manager)
@@ -48,7 +48,30 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertEqual(coordinator.currentUser?.id, user.id)
         XCTAssertTrue(coordinator.isAuthenticated)
     }
+
+    func test_validateCurrentUser_withNoLoggedUser_throwsError() throws {
+        // Given
+        coordinator.currentUser = nil
+        
+        // When / Then
+        XCTAssertThrowsError(try coordinator.validateCurrentUser()) { error in
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
+        }
+    }
     
+    func test_validateCurrentUser_withLoggedUser_returnsUser() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        
+        // When
+        let validatedUser = try coordinator.validateCurrentUser()
+        
+        // Then
+        XCTAssertEqual(validatedUser.id, user.id)
+    }
+
     // MARK: - Logout
     
     func test_logout_setsCurrentUserNil_andLogsOffAllUsers() throws {
@@ -108,7 +131,7 @@ final class AppCoordinatorTests: XCTestCase {
     func test_makeAccountViewModel_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
         XCTAssertThrowsError(try coordinator.makeAccountViewModel()) { error in
-            XCTAssertEqual(error as? AccountViewModelError, .noLoggedUser)
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
 
@@ -129,7 +152,7 @@ final class AppCoordinatorTests: XCTestCase {
     func test_makeEditAccountViewModel_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
         XCTAssertThrowsError(try coordinator.makeEditAccountViewModel()) { error in
-            XCTAssertEqual(error as? EditAccountViewModelError, .noLoggedUser)
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
     

@@ -32,6 +32,9 @@
 		6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */; };
 		6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67D2E85897D00501E0E /* SleepDataManager.swift */; };
 		6802E6802E858DE000501E0E /* SleepDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */; };
+		6813E7612E867B97007F008C /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7602E867B97007F008C /* SleepViewModel.swift */; };
+		6813E7632E867CC9007F008C /* SleepViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7622E867CC9007F008C /* SleepViewModelTests.swift */; };
+		6813E7652E868E6B007F008C /* SleepQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7642E868E6B007F008C /* SleepQuality.swift */; };
 		6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */; };
 		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
@@ -111,6 +114,9 @@
 		6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManagerTests.swift; sourceTree = "<group>"; };
 		6802E67D2E85897D00501E0E /* SleepDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManager.swift; sourceTree = "<group>"; };
 		6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManagerTests.swift; sourceTree = "<group>"; };
+		6813E7602E867B97007F008C /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
+		6813E7622E867CC9007F008C /* SleepViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModelTests.swift; sourceTree = "<group>"; };
+		6813E7642E868E6B007F008C /* SleepQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepQuality.swift; sourceTree = "<group>"; };
 		6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
 		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -260,6 +266,7 @@
 				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
 				685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */,
+				6813E7602E867B97007F008C /* SleepViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -334,6 +341,7 @@
 				6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */,
 				686D56912E7455900088AD98 /* AccountViewModelTests.swift */,
 				685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */,
+				6813E7622E867CC9007F008C /* SleepViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -359,6 +367,7 @@
 				686027A52E3B951A00BF8EA8 /* MealType.swift */,
 				686027A92E3B973100BF8EA8 /* ExerciceType.swift */,
 				686027AB2E3B9F8900BF8EA8 /* Gender.swift */,
+				6813E7642E868E6B007F008C /* SleepQuality.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -559,6 +568,7 @@
 				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
 				68E89C7C2E6AE5B80004F6DA /* Aliment.swift in Sources */,
 				68E89C7E2E6AE5B80004F6DA /* Exercice.swift in Sources */,
+				6813E7612E867B97007F008C /* SleepViewModel.swift in Sources */,
 				685B235B2E79ADCF003CFFA3 /* EditAccountViewModel.swift in Sources */,
 				68E89C802E6AE5B80004F6DA /* Meal.swift in Sources */,
 				68E89C822E6AE5B80004F6DA /* MealContent.swift in Sources */,
@@ -572,6 +582,7 @@
 				68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */,
 				689510082E60473600461030 /* UserDataManager.swift in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
+				6813E7652E868E6B007F008C /* SleepQuality.swift in Sources */,
 				68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
@@ -591,6 +602,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6813E7632E867CC9007F008C /* SleepViewModelTests.swift in Sources */,
 				6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */,
 				6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */,
 				6895100B2E60711600461030 /* UserTests.swift in Sources */,

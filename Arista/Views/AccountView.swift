@@ -47,7 +47,7 @@ struct AccountView: View {
                 EditAccountView(viewModel: editAccountViewModel)
             }
         } .onAppear {
-            viewModel.configure(toastyManager: toastyManager)
+            viewModel.configureToasty(toastyManager: toastyManager)
         }
         .padding(.horizontal)
     }

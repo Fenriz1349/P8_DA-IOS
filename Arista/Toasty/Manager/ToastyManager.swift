@@ -18,8 +18,21 @@ class ToastyManager: ObservableObject {
     func dismiss() {
         currentToast = nil
     }
-
+    
     var hasToast: Bool {
         currentToast != nil
+    }
+
+    func showError(_ error: Error) {
+        let errorMessage: String
+
+        if let localizedError = error as? LocalizedError, let description = localizedError.errorDescription {
+            errorMessage = description
+        } else {
+            print("⚠️ Unhandled error: \(error)")
+            errorMessage = "Une erreur inattendue s'est produite."
+        }
+
+        show(message: errorMessage)
     }
 }

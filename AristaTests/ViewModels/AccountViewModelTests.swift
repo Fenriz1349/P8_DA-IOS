@@ -20,7 +20,7 @@ final class AccountViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        testContainer = PersistenceController.createTestContainer()
+        testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         dataManager = UserDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: dataManager)
@@ -59,10 +59,10 @@ final class AccountViewModelTests: XCTestCase {
         
         // When / Then
         XCTAssertThrowsError(try AccountViewModel(appCoordinator: coordinator)) { error in
-            XCTAssertEqual(error as? AccountViewModelError, .noLoggedUser)
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
-    
+
     // MARK: - ToastyManager Configuration Tests
     func test_configure_setsToastyManager() throws {
         // Given
@@ -72,7 +72,7 @@ final class AccountViewModelTests: XCTestCase {
         let sut = try AccountViewModel(appCoordinator: coordinator)
         
         // When
-        sut.configure(toastyManager: spyToastyManager)
+        sut.configureToasty(toastyManager: spyToastyManager)
         
         // Then
         XCTAssertNotNil(sut.toastyManager)

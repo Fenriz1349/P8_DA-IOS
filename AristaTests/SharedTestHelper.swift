@@ -11,6 +11,11 @@ import CoreData
 
 struct SharedTestHelper {
 
+    /// Create an unique PersistenceController for each test
+    static func createTestContainer() -> PersistenceController {
+        return PersistenceController(inMemory: true)
+    }
+
     // MARK: - Sample Data
     static let sampleUserData = (
         firstName: "John",

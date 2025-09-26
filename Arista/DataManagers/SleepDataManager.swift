@@ -9,8 +9,6 @@ import Foundation
 import CoreData
 
 enum SleepDataManagerError: Error, Equatable {
-    case userNotFound
-    case invalidDates
     case sleepCycleNotFound
     case activeSessionAlreadyExists
 }
@@ -51,16 +49,12 @@ final class SleepDataManager {
             throw SleepDataManagerError.sleepCycleNotFound
         }
 
-        guard endDate > activeCycle.dateStart else {
-            throw SleepDataManagerError.invalidDates
-        }
+        try Date.validateInterval(from: activeCycle.dateStart, to: endDate)
 
         let context = container.viewContext
 
         activeCycle.dateEnding = endDate
-        if let quality = quality {
-            activeCycle.quality = quality
-        }
+        if let quality = quality { activeCycle.quality = quality }
 
         try context.save()
         context.refreshAllObjects()
