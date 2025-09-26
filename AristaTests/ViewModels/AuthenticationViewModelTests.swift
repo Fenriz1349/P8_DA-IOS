@@ -183,9 +183,42 @@ final class AuthenticationViewModelTests: XCTestCase {
         
         // Then
         XCTAssertEqual(sut.emailValidationState, .neutral)
-        XCTAssertEqual(sut.passwordValidationState, .invalid) // Should remain unchanged
+        XCTAssertEqual(sut.passwordValidationState, .invalid)
     }
     
+    func test_resetFieldValidation_firstName_resetsFromInvalidToNeutral() {
+        // Given
+        sut.firstNameValidationState = .invalid
+        
+        // When
+        sut.resetFieldValidation(.firstName)
+        
+        // Then
+        XCTAssertEqual(sut.firstNameValidationState, .neutral)
+    }
+
+    func test_resetFieldValidation_lastName_resetsFromInvalidToNeutral() {
+        // Given
+        sut.lastNameValidationState = .invalid
+        
+        // When
+        sut.resetFieldValidation(.lastName)
+        
+        // Then
+        XCTAssertEqual(sut.lastNameValidationState, .neutral)
+    }
+
+    func test_resetFieldValidation_password_resetsFromInvalidToNeutral() {
+        // Given
+        sut.passwordValidationState = .invalid
+        
+        // When
+        sut.resetFieldValidation(.password)
+        
+        // Then
+        XCTAssertEqual(sut.passwordValidationState, .neutral)
+    }
+
     func test_resetAllValidationStates_shouldResetAllFields() {
         // Given
         sut.emailValidationState = .invalid
@@ -236,7 +269,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         sut.creationMode = true
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = SharedTestHelper.sampleUserData.password
-        sut.firstName = "J"  // Invalid
+        sut.firstName = "J"
         sut.lastName = SharedTestHelper.sampleUserData.lastName
         
         // When
@@ -248,6 +281,22 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.lastNameValidationState, .neutral)
     }
     
+    func test_validateAllFields_inCreationMode_withInvalidLastName_shouldSetState() {
+        // Given
+        sut.creationMode = true
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+        sut.firstName = SharedTestHelper.sampleUserData.firstName
+        sut.lastName = "X"
+        
+        // When
+        let result = sut.validateAllFields()
+        
+        // Then
+        XCTAssertFalse(result)
+        XCTAssertEqual(sut.lastNameValidationState, .invalid)
+    }
+
     // MARK: - Submit Handling Tests
     func test_handleSubmit_withValidForm_shouldNotSetErrorState() {
         // Given
@@ -367,6 +416,22 @@ final class AuthenticationViewModelTests: XCTestCase {
         // When / Then
         XCTAssertThrowsError(try sut.createUserAndLogin()) { error in
             XCTAssertEqual(error as? AuthenticationError, .validationFailed)
+        }
+    }
+    
+    func test_createUserAndLogin_withUsedEmail_shouldThrowEmailAlreadyUsed() {
+        // Given
+        let existingUser = SharedTestHelper.createSampleUser(in: context)
+        try! context.save()
+        
+        sut.email = existingUser.email // Même email
+        sut.password = SharedTestHelper.sampleUserData.password
+        sut.firstName = SharedTestHelper.sampleUserData.firstName
+        sut.lastName = SharedTestHelper.sampleUserData.lastName
+        
+        // When / Then
+        XCTAssertThrowsError(try sut.createUserAndLogin()) { error in
+            XCTAssertEqual(error as? AuthenticationError, .emailAlreadyUsed)
         }
     }
     
