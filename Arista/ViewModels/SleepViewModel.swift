@@ -60,7 +60,7 @@ final class SleepViewModel: ObservableObject {
             let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser)
             lastCycle = cycles.first
         } catch {
-            handleSleepError(error)
+            toastyManager?.showError(error)
         }
     }
 
@@ -70,7 +70,7 @@ final class SleepViewModel: ObservableObject {
             let cycle = try sleepDataManager.startSleepCycle(for: currentUser, startDate: startDate)
             lastCycle = cycle
         } catch {
-            handleSleepError(error)
+            toastyManager?.showError(error)
         }
     }
 
@@ -79,7 +79,7 @@ final class SleepViewModel: ObservableObject {
             let cycle = try sleepDataManager.endSleepCycle(for: currentUser, endDate: endDate, quality: quality)
             lastCycle = cycle
         } catch {
-            handleSleepError(error)
+            toastyManager?.showError(error)
         }
     }
 
@@ -105,7 +105,7 @@ final class SleepViewModel: ObservableObject {
             entryMode = .toggle
             
         } catch {
-            handleSleepError(error)
+            toastyManager?.showError(error)
         }
     }
 
@@ -147,11 +147,7 @@ final class SleepViewModel: ObservableObject {
             entryMode = .toggle
             
         } catch {
-            handleSleepError(error)
+            toastyManager?.showError(error)
         }
-    }
-
-    private func handleSleepError(_ error: Error) {
-        toastyManager?.showError(error)
     }
 }
