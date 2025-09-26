@@ -13,15 +13,10 @@ final class AccountViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
     let user: User
     @Published var showEditAccount = false
-    @Published var toastyManager: ToastyManager?
 
     init(appCoordinator: AppCoordinator) throws {
         self.appCoordinator = appCoordinator
         self.user = try appCoordinator.validateCurrentUser()
-    }
-
-    func configureToasty(toastyManager: ToastyManager) {
-        self.toastyManager = toastyManager
     }
 
     var editAccountViewModel: EditAccountViewModel? {
@@ -33,9 +28,5 @@ final class AccountViewModel: ObservableObject {
 
     func logout() throws {
         try appCoordinator.logout()
-    }
-
-    private func handleAccountError(_ error: Error) {
-        toastyManager?.showError(error)
     }
 }

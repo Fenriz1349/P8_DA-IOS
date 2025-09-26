@@ -64,9 +64,6 @@
     "AddMealView" : {
       "shouldTranslate" : false
     },
-    "AddSleepCycleView" : {
-      "shouldTranslate" : false
-    },
     "beginning%@" : {
       "localizations" : {
         "en" : {

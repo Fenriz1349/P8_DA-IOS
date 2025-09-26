@@ -10,7 +10,6 @@ import CustomLabels
 
 struct AccountView: View {
     @ObservedObject var viewModel: AccountViewModel
-    @EnvironmentObject private var toastyManager: ToastyManager
 
     var body: some View {
         VStack(alignment: .leading) {
@@ -46,8 +45,6 @@ struct AccountView: View {
             if let editAccountViewModel = viewModel.editAccountViewModel {
                 EditAccountView(viewModel: editAccountViewModel)
             }
-        } .onAppear {
-            viewModel.configureToasty(toastyManager: toastyManager)
         }
         .padding(.horizontal)
     }
