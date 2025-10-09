@@ -235,4 +235,8 @@ extension PreviewDataProvider {
     static func makeSampleEditAccountViewModel() -> EditAccountViewModel {
         return try! EditAccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
     }
+
+    static func makeSleepViewModel() -> SleepViewModel {
+        return try! SleepViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+    }
 }

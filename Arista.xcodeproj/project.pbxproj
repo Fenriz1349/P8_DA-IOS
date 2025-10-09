@@ -36,6 +36,8 @@
 		6813E7632E867CC9007F008C /* SleepViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7622E867CC9007F008C /* SleepViewModelTests.swift */; };
 		6813E7652E868E6B007F008C /* SleepQuality.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7642E868E6B007F008C /* SleepQuality.swift */; };
 		6813E7672E86CE11007F008C /* DateExtensionsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7662E86CE11007F008C /* DateExtensionsTests.swift */; };
+		6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7692E86D299007F008C /* SleepClockView.swift */; };
+		6813E76C2E86D362007F008C /* SleepView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E76B2E86D362007F008C /* SleepView.swift */; };
 		6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */; };
 		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
@@ -118,6 +120,8 @@
 		6813E7622E867CC9007F008C /* SleepViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModelTests.swift; sourceTree = "<group>"; };
 		6813E7642E868E6B007F008C /* SleepQuality.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepQuality.swift; sourceTree = "<group>"; };
 		6813E7662E86CE11007F008C /* DateExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateExtensionsTests.swift; sourceTree = "<group>"; };
+		6813E7692E86D299007F008C /* SleepClockView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepClockView.swift; sourceTree = "<group>"; };
+		6813E76B2E86D362007F008C /* SleepView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepView.swift; sourceTree = "<group>"; };
 		6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
 		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
@@ -209,6 +213,7 @@
 				68923A572E599FB900D81620 /* DataManagers */,
 				6843211D2E4CC07D003FDAEE /* Utils */,
 				53E587612B235FDC00E4EF99 /* ViewModels */,
+				6813E7682E86D27E007F008C /* ExtractedViews */,
 				53E587602B235FD700E4EF99 /* Views */,
 				53E587302B235E8F00E4EF99 /* AristaApp.swift */,
 				53E587342B235E9000E4EF99 /* Assets.xcassets */,
@@ -251,6 +256,7 @@
 				68CA52012E45FF5800178C72 /* AddMealView.swift */,
 				68E89C8E2E6B0D060004F6DA /* ContentView.swift */,
 				68F4DA082E7C522500CFECA5 /* EditAccountView.swift */,
+				6813E76B2E86D362007F008C /* SleepView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -331,6 +337,14 @@
 				6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */,
 			);
 			path = Manager;
+			sourceTree = "<group>";
+		};
+		6813E7682E86D27E007F008C /* ExtractedViews */ = {
+			isa = PBXGroup;
+			children = (
+				6813E7692E86D299007F008C /* SleepClockView.swift */,
+			);
+			path = ExtractedViews;
 			sourceTree = "<group>";
 		};
 		6840AF4F2E7313EB0098F325 /* ViewModels */ = {
@@ -578,6 +592,7 @@
 				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
 				68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
+				6813E76C2E86D362007F008C /* SleepView.swift in Sources */,
 				68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */,
 				689510082E60473600461030 /* UserDataManager.swift in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
@@ -586,6 +601,7 @@
 				53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
 				68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */,
+				6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */,
 				53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */,

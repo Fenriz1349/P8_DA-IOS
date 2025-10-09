@@ -100,5 +100,5 @@ struct AuthenticationView: View {
 #Preview {
     AuthenticationView(
         viewModel: PreviewDataProvider.sampleAuthenticationViewModel
-    )
+    ).environmentObject(PreviewDataProvider.sampleToastyManager)
 }

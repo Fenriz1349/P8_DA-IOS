@@ -4,6 +4,12 @@
     "" : {
 
     },
+    "(%@)" : {
+
+    },
+    "(8h 15min)" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -48,6 +54,15 @@
         }
       }
     },
+    "00" : {
+
+    },
+    "7/10" : {
+
+    },
+    "22:30 → 06:45" : {
+
+    },
     "addExercice" : {
       "localizations" : {
         "en" : {
@@ -67,6 +82,15 @@
     "AddMealView" : {
       "shouldTranslate" : false
     },
+    "Annuler" : {
+
+    },
+    "au %@" : {
+
+    },
+    "Aucun cycle de sommeil" : {
+
+    },
     "beginning%@" : {
       "localizations" : {
         "en" : {
@@ -82,6 +106,9 @@
           }
         }
       }
+    },
+    "Bonne" : {
+
     },
     "Calorie Goal" : {
 
@@ -126,6 +153,15 @@
           }
         }
       }
+    },
+    "Depuis %@" : {
+
+    },
+    "Dernier sommeil" : {
+
+    },
+    "Du %@" : {
+
     },
     "Edit Profile" : {
 
@@ -350,6 +386,15 @@
         }
       }
     },
+    "Heure de coucher" : {
+
+    },
+    "Heure de réveil" : {
+
+    },
+    "Historique (7 derniers jours)" : {
+
+    },
     "hourStart" : {
       "localizations" : {
         "en" : {
@@ -365,6 +410,9 @@
           }
         }
       }
+    },
+    "Il y a %lld jour(s)" : {
+
     },
     "intensity" : {
       "localizations" : {
@@ -433,6 +481,9 @@
     "login" : {
 
     },
+    "Modifier" : {
+
+    },
     "newExercice" : {
       "localizations" : {
         "en" : {
@@ -449,6 +500,9 @@
         }
       }
     },
+    "Nouveau cycle" : {
+
+    },
     "profil" : {
       "localizations" : {
         "en" : {
@@ -464,6 +518,18 @@
           }
         }
       }
+    },
+    "Qualité du sommeil (optionnel)" : {
+
+    },
+    "Qualité: Bonne" : {
+
+    },
+    "Saisie manuelle" : {
+
+    },
+    "Sauvegarder" : {
+
     },
     "sleep" : {
       "localizations" : {
@@ -502,6 +568,12 @@
           }
         }
       }
+    },
+    "Sommeil" : {
+
+    },
+    "Sommeil en cours" : {
+
     },
     "Water" : {
 

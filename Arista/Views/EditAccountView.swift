@@ -120,4 +120,5 @@ struct EditAccountView: View {
 
 #Preview {
     EditAccountView(viewModel: PreviewDataProvider.makeSampleEditAccountViewModel())
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }
