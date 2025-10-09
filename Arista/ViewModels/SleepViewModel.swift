@@ -43,6 +43,15 @@ final class SleepViewModel: ObservableObject {
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)
     }
 
+    var historyCycle: [SleepCycle] {
+        do {
+            return try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 7)
+        } catch {
+            toastyManager?.showError(error)
+            return []
+        }
+    }
+
     // MARK: - Initialization
     init(appCoordinator: AppCoordinator, sleepDataManager: SleepDataManager? = nil) throws {
         self.appCoordinator = appCoordinator

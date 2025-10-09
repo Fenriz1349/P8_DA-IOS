@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 @objc(SleepCycle)
-public class SleepCycle: NSManagedObject {
+public class SleepCycle: NSManagedObject, Identifiable {
     @NSManaged public var dateStart: Date
     @NSManaged public var dateEnding: Date?
     @NSManaged public var quality: Int16

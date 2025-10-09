@@ -16,7 +16,7 @@ struct SleepView: View {
             VStack(spacing: 20) {
 
                 // MARK: - Horloge Section
-                SleepClockView(sleepCycle: viewModel.lastCycle)
+                SleepClockView(sleepCycle: viewModel.lastCycle, size: 200)
 
                 // MARK: - État et Actions
                 VStack(spacing: 16) {
@@ -25,8 +25,7 @@ struct SleepView: View {
                 }
                 .padding(.horizontal)
 
-                // MARK: - Historique
-                historySection
+                HistorySection(cycles: viewModel.historyCycle)
 
             }
             .padding(.vertical)
@@ -107,51 +106,6 @@ struct SleepView: View {
             .padding()
             .background(mainActionButtonColor)
             .cornerRadius(12)
-        }
-    }
-
-    // MARK: - Historique
-    private var historySection: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            Text("Historique (7 derniers jours)")
-                .font(.headline)
-                .padding(.horizontal)
-
-            // Placeholder pour l'historique
-            LazyVStack(spacing: 8) {
-                ForEach(0..<5, id: \.self) { index in
-                    HStack {
-                        // Indicateur qualité (placeholder)
-                        Circle()
-                            .fill(Color.green)
-                            .frame(width: 12, height: 12)
-
-                        VStack(alignment: .leading, spacing: 2) {
-                            Text("Il y a \(index + 1) jour(s)")
-                                .font(.caption)
-                                .foregroundColor(.secondary)
-                            HStack {
-                                Text("22:30 → 06:45")
-                                    .font(.subheadline)
-                                Text("(8h 15min)")
-                                    .font(.caption)
-                                    .foregroundColor(.secondary)
-                            }
-                        }
-
-                        Spacer()
-
-                        Text("Bonne")
-                            .font(.caption)
-                            .foregroundColor(.green)
-                    }
-                    .padding(.horizontal)
-                    .padding(.vertical, 8)
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                }
-            }
-            .padding(.horizontal)
         }
     }
 

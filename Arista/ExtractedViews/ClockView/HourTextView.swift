@@ -13,12 +13,12 @@ struct HourTextView: View {
     var body: some View {
         ZStack {
             ForEach(0..<24, id: \.self) { hour in
-                HourText(for: hour)
+                hourText(for: hour)
             }
         }
     }
-    
-    private func HourText(for hour: Int) -> some View {
+
+    private func hourText(for hour: Int) -> some View {
         let angle = SleepClockCalculator.angleForHour(hour)
         let radius = size / 2 - 24
 

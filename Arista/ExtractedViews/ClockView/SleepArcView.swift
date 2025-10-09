@@ -18,13 +18,13 @@ struct SleepArcView: View {
     var body: some View {
         let startAngle = SleepClockCalculator.angleForTime(cycle.dateStart)
         let endAngle = SleepClockCalculator.angleForTime(cycle.dateEnding ?? Date())
-        
+
         if endAngle < startAngle {
             // Cycle crosses midnight - draw 2 arcs
-            
+
             // Arc 1: from start to midnight (360°)
             sleepArc(from: startAngle, to: 360)
-            
+
             // Arc 2: from midnight (0°) to end
             sleepArc(from: 0, to: endAngle)
         } else {
@@ -32,6 +32,7 @@ struct SleepArcView: View {
             sleepArc(from: startAngle, to: endAngle)
         }
     }
+
     private func sleepArc(from startAngle: Double, to endAngle: Double) -> some View {
         Circle()
             .trim(

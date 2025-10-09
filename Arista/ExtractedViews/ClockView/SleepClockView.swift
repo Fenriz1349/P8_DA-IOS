@@ -9,7 +9,7 @@ import SwiftUI
 
 struct SleepClockView: View {
     let sleepCycle: SleepCycle?
-    let size: CGFloat = 250
+    var size: CGFloat = 250
 
     private let borderWidth: CGFloat = 3
 

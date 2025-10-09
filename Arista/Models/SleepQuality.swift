@@ -5,7 +5,7 @@
 //  Created by Julien Cotte on 26/09/2025.
 //
 
-import Foundation
+import SwiftUI
 
 enum SleepQuality: Int16, CaseIterable {
     case notRated
@@ -26,6 +26,21 @@ enum SleepQuality: Int16, CaseIterable {
             return "Bonne"
         case .excellent:
             return "Excellente"
+        }
+    }
+
+    var qualityColor: Color {
+        switch self {
+        case .notRated:
+            return .gray
+        case .poor:
+            return .red
+        case .fair:
+            return .orange
+        case .good:
+            return .green
+        case .excellent:
+            return .blue
         }
     }
 

@@ -25,7 +25,7 @@ struct ContentView: View {
                         .tabItem {
                             Label("exercices", systemImage: "flame")
                         }
-                    
+
                     if let sleepVM = try? appCoordinator.makeSleepViewModel() {
                         SleepView(viewModel: sleepVM)
                             .tabItem {

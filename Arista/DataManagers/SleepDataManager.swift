@@ -64,26 +64,13 @@ final class SleepDataManager {
 
     // MARK: - Fetch Methods
 
-    func fetchSleepCycles(for user: User) throws -> [SleepCycle] {
+    func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
         let context = container.viewContext
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
 
         request.predicate = NSPredicate(format: "user == %@", user)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
-
-        return try context.fetch(request)
-    }
-
-    func fetchSleepCycles(for user: User, from startDate: Date, to endDate: Date) throws -> [SleepCycle] {
-        let context = container.viewContext
-        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
-        request.predicate = NSPredicate(
-            format: "user.id == %@ AND dateStart >= %@ AND dateStart <= %@",
-            user.id.uuidString,
-            startDate as NSDate,
-            endDate as NSDate
-        )
-        request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
+        if let limit = limit { request.fetchLimit = limit }
 
         return try context.fetch(request)
     }

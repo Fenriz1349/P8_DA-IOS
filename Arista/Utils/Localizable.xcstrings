@@ -7,9 +7,6 @@
     "(%@)" : {
 
     },
-    "(8h 15min)" : {
-
-    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -20,6 +17,19 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "%@ → %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ → %2$@"
+          }
+        }
+      }
+    },
+    "%d" : {
+
     },
     "%lld" : {
       "localizations" : {
@@ -60,9 +70,6 @@
     "7/10" : {
 
     },
-    "22:30 → 06:45" : {
-
-    },
     "addExercice" : {
       "localizations" : {
         "en" : {
@@ -92,6 +99,7 @@
 
     },
     "beginning%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -106,9 +114,6 @@
           }
         }
       }
-    },
-    "Bonne" : {
-
     },
     "Calorie Goal" : {
 
@@ -164,6 +169,9 @@
 
     },
     "Edit Profile" : {
+
+    },
+    "En cours..." : {
 
     },
     "error.cleaningMessage" : {
@@ -411,9 +419,6 @@
         }
       }
     },
-    "Il y a %lld jour(s)" : {
-
-    },
     "intensity" : {
       "localizations" : {
         "en" : {
@@ -447,6 +452,7 @@
       }
     },
     "length%lldhours" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -554,6 +560,7 @@
 
     },
     "sleepHistory" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
