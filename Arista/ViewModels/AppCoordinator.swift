@@ -42,6 +42,10 @@ final class AppCoordinator: ObservableObject {
         return try EditAccountViewModel(appCoordinator: self)
     }
 
+    func makeSleepViewModel() throws -> SleepViewModel {
+        return try SleepViewModel(appCoordinator: self)
+    }
+
     private func restoreUserSession() {
         if let userIdString = UserDefaults.standard.string(forKey: currentUserIdKey),
            let userId = UUID(uuidString: userIdString) {
