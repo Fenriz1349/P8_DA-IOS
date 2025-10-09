@@ -12,16 +12,7 @@ struct SleepHistoryRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            // Quality indicator
-            ZStack {
-                Circle()
-                    .fill(cycle.sleepQuality.qualityColor)
-                    .frame(width: 32, height: 32)
-
-                Text("\(cycle.quality)")
-                    .font(.system(size: 14, weight: .bold))
-                    .foregroundColor(.white)
-            }
+            SleepQualityLabel(quality: cycle.sleepQuality)
 
             // Sleep info
             VStack(alignment: .leading, spacing: 4) {

@@ -15,17 +15,15 @@ struct SleepView: View {
         ScrollView {
             VStack(spacing: 20) {
 
-                // MARK: - Horloge Section
-                SleepClockView(sleepCycle: viewModel.lastCycle, size: 200)
+                SleepClockView(sleepCycle: viewModel.lastCycle, size: 220)
 
-                // MARK: - État et Actions
                 VStack(spacing: 16) {
                     currentStateSection
                     actionButtonsSection
                 }
                 .padding(.horizontal)
 
-                HistorySection(cycles: viewModel.historyCycle)
+                HistorySection(cycles: viewModel.historyCycles)
 
             }
             .padding(.vertical)
@@ -36,7 +34,7 @@ struct SleepView: View {
             viewModel.loadLastCycle()
         }
         .sheet(isPresented: $viewModel.showManualEntry) {
-            manualEntrySheet
+            EditSleepCycleModal(viewModel: viewModel)
         }
     }
 
@@ -82,11 +80,9 @@ struct SleepView: View {
 
     // MARK: - Boutons d'Actions
     private var actionButtonsSection: some View {
-        VStack(spacing: 12) {
-            // Bouton principal (Toggle)
+        HStack(spacing: 12) {
             mainActionButton
 
-            // Bouton saisie manuelle
             Button("Saisie manuelle") {
                 viewModel.showManualEntryMode()
             }
@@ -106,59 +102,6 @@ struct SleepView: View {
             .padding()
             .background(mainActionButtonColor)
             .cornerRadius(12)
-        }
-    }
-
-    // MARK: - Manuel Entry Sheet
-    private var manualEntrySheet: some View {
-        NavigationStack {
-            VStack(spacing: 20) {
-                DatePicker(
-                    "Heure de coucher",
-                    selection: $viewModel.manualStartDate,
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-
-                DatePicker(
-                    "Heure de réveil",
-                    selection: $viewModel.manualEndDate,
-                    displayedComponents: [.date, .hourAndMinute]
-                )
-
-                // Placeholder pour sélection qualité
-                VStack(alignment: .leading) {
-                    Text("Qualité du sommeil (optionnel)")
-                    HStack {
-                        Text("Qualité: Bonne")
-                        Spacer()
-                        Text("7/10")
-                    }
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(8)
-                }
-
-                Spacer()
-            }
-            .padding()
-            .navigationTitle(viewModel.isEditingLastCycle ? "Modifier" : "Nouveau cycle")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .navigationBarLeading) {
-                    Button("Annuler") {
-                        viewModel.cancelManualEntry()
-                    }
-                }
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Button("Sauvegarder") {
-                        if viewModel.isEditingLastCycle {
-                            viewModel.saveEditedCycle()
-                        } else {
-                            viewModel.saveManualEntry()
-                        }
-                    }
-                }
-            }
         }
     }
 }

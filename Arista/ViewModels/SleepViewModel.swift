@@ -32,6 +32,7 @@ final class SleepViewModel: ObservableObject {
     @Published var entryMode: SleepEntryMode = .toggle
     @Published var showManualEntry: Bool = false
     @Published var isEditingLastCycle: Bool = false
+    @Published  var selectedQuality: Int16 = 0
 
     // MARK: - Manual Entry Properties
     @Published var manualStartDate: Date = Date()
@@ -43,13 +44,8 @@ final class SleepViewModel: ObservableObject {
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)
     }
 
-    var historyCycle: [SleepCycle] {
-        do {
-            return try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 7)
-        } catch {
-            toastyManager?.showError(error)
-            return []
-        }
+    var historyCycles: [SleepCycle] {
+        (try? sleepDataManager.fetchSleepCycles(for: currentUser, limit: 7)) ?? []
     }
 
     // MARK: - Initialization

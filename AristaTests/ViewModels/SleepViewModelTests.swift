@@ -357,4 +357,49 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertFalse(sut.showManualEntry)
         XCTAssertFalse(sut.isEditingLastCycle)
     }
+
+    // MARK: - History Cycles Tests
+
+    func test_historyCycles_withNoCycles_returnsEmptyArray() throws {
+        // Given - Aucun cycle créé
+        
+        // When
+        let cycles = sut.historyCycles
+        
+        // Then
+        XCTAssertTrue(cycles.isEmpty)
+    }
+
+    func test_historyCycles_withMultipleCycles_returnsLimitedSortedCycles() throws {
+        // Given
+        for i in 0..<10 {
+            let date = Date().addingTimeInterval(Double(-i) * 86400)
+            try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: date)
+            try sleepDataManager.endSleepCycle(for: sut.currentUser)
+        }
+        
+        // When
+        let cycles = sut.historyCycles
+        
+        // Then
+        XCTAssertEqual(cycles.count, 7)
+        if cycles.count >= 2 {
+            XCTAssertTrue(cycles[0].dateStart > cycles[1].dateStart)
+        }
+    }
+
+    func test_historyCycles_withFewerThan7Cycles_returnsAllCycles() throws {
+        // Given - Créer seulement 3 cycles
+        for i in 0..<3 {
+            let date = Date().addingTimeInterval(Double(-i) * 86400)
+            try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: date)
+            try sleepDataManager.endSleepCycle(for: sut.currentUser)
+        }
+        
+        // When
+        let cycles = sut.historyCycles
+        
+        // Then
+        XCTAssertEqual(cycles.count, 3)
+    }
 }
