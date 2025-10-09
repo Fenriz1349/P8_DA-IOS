@@ -204,8 +204,8 @@ extension PreviewDataProvider {
     }
 }
 
+// MARK: - Preview AppCoordinator
 extension PreviewDataProvider {
-    // MARK: - Preview AppCoordinator
     static var sampleCoordinator: AppCoordinator {
         let dataManager = UserDataManager(container: previewData.container)
         let coordinator = AppCoordinator(dataManager: dataManager)
@@ -238,5 +238,86 @@ extension PreviewDataProvider {
 
     static func makeSleepViewModel() -> SleepViewModel {
         return try! SleepViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+    }
+}
+
+// MARK: - Sleep Preview Data
+extension PreviewDataProvider {
+    
+    /// Sleep cycles for last 7 days
+    static var sampleSleepCycles: [SleepCycle] {
+        let context = PreviewContext
+        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+        request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
+        request.fetchLimit = 7
+        
+        if let cycles = try? context.fetch(request), !cycles.isEmpty {
+            return cycles
+        } else {
+            // Fallback: create sample cycles
+            var cycles: [SleepCycle] = []
+            let calendar = Calendar.current
+            
+            for i in 0..<7 {
+                let cycle = SleepCycle(context: context)
+                let date = Date().addingTimeInterval(Double(-i) * 86400)
+                
+                cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: date)!
+                cycle.dateEnding = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: date)!
+                    .addingTimeInterval(86400)
+                cycle.quality = Int16((5 + i) % 10)
+                cycle.user = sampleUser
+                
+                cycles.append(cycle)
+            }
+            
+            try? context.save()
+            return cycles
+        }
+    }
+    
+    /// Active sleep cycle (ongoing)
+    static var activeSleepCycle: SleepCycle {
+        let context = PreviewContext
+        let cycle = SleepCycle(context: context)
+        let calendar = Calendar.current
+        
+        cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: Date())!
+        cycle.dateEnding = nil // Active cycle
+        cycle.quality = 0
+        cycle.user = sampleUser
+        
+        return cycle
+    }
+    
+    /// Completed sleep cycle (22h → 6h crossing midnight)
+    static var completedSleepCycle: SleepCycle {
+        let context = PreviewContext
+        let cycle = SleepCycle(context: context)
+        let calendar = Calendar.current
+        let now = Date()
+        
+        cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: now)!
+        cycle.dateEnding = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: now)!
+            .addingTimeInterval(86400)
+        cycle.quality = 8
+        cycle.user = sampleUser
+        
+        return cycle
+    }
+    
+    /// Nap (14h → 15h30)
+    static var napCycle: SleepCycle {
+        let context = PreviewContext
+        let cycle = SleepCycle(context: context)
+        let calendar = Calendar.current
+        let now = Date()
+        
+        cycle.dateStart = calendar.date(bySettingHour: 14, minute: 0, second: 0, of: now)!
+        cycle.dateEnding = calendar.date(bySettingHour: 15, minute: 30, second: 0, of: now)!
+        cycle.quality = 6
+        cycle.user = sampleUser
+        
+        return cycle
     }
 }

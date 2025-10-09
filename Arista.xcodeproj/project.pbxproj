@@ -15,12 +15,10 @@
 		53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587462B235E9000E4EF99 /* PersistenceTests.swift */; };
 		53E587632B235FF600E4EF99 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* AccountView.swift */; };
 		53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587642B23600400E4EF99 /* ExerciseListView.swift */; };
-		53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587662B23600C00E4EF99 /* SleepHistoryView.swift */; };
 		53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587682B23616A00E4EF99 /* AccountViewModel.swift */; };
 		53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */; };
 		53E5876D2B236D9E00E4EF99 /* AddExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */; };
 		53E5876F2B236DBC00E4EF99 /* AddExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */; };
-		53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */; };
 		6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6652E852D7B00501E0E /* ToastyMessage.swift */; };
 		6802E6682E852E0E00501E0E /* ToastyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6672E852E0E00501E0E /* ToastyType.swift */; };
 		6802E66A2E852FC100501E0E /* ToastyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6692E852FC100501E0E /* ToastyManager.swift */; };
@@ -45,6 +43,11 @@
 		684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321222E4CC534003FDAEE /* Persistence+Ext.swift */; };
 		684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */; };
 		684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 684321262E4DB076003FDAEE /* SharedTestHelper.swift */; };
+		685228852E97A4B6008E33EE /* SleepHistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228842E97A4B6008E33EE /* SleepHistoryRow.swift */; };
+		685228882E97AD03008E33EE /* CurrentTimeIndicator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228872E97AD03008E33EE /* CurrentTimeIndicator.swift */; };
+		6852288A2E97AD6D008E33EE /* SleepClockCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228892E97AD6D008E33EE /* SleepClockCalculator.swift */; };
+		6852288C2E97AE5A008E33EE /* HourTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6852288B2E97AE5A008E33EE /* HourTextView.swift */; };
+		6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6852288D2E97AF1D008E33EE /* SleepArcView.swift */; };
 		685B235B2E79ADCF003CFFA3 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */; };
 		685B235D2E79AE32003CFFA3 /* EditAccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */; };
 		686027A62E3B951A00BF8EA8 /* MealType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A52E3B951A00BF8EA8 /* MealType.swift */; };
@@ -99,12 +102,10 @@
 		53E587462B235E9000E4EF99 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		53E587622B235FF600E4EF99 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
 		53E587642B23600400E4EF99 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
-		53E587662B23600C00E4EF99 /* SleepHistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryView.swift; sourceTree = "<group>"; };
 		53E587682B23616A00E4EF99 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
 		53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
 		53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseView.swift; sourceTree = "<group>"; };
 		53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewModel.swift; sourceTree = "<group>"; };
-		53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryViewModel.swift; sourceTree = "<group>"; };
 		6802E6652E852D7B00501E0E /* ToastyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyMessage.swift; sourceTree = "<group>"; };
 		6802E6672E852E0E00501E0E /* ToastyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyType.swift; sourceTree = "<group>"; };
 		6802E6692E852FC100501E0E /* ToastyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManager.swift; sourceTree = "<group>"; };
@@ -128,6 +129,11 @@
 		684321222E4CC534003FDAEE /* Persistence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Ext.swift"; sourceTree = "<group>"; };
 		684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewDataProvider.swift; sourceTree = "<group>"; };
 		684321262E4DB076003FDAEE /* SharedTestHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedTestHelper.swift; sourceTree = "<group>"; };
+		685228842E97A4B6008E33EE /* SleepHistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistoryRow.swift; sourceTree = "<group>"; };
+		685228872E97AD03008E33EE /* CurrentTimeIndicator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentTimeIndicator.swift; sourceTree = "<group>"; };
+		685228892E97AD6D008E33EE /* SleepClockCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepClockCalculator.swift; sourceTree = "<group>"; };
+		6852288B2E97AE5A008E33EE /* HourTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourTextView.swift; sourceTree = "<group>"; };
+		6852288D2E97AF1D008E33EE /* SleepArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepArcView.swift; sourceTree = "<group>"; };
 		685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
 		685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModelTests.swift; sourceTree = "<group>"; };
 		686027A52E3B951A00BF8EA8 /* MealType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MealType.swift; sourceTree = "<group>"; };
@@ -250,7 +256,6 @@
 			children = (
 				53E587622B235FF600E4EF99 /* AccountView.swift */,
 				53E587642B23600400E4EF99 /* ExerciseListView.swift */,
-				53E587662B23600C00E4EF99 /* SleepHistoryView.swift */,
 				53E5876C2B236D9E00E4EF99 /* AddExerciseView.swift */,
 				68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */,
 				68CA52012E45FF5800178C72 /* AddMealView.swift */,
@@ -268,7 +273,6 @@
 				53E587682B23616A00E4EF99 /* AccountViewModel.swift */,
 				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
-				53E587702B23714800E4EF99 /* SleepHistoryViewModel.swift */,
 				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
 				685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */,
 				6813E7602E867B97007F008C /* SleepViewModel.swift */,
@@ -342,7 +346,8 @@
 		6813E7682E86D27E007F008C /* ExtractedViews */ = {
 			isa = PBXGroup;
 			children = (
-				6813E7692E86D299007F008C /* SleepClockView.swift */,
+				685228862E97ACF2008E33EE /* ClockView */,
+				685228842E97A4B6008E33EE /* SleepHistoryRow.swift */,
 			);
 			path = ExtractedViews;
 			sourceTree = "<group>";
@@ -366,6 +371,18 @@
 				68C6C9762E61D3E000108FE9 /* Date+Ext.swift */,
 			);
 			path = Utils;
+			sourceTree = "<group>";
+		};
+		685228862E97ACF2008E33EE /* ClockView */ = {
+			isa = PBXGroup;
+			children = (
+				6813E7692E86D299007F008C /* SleepClockView.swift */,
+				685228872E97AD03008E33EE /* CurrentTimeIndicator.swift */,
+				685228892E97AD6D008E33EE /* SleepClockCalculator.swift */,
+				6852288B2E97AE5A008E33EE /* HourTextView.swift */,
+				6852288D2E97AF1D008E33EE /* SleepArcView.swift */,
+			);
+			path = ClockView;
 			sourceTree = "<group>";
 		};
 		686027A42E3B94F800BF8EA8 /* Models */ = {
@@ -569,12 +586,14 @@
 				68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */,
 				68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */,
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
-				53E587712B23714800E4EF99 /* SleepHistoryViewModel.swift in Sources */,
+				6852288A2E97AD6D008E33EE /* SleepClockCalculator.swift in Sources */,
 				53E587632B235FF600E4EF99 /* AccountView.swift in Sources */,
 				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
+				6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */,
 				68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */,
-				53E587672B23600C00E4EF99 /* SleepHistoryView.swift in Sources */,
+				685228882E97AD03008E33EE /* CurrentTimeIndicator.swift in Sources */,
 				6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */,
+				6852288C2E97AE5A008E33EE /* HourTextView.swift in Sources */,
 				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
 				6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */,
@@ -586,6 +605,7 @@
 				68E89C802E6AE5B80004F6DA /* Meal.swift in Sources */,
 				68E89C822E6AE5B80004F6DA /* MealContent.swift in Sources */,
 				68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */,
+				685228852E97A4B6008E33EE /* SleepHistoryRow.swift in Sources */,
 				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
 				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
 				6802E66E2E8530E900501E0E /* ToastyContainer.swift in Sources */,
