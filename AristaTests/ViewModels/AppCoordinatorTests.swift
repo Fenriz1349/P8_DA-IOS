@@ -135,6 +135,25 @@ final class AppCoordinatorTests: XCTestCase {
         }
     }
 
+    func test_makeAuthenticationViewModel_returnsViewModel() {
+        // When
+        let viewModel = coordinator.makeAuthenticationViewModel
+        
+        // Then
+        XCTAssertNotNil(viewModel)
+        // Le ViewModel doit pouvoir être créé même sans utilisateur connecté
+        XCTAssertNil(coordinator.currentUser)
+    }
+
+    func test_makeAuthenticationViewModel_createsNewInstanceEachTime() {
+        // When
+        let viewModel1 = coordinator.makeAuthenticationViewModel
+        let viewModel2 = coordinator.makeAuthenticationViewModel
+        
+        // Then
+        XCTAssertFalse(viewModel1 === viewModel2)
+    }
+
     func test_makeEditAccountViewModel_withLoggedUser_returnsViewModel() throws {
         //Given
         let user = SharedTestHelper.createSampleUser(in: context)
@@ -156,6 +175,26 @@ final class AppCoordinatorTests: XCTestCase {
         }
     }
     
+    func test_makeSleepViewModel_withLoggedUser_returnsViewModel() throws {
+        //Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        
+        // When
+        let viewModel = try coordinator.makeSleepViewModel()
+        
+        // Then
+        XCTAssertNotNil(viewModel)
+    }
+
+    func test_makeSleepViewModel_withNoLoggedUser_throwsError() throws {
+        // Given / When / Then
+        XCTAssertThrowsError(try coordinator.makeSleepViewModel()) { error in
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
+        }
+    }
+
     func test_init_withValidStoredSession_restoresCurrentUser() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)

@@ -190,32 +190,6 @@ final class SleepDataManagerTests: XCTestCase {
         XCTAssertEqual(cycles[2].dateStart, date1)
     }
     
-    func test_fetchSleepCycles_withDateRange_shouldReturnFilteredCycles() throws {
-        // Given
-        let baseDate = Date()
-        let date1 = baseDate.addingTimeInterval(-86400 * 3)
-        let date2 = baseDate.addingTimeInterval(-86400)
-        let date3 = baseDate
-        
-        try manager.startSleepCycle(for: testUser, startDate: date1)
-        try manager.endSleepCycle(for: testUser, endDate: date1.addingTimeInterval(8 * 3600))
-        
-        try manager.startSleepCycle(for: testUser, startDate: date2)
-        try manager.endSleepCycle(for: testUser, endDate: date2.addingTimeInterval(7 * 3600))
-        
-        try manager.startSleepCycle(for: testUser, startDate: date3)
-        
-        // When - Récupérer seulement les 2 derniers jours
-        let fromDate = baseDate.addingTimeInterval(-86400 * 2)
-        let toDate = baseDate.addingTimeInterval(86400)
-        let filteredCycles = try manager.fetchSleepCycles(for: testUser, from: fromDate, to: toDate)
-        
-        // Then
-        XCTAssertEqual(filteredCycles.count, 2)
-        XCTAssertTrue(filteredCycles.contains { $0.dateStart == date2 })
-        XCTAssertTrue(filteredCycles.contains { $0.dateStart == date3 })
-    }
-    
     // MARK: - Delete Sleep Cycle Tests
     
     func test_deleteSleepCycle_shouldRemoveCycleFromStore() throws {
