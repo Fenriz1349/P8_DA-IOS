@@ -34,4 +34,39 @@ extension SleepCycle {
     var qualityDescription: String {
         return sleepQuality.description
     }
+
+    static func mapToDisplay(from cycles: [SleepCycle]) -> [SleepCycleDisplay] {
+        cycles.map {
+            SleepCycleDisplay(
+                id: $0.id,
+                dateStart: $0.dateStart,
+                dateEnding: $0.dateEnding,
+                quality: $0.quality
+            )
+        }
+    }
+
+    var toDisplay: SleepCycleDisplay {
+        SleepCycleDisplay(
+            id: self.id,
+            dateStart: self.dateStart,
+            dateEnding: self.dateEnding,
+            quality: self.quality
+        )
+    }
+}
+
+struct SleepCycleDisplay: Identifiable, Equatable {
+    let id: UUID
+    let dateStart: Date
+    let dateEnding: Date?
+    let quality: Int16
+    
+    var sleepQuality: SleepQuality {
+        return SleepQuality(from: quality)
+    }
+
+    var qualityDescription: String {
+        return sleepQuality.description
+    }
 }

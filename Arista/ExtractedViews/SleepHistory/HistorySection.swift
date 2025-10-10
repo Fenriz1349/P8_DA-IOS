@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct HistorySection: View {
-    let cycles: [SleepCycle]
+    let cycles: [SleepCycleDisplay]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -18,6 +18,7 @@ struct HistorySection: View {
 
             LazyVStack(spacing: 8) {
                 ForEach(cycles) { cycle in
+                    Text("\(cycle.quality)")
                     SleepHistoryRow(cycle: cycle)
                 }
             }
@@ -27,5 +28,5 @@ struct HistorySection: View {
 }
 
 #Preview {
-    HistorySection(cycles: PreviewDataProvider.sampleSleepCycles)
+    HistorySection(cycles:SleepCycle.mapToDisplay(from: PreviewDataProvider.sampleSleepCycles))
 }

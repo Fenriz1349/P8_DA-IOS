@@ -8,15 +8,17 @@
 import SwiftUI
 
 struct SleepQualityLabel: View {
-    let quality: SleepQuality
+    let quality: Int16
+    private var sleepQuality: SleepQuality { SleepQuality(from: quality) }
 
     var body: some View {
+
         ZStack {
             Circle()
-                .fill(quality.qualityColor)
+                .fill(sleepQuality.qualityColor)
                 .frame(width: 32, height: 32)
 
-            Text("\(quality.rawValue)")
+            Text("\(quality)")
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(.white)
         }
@@ -24,5 +26,5 @@ struct SleepQualityLabel: View {
 }
 
 #Preview {
-    SleepQualityLabel(quality: .good)
+    SleepQualityLabel(quality: 5)
 }

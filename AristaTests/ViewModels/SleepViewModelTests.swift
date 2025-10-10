@@ -392,7 +392,7 @@ final class SleepViewModelTests: XCTestCase {
     }
 
     func test_historyCycles_withFewerThan7Cycles_returnsAllCycles() throws {
-        // Given - Créer seulement 3 cycles
+        // Given
         for i in 0..<3 {
             let date = Date().addingTimeInterval(Double(-i) * 86400)
             try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: date)

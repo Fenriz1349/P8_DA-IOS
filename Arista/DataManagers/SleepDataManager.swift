@@ -51,12 +51,11 @@ final class SleepDataManager {
         sleepCycle.user = user
 
         try context.save()
-        context.refreshAllObjects()
 
         return sleepCycle
     }
 
-    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int16? = nil) throws -> SleepCycle {
+    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int16 = 0) throws -> SleepCycle {
         guard let activeCycle = try getActiveSleepCycle(for: user) else {
             throw SleepDataManagerError.sleepCycleNotFound
         }
@@ -67,12 +66,10 @@ final class SleepDataManager {
 
         let context = container.viewContext
         activeCycle.dateEnding = endDate
-        if let quality = quality {
-            activeCycle.quality = quality
-        }
+        activeCycle.quality = quality
 
         try context.save()
-        context.refreshAllObjects()
+        context.refresh(activeCycle, mergeChanges: true)
 
         return activeCycle
     }
@@ -125,7 +122,6 @@ final class SleepDataManager {
         let context = container.viewContext
         sleepCycle.quality = quality
         try context.save()
-        context.refreshAllObjects()
     }
 }
 

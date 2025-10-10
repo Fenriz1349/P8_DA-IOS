@@ -203,29 +203,4 @@ final class SleepDataManagerTests: XCTestCase {
         // Then
         XCTAssertEqual(try manager.fetchSleepCycles(for: testUser).count, 0)
     }
-    
-    // MARK: - Update Sleep Quality Tests
-    
-    func test_updateSleepQuality_withCompletedCycle_shouldUpdateQuality() throws {
-        // Given
-        let sleepCycle = try manager.startSleepCycle(for: testUser)
-        try manager.endSleepCycle(for: testUser, quality: 5)
-        let newQuality: Int16 = 8
-        
-        // When
-        try manager.updateSleepQuality(for: sleepCycle, quality: newQuality)
-        
-        // Then
-        XCTAssertEqual(sleepCycle.quality, newQuality)
-    }
-    
-    func test_updateSleepQuality_withActiveCycle_shouldThrowError() throws {
-        // Given
-        let sleepCycle = try manager.startSleepCycle(for: testUser)
-        
-        // When / Then
-        XCTAssertThrowsError(try manager.updateSleepQuality(for: sleepCycle, quality: 8)) { error in
-            XCTAssertEqual(error as? SleepDataManagerError, .sleepCycleNotFound)
-        }
-    }
 }

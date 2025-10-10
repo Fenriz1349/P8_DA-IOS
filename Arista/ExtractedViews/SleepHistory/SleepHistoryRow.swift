@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct SleepHistoryRow: View {
-    let cycle: SleepCycle
+    let cycle: SleepCycleDisplay
 
     var body: some View {
         HStack(spacing: 12) {
-            SleepQualityLabel(quality: cycle.sleepQuality)
+            SleepQualityLabel(quality: cycle.quality)
 
             // Sleep info
             VStack(alignment: .leading, spacing: 4) {
@@ -52,11 +52,11 @@ struct SleepHistoryRow: View {
 
 #Preview {
     VStack(spacing: 8) {
-        SleepHistoryRow(cycle: PreviewDataProvider.completedSleepCycle)
+        SleepHistoryRow(cycle: PreviewDataProvider.completedSleepCycle.toDisplay)
 
-        SleepHistoryRow(cycle: PreviewDataProvider.badQualityCycle)
+        SleepHistoryRow(cycle: PreviewDataProvider.badQualityCycle.toDisplay)
 
-        SleepHistoryRow(cycle: PreviewDataProvider.activeSleepCycle)
+        SleepHistoryRow(cycle: PreviewDataProvider.activeSleepCycle.toDisplay)
     }
     .padding()
 }

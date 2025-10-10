@@ -33,6 +33,7 @@ final class SleepViewModel: ObservableObject {
     @Published var showManualEntry: Bool = false
     @Published var isEditingLastCycle: Bool = false
     @Published var selectedQuality: Int16 = 0
+    @Published var historyCycles: [SleepCycleDisplay] = []
 
     // MARK: - Manual Entry Properties
     @Published var manualStartDate: Date = Date()
@@ -44,15 +45,12 @@ final class SleepViewModel: ObservableObject {
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)
     }
 
-    var historyCycles: [SleepCycle] {
-        (try? sleepDataManager.fetchSleepCycles(for: currentUser, limit: 7)) ?? []
-    }
-
     // MARK: - Initialization
     init(appCoordinator: AppCoordinator, sleepDataManager: SleepDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
         self.currentUser = try appCoordinator.validateCurrentUser()
+        loadHistoryCycles()
     }
 
     func configureToasty(toastyManager: ToastyManager) {
@@ -64,16 +62,40 @@ final class SleepViewModel: ObservableObject {
         do {
             let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser)
             lastCycle = cycles.first
+            loadHistoryCycles()
         } catch {
             toastyManager?.showError(error)
         }
+    }
+
+    private func loadHistoryCycles() {
+        do {
+            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 7)
+            historyCycles = cycles.map {
+                SleepCycleDisplay(
+                    id: $0.id,
+                    dateStart: $0.dateStart,
+                    dateEnding: $0.dateEnding,
+                    quality: $0.quality
+                )
+            }
+        } catch {
+            toastyManager?.showError(error)
+            historyCycles = []
+        }
+    }
+
+    func reloadAllData() {
+        loadLastCycle()
+        loadHistoryCycles()
+        objectWillChange.send()
     }
 
     // MARK: - Toggle Actions
     func startSleepCycleWithToggle(startDate: Date = Date()) {
         do {
             let cycle = try sleepDataManager.startSleepCycle(for: currentUser, startDate: startDate)
-            lastCycle = cycle
+            loadLastCycle()
         } catch {
             toastyManager?.showError(error)
         }
@@ -84,7 +106,8 @@ final class SleepViewModel: ObservableObject {
             let cycle = try sleepDataManager.endSleepCycle(for: currentUser,
                                                            endDate: endDate,
                                                            quality: selectedQuality)
-            lastCycle = cycle
+            reloadAllData()
+            selectedQuality = 0
         } catch {
             toastyManager?.showError(error)
         }
@@ -110,7 +133,7 @@ final class SleepViewModel: ObservableObject {
                                                                     endDate: manualEndDate,
                                                                     quality: selectedQuality)
 
-            lastCycle = completedCycle
+            reloadAllData()
             showManualEntry = false
             entryMode = .toggle
 
