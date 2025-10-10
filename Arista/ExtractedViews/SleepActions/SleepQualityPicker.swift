@@ -12,7 +12,7 @@ struct SleepQualityPicker: View {
 
     var body: some View {
         HStack {
-            Text("Qualité du sommeil (optionnel)")
+            Text("Qualité du sommeil")
                 .font(.headline)
 
             Spacer()

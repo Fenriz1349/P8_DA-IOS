@@ -11,6 +11,11 @@ enum SleepTrackingState: Equatable {
     case none
     case active(SleepCycle)
     case completed(SleepCycle)
+
+    var isActive: Bool {
+        if case .active = self { return true }
+        return false
+    }
 }
 
 enum SleepEntryMode {
@@ -70,7 +75,7 @@ final class SleepViewModel: ObservableObject {
 
     private func loadHistoryCycles() {
         do {
-            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 7)
+            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 8).dropFirst()
             historyCycles = cycles.map {
                 SleepCycleDisplay(
                     id: $0.id,
@@ -168,8 +173,7 @@ final class SleepViewModel: ObservableObject {
             try Date.validateInterval(from: manualStartDate, to: manualEndDate)
             cycle.dateStart = manualStartDate
             cycle.dateEnding = manualEndDate
-
-            try sleepDataManager.updateSleepQuality(for: cycle, quality: selectedQuality)
+            cycle.quality = selectedQuality
 
             loadLastCycle()
 

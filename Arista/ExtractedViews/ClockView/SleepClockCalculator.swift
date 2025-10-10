@@ -8,7 +8,7 @@
 import Foundation
 
 final class SleepClockCalculator {
-
+    #warning("passer à 12h")
     /// Converts an hour (0-23) to angle (0-360°)
     /// 0h (midnight) = 0°, 6h = 90°, 12h (noon) = 180°, 18h = 270°
     static func angleForHour(_ hour: Int) -> Double {

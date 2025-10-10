@@ -17,9 +17,9 @@ struct SleepView: View {
             VStack(spacing: 20) {
                 SleepClockView(sleepCycle: viewModel.lastCycle)
                 CurrentStateSection(currentState: viewModel.currentState)
-//                if viewModel.currentState == .active {
-                SleepQualityPicker(quality: $viewModel.selectedQuality)
-//                }
+                if viewModel.currentState.isActive {
+                    SleepQualityPicker(quality: $viewModel.selectedQuality)
+                }
                 HStack {
                     MainSleepCycleButton(viewModel: viewModel)
 

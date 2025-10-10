@@ -18,7 +18,6 @@ struct HistorySection: View {
 
             LazyVStack(spacing: 8) {
                 ForEach(cycles) { cycle in
-                    Text("\(cycle.quality)")
                     SleepHistoryRow(cycle: cycle)
                 }
             }

@@ -112,17 +112,6 @@ final class SleepDataManager {
         try context.save()
         context.refreshAllObjects()
     }
-
-    // MARK: - Update Methods
-    func updateSleepQuality(for sleepCycle: SleepCycle, quality: Int16) throws {
-        guard sleepCycle.dateEnding != nil else {
-            throw SleepDataManagerError.sleepCycleNotFound
-        }
-
-        let context = container.viewContext
-        sleepCycle.quality = quality
-        try context.save()
-    }
 }
 
 #if DEBUG

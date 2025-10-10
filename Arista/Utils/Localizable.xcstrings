@@ -89,9 +89,6 @@
     "Annuler" : {
 
     },
-    "au %@" : {
-
-    },
     "Aucun cycle de sommeil" : {
 
     },
@@ -160,9 +157,6 @@
 
     },
     "Dernier sommeil" : {
-
-    },
-    "Du %@" : {
 
     },
     "Edit Profile" : {
@@ -528,7 +522,7 @@
     "Qualité" : {
 
     },
-    "Qualité du sommeil (optionnel)" : {
+    "Qualité du sommeil" : {
 
     },
     "Sauvegarder" : {

@@ -32,16 +32,9 @@ struct CurrentStateSection: View {
                 VStack {
                     Text("Dernier sommeil")
                         .font(.headline)
-                    HStack {
-                        Text("Du \(cycle.dateStart.formattedTime)")
-                        if let endDate = cycle.dateEnding {
-                            Text("au \(endDate.formattedTime)")
-                            Text("(\(cycle.dateStart.formattedInterval(to: endDate)))")
-                                .foregroundColor(.secondary)
-                        }
-                    }
-                    .font(.subheadline)
+                    SleepHistoryRow(cycle: cycle.toDisplay)
                 }
+                .font(.subheadline)
             }
         }
         .padding()
@@ -52,4 +45,5 @@ struct CurrentStateSection: View {
 
 #Preview {
     CurrentStateSection(currentState: .active(PreviewDataProvider.activeSleepCycle))
+    CurrentStateSection(currentState: .completed(PreviewDataProvider.completedSleepCycle))
 }
