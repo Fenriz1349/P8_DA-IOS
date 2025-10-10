@@ -188,13 +188,14 @@ final class SleepViewModelTests: XCTestCase {
         let startDate = Date()
         try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
         sut.loadLastCycle()
+        sut.selectedQuality = 7
         
         guard case .active = sut.currentState else { XCTFail("Expected .active state"); return }
         
         let endDate = startDate.addingTimeInterval(8 * 3600)
         
         // When
-        sut.endSleepCycleWithToggle(endDate: endDate, quality: 7)
+        sut.endSleepCycleWithToggle(endDate: endDate)
         
         // Then
         XCTAssertNotNil(sut.lastCycle?.dateEnding)
@@ -246,9 +247,10 @@ final class SleepViewModelTests: XCTestCase {
         let endDate = startDate.addingTimeInterval(8 * 3600)
         sut.manualStartDate = startDate
         sut.manualEndDate = endDate
+        sut.selectedQuality = 6
         
         // When
-        sut.saveManualEntry(quality: 6)
+        sut.saveManualEntry()
         
         // Then
         XCTAssertNotNil(sut.lastCycle)
@@ -300,6 +302,7 @@ final class SleepViewModelTests: XCTestCase {
         try sleepDataManager.endSleepCycle(for: sut.currentUser)
         sut.lastCycle = cycle
         sut.isEditingLastCycle = true
+        sut.selectedQuality = 9
         
         let newStartDate = Date().addingTimeInterval(-3600)
         let newEndDate = Date()
@@ -307,7 +310,7 @@ final class SleepViewModelTests: XCTestCase {
         sut.manualEndDate = newEndDate
         
         // When
-        sut.saveEditedCycle(quality: 9)
+        sut.saveEditedCycle()
         
         // Then
         XCTAssertEqual(sut.lastCycle?.dateStart, newStartDate)

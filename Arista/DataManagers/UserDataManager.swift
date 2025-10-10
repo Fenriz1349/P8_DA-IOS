@@ -68,8 +68,8 @@ final class UserDataManager {
     func fetchUser(by id: UUID) throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id.uuidString)
-        guard let user = try? context.fetch(request).first else {
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        guard let user = try context.fetch(request).first else {
             throw UserDataManagerError.userNotFound
         }
         return user
@@ -78,8 +78,8 @@ final class UserDataManager {
     func fetchLoggedUser() throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
-        request.predicate = NSPredicate(format: "isLogged== true", )
-        guard let user = try? context.fetch(request).first else {
+        request.predicate = NSPredicate(format: "isLogged == true")
+        guard let user = try context.fetch(request).first else {
             throw UserDataManagerError.noLoggedUser
         }
         return user
@@ -104,11 +104,10 @@ final class UserDataManager {
 
     // MARK: - Logging Off Method
     func loggedOffAllUsers() throws {
+        let context = container.viewContext
         let users = fetchAllUsers()
-        for user in users {
-            let builder = UserUpdateBuilder(user: user, dataManager: self)
-            try builder.isLogged(false).save()
-        }
+        for user in users { user.isLogged = false }
+        try context.save()
     }
 
     // MARK: - Delete User Method
@@ -117,6 +116,7 @@ final class UserDataManager {
         let context = container.viewContext
         context.delete(user)
         try context.save()
+        context.refreshAllObjects()
     }
 }
 

@@ -8,9 +8,21 @@
 import Foundation
 import CoreData
 
-enum SleepDataManagerError: Error, Equatable {
+enum SleepDataManagerError: Error, Equatable, LocalizedError {
     case sleepCycleNotFound
     case activeSessionAlreadyExists
+    case invalidDateInterval
+
+    var errorDescription: String? {
+        switch self {
+        case .sleepCycleNotFound:
+            return "Aucun cycle de sommeil actif trouvé."
+        case .activeSessionAlreadyExists:
+            return "Un cycle de sommeil est déjà en cours."
+        case .invalidDateInterval:
+            return "Les dates fournies ne sont pas valides."
+        }
+    }
 }
 
 final class SleepDataManager {
@@ -19,12 +31,11 @@ final class SleepDataManager {
 
     init(container: NSPersistentContainer = PersistenceController.shared.container,
          userDataManager: UserDataManager? = nil) {
-           self.container = container
-           self.userDataManager = userDataManager ?? UserDataManager(container: container)
-       }
+        self.container = container
+        self.userDataManager = userDataManager ?? UserDataManager(container: container)
+    }
 
     // MARK: - Create Sleep Cycle
-
     func startSleepCycle(for user: User, startDate: Date = Date()) throws -> SleepCycle {
         let context = container.viewContext
 
@@ -33,6 +44,7 @@ final class SleepDataManager {
         }
 
         let sleepCycle = SleepCycle(context: context)
+        sleepCycle.id = UUID()
         sleepCycle.dateStart = startDate
         sleepCycle.dateEnding = nil
         sleepCycle.quality = 0
@@ -49,12 +61,15 @@ final class SleepDataManager {
             throw SleepDataManagerError.sleepCycleNotFound
         }
 
-        try Date.validateInterval(from: activeCycle.dateStart, to: endDate)
+        guard activeCycle.dateStart <= endDate else {
+            throw SleepDataManagerError.invalidDateInterval
+        }
 
         let context = container.viewContext
-
         activeCycle.dateEnding = endDate
-        if let quality = quality { activeCycle.quality = quality }
+        if let quality = quality {
+            activeCycle.quality = quality
+        }
 
         try context.save()
         context.refreshAllObjects()
@@ -63,14 +78,15 @@ final class SleepDataManager {
     }
 
     // MARK: - Fetch Methods
-
     func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
         let context = container.viewContext
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
 
         request.predicate = NSPredicate(format: "user == %@", user)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
-        if let limit = limit { request.fetchLimit = limit }
+        if let limit = limit {
+            request.fetchLimit = limit
+        }
 
         return try context.fetch(request)
     }
@@ -82,9 +98,10 @@ final class SleepDataManager {
     func getActiveSleepCycle(for user: User) throws -> SleepCycle? {
         let context = container.viewContext
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+
         request.predicate = NSPredicate(
             format: "user.id == %@ AND dateEnding == nil",
-            user.id.uuidString
+            user.id as CVarArg
         )
         request.fetchLimit = 1
 
@@ -92,7 +109,6 @@ final class SleepDataManager {
     }
 
     // MARK: - Delete Methods
-
     func deleteSleepCycle(_ sleepCycle: SleepCycle) throws {
         let context = container.viewContext
         context.delete(sleepCycle)
@@ -101,7 +117,6 @@ final class SleepDataManager {
     }
 
     // MARK: - Update Methods
-
     func updateSleepQuality(for sleepCycle: SleepCycle, quality: Int16) throws {
         guard sleepCycle.dateEnding != nil else {
             throw SleepDataManagerError.sleepCycleNotFound

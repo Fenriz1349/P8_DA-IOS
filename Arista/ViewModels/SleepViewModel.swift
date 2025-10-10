@@ -32,7 +32,7 @@ final class SleepViewModel: ObservableObject {
     @Published var entryMode: SleepEntryMode = .toggle
     @Published var showManualEntry: Bool = false
     @Published var isEditingLastCycle: Bool = false
-    @Published  var selectedQuality: Int16 = 0
+    @Published var selectedQuality: Int16 = 0
 
     // MARK: - Manual Entry Properties
     @Published var manualStartDate: Date = Date()
@@ -79,11 +79,11 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
-    func endSleepCycleWithToggle(endDate: Date = Date(), quality: Int16? = nil) {
+    func endSleepCycleWithToggle(endDate: Date = Date()) {
         do {
             let cycle = try sleepDataManager.endSleepCycle(for: currentUser,
                                                            endDate: endDate,
-                                                           quality: quality)
+                                                           quality: selectedQuality)
             lastCycle = cycle
         } catch {
             toastyManager?.showError(error)
@@ -100,7 +100,7 @@ final class SleepViewModel: ObservableObject {
         manualStartDate = now.addingTimeInterval(-8 * 3600)
     }
 
-    func saveManualEntry(quality: Int16? = nil) {
+    func saveManualEntry() {
         do {
             try Date.validateInterval(from: manualStartDate, to: manualEndDate)
 
@@ -108,7 +108,7 @@ final class SleepViewModel: ObservableObject {
                                                              startDate: manualStartDate)
             let completedCycle = try sleepDataManager.endSleepCycle(for: currentUser,
                                                                     endDate: manualEndDate,
-                                                                    quality: quality)
+                                                                    quality: selectedQuality)
 
             lastCycle = completedCycle
             showManualEntry = false
@@ -135,20 +135,18 @@ final class SleepViewModel: ObservableObject {
 
         manualStartDate = cycle.dateStart
         manualEndDate = cycle.dateEnding ?? Date()
+        selectedQuality = cycle.quality
     }
 
-    func saveEditedCycle(quality: Int16? = nil) {
+    func saveEditedCycle() {
         guard let cycle = lastCycle else { return }
 
         do {
             try Date.validateInterval(from: manualStartDate, to: manualEndDate)
-
             cycle.dateStart = manualStartDate
             cycle.dateEnding = manualEndDate
 
-            if let quality = quality {
-                try sleepDataManager.updateSleepQuality(for: cycle, quality: quality)
-            }
+            try sleepDataManager.updateSleepQuality(for: cycle, quality: selectedQuality)
 
             loadLastCycle()
 

@@ -11,6 +11,7 @@ import CoreData
 
 @objc(SleepCycle)
 public class SleepCycle: NSManagedObject, Identifiable {
+    @NSManaged public var id: UUID
     @NSManaged public var dateStart: Date
     @NSManaged public var dateEnding: Date?
     @NSManaged public var quality: Int16

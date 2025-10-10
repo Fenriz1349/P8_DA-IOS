@@ -67,9 +67,6 @@
     "00" : {
 
     },
-    "7/10" : {
-
-    },
     "addExercice" : {
       "localizations" : {
         "en" : {
@@ -506,6 +503,9 @@
         }
       }
     },
+    "Non évaluée" : {
+
+    },
     "Nouveau cycle" : {
 
     },
@@ -525,13 +525,10 @@
         }
       }
     },
+    "Qualité" : {
+
+    },
     "Qualité du sommeil (optionnel)" : {
-
-    },
-    "Qualité: Bonne" : {
-
-    },
-    "Saisie manuelle" : {
 
     },
     "Sauvegarder" : {

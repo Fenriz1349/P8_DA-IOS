@@ -43,24 +43,7 @@ struct EditSleepCycleModal: View {
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                    Button("Sauvegarder") {
-                        let quality = viewModel.selectedQuality == 0 ? nil : viewModel.selectedQuality
-                        
-                        if viewModel.isEditingLastCycle {
-                            viewModel.saveEditedCycle(quality: quality)
-                        } else {
-                            viewModel.saveManualEntry(quality: quality)
-                        }
-                        
-                        dismiss()
-                    }
-                }
-            }
-            .onAppear {
-                if viewModel.isEditingLastCycle, let cycle = viewModel.lastCycle {
-                    viewModel.selectedQuality = cycle.quality
-                } else {
-                    viewModel.selectedQuality = 0
+                   SaveSleepButton(viewModel: viewModel)
                 }
             }
         }
@@ -72,7 +55,7 @@ struct EditSleepCycleModal: View {
 }
 
 #Preview("Edit Cycle") {
-    let vm = PreviewDataProvider.makeSleepViewModel()
-    vm.editLastCycle()
-    return EditSleepCycleModal(viewModel: vm)
+    let viewModel = PreviewDataProvider.makeSleepViewModel()
+    viewModel.editLastCycle()
+    return EditSleepCycleModal(viewModel: viewModel)
 }

@@ -152,6 +152,7 @@ extension PreviewDataProvider {
             let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
 
             let sleepCycle = SleepCycle(context: context)
+            sleepCycle.id = UUID()
             sleepCycle.dateStart = bedtime
             sleepCycle.dateEnding = wakeupTime
             sleepCycle.quality = Int16(quality)
@@ -237,7 +238,10 @@ extension PreviewDataProvider {
     }
 
     static func makeSleepViewModel() -> SleepViewModel {
-        return try! SleepViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+        _ = sampleSleepCycles
+        let viewModel = try! SleepViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+        viewModel.loadLastCycle()
+        return viewModel
     }
 }
 
@@ -260,7 +264,7 @@ extension PreviewDataProvider {
             for index in 0..<7 {
                 let cycle = SleepCycle(context: context)
                 let date = Date().addingTimeInterval(Double(-index) * 86400)
-
+                cycle.id = UUID()
                 cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: date)!
                 cycle.dateEnding = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: date)!
                     .addingTimeInterval(86400)
@@ -280,7 +284,7 @@ extension PreviewDataProvider {
         let context = PreviewContext
         let cycle = SleepCycle(context: context)
         let calendar = Calendar.current
-
+        cycle.id = UUID()
         cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: Date())!
         cycle.dateEnding = nil // Active cycle
         cycle.quality = 0
@@ -295,7 +299,7 @@ extension PreviewDataProvider {
         let cycle = SleepCycle(context: context)
         let calendar = Calendar.current
         let now = Date()
-
+        cycle.id = UUID()
         cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: now)!
         cycle.dateEnding = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: now)!
             .addingTimeInterval(86400)
@@ -311,7 +315,7 @@ extension PreviewDataProvider {
         let cycle = SleepCycle(context: context)
         let calendar = Calendar.current
         let now = Date()
-
+        cycle.id = UUID()
         cycle.dateStart = calendar.date(bySettingHour: 14, minute: 0, second: 0, of: now)!
         cycle.dateEnding = calendar.date(bySettingHour: 15, minute: 30, second: 0, of: now)!
         cycle.quality = 6
@@ -325,7 +329,7 @@ extension PreviewDataProvider {
         let context = PreviewDataProvider.PreviewContext
         let cycle = SleepCycle(context: context)
         let yesterday = Date().addingTimeInterval(-86400)
-
+        cycle.id = UUID()
         cycle.dateStart = Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: yesterday)!
         cycle.dateEnding = Calendar.current.date(bySettingHour: 5, minute: 30, second: 0, of: yesterday)!
             .addingTimeInterval(86400)
