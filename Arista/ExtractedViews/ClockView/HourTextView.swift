@@ -9,11 +9,12 @@ import SwiftUI
 
 struct HourTextView: View {
     let size: CGFloat
+    let cycle: SleepCycle?
 
     var body: some View {
         ZStack {
-            ForEach(0..<24, id: \.self) { hour in
-                hourText(for: hour)
+            ForEach(SleepClockCalculator.hoursToDisplay(for: cycle),
+                    id: \.self) { hour in hourText(for: hour)
             }
         }
     }
@@ -38,5 +39,5 @@ struct HourTextView: View {
 }
 
 #Preview {
-    HourTextView(size: 250)
+    HourTextView(size: 250, cycle: PreviewDataProvider.activeSleepCycle)
 }

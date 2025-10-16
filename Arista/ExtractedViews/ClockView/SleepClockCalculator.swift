@@ -8,11 +8,10 @@
 import Foundation
 
 final class SleepClockCalculator {
-    #warning("passer à 12h")
     /// Converts an hour (0-23) to angle (0-360°)
     /// 0h (midnight) = 0°, 6h = 90°, 12h (noon) = 180°, 18h = 270°
     static func angleForHour(_ hour: Int) -> Double {
-        return Double(hour) * 15 // 360° / 24h = 15° per hour
+        return Double(hour) * 30 // 360° / 12h = 30° per hour
     }
 
     /// Converts a Date to angle for 24h clock (0-360°)
@@ -22,9 +21,31 @@ final class SleepClockCalculator {
         let hour = calendar.component(.hour, from: date)
         let minute = calendar.component(.minute, from: date)
 
-        let hourAngle = Double(hour) * 15 // 15° per hour
-        let minuteAngle = Double(minute) * 0.25 // 0.25° per minute (15°/60min)
+        let hourAngle = Double(hour % 12) * 30 // 30° per hour
+        let minuteAngle = Double(minute) * 0.5 // 0.5° per minute (30°/60min)
 
         return hourAngle + minuteAngle
+    }
+
+    /// Determine which 12 hours to display based on sleep cycle or current time
+    /// Returns an array of 12 consecutive hours (0-23)
+    static func hoursToDisplay(for sleepCycle: SleepCycle?) -> [Int] {
+        let startHour: Int
+
+        if let cycle = sleepCycle {
+            let cycleStartHour = Calendar.current.component(.hour, from: cycle.dateStart)
+
+            // Night sleep typically starts between 18h-23h or 0h-5h
+            // Day nap typically starts between 6h-17h
+            let isNightSleep = (cycleStartHour >= 18) || (cycleStartHour < 6)
+
+            startHour = isNightSleep ? 18 : 6
+        } else {
+            let currentHour = Calendar.current.component(.hour, from: Date())
+
+            startHour = (currentHour >= 18 || currentHour < 6) ? 18 : 6
+        }
+
+        return (0..<12).map { (startHour + $0) % 24 }
     }
 }

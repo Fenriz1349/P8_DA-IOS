@@ -34,7 +34,7 @@ struct SleepClockView: View {
                 SleepArcView(cycle: cycle, size: size)
             }
 
-            HourTextView(size: size)
+            HourTextView(size: size, cycle: sleepCycle)
             CurrentTimeIndicator(size: size)
         }
     }
