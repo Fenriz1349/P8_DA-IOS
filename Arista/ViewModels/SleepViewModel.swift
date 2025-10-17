@@ -29,7 +29,6 @@ final class SleepViewModel: ObservableObject {
     /// Dependencies
     private let appCoordinator: AppCoordinator
     private let sleepDataManager: SleepDataManager
-    private let currentUserId: UUID
     let currentUser: User
     @Published var toastyManager: ToastyManager?
 
@@ -51,7 +50,7 @@ final class SleepViewModel: ObservableObject {
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)
     }
 
-    // MARK: - Initialization
+    /// Initialization
     init(appCoordinator: AppCoordinator, sleepDataManager: SleepDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
@@ -190,6 +189,19 @@ final class SleepViewModel: ObservableObject {
             isEditingLastCycle = false
             showManualEntry = false
             entryMode = .toggle
+        } catch {
+            toastyManager?.showError(error)
+        }
+    }
+
+    /// Delete
+    func deleteHistoryCycle(_ cycleDisplay: SleepCycleDisplay) {
+        do {
+            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser)
+            if let target = cycles.first(where: { $0.id == cycleDisplay.id }) {
+                try sleepDataManager.deleteSleepCycle(target)
+                reloadAllData()
+            }
         } catch {
             toastyManager?.showError(error)
         }

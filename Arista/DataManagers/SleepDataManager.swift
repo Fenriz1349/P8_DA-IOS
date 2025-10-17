@@ -77,8 +77,6 @@ final class SleepDataManager {
     func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
         let context = container.viewContext
 
-        context.refreshAllObjects()
-
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
