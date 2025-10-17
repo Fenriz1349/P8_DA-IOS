@@ -69,7 +69,6 @@ final class SleepDataManager {
         activeCycle.quality = quality
 
         try context.save()
-        context.refresh(activeCycle, mergeChanges: true)
 
         return activeCycle
     }
@@ -112,7 +111,6 @@ final class SleepDataManager {
         let context = container.viewContext
         context.delete(sleepCycle)
         try context.save()
-        context.refreshAllObjects()
     }
 
     // MARK: - Update Methods
@@ -128,7 +126,6 @@ final class SleepDataManager {
         cycle.quality = quality
 
         try context.save()
-        context.refresh(cycle, mergeChanges: true)
 
         return cycle
     }

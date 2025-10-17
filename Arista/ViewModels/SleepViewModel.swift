@@ -26,13 +26,14 @@ enum SleepEntryMode {
 @MainActor
 final class SleepViewModel: ObservableObject {
 
-    // MARK: - Dependencies
+    /// Dependencies
     private let appCoordinator: AppCoordinator
     private let sleepDataManager: SleepDataManager
+    private let currentUserId: UUID
     let currentUser: User
     @Published var toastyManager: ToastyManager?
 
-    // MARK: - Published Properties
+    /// Published Properties
     @Published var lastCycle: SleepCycle?
     @Published var entryMode: SleepEntryMode = .toggle
     @Published var showManualEntry: Bool = false
@@ -44,7 +45,7 @@ final class SleepViewModel: ObservableObject {
     @Published var manualStartDate: Date = Date()
     @Published var manualEndDate: Date = Date()
 
-    // MARK: - Computed Properties
+    /// Computed Properties
     var currentState: SleepTrackingState {
         guard let cycle = lastCycle else { return .none }
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)

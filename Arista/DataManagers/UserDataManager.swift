@@ -59,7 +59,6 @@ final class UserDataManager {
         user.lastName = lastName
 
         try context.save()
-        context.refreshAllObjects()
 
         return user
     }
@@ -116,7 +115,6 @@ final class UserDataManager {
         let context = container.viewContext
         context.delete(user)
         try context.save()
-        context.refreshAllObjects()
     }
 }
 

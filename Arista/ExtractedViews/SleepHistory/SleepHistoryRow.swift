@@ -14,7 +14,6 @@ struct SleepHistoryRow: View {
         HStack(spacing: 12) {
             SleepQualityLabel(quality: cycle.quality)
 
-            // Sleep info
             VStack(alignment: .leading, spacing: 4) {
                 Text(cycle.dateStart.formattedDate)
                     .font(.caption)
@@ -38,10 +37,11 @@ struct SleepHistoryRow: View {
 
             Spacer()
 
-            // Quality label
             Text(cycle.qualityDescription)
                 .font(.caption)
                 .foregroundColor(cycle.sleepQuality.qualityColor)
+            Image(systemName: "chevron.right")
+                .font(.caption)
         }
         .padding(.horizontal)
         .padding(.vertical, 12)

@@ -13,26 +13,23 @@ struct SleepView: View {
     @EnvironmentObject private var toastyManager: ToastyManager
 
     var body: some View {
-        ScrollView {
-            VStack(spacing: 20) {
-                SleepClockView(sleepCycle: $viewModel.lastCycle)
-                CurrentStateSection(viewModel: viewModel)
-                if viewModel.currentState.isActive {
-                    SleepQualityPicker(quality: $viewModel.selectedQuality)
-                }
+        VStack(spacing: 20) {
+            HStack {
+                SleepClockView(sleepCycle: $viewModel.lastCycle, size: 200)
                 MainSleepCycleButton(viewModel: viewModel)
 
-                HistorySection(cycles: viewModel.historyCycles)
             }
-            .padding()
+            CurrentStateSection(viewModel: viewModel)
+            if viewModel.currentState.isActive {
+                SleepQualityPicker(quality: $viewModel.selectedQuality)
+            }
+            HistorySection(viewModel: viewModel)
         }
+        .padding()
         .navigationTitle("Sommeil")
         .onAppear {
-            viewModel.reloadAllData() 
+            viewModel.reloadAllData()
             viewModel.configureToasty(toastyManager: toastyManager)
-        }
-        .sheet(isPresented: $viewModel.showManualEntry) {
-            EditSleepCycleModal(viewModel: viewModel)
         }
     }
 }

@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CustomLabels
 
 struct HistorySection: View {
     let cycles: [SleepCycleDisplay]
@@ -21,11 +22,16 @@ struct HistorySection: View {
                     SleepHistoryRow(cycle: cycle)
                 }
             }
+            .animation(.default, value: viewModel.historyCycles)
+            .listStyle(.plain)
             .padding(.horizontal)
+        }
+        .sheet(isPresented: $viewModel.showManualEntry) {
+            EditSleepCycleModal(viewModel: viewModel)
         }
     }
 }
 
 #Preview {
-    HistorySection(cycles:SleepCycle.mapToDisplay(from: PreviewDataProvider.sampleSleepCycles))
+    HistorySection(viewModel: PreviewDataProvider.makeSleepViewModel())
 }
