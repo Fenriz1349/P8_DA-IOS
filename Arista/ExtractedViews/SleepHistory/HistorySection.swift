@@ -9,7 +9,7 @@ import SwiftUI
 import CustomLabels
 
 struct HistorySection: View {
-    let cycles: [SleepCycleDisplay]
+    @ObservedObject var viewModel: SleepViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -17,20 +17,32 @@ struct HistorySection: View {
                 .font(.headline)
                 .padding(.horizontal)
 
-            LazyVStack(spacing: 8) {
-                ForEach(cycles) { cycle in
+            List {
+                ForEach(viewModel.historyCycles) { cycle in
                     SleepHistoryRow(cycle: cycle)
+                        .contentShape(Rectangle())
+                        .swipeActions(edge: .trailing) {
+                            Button(role: .destructive) {
+                                withAnimation {
+                                    viewModel.deleteHistoryCycle(cycle)
+                                }
+                            } label: {
+                                CustomButtonIcon(icon: "trash", color: .red)
+                            }
+                        }
+                        .listRowInsets(EdgeInsets())
                 }
             }
-            .animation(.default, value: viewModel.historyCycles)
+            .frame(height: CGFloat(viewModel.historyCycles.count) * 70)
             .listStyle(.plain)
-            .padding(.horizontal)
         }
         .sheet(isPresented: $viewModel.showManualEntry) {
             EditSleepCycleModal(viewModel: viewModel)
         }
     }
 }
+
+
 
 #Preview {
     HistorySection(viewModel: PreviewDataProvider.makeSleepViewModel())
