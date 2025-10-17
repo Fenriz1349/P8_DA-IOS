@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import CustomLabels
 
 struct EditSleepCycleModal: View {
     @Environment(\.dismiss) private var dismiss
@@ -14,6 +15,7 @@ struct EditSleepCycleModal: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
+                SleepClockView(sleepCycle: viewModel.editingCycle, size: 200)
                 VStack(spacing: 16) {
                     DatePicker(
                         "Heure de coucher",
@@ -28,23 +30,18 @@ struct EditSleepCycleModal: View {
                     )
                 }
                 SleepQualityPicker(quality: $viewModel.selectedQuality)
-
+                Button(action: viewModel.saveCycle) {
+                    CustomButtonLabel(iconLeading: "square.and.arrow.down", message: "Sauvegarder", color: .blue)
+                }
                 Spacer()
             }
             .padding()
-            .navigationTitle(viewModel.currentCycle != nil ? "Modifier" : "Nouveau cycle")
+            .navigationTitle(viewModel.editingCycle != nil ? "Modifier" : "Nouveau cycle")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Annuler") {
                         viewModel.cancelEdit()
-                        dismiss()
-                    }
-                }
-                ToolbarItem(placement: .confirmationAction) {
-                    Button("Sauvegarder") {
-                        viewModel.saveCycle()
-                        dismiss()
                     }
                 }
             }

@@ -8,44 +8,51 @@
 import Foundation
 
 final class SleepClockCalculator {
-    /// Converts an hour (0-23) to angle (0-360°)
-    /// 0h (midnight) = 0°, 6h = 90°, 12h (noon) = 180°, 18h = 270°
+    private static let maxDuration: TimeInterval = 12 * 3600
+
+    /// Converts an hour (0–23) into an angle for a 12-hour dial.
+    /// 0h = top (0°), 3h = right (90°), 6h = bottom (180°), 9h = left (270°)
     static func angleForHour(_ hour: Int) -> Double {
-        return Double(hour) * 30 // 360° / 12h = 30° per hour
+        let adjustedHour = Double(hour % 12)
+        return adjustedHour / 12 * 360
     }
 
-    /// Converts a Date to angle for 24h clock (0-360°)
-    /// Midnight = 0°, 6h = 90°, 12h = 180°, 18h = 270°
+    /// Converts a full Date into an angle for the 12-hour dial.
+    /// Each hour = 30°, each minute = 0.5°.
+    /// 0h is at the top (0° - no offset needed since we rotate the arc)
     static func angleForTime(_ date: Date) -> Double {
         let calendar = Calendar.current
-        let hour = calendar.component(.hour, from: date)
+        let hour = calendar.component(.hour, from: date) % 12
         let minute = calendar.component(.minute, from: date)
-
-        let hourAngle = Double(hour % 12) * 30 // 30° per hour
-        let minuteAngle = Double(minute) * 0.5 // 0.5° per minute (30°/60min)
-
-        return hourAngle + minuteAngle
+        let totalMinutes = Double(hour * 60 + minute)
+        return (totalMinutes / (12 * 60)) * 360 - 90 
     }
 
-    /// Determine which 12 hours to display based on sleep cycle or current time
-    /// Returns an array of 12 consecutive hours (0-23)
-    static func hoursToDisplay(for sleepCycle: SleepCycleDisplay?) -> [Int] {
-        let startHour: Int
+    /// Determines the 12 consecutive hours to display on the clock.
+    /// Starts from the beginning of the current or active sleep cycle.
+    /// If no cycle, uses the current time as reference.
+    static func hoursToDisplay(for cycle: SleepCycleDisplay?) -> [Int] {
+        let calendar = Calendar.current
+        let now = Date()
 
-        if let cycle = sleepCycle {
-            let cycleStartHour = Calendar.current.component(.hour, from: cycle.dateStart)
-
-            // Night sleep typically starts between 18h-23h or 0h-5h
-            // Day nap typically starts between 6h-17h
-            let isNightSleep = (cycleStartHour >= 18) || (cycleStartHour < 6)
-
-            startHour = isNightSleep ? 18 : 6
-        } else {
-            let currentHour = Calendar.current.component(.hour, from: Date())
-
-            startHour = (currentHour >= 18 || currentHour < 6) ? 18 : 6
+        guard let cycle = cycle else {
+            let centerHour = calendar.component(.hour, from: now)
+            let startHour = (centerHour - 6 + 24) % 24
+            return (0..<12).map { (startHour + $0) % 24 }
         }
 
+        let startHour = calendar.component(.hour, from: cycle.dateStart)
         return (0..<12).map { (startHour + $0) % 24 }
+    }
+
+    /// Calculates the sleep duration to display, limited to 12h maximum.
+    /// This ensures that any cycle longer than 12h fills the full circle.
+    static func displayedDuration(for cycle: SleepCycleDisplay) -> TimeInterval {
+        let end = cycle.dateEnding ?? Date()
+        let duration = end.timeIntervalSince(cycle.dateStart)
+        
+            let adjustedDuration = duration < 0 ? duration + (24 * 3600) : duration
+        
+        return min(adjustedDuration, maxDuration)
     }
 }

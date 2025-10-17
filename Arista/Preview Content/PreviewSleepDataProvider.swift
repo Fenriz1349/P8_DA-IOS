@@ -115,7 +115,7 @@ struct PreviewSleepDataProvider {
 
     /// Active sleep cycle (still ongoing)
     static var activeSleepCycle: SleepCycleDisplay {
-        let start = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: Date())!
+        let start = Date().addingTimeInterval(-3 * 3600)
         return SleepCycleDisplay(
             id: UUID(),
             dateStart: start,

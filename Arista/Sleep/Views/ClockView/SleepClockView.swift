@@ -15,12 +15,10 @@ struct SleepClockView: View {
 
     var body: some View {
         ZStack {
-            // Clock background
             Circle()
                 .fill(Color(.systemGray6))
                 .frame(width: size, height: size)
 
-            // Double border
             Circle()
                 .stroke(Color.gray.opacity(0.3), lineWidth: borderWidth)
                 .frame(width: size, height: size)
@@ -29,7 +27,6 @@ struct SleepClockView: View {
                 .stroke(Color.gray.opacity(0.5), lineWidth: 1)
                 .frame(width: size - borderWidth * 2, height: size - borderWidth * 2)
 
-            // Sleep cycle arc (if exists)
             if let cycle = sleepCycle {
                 SleepArcView(cycle: cycle, size: size)
             }
