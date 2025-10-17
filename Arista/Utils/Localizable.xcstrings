@@ -31,6 +31,9 @@
     "%d" : {
 
     },
+    "%d/10" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -517,9 +520,6 @@
       }
     },
     "Qualité" : {
-
-    },
-    "Qualité du sommeil" : {
 
     },
     "sleep" : {

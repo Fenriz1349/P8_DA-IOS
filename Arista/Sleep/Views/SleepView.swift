@@ -18,9 +18,11 @@ struct SleepView: View {
                 SleepClockView(sleepCycle: viewModel.currentCycle, size: 200)
                 MainSleepCycleButton(viewModel: viewModel)
             }
-            CurrentStateSection(viewModel: viewModel)
-            if viewModel.currentState.isActive {
-                SleepQualityPicker(quality: $viewModel.selectedQuality)
+            HStack {
+                CurrentStateSection(viewModel: viewModel)
+                if viewModel.currentState.isActive {
+                    SleepQualityPicker(quality: $viewModel.selectedQuality)
+                }
             }
             HistorySection(viewModel: viewModel)
         }

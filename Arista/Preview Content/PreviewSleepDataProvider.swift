@@ -51,6 +51,19 @@ struct PreviewSleepDataProvider {
 
         return viewModel
     }
+    
+    static var noCycleViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.currentCycle = nil
+        viewModel.showEditModal = true
+
+        let now = Date()
+        viewModel.manualEndDate = now
+        viewModel.manualStartDate = now.addingTimeInterval(-8 * 3600)
+        viewModel.selectedQuality = 5
+
+        return viewModel
+    }
 
     // MARK: - Edit Cycle (completed)
     static var editCycleViewModel: SleepViewModel {

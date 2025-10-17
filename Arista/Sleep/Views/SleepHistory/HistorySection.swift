@@ -36,7 +36,7 @@ struct HistorySection: View {
                         .listRowInsets(EdgeInsets())
                 }
             }
-            .frame(height: CGFloat(viewModel.historyCycles.count) * 70)
+            .frame(height: CGFloat(viewModel.historyCycles.count) * 60)
             .listStyle(.plain)
         }
         .sheet(isPresented: $viewModel.showEditModal) {
