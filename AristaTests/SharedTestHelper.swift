@@ -90,7 +90,6 @@ struct SharedTestHelper {
     static func createInvalidUser(in context: NSManagedObjectContext) -> User {
            let user = User(context: context)
            user.id = UUID()
-           // Délibérément omettre les champs requis
            return user
        }
     

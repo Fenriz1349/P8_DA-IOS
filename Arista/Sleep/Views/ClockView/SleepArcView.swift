@@ -17,37 +17,34 @@ struct SleepArcView: View {
 
     var body: some View {
         let startAngle = SleepClockCalculator.angleForTime(cycle.dateStart)
-        let endAngle = SleepClockCalculator.angleForTime(cycle.dateEnding ?? Date())
+        let duration = SleepClockCalculator.displayedDuration(for: cycle)
+        
+        let durationAngle = (duration / (12 * 3600)) * 360
 
-        if endAngle < startAngle {
-            // Cycle crosses midnight - draw 2 arcs
-
-            // Arc 1: from start to midnight (360°)
-            sleepArc(from: startAngle, to: 360)
-
-            // Arc 2: from midnight (0°) to end
-            sleepArc(from: 0, to: endAngle)
-        } else {
-            // Normal cycle within same day
-            sleepArc(from: startAngle, to: endAngle)
-        }
-    }
-
-    private func sleepArc(from startAngle: Double, to endAngle: Double) -> some View {
         Circle()
-            .trim(
-                from: startAngle / 360,
-                to: endAngle / 360
-            )
+            .trim(from: 0, to: durationAngle / 360)
             .stroke(
                 color,
                 style: StrokeStyle(lineWidth: 12, lineCap: .round)
             )
             .frame(width: size, height: size)
-            .rotationEffect(.degrees(-90)) // Midnight at top
+            .rotationEffect(.degrees(startAngle))
     }
 }
 
-#Preview {
-    SleepArcView(cycle: PreviewSleepDataProvider.activeSleepCycle, size: 250)
+#Preview("Arc court") {
+    SleepArcView(
+        cycle: PreviewSleepDataProvider.napCycle,
+        size: 250
+    )
+}
+
+#Preview("Arc 12h+") {
+    let longCycle = SleepCycleDisplay(
+        id: UUID(),
+        dateStart: Date().addingTimeInterval(-14 * 3600),
+        dateEnding: Date(),
+        quality: 7
+    )
+    return SleepArcView(cycle: longCycle, size: 250)
 }

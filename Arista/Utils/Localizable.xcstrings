@@ -31,6 +31,9 @@
     "%d" : {
 
     },
+    "%d/10" : {
+
+    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -82,9 +85,6 @@
           }
         }
       }
-    },
-    "AddMealView" : {
-      "shouldTranslate" : false
     },
     "Annuler" : {
 
@@ -520,12 +520,6 @@
       }
     },
     "Qualité" : {
-
-    },
-    "Qualité du sommeil" : {
-
-    },
-    "Sauvegarder" : {
 
     },
     "sleep" : {

@@ -51,6 +51,19 @@ struct PreviewSleepDataProvider {
 
         return viewModel
     }
+    
+    static var noCycleViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.currentCycle = nil
+        viewModel.showEditModal = true
+
+        let now = Date()
+        viewModel.manualEndDate = now
+        viewModel.manualStartDate = now.addingTimeInterval(-8 * 3600)
+        viewModel.selectedQuality = 5
+
+        return viewModel
+    }
 
     // MARK: - Edit Cycle (completed)
     static var editCycleViewModel: SleepViewModel {
@@ -115,7 +128,7 @@ struct PreviewSleepDataProvider {
 
     /// Active sleep cycle (still ongoing)
     static var activeSleepCycle: SleepCycleDisplay {
-        let start = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: Date())!
+        let start = Date().addingTimeInterval(-3 * 3600)
         return SleepCycleDisplay(
             id: UUID(),
             dateStart: start,

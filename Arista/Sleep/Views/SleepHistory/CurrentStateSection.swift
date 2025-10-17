@@ -17,6 +17,8 @@ struct CurrentStateSection: View {
                 Text("Aucun cycle de sommeil")
                     .font(.headline)
                     .foregroundColor(.secondary)
+                    .padding()
+                    .background(Color(.systemGray6))
 
             case .active(let cycle):
                 VStack {
@@ -27,6 +29,8 @@ struct CurrentStateSection: View {
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
+                .padding()
+                .background(Color(.systemGray6))
 
             case .completed(let cycle):
                 VStack {
@@ -34,19 +38,17 @@ struct CurrentStateSection: View {
                         .font(.headline)
                     SleepHistoryRow(cycle: cycle)
                 }
-                .font(.subheadline)
             }
         }
         .onTapGesture {
             viewModel.openEditModal(for: viewModel.currentCycle)
         }
-        .padding()
-        .background(Color(.systemGray6))
         .cornerRadius(12)
     }
 }
 
 #Preview {
+    CurrentStateSection(viewModel: PreviewSleepDataProvider.noCycleViewModel)
     CurrentStateSection(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
     CurrentStateSection(viewModel: PreviewSleepDataProvider.editCycleViewModel)
 }

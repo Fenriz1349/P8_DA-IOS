@@ -9,23 +9,26 @@ import SwiftUI
 
 struct SleepQualityPicker: View {
     @Binding var quality: Int16
-
+    
     var body: some View {
-        HStack {
-            Text("Qualité du sommeil")
-                .font(.headline)
-
-            Spacer()
-
-            Picker("Qualité", selection: $quality) {
-                Text("Non évaluée").tag(Int16(0))
-                ForEach(1...10, id: \.self) { value in
-                    Text("\(value)").tag(Int16(value))
-                }
+        VStack(spacing: 8) {
+            HStack {
+                Text("Qualité")
+                    .font(.headline)
+                Text(quality == 0 ? "Non évaluée" : "\(quality)/10")
+                    .font(.headline)
+                    .foregroundColor(SleepQuality(from: quality).qualityColor)
             }
-            .pickerStyle(.wheel)
-            .frame(width: 160, height: 60)
-            .clipped()
+            
+            Slider(
+                value: Binding(
+                    get: { Double(quality) },
+                    set: { quality = Int16($0) }
+                ),
+                in: 0...10,
+                step: 1
+            )
+            .tint(.blue)
         }
     }
 }

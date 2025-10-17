@@ -20,8 +20,8 @@ struct MainSleepCycleButton: View {
 
     private var title: String {
         switch viewModel.currentState {
-        case .none, .completed: return "Commencer le sommeil"
-        case .active: return "Terminer le sommeil"
+        case .none, .completed: return "Commencer"
+        case .active: return "Terminer"
         }
     }
 

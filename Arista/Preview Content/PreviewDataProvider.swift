@@ -23,10 +23,8 @@ struct PreviewDataProvider {
         let controller = PersistenceController(inMemory: true)
         let context = controller.container.viewContext
 
-        createSampleAliments(in: context)
         let user = createSampleUser(in: context)
         createSampleExercises(for: user, in: context)
-        createSampleMeals(for: user, in: context)
 
         do {
             try context.save()
@@ -37,20 +35,9 @@ struct PreviewDataProvider {
         return controller
     }()
 
-    static var userOnly: PersistenceController = {
-        let controller = PersistenceController(inMemory: true)
-        let context = controller.container.viewContext
-
-        _ = createSampleUser(in: context)
-
-        do {
-            try context.save()
-        } catch {
-            print("Erreur lors de la création de l'utilisateur de preview: \(error)")
-        }
-
-        return controller
-    }()
+    static var PreviewContext: NSManagedObjectContext {
+        previewData.container.viewContext
+    }
 
     static var empty: PersistenceController = {
         return PersistenceController(inMemory: true)
@@ -90,26 +77,6 @@ extension PreviewDataProvider {
         return user
     }
 
-    static func createSampleAliments(in context: NSManagedObjectContext) {
-        let alimentsData = [
-            ("Pomme", 95, true),
-            ("Banane", 105, true),
-            ("Eau", 0, false),
-            ("Café", 5, false),
-            ("Sandwich Jambon", 350, true),
-            ("Salade César", 280, true),
-            ("Yaourt Grec", 130, true),
-            ("Amandes", 160, true)
-        ]
-
-        for (name, calories, isSolid) in alimentsData {
-            let aliment = Aliment(context: context)
-            aliment.name = name
-            aliment.calPerPortion = Int16(calories)
-            aliment.isSolid = isSolid
-        }
-    }
-
     static func createSampleExercises(for user: User, in context: NSManagedObjectContext) {
         let exercisesData = [
             ExerciseTestData(type: .running, duration: 45, intensity: 7, daysAgo: 0),
@@ -127,50 +94,6 @@ extension PreviewDataProvider {
             exercise.date = Calendar.current.date(byAdding: .day, value: data.daysAgo, to: Date()) ?? Date()
             exercise.user = user
         }
-    }
-
-    static func createSampleMeals(for user: User, in context: NSManagedObjectContext) {
-        let request: NSFetchRequest<Aliment> = Aliment.fetchRequest()
-        guard let aliments = try? context.fetch(request) else { return }
-
-        let mealTypes: [MealType] = [.breakfast, .lunch, .dinner, .snack]
-        let today = Date()
-
-        for daysAgo in 0...1 {
-            let mealDate = Calendar.current.date(byAdding: .day, value: -daysAgo, to: today) ?? today
-
-            for mealType in mealTypes {
-                let meal = Meal(context: context)
-                meal.mealTypeEnum = mealType
-                meal.date = mealDate
-                meal.user = user
-
-                let selectedAliments = Array(aliments.shuffled().prefix(Int.random(in: 1...3)))
-
-                for aliment in selectedAliments {
-                    let mealContent = MealContent(context: context)
-                    mealContent.quantity = Int16.random(in: 1...2)
-                    mealContent.aliment = aliment
-                    mealContent.meal = meal
-                }
-            }
-        }
-    }
-}
-
-// MARK: - Convenience Accessors
-extension PreviewDataProvider {
-
-    static var PreviewContext: NSManagedObjectContext {
-        previewData.container.viewContext
-    }
-
-    static var userOnlyContext: NSManagedObjectContext {
-        userOnly.container.viewContext
-    }
-
-    static var emptyContext: NSManagedObjectContext {
-        empty.container.viewContext
     }
 }
 
