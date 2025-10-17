@@ -1,28 +1,11 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="23788.4" systemVersion="24G90" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
-    <entity name="Aliment" representedClassName="Aliment" syncable="YES">
-        <attribute name="calPerPortion" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <attribute name="isSolid" attributeType="Boolean" defaultValueString="YES" usesScalarValueType="YES"/>
-        <attribute name="name" attributeType="String"/>
-        <relationship name="mealContents" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="MealContent" inverseName="aliment" inverseEntity="MealContent"/>
-    </entity>
     <entity name="Exercice" representedClassName="Exercice" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="intensity" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" attributeType="String" customClassName="ExerciceType"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>
-    </entity>
-    <entity name="Meal" representedClassName="Meal" syncable="YES">
-        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
-        <attribute name="type" attributeType="String" customClassName="MealType"/>
-        <relationship name="mealContents" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="MealContent" inverseName="meal" inverseEntity="MealContent"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="meals" inverseEntity="User"/>
-    </entity>
-    <entity name="MealContent" representedClassName="MealContent" syncable="YES">
-        <attribute name="quantity" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="aliment" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Aliment" inverseName="mealContents" inverseEntity="Aliment"/>
-        <relationship name="meal" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meal" inverseName="mealContents" inverseEntity="Meal"/>
     </entity>
     <entity name="SleepCycle" representedClassName="SleepCycle" syncable="YES">
         <attribute name="dateEnding" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -47,7 +30,6 @@
         <attribute name="waterGoal" attributeType="Integer 16" defaultValueString="25" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercice" inverseName="user" inverseEntity="Exercice"/>
-        <relationship name="meals" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Meal" inverseName="user" inverseEntity="Meal"/>
         <relationship name="sleepCycles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SleepCycle" inverseName="user" inverseEntity="SleepCycle"/>
         <uniquenessConstraints>
             <uniquenessConstraint>

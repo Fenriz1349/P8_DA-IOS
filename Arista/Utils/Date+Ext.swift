@@ -46,7 +46,7 @@ extension Date {
             let duration = duration(to: endDate)
             let hours = Int(duration) / 3600
             let minutes = (Int(duration) % 3600) / 60
-            return "\(hours)h \(minutes)min"
+            return hours > 0 ? "\(hours)h \(minutes)min": "\(minutes)min"
         }
 
     /// Format hour only (ex: "14:30")

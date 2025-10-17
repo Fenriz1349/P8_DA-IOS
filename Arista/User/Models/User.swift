@@ -26,7 +26,6 @@ public class User: NSManagedObject {
     @NSManaged public var weight: Int16
 
     @NSManaged public var exercices: Set<Exercice>?
-    @NSManaged public var meals: Set<Meal>?
     @NSManaged public var sleepCycles: Set<SleepCycle>?
 }
 
