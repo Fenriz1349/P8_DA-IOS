@@ -77,9 +77,11 @@ final class SleepDataManager {
     // MARK: - Fetch Methods
     func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
         let context = container.viewContext
-        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
 
-        request.predicate = NSPredicate(format: "user == %@", user)
+        context.refreshAllObjects()
+
+        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+        request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
         if let limit = limit {
             request.fetchLimit = limit
@@ -111,6 +113,24 @@ final class SleepDataManager {
         context.delete(sleepCycle)
         try context.save()
         context.refreshAllObjects()
+    }
+
+    // MARK: - Update Methods
+    func updateSleepCycle(_ cycle: SleepCycle, startDate: Date, endDate: Date, quality: Int16) throws -> SleepCycle {
+        let context = container.viewContext
+
+        guard startDate <= endDate else {
+            throw SleepDataManagerError.invalidDateInterval
+        }
+
+        cycle.dateStart = startDate
+        cycle.dateEnding = endDate
+        cycle.quality = quality
+
+        try context.save()
+        context.refresh(cycle, mergeChanges: true)
+
+        return cycle
     }
 }
 

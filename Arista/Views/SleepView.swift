@@ -15,25 +15,20 @@ struct SleepView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: 20) {
-                SleepClockView(sleepCycle: viewModel.lastCycle)
-                CurrentStateSection(currentState: viewModel.currentState)
+                SleepClockView(sleepCycle: $viewModel.lastCycle)
+                CurrentStateSection(viewModel: viewModel)
                 if viewModel.currentState.isActive {
                     SleepQualityPicker(quality: $viewModel.selectedQuality)
                 }
-                HStack {
-                    MainSleepCycleButton(viewModel: viewModel)
+                MainSleepCycleButton(viewModel: viewModel)
 
-                    Button(action: { viewModel.showManualEntryMode() }) {
-                        CustomButtonIcon(icon: "pencil", color: .yellow)
-                    }
-                }
-                
                 HistorySection(cycles: viewModel.historyCycles)
             }
             .padding()
         }
         .navigationTitle("Sommeil")
         .onAppear {
+            viewModel.reloadAllData() 
             viewModel.configureToasty(toastyManager: toastyManager)
         }
         .sheet(isPresented: $viewModel.showManualEntry) {

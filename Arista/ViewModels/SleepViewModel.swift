@@ -55,7 +55,7 @@ final class SleepViewModel: ObservableObject {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
         self.currentUser = try appCoordinator.validateCurrentUser()
-        loadHistoryCycles()
+        reloadAllData()
     }
 
     func configureToasty(toastyManager: ToastyManager) {
@@ -91,16 +91,23 @@ final class SleepViewModel: ObservableObject {
     }
 
     func reloadAllData() {
-        loadLastCycle()
-        loadHistoryCycles()
-        objectWillChange.send()
+        do {
+            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 8)
+            self.lastCycle = cycles.first
+            self.historyCycles = Array(cycles.dropFirst()).map { $0.toDisplay }
+            objectWillChange.send()
+        } catch {
+            toastyManager?.showError(error)
+            self.lastCycle = nil
+            self.historyCycles = []
+        }
     }
 
     // MARK: - Toggle Actions
     func startSleepCycleWithToggle(startDate: Date = Date()) {
         do {
             let cycle = try sleepDataManager.startSleepCycle(for: currentUser, startDate: startDate)
-            loadLastCycle()
+            reloadAllData()
         } catch {
             toastyManager?.showError(error)
         }
@@ -171,16 +178,17 @@ final class SleepViewModel: ObservableObject {
 
         do {
             try Date.validateInterval(from: manualStartDate, to: manualEndDate)
-            cycle.dateStart = manualStartDate
-            cycle.dateEnding = manualEndDate
-            cycle.quality = selectedQuality
+            let updatedCycle = try sleepDataManager.updateSleepCycle(
+                cycle,
+                startDate: manualStartDate,
+                endDate: manualEndDate,
+                quality: selectedQuality
+            )
 
-            loadLastCycle()
-
+            reloadAllData()
             isEditingLastCycle = false
             showManualEntry = false
             entryMode = .toggle
-
         } catch {
             toastyManager?.showError(error)
         }

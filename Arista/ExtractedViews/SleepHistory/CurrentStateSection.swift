@@ -8,11 +8,11 @@
 import SwiftUI
 
 struct CurrentStateSection: View {
-    let currentState: SleepTrackingState
+    @ObservedObject var viewModel: SleepViewModel
 
     var body: some View {
         VStack(spacing: 8) {
-            switch currentState {
+            switch viewModel.currentState {
             case .none:
                 Text("Aucun cycle de sommeil")
                     .font(.headline)
@@ -37,6 +37,11 @@ struct CurrentStateSection: View {
                 .font(.subheadline)
             }
         }
+        .onTapGesture {
+            if case .completed = viewModel.currentState {
+                viewModel.editLastCycle()
+            }
+        }
         .padding()
         .background(Color(.systemGray6))
         .cornerRadius(12)
@@ -44,6 +49,5 @@ struct CurrentStateSection: View {
 }
 
 #Preview {
-    CurrentStateSection(currentState: .active(PreviewDataProvider.activeSleepCycle))
-    CurrentStateSection(currentState: .completed(PreviewDataProvider.completedSleepCycle))
+    CurrentStateSection(viewModel: PreviewDataProvider.makeSleepViewModel())
 }
