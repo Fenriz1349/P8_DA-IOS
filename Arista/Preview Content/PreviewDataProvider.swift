@@ -5,7 +5,7 @@
 //  Created by Julien Cotte on 13/08/2025.
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 @MainActor
@@ -26,7 +26,6 @@ struct PreviewDataProvider {
         createSampleAliments(in: context)
         let user = createSampleUser(in: context)
         createSampleExercises(for: user, in: context)
-        createSampleSleepCycles(for: user, in: context)
         createSampleMeals(for: user, in: context)
 
         do {
@@ -130,36 +129,6 @@ extension PreviewDataProvider {
         }
     }
 
-    static func createSampleSleepCycles(for user: User, in context: NSManagedObjectContext) {
-        let now = Date()
-        let calendar = Calendar.current
-
-        // Create 7 days of sleepCycle
-        for daysAgo in 0...6 {
-            let sleepDate = calendar.date(byAdding: .day, value: -daysAgo, to: now) ?? now
-
-            let bedtimeHour = Int.random(in: 22...23)
-            let bedtimeMinute = Int.random(in: 0...59)
-
-            let bedtime = calendar.date(bySettingHour: bedtimeHour,
-                                      minute: bedtimeMinute,
-                                      second: 0,
-                                      of: sleepDate) ?? sleepDate
-
-            let sleepDuration = Double.random(in: 6.5...9.0) * 3600
-            let wakeupTime = bedtime.addingTimeInterval(sleepDuration)
-
-            let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
-
-            let sleepCycle = SleepCycle(context: context)
-            sleepCycle.id = UUID()
-            sleepCycle.dateStart = bedtime
-            sleepCycle.dateEnding = wakeupTime
-            sleepCycle.quality = Int16(quality)
-            sleepCycle.user = user
-        }
-    }
-
     static func createSampleMeals(for user: User, in context: NSManagedObjectContext) {
         let request: NSFetchRequest<Aliment> = Aliment.fetchRequest()
         guard let aliments = try? context.fetch(request) else { return }
@@ -236,105 +205,18 @@ extension PreviewDataProvider {
     static func makeSampleEditAccountViewModel() -> EditAccountViewModel {
         return try! EditAccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
     }
-
-    static func makeSleepViewModel() -> SleepViewModel {
-        _ = sampleSleepCycles
-        let viewModel = try! SleepViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
-        viewModel.loadLastCycle()
-        return viewModel
-    }
 }
 
-// MARK: - Sleep Preview Data
-extension PreviewDataProvider {
+struct PreviewContainer<Content: View, VM: ObservableObject>: View {
+    @ObservedObject var viewModel: VM
+    let content: (VM) -> Content
 
-    /// Sleep cycles for last 7 days
-    static var sampleSleepCycles: [SleepCycle] {
-        let context = PreviewContext
-        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
-        request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
-        request.fetchLimit = 7
-
-        if let cycles = try? context.fetch(request), !cycles.isEmpty {
-            return cycles
-        } else {
-            var cycles: [SleepCycle] = []
-            let calendar = Calendar.current
-
-            for index in 0..<7 {
-                let cycle = SleepCycle(context: context)
-                let date = Date().addingTimeInterval(Double(-index) * 86400)
-                cycle.id = UUID()
-                cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: date)!
-                cycle.dateEnding = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: date)!
-                    .addingTimeInterval(86400)
-                cycle.quality = Int16(Int.random(in: 0...10))
-                cycle.user = sampleUser
-
-                cycles.append(cycle)
-            }
-
-            try? context.save()
-            return cycles
-        }
+    init(_ viewModel: VM, @ViewBuilder content: @escaping (VM) -> Content) {
+        self.viewModel = viewModel
+        self.content = content
     }
 
-    /// Active sleep cycle (ongoing)
-    static var activeSleepCycle: SleepCycle {
-        let context = PreviewContext
-        let cycle = SleepCycle(context: context)
-        let calendar = Calendar.current
-        cycle.id = UUID()
-        cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: Date())!
-        cycle.dateEnding = nil // Active cycle
-        cycle.quality = 0
-        cycle.user = sampleUser
-
-        return cycle
-    }
-
-    /// Completed sleep cycle (22h → 6h crossing midnight)
-    static var completedSleepCycle: SleepCycle {
-        let context = PreviewContext
-        let cycle = SleepCycle(context: context)
-        let calendar = Calendar.current
-        let now = Date()
-        cycle.id = UUID()
-        cycle.dateStart = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: now)!
-        cycle.dateEnding = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: now)!
-            .addingTimeInterval(86400)
-        cycle.quality = 8
-        cycle.user = sampleUser
-
-        return cycle
-    }
-
-    /// Nap (14h → 15h30)
-    static var napCycle: SleepCycle {
-        let context = PreviewContext
-        let cycle = SleepCycle(context: context)
-        let calendar = Calendar.current
-        let now = Date()
-        cycle.id = UUID()
-        cycle.dateStart = calendar.date(bySettingHour: 14, minute: 0, second: 0, of: now)!
-        cycle.dateEnding = calendar.date(bySettingHour: 15, minute: 30, second: 0, of: now)!
-        cycle.quality = 6
-        cycle.user = sampleUser
-
-        return cycle
-    }
-
-    /// Bad quality cycle
-    static var badQualityCycle: SleepCycle {
-        let context = PreviewDataProvider.PreviewContext
-        let cycle = SleepCycle(context: context)
-        let yesterday = Date().addingTimeInterval(-86400)
-        cycle.id = UUID()
-        cycle.dateStart = Calendar.current.date(bySettingHour: 23, minute: 0, second: 0, of: yesterday)!
-        cycle.dateEnding = Calendar.current.date(bySettingHour: 5, minute: 30, second: 0, of: yesterday)!
-            .addingTimeInterval(86400)
-        cycle.quality = 2
-
-        return cycle
+    var body: some View {
+        content(viewModel)
     }
 }

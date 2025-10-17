@@ -52,11 +52,11 @@ struct SleepHistoryRow: View {
 
 #Preview {
     VStack(spacing: 8) {
-        SleepHistoryRow(cycle: PreviewDataProvider.completedSleepCycle.toDisplay)
+        SleepHistoryRow(cycle: PreviewSleepDataProvider.completedSleepCycle)
 
-        SleepHistoryRow(cycle: PreviewDataProvider.badQualityCycle.toDisplay)
+        SleepHistoryRow(cycle: PreviewSleepDataProvider.badQualityCycle)
 
-        SleepHistoryRow(cycle: PreviewDataProvider.activeSleepCycle.toDisplay)
+        SleepHistoryRow(cycle: PreviewSleepDataProvider.activeSleepCycle)
     }
     .padding()
 }

@@ -51,11 +51,9 @@ struct EditSleepCycleModal: View {
 }
 
 #Preview("New Cycle") {
-    EditSleepCycleModal(viewModel: PreviewDataProvider.makeSleepViewModel())
+    EditSleepCycleModal(viewModel: PreviewSleepDataProvider.newCycleViewModel)
 }
 
 #Preview("Edit Cycle") {
-    let viewModel = PreviewDataProvider.makeSleepViewModel()
-    viewModel.editLastCycle()
-    return EditSleepCycleModal(viewModel: viewModel)
+    return EditSleepCycleModal(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
 }

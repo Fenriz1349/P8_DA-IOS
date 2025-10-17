@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HourTextView: View {
     let size: CGFloat
-    let cycle: SleepCycle?
+    let cycle: SleepCycleDisplay?
 
     var body: some View {
         ZStack {
@@ -39,5 +39,5 @@ struct HourTextView: View {
 }
 
 #Preview {
-    HourTextView(size: 250, cycle: PreviewDataProvider.activeSleepCycle)
+    HourTextView(size: 250, cycle: PreviewSleepDataProvider.activeSleepCycle)
 }

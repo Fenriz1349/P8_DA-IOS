@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SleepArcView: View {
-    let cycle: SleepCycle
+    let cycle: SleepCycleDisplay
     let size: CGFloat
 
     private var color: Color {
@@ -49,5 +49,5 @@ struct SleepArcView: View {
 }
 
 #Preview {
-    SleepArcView(cycle: PreviewDataProvider.activeSleepCycle, size: 250)
+    SleepArcView(cycle: PreviewSleepDataProvider.activeSleepCycle, size: 250)
 }

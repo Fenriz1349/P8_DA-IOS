@@ -32,14 +32,14 @@ struct CurrentStateSection: View {
                 VStack {
                     Text("Dernier sommeil")
                         .font(.headline)
-                    SleepHistoryRow(cycle: cycle.toDisplay)
+                    SleepHistoryRow(cycle: cycle)
                 }
                 .font(.subheadline)
             }
         }
         .onTapGesture {
             if case .completed = viewModel.currentState {
-                viewModel.editLastCycle()
+                viewModel.showManualEntryMode()
             }
         }
         .padding()
@@ -49,5 +49,5 @@ struct CurrentStateSection: View {
 }
 
 #Preview {
-    CurrentStateSection(viewModel: PreviewDataProvider.makeSleepViewModel())
+    CurrentStateSection(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
 }

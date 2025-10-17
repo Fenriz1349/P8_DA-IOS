@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct SleepClockView: View {
-    @Binding var sleepCycle: SleepCycle?
+    let sleepCycle: SleepCycleDisplay?
     var size: CGFloat = 250
 
     private let borderWidth: CGFloat = 3
@@ -41,21 +41,21 @@ struct SleepClockView: View {
 }
 
 #Preview("Horloge - No cycle") {
-    SleepClockView(sleepCycle: .constant(nil))
+    SleepClockView(sleepCycle: nil)
         .padding()
 }
 
 #Preview("Horloge - Full Night") {
-    SleepClockView(sleepCycle: .constant(PreviewDataProvider.completedSleepCycle))
+    SleepClockView(sleepCycle: PreviewSleepDataProvider.completedSleepCycle)
         .padding()
 }
 
 #Preview("Horloge - Nap") {
-    SleepClockView(sleepCycle: .constant(PreviewDataProvider.napCycle))
+    SleepClockView(sleepCycle: PreviewSleepDataProvider.napCycle)
         .padding()
 }
 
 #Preview("Horloge - Active Cycle") {
-    SleepClockView(sleepCycle: .constant(PreviewDataProvider.activeSleepCycle))
+    SleepClockView(sleepCycle: PreviewSleepDataProvider.activeSleepCycle)
         .padding()
 }

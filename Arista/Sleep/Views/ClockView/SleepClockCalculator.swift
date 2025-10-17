@@ -29,7 +29,7 @@ final class SleepClockCalculator {
 
     /// Determine which 12 hours to display based on sleep cycle or current time
     /// Returns an array of 12 consecutive hours (0-23)
-    static func hoursToDisplay(for sleepCycle: SleepCycle?) -> [Int] {
+    static func hoursToDisplay(for sleepCycle: SleepCycleDisplay?) -> [Int] {
         let startHour: Int
 
         if let cycle = sleepCycle {

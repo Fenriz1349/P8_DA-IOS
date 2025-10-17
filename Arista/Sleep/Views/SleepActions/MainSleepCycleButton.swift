@@ -34,8 +34,8 @@ struct MainSleepCycleButton: View {
 
     private var mainAction: () -> Void {
         switch viewModel.currentState {
-        case .none, .completed: return { viewModel.startSleepCycleWithToggle() }
-        case .active: return { viewModel.endSleepCycleWithToggle() }
+        case .none, .completed: return { viewModel.startSleepCycle() }
+        case .active: return { viewModel.endSleepCycle() }
         }
     }
 
@@ -47,5 +47,5 @@ struct MainSleepCycleButton: View {
 }
 
 #Preview {
-    MainSleepCycleButton(viewModel: PreviewDataProvider.makeSleepViewModel())
+    MainSleepCycleButton(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
 }

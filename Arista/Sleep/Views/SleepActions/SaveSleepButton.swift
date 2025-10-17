@@ -25,5 +25,5 @@ struct SaveSleepButton: View {
 }
 
 #Preview {
-    SaveSleepButton(viewModel: PreviewDataProvider.makeSleepViewModel())
+    SaveSleepButton(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
 }

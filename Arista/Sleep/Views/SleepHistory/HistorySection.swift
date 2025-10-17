@@ -45,5 +45,5 @@ struct HistorySection: View {
 
 
 #Preview {
-    HistorySection(viewModel: PreviewDataProvider.makeSleepViewModel())
+    HistorySection(viewModel: PreviewSleepDataProvider.activeAndHistoryViewModel)
 }

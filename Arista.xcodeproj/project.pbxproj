@@ -73,6 +73,7 @@
 		68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C97E2E61EDE600108FE9 /* User+PasswordTests.swift */; };
 		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
 		68CA52022E45FF5800178C72 /* AddMealView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA52012E45FF5800178C72 /* AddMealView.swift */; };
+		68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E7C2C82EA242B9001C039B /* PreviewSleepDataProvider.swift */; };
 		68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */; };
 		68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */; };
 		68E89C7C2E6AE5B80004F6DA /* Aliment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C722E6AE5B80004F6DA /* Aliment.swift */; };
@@ -167,6 +168,7 @@
 		68C6C97E2E61EDE600108FE9 /* User+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+PasswordTests.swift"; sourceTree = "<group>"; };
 		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		68CA52012E45FF5800178C72 /* AddMealView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddMealView.swift; sourceTree = "<group>"; };
+		68E7C2C82EA242B9001C039B /* PreviewSleepDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSleepDataProvider.swift; sourceTree = "<group>"; };
 		68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+Password.swift"; sourceTree = "<group>"; };
 		68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+PasswordTests.swift"; sourceTree = "<group>"; };
 		68E89C722E6AE5B80004F6DA /* Aliment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Aliment.swift; sourceTree = "<group>"; };
@@ -226,6 +228,7 @@
 		53E5872F2B235E8F00E4EF99 /* Arista */ = {
 			isa = PBXGroup;
 			children = (
+				68E7C2CA2EA24384001C039B /* Sleep */,
 				6802E6642E852D6700501E0E /* Toasty */,
 				68E529972E5857A100371833 /* Security */,
 				686027A42E3B94F800BF8EA8 /* Models */,
@@ -233,7 +236,6 @@
 				68923A572E599FB900D81620 /* DataManagers */,
 				6843211D2E4CC07D003FDAEE /* Utils */,
 				53E587612B235FDC00E4EF99 /* ViewModels */,
-				6813E7682E86D27E007F008C /* ExtractedViews */,
 				53E587602B235FD700E4EF99 /* Views */,
 				53E587302B235E8F00E4EF99 /* AristaApp.swift */,
 				53E587342B235E9000E4EF99 /* Assets.xcassets */,
@@ -247,6 +249,7 @@
 			children = (
 				53E587372B235E9000E4EF99 /* Preview Assets.xcassets */,
 				684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */,
+				68E7C2C82EA242B9001C039B /* PreviewSleepDataProvider.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -275,8 +278,6 @@
 				68CA52012E45FF5800178C72 /* AddMealView.swift */,
 				68E89C8E2E6B0D060004F6DA /* ContentView.swift */,
 				68F4DA082E7C522500CFECA5 /* EditAccountView.swift */,
-				6813E76B2E86D362007F008C /* SleepView.swift */,
-				685228932E97E329008E33EE /* EditSleepCycleModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -290,7 +291,6 @@
 				53E5876E2B236DBC00E4EF99 /* AddExerciseViewModel.swift */,
 				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
 				685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */,
-				6813E7602E867B97007F008C /* SleepViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -358,16 +358,6 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
-		6813E7682E86D27E007F008C /* ExtractedViews */ = {
-			isa = PBXGroup;
-			children = (
-				685228922E97DE1C008E33EE /* SleepActions */,
-				6852288F2E97BC8A008E33EE /* SleepHistory */,
-				685228862E97ACF2008E33EE /* ClockView */,
-			);
-			path = ExtractedViews;
-			sourceTree = "<group>";
-		};
 		6840AF4F2E7313EB0098F325 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
@@ -430,11 +420,9 @@
 				68E89C742E6AE5B80004F6DA /* Exercice.swift */,
 				68E89C762E6AE5B80004F6DA /* Meal.swift */,
 				68E89C782E6AE5B80004F6DA /* MealContent.swift */,
-				68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */,
 				686027A52E3B951A00BF8EA8 /* MealType.swift */,
 				686027A92E3B973100BF8EA8 /* ExerciceType.swift */,
 				686027AB2E3B9F8900BF8EA8 /* Gender.swift */,
-				6813E7642E868E6B007F008C /* SleepQuality.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -459,7 +447,6 @@
 			children = (
 				689510072E60473600461030 /* UserDataManager.swift */,
 				68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */,
-				6802E67D2E85897D00501E0E /* SleepDataManager.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -511,6 +498,38 @@
 				68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */,
 			);
 			path = Security;
+			sourceTree = "<group>";
+		};
+		68E7C2CA2EA24384001C039B /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				68E7C2CC2EA243D8001C039B /* Views */,
+				68E7C2CB2EA243CC001C039B /* Models */,
+				6802E67D2E85897D00501E0E /* SleepDataManager.swift */,
+				6813E7602E867B97007F008C /* SleepViewModel.swift */,
+			);
+			path = Sleep;
+			sourceTree = "<group>";
+		};
+		68E7C2CB2EA243CC001C039B /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */,
+				6813E7642E868E6B007F008C /* SleepQuality.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		68E7C2CC2EA243D8001C039B /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				685228862E97ACF2008E33EE /* ClockView */,
+				6852288F2E97BC8A008E33EE /* SleepHistory */,
+				685228922E97DE1C008E33EE /* SleepActions */,
+				6813E76B2E86D362007F008C /* SleepView.swift */,
+				685228932E97E329008E33EE /* EditSleepCycleModal.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -619,6 +638,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */,
 				68EF281E2E98ED2500A5AE73 /* SaveSleepButton.swift in Sources */,
 				685228962E97E437008E33EE /* SleepQualityLabel.swift in Sources */,
 				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,

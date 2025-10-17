@@ -15,7 +15,7 @@ struct SleepView: View {
     var body: some View {
         VStack(spacing: 20) {
             HStack {
-                SleepClockView(sleepCycle: $viewModel.lastCycle, size: 200)
+                SleepClockView(sleepCycle: viewModel.currentCycle, size: 200)
                 MainSleepCycleButton(viewModel: viewModel)
 
             }
@@ -36,7 +36,7 @@ struct SleepView: View {
 
 #Preview {
     NavigationStack {
-        SleepView(viewModel: PreviewDataProvider.makeSleepViewModel())
+        SleepView(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
             .environmentObject(PreviewDataProvider.sampleToastyManager)
     }
 }
