@@ -112,11 +112,19 @@ final class SleepDataManager {
     }
 
     // MARK: - Update Methods
-    func updateSleepCycle(_ cycle: SleepCycle, startDate: Date, endDate: Date, quality: Int16) throws -> SleepCycle {
+    func updateSleepCycle(
+        by id: UUID,
+        startDate: Date,
+        endDate: Date,
+        quality: Int16
+    ) throws {
         let context = container.viewContext
+        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        request.fetchLimit = 1
 
-        guard startDate <= endDate else {
-            throw SleepDataManagerError.invalidDateInterval
+        guard let cycle = try context.fetch(request).first else {
+            throw SleepDataManagerError.sleepCycleNotFound
         }
 
         cycle.dateStart = startDate
@@ -124,9 +132,8 @@ final class SleepDataManager {
         cycle.quality = quality
 
         try context.save()
-
-        return cycle
     }
+
 }
 
 #if DEBUG

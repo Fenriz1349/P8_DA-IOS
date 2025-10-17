@@ -28,7 +28,6 @@ final class SleepViewModelTests: XCTestCase {
         coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
         spyToastyManager = ToastyTestHelpers.createSpyManager()
         
-        // Créer et connecter un utilisateur
         let user = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
         try! coordinator.login(id: user.id)
@@ -52,10 +51,8 @@ final class SleepViewModelTests: XCTestCase {
         // Then
         XCTAssertNotNil(sut.currentUser)
         XCTAssertEqual(sut.currentState, .none)
-        XCTAssertNil(sut.lastCycle)
-        XCTAssertEqual(sut.entryMode, .toggle)
-        XCTAssertFalse(sut.showManualEntry)
-        XCTAssertFalse(sut.isEditingLastCycle)
+        XCTAssertNil(sut.currentCycle)
+        XCTAssertFalse(sut.showEditModal)
     }
     
     func test_init_withNoLoggedUser_throwsError() throws {
@@ -70,6 +67,23 @@ final class SleepViewModelTests: XCTestCase {
     
     // MARK: - Current State Tests
     
+    
+    func test_isActive_returnsExpectedValues() {
+        // Given
+        let activeCycle = SleepCycleDisplay(id: UUID(), dateStart: Date(), dateEnding: nil, quality: 6)
+        let completedCycle = SleepCycleDisplay(id: UUID(), dateStart: Date(), dateEnding: Date(), quality: 8)
+
+        // When
+        let activeState = SleepTrackingState.active(activeCycle)
+        let completedState = SleepTrackingState.completed(completedCycle)
+        let noneState = SleepTrackingState.none
+
+        // Then
+        XCTAssertTrue(activeState.isActive)
+        XCTAssertFalse(completedState.isActive)
+        XCTAssertFalse(noneState.isActive)
+    }
+
     func test_currentState_withNoLastCycle_returnsNone() throws {
         // Given / When / Then
         XCTAssertEqual(sut.currentState, .none)
@@ -78,8 +92,8 @@ final class SleepViewModelTests: XCTestCase {
     func test_currentState_withActiveCycle_returnsActive() throws {
         // Given
         let startDate = Date()
-        let cycle = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
-        sut.lastCycle = cycle
+        let cycle = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate).toDisplay
+        sut.currentCycle = cycle
         
         // When
         let state = sut.currentState
@@ -97,11 +111,12 @@ final class SleepViewModelTests: XCTestCase {
         // Given
         let startDate = Date()
         let endDate = startDate.addingTimeInterval(8 * 3600)
-        let cycle = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
+        let cycle = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate).toDisplay
         try sleepDataManager.endSleepCycle(for: sut.currentUser, endDate: endDate, quality: 8)
-        sut.lastCycle = cycle
+        sut.currentCycle = cycle
         
         // When
+        sut.reloadAllData()
         let state = sut.currentState
         
         // Then
@@ -114,49 +129,20 @@ final class SleepViewModelTests: XCTestCase {
         }
     }
     
-    // MARK: - Load Last Cycle Tests
-    
-    func test_loadLastCycle_withNoCycles_setsLastCycleToNil() throws {
-        // Given / When
-        sut.loadLastCycle()
-        
-        // Then
-        XCTAssertNil(sut.lastCycle)
-        XCTAssertEqual(sut.currentState, .none)
-    }
-    
-    func test_loadLastCycle_withMultipleCycles_setsLastCycleToMostRecent() throws {
-        // Given
-        let date1 = Date().addingTimeInterval(-86400)
-        let date2 = Date()
-        
-        try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: date1)
-        try sleepDataManager.endSleepCycle(for: sut.currentUser)
-        
-        try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: date2)
-        
-        // When
-        sut.loadLastCycle()
-        
-        // Then
-        XCTAssertNotNil(sut.lastCycle)
-        XCTAssertEqual(sut.lastCycle?.dateStart, date2)
-    }
-    
     // MARK: - Start Sleep Cycle Tests
     
-    func test_startSleepCycleWithToggle_success_updatesStateAndLastCycle() throws {
+    func test_startSleepCycle_success_updatesStateAndLastCycle() throws {
         // Given
         let startDate = Date()
         XCTAssertEqual(sut.currentState, .none)
         
         // When
-        sut.startSleepCycleWithToggle(startDate: startDate)
+        sut.startSleepCycle(startDate: startDate)
         
         // Then
-        XCTAssertNotNil(sut.lastCycle)
-        XCTAssertEqual(sut.lastCycle?.dateStart, startDate)
-        XCTAssertNil(sut.lastCycle?.dateEnding)
+        XCTAssertNotNil(sut.currentCycle)
+        XCTAssertEqual(sut.currentCycle?.dateStart, startDate)
+        XCTAssertNil(sut.currentCycle?.dateEnding)
         
         if case .active = sut.currentState {
             // Success
@@ -164,160 +150,67 @@ final class SleepViewModelTests: XCTestCase {
             XCTFail("Expected .active state after starting cycle")
         }
         
-        XCTAssertEqual(spyToastyManager.showCallCount, 0) // Pas d'erreur
-    }
-    
-    func test_startSleepCycleWithToggle_withActiveSession_showsError() throws {
-        // Given - Créer un cycle actif
-        try sleepDataManager.startSleepCycle(for: sut.currentUser)
-        sut.loadLastCycle()
-        
-        // When
-        sut.startSleepCycleWithToggle()
-        
-        // Then
-        XCTAssertEqual(spyToastyManager.showCallCount, 1)
-        XCTAssertEqual(spyToastyManager.lastType, .error)
-        XCTAssertNotNil(spyToastyManager.lastMessage)
+        XCTAssertEqual(spyToastyManager.showCallCount, 0)
     }
     
     // MARK: - End Sleep Cycle Tests
     
-    func test_endSleepCycleWithToggle_success_updatesStateAndLastCycle() throws {
-        // Given - Démarrer un cycle
+    func test_endSleepCycle_success_updatesStateAndLastCycle() throws {
+        // Given
+        sut.configureToasty(toastyManager: spyToastyManager)
+
         let startDate = Date()
-        try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
-        sut.loadLastCycle()
+        sut.startSleepCycle(startDate: startDate)
+
+        guard case .active = sut.currentState else {
+            XCTFail("Expected .active state"); return
+        }
+
         sut.selectedQuality = 7
-        
-        guard case .active = sut.currentState else { XCTFail("Expected .active state"); return }
-        
         let endDate = startDate.addingTimeInterval(8 * 3600)
-        
+
         // When
-        sut.endSleepCycleWithToggle(endDate: endDate)
-        
+        sut.endSleepCycle(endDate: endDate)
+
         // Then
-        XCTAssertNotNil(sut.lastCycle?.dateEnding)
-        XCTAssertEqual(sut.lastCycle?.dateEnding, endDate)
-        XCTAssertEqual(sut.lastCycle?.quality, 7)
-        
+        XCTAssertNotNil(sut.currentCycle?.dateEnding)
+        XCTAssertEqual(sut.currentCycle?.dateEnding, endDate)
+        XCTAssertEqual(sut.currentCycle?.quality, 7)
+
         if case .completed = sut.currentState {
-            // Success
         } else {
             XCTFail("Expected .completed state after ending cycle")
         }
-        
-        XCTAssertEqual(spyToastyManager.showCallCount, 0) // Pas d'erreur
+
+        XCTAssertEqual(spyToastyManager.showCallCount, 0)
     }
+
     
-    func test_endSleepCycleWithToggle_withNoActiveSession_showsError() throws {
-        // Given - Pas de cycle actif
+    func test_endSleepCycle_withNoActiveSession_showsError() throws {
+        // Given
         XCTAssertEqual(sut.currentState, .none)
         
         // When
-        sut.endSleepCycleWithToggle()
+        sut.endSleepCycle()
         
         // Then
         XCTAssertEqual(spyToastyManager.showCallCount, 1)
         XCTAssertEqual(spyToastyManager.lastType, .error)
     }
     
-    func test_endSleepCycleWithToggle_withInvalidDates_showsError() throws {
+    func test_endSleepCycle_withInvalidDates_showsError() throws {
         // Given
         let startDate = Date()
         try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
-        sut.loadLastCycle()
         
         let endDate = startDate.addingTimeInterval(-3600) // 1 heure avant
         
         // When
-        sut.endSleepCycleWithToggle(endDate: endDate)
+        sut.endSleepCycle(endDate: endDate)
         
         // Then
         XCTAssertEqual(spyToastyManager.showCallCount, 1)
         XCTAssertEqual(spyToastyManager.lastType, .error)
-    }
-    
-    // MARK: - Manual Entry Tests
-    
-    func test_saveManualEntry_withValidDates_success() throws {
-        // Given
-        let startDate = Date()
-        let endDate = startDate.addingTimeInterval(8 * 3600)
-        sut.manualStartDate = startDate
-        sut.manualEndDate = endDate
-        sut.selectedQuality = 6
-        
-        // When
-        sut.saveManualEntry()
-        
-        // Then
-        XCTAssertNotNil(sut.lastCycle)
-        XCTAssertEqual(sut.lastCycle?.dateStart, startDate)
-        XCTAssertEqual(sut.lastCycle?.dateEnding, endDate)
-        XCTAssertEqual(sut.lastCycle?.quality, 6)
-        XCTAssertFalse(sut.showManualEntry) // Should close modal
-        XCTAssertEqual(spyToastyManager.showCallCount, 0)
-    }
-    
-    func test_saveManualEntry_withInvalidDates_showsError() throws {
-        // Given
-        sut.showManualEntryMode()
-        let startDate = Date()
-        let endDate = startDate.addingTimeInterval(-3600)
-        sut.manualStartDate = startDate
-        sut.manualEndDate = endDate
-        
-        // When
-        sut.saveManualEntry()
-        
-        // Then
-        XCTAssertNil(sut.lastCycle)
-        XCTAssertTrue(sut.showManualEntry)
-        XCTAssertEqual(spyToastyManager.showCallCount, 1)
-        XCTAssertEqual(spyToastyManager.lastType, .error)
-    }
-    
-    // MARK: - Edit Last Cycle Tests
-    
-    func test_editLastCycle_withCompletedCycle_entersEditMode() throws {
-        // Given
-        let cycle = try sleepDataManager.startSleepCycle(for: sut.currentUser)
-        try sleepDataManager.endSleepCycle(for: sut.currentUser, quality: 5)
-        sut.lastCycle = cycle
-        
-        // When
-        sut.editLastCycle()
-        
-        // Then
-        XCTAssertTrue(sut.isEditingLastCycle)
-        XCTAssertEqual(sut.manualStartDate, cycle.dateStart)
-        XCTAssertEqual(sut.manualEndDate, cycle.dateEnding)
-    }
-    
-    func test_saveEditedCycle_success_updatesLastCycle() throws {
-        // Given
-        let cycle = try sleepDataManager.startSleepCycle(for: sut.currentUser)
-        try sleepDataManager.endSleepCycle(for: sut.currentUser)
-        sut.lastCycle = cycle
-        sut.isEditingLastCycle = true
-        sut.selectedQuality = 9
-        
-        let newStartDate = Date().addingTimeInterval(-3600)
-        let newEndDate = Date()
-        sut.manualStartDate = newStartDate
-        sut.manualEndDate = newEndDate
-        
-        // When
-        sut.saveEditedCycle()
-        
-        // Then
-        XCTAssertEqual(sut.lastCycle?.dateStart, newStartDate)
-        XCTAssertEqual(sut.lastCycle?.dateEnding, newEndDate)
-        XCTAssertEqual(sut.lastCycle?.quality, 9)
-        XCTAssertFalse(sut.isEditingLastCycle) // Exit edit mode
-        XCTAssertEqual(spyToastyManager.showCallCount, 0)
     }
     
     // MARK: - ToastyManager Configuration Tests
@@ -329,36 +222,6 @@ final class SleepViewModelTests: XCTestCase {
         // Then
         XCTAssertNotNil(sut.toastyManager)
         XCTAssertTrue(sut.toastyManager === spyToastyManager)
-    }
-    
-    // MARK: - Entry Mode Tests
-    
-    func test_showManualEntryMode_setsCorrectState() throws {
-        // Given
-        XCTAssertEqual(sut.entryMode, .toggle)
-        XCTAssertFalse(sut.showManualEntry)
-        
-        // When
-        sut.showManualEntryMode()
-        
-        // Then
-        XCTAssertEqual(sut.entryMode, .manual)
-        XCTAssertTrue(sut.showManualEntry)
-    }
-    
-    func test_cancelManualEntry_resetsState() throws {
-        // Given
-        sut.entryMode = .manual
-        sut.showManualEntry = true
-        sut.isEditingLastCycle = true
-        
-        // When
-        sut.cancelManualEntry()
-        
-        // Then
-        XCTAssertEqual(sut.entryMode, .toggle)
-        XCTAssertFalse(sut.showManualEntry)
-        XCTAssertFalse(sut.isEditingLastCycle)
     }
 
     // MARK: - History Cycles Tests
@@ -420,11 +283,139 @@ final class SleepViewModelTests: XCTestCase {
         sut.reloadAllData()
         
         // Then
-        XCTAssertNotNil(sut.lastCycle)
+        XCTAssertNotNil(sut.currentCycle)
         XCTAssertFalse(sut.historyCycles.isEmpty)
         
-        if let lastCycle = sut.lastCycle, let firstHistory = sut.historyCycles.first {
+        if let lastCycle = sut.currentCycle, let firstHistory = sut.historyCycles.first {
             XCTAssertNotEqual(lastCycle.id, firstHistory.id)
         }
+    }
+
+    // MARK: - Delete Cycle Tests
+
+    func test_deleteHistoryCycle_removesCycle() throws {
+        // Given
+        let startDate = Date()
+        _ = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
+        _ = try sleepDataManager.endSleepCycle(for: sut.currentUser,
+                                               endDate: startDate.addingTimeInterval(8 * 3600),
+                                               quality: 6)
+        sut.reloadAllData()
+
+        guard let cycle = sut.currentCycle else {
+               XCTFail("Expected currentCycle to exist")
+               return
+           }
+    
+        // When
+        sut.deleteHistoryCycle(cycle)
+
+        // Then
+        XCTAssertTrue(
+            try sleepDataManager.fetchSleepCycles(for: sut.currentUser).isEmpty,
+            "Cycle should be deleted from Core Data"
+        )
+    }
+
+    // MARK: - Cancel Edit Tests
+
+    func test_cancelEdit_hidesModalAndClearsEditingCycle() throws {
+        // Given
+        let cycle = SleepCycleDisplay(
+            id: UUID(),
+            dateStart: Date().addingTimeInterval(-8 * 3600),
+            dateEnding: Date(),
+            quality: 6
+        )
+
+        sut.openEditModal(for: cycle)
+        XCTAssertTrue(sut.showEditModal)
+        XCTAssertNotNil(sut.editingCycle)
+
+        // When
+        sut.cancelEdit()
+
+        // Then
+        XCTAssertFalse(sut.showEditModal)
+        XCTAssertNil(sut.editingCycle)
+    }
+
+    // MARK: - Save Cycle Tests
+
+    func test_saveCycle_createsNewCycle() throws {
+        // Given
+        sut.manualStartDate = Date().addingTimeInterval(-8 * 3600)
+        sut.manualEndDate = Date()
+        sut.selectedQuality = 7
+        sut.editingCycle = nil
+
+        // When
+        sut.saveCycle()
+
+        // Then
+        XCTAssertNotNil(sut.currentCycle)
+        XCTAssertEqual(sut.currentCycle?.quality, 7)
+        XCTAssertFalse(sut.showEditModal)
+    }
+
+    func test_saveCycle_updatesExistingCycle() throws {
+        // Given
+        let startDate = Date().addingTimeInterval(-8 * 3600)
+        let endDate = Date()
+        let created = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
+        try sleepDataManager.endSleepCycle(for: sut.currentUser,
+                                           endDate: endDate,
+                                           quality: 5)
+        sut.reloadAllData()
+
+        sut.openEditModal(for: sut.currentCycle)
+        sut.manualStartDate = startDate.addingTimeInterval(-3600)
+        sut.manualEndDate = endDate.addingTimeInterval(3600)
+        sut.selectedQuality = 9
+
+        // When
+        sut.saveCycle()
+
+        // Then
+        XCTAssertEqual(sut.currentCycle?.quality, 9)
+        XCTAssertFalse(sut.showEditModal)
+    }
+
+    // MARK: - Start Sleep Cycle Error Tests
+
+    func test_startSleepCycle_whenAlreadyActive_showsError() throws {
+        // Given
+        sut.startSleepCycle()
+        XCTAssertNotNil(sut.currentCycle)
+
+        // When
+        sut.startSleepCycle()
+
+        // Then
+        XCTAssertEqual(spyToastyManager.showCallCount, 1)
+        XCTAssertEqual(spyToastyManager.lastType, .error)
+    }
+
+    func test_openEditModal_withoutCycle_createsDefaultCycle() throws {
+        // When
+        sut.openEditModal(for: nil)
+        
+        // Then
+        XCTAssertTrue(sut.showEditModal)
+        XCTAssertNotNil(sut.editingCycle)
+
+        guard let cycle = sut.editingCycle else {
+            XCTFail("Expected a default editing cycle"); return
+        }
+
+        let now = Date()
+        let expectedStart = now.addingTimeInterval(-8 * 3600)
+        
+        // Dates should be close to now / now - 8h
+        XCTAssertLessThan(abs(cycle.dateStart.timeIntervalSince(expectedStart)), 5)
+        XCTAssertLessThan(abs(cycle.dateEnding!.timeIntervalSince(now)), 5)
+
+        // Default quality should be 5
+        XCTAssertEqual(cycle.quality, 5)
     }
 }

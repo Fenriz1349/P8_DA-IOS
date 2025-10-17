@@ -38,9 +38,7 @@ struct CurrentStateSection: View {
             }
         }
         .onTapGesture {
-            if case .completed = viewModel.currentState {
-                viewModel.showManualEntryMode()
-            }
+            viewModel.openEditModal(for: viewModel.currentCycle)
         }
         .padding()
         .background(Color(.systemGray6))
@@ -50,4 +48,5 @@ struct CurrentStateSection: View {
 
 #Preview {
     CurrentStateSection(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
+    CurrentStateSection(viewModel: PreviewSleepDataProvider.editCycleViewModel)
 }

@@ -61,7 +61,7 @@ struct SleepCycleDisplay: Identifiable, Equatable {
     let dateStart: Date
     let dateEnding: Date?
     let quality: Int16
-    
+
     var sleepQuality: SleepQuality {
         return SleepQuality(from: quality)
     }

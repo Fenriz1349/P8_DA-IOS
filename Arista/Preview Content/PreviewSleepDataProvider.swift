@@ -42,9 +42,7 @@ struct PreviewSleepDataProvider {
     // MARK: - New Cycle (manual entry)
     static var newCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
-        viewModel.entryMode = .manual
-        viewModel.showManualEntry = true
-        viewModel.isEditingLastCycle = false
+        viewModel.showEditModal = true
 
         let now = Date()
         viewModel.manualEndDate = now
@@ -57,9 +55,7 @@ struct PreviewSleepDataProvider {
     // MARK: - Edit Cycle (completed)
     static var editCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
-        viewModel.entryMode = .manual
-        viewModel.showManualEntry = true
-        viewModel.isEditingLastCycle = true
+        viewModel.showEditModal = true
 
         let cycle = PreviewSleepDataProvider.completedSleepCycle
         viewModel.currentCycle = cycle
@@ -74,9 +70,7 @@ struct PreviewSleepDataProvider {
     static var activeCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
-        viewModel.entryMode = .toggle
-        viewModel.showManualEntry = false
-        viewModel.isEditingLastCycle = false
+        viewModel.showEditModal = false
         return viewModel
     }
 
@@ -87,9 +81,7 @@ struct PreviewSleepDataProvider {
         viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
         viewModel.historyCycles = PreviewSleepDataProvider.sampleSleepCycles
 
-        viewModel.entryMode = .toggle
-        viewModel.showManualEntry = false
-        viewModel.isEditingLastCycle = false
+        viewModel.showEditModal = false
         viewModel.selectedQuality = 0
 
         return viewModel

@@ -14,7 +14,6 @@ struct EditSleepCycleModal: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                // Date pickers
                 VStack(spacing: 16) {
                     DatePicker(
                         "Heure de coucher",
@@ -33,17 +32,20 @@ struct EditSleepCycleModal: View {
                 Spacer()
             }
             .padding()
-            .navigationTitle(viewModel.isEditingLastCycle ? "Modifier" : "Nouveau cycle")
+            .navigationTitle(viewModel.currentCycle != nil ? "Modifier" : "Nouveau cycle")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Annuler") {
-                        viewModel.cancelManualEntry()
+                        viewModel.cancelEdit()
                         dismiss()
                     }
                 }
                 ToolbarItem(placement: .confirmationAction) {
-                   SaveSleepButton(viewModel: viewModel)
+                    Button("Sauvegarder") {
+                        viewModel.saveCycle()
+                        dismiss()
+                    }
                 }
             }
         }

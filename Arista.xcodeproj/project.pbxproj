@@ -85,7 +85,6 @@
 		68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C882E6B03450004F6DA /* AppCoordinator.swift */; };
 		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
 		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
-		68EF281E2E98ED2500A5AE73 /* SaveSleepButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EF281D2E98ED2500A5AE73 /* SaveSleepButton.swift */; };
 		68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4DA082E7C522500CFECA5 /* EditAccountView.swift */; };
 /* End PBXBuildFile section */
 
@@ -180,7 +179,6 @@
 		68E89C882E6B03450004F6DA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		68EF281D2E98ED2500A5AE73 /* SaveSleepButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveSleepButton.swift; sourceTree = "<group>"; };
 		68F4DA082E7C522500CFECA5 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -257,6 +255,7 @@
 		53E587452B235E9000E4EF99 /* AristaTests */ = {
 			isa = PBXGroup;
 			children = (
+				68E7C2CD2EA26C0E001C039B /* Sleep */,
 				6802E6722E8534DF00501E0E /* Toasty */,
 				68E529982E5857F800371833 /* Security */,
 				689510092E6070F600461030 /* Models */,
@@ -365,7 +364,6 @@
 				6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */,
 				686D56912E7455900088AD98 /* AccountViewModelTests.swift */,
 				685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */,
-				6813E7622E867CC9007F008C /* SleepViewModelTests.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -407,7 +405,6 @@
 			children = (
 				685228972E97E8EC008E33EE /* SleepQualityPicker.swift */,
 				6852289B2E97F044008E33EE /* MainSleepCycleButton.swift */,
-				68EF281D2E98ED2500A5AE73 /* SaveSleepButton.swift */,
 			);
 			path = SleepActions;
 			sourceTree = "<group>";
@@ -465,7 +462,6 @@
 			children = (
 				6895100D2E607DF600461030 /* UserDataManagerTests.swift */,
 				68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */,
-				6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */,
 			);
 			path = DataManagers;
 			sourceTree = "<group>";
@@ -530,6 +526,15 @@
 				685228932E97E329008E33EE /* EditSleepCycleModal.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		68E7C2CD2EA26C0E001C039B /* Sleep */ = {
+			isa = PBXGroup;
+			children = (
+				6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */,
+				6813E7622E867CC9007F008C /* SleepViewModelTests.swift */,
+			);
+			path = Sleep;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -639,7 +644,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */,
-				68EF281E2E98ED2500A5AE73 /* SaveSleepButton.swift in Sources */,
 				685228962E97E437008E33EE /* SleepQualityLabel.swift in Sources */,
 				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,
 				68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */,

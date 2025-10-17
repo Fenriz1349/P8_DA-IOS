@@ -203,4 +203,53 @@ final class SleepDataManagerTests: XCTestCase {
         // Then
         XCTAssertEqual(try manager.fetchSleepCycles(for: testUser).count, 0)
     }
+    
+    // MARK: - Update Sleep Cycle Tests
+    
+    func test_updateSleepCycle_shouldModifyExistingCycle() throws {
+        // Given
+        let startDate = Date().addingTimeInterval(-9 * 3600)
+        let endDate = Date().addingTimeInterval(-1 * 3600)
+        let quality: Int16 = 6
+        
+        let createdCycle = try manager.startSleepCycle(for: testUser, startDate: startDate)
+        try manager.endSleepCycle(for: testUser, endDate: endDate, quality: 4)
+        
+        let newStart = startDate.addingTimeInterval(-3600)
+        let newEnd = endDate.addingTimeInterval(3600)
+        let newQuality: Int16 = 9
+        
+        // When
+        try manager.updateSleepCycle(by: createdCycle.id,
+                                     startDate: newStart,
+                                     endDate: newEnd,
+                                     quality: newQuality)
+        
+        // Then
+        let fetched = try manager.fetchSleepCycles(for: testUser)
+        let updated = fetched.first(where: { $0.id == createdCycle.id })
+        
+        XCTAssertNotNil(updated)
+        XCTAssertEqual(updated?.dateStart, newStart)
+        XCTAssertEqual(updated?.dateEnding, newEnd)
+        XCTAssertEqual(updated?.quality, newQuality)
+    }
+    
+    func test_updateSleepCycle_withInvalidID_shouldThrowNotFound() throws {
+        // Given
+        let randomID = UUID()
+        let startDate = Date()
+        let endDate = startDate.addingTimeInterval(8 * 3600)
+        
+        // When / Then
+        XCTAssertThrowsError(
+            try manager.updateSleepCycle(by: randomID,
+                                         startDate: startDate,
+                                         endDate: endDate,
+                                         quality: 5)
+        ) { error in
+            XCTAssertEqual(error as? SleepDataManagerError, .sleepCycleNotFound)
+        }
+    }
+
 }

@@ -21,6 +21,9 @@ struct HistorySection: View {
                 ForEach(viewModel.historyCycles) { cycle in
                     SleepHistoryRow(cycle: cycle)
                         .contentShape(Rectangle())
+                        .onTapGesture {
+                            viewModel.openEditModal(for: cycle)
+                        }
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 withAnimation {
@@ -36,13 +39,11 @@ struct HistorySection: View {
             .frame(height: CGFloat(viewModel.historyCycles.count) * 70)
             .listStyle(.plain)
         }
-        .sheet(isPresented: $viewModel.showManualEntry) {
+        .sheet(isPresented: $viewModel.showEditModal) {
             EditSleepCycleModal(viewModel: viewModel)
         }
     }
 }
-
-
 
 #Preview {
     HistorySection(viewModel: PreviewSleepDataProvider.activeAndHistoryViewModel)

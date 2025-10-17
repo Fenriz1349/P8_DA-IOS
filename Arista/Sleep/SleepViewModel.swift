@@ -18,11 +18,6 @@ enum SleepTrackingState: Equatable {
     }
 }
 
-enum SleepEntryMode {
-    case toggle
-    case manual
-}
-
 @MainActor
 final class SleepViewModel: ObservableObject {
 
@@ -35,11 +30,10 @@ final class SleepViewModel: ObservableObject {
     /// UI / Published Properties
     @Published var toastyManager: ToastyManager?
     @Published var currentCycle: SleepCycleDisplay?
+    @Published var editingCycle: SleepCycleDisplay?
     @Published var historyCycles: [SleepCycleDisplay] = []
     @Published var selectedQuality: Int16 = 0
-    @Published var showManualEntry = false
-    @Published var isEditingLastCycle = false
-    @Published var entryMode: SleepEntryMode = .toggle
+    @Published var showEditModal = false
 
     /// Manual Entry
     @Published var manualStartDate: Date = Date()
@@ -66,6 +60,7 @@ final class SleepViewModel: ObservableObject {
 
     /// Data Loading
     func reloadAllData() {
+        objectWillChange.send()
         do {
             let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 8)
             let displays = SleepCycle.mapToDisplay(from: cycles)
@@ -102,74 +97,48 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
-    /// Manual Entry
-    func showManualEntryMode() {
-        entryMode = .manual
-        showManualEntry = true
-
-        let now = Date()
-        manualEndDate = now
-        manualStartDate = now.addingTimeInterval(-8 * 3600)
-    }
-
-    func saveManualEntry() {
-        do {
-            try Date.validateInterval(from: manualStartDate, to: manualEndDate)
-
-            _ = try sleepDataManager.startSleepCycle(for: currentUser,
-                                                     startDate: manualStartDate)
-            _ = try sleepDataManager.endSleepCycle(for: currentUser,
-                                                   endDate: manualEndDate,
-                                                   quality: selectedQuality)
-
-            reloadAllData()
-            showManualEntry = false
-            entryMode = .toggle
-
-        } catch {
-            toastyManager?.showError(error)
-        }
-    }
-
-    func cancelManualEntry() {
-        showManualEntry = false
-        isEditingLastCycle = false
-        entryMode = .toggle
-    }
-
     /// Edit Cycle
-    func editCurrentCycle() {
-        guard let cycle = currentCycle, cycle.dateEnding != nil else { return }
-
-        isEditingLastCycle = true
-        entryMode = .manual
-        showManualEntry = true
-
+    func openEditModal(for cycle: SleepCycleDisplay?) {
+        let cycle = cycle ?? SleepCycleDisplay(
+            id: UUID(),
+            dateStart: Date().addingTimeInterval(-8 * 3600),
+            dateEnding: Date(),
+            quality: 5
+        )
+        editingCycle = cycle
         manualStartDate = cycle.dateStart
         manualEndDate = cycle.dateEnding ?? Date()
         selectedQuality = cycle.quality
+        showEditModal = true
     }
 
-    func saveEditedCycle() {
-        guard let cycleDisplay = currentCycle else { return }
+    func cancelEdit() {
+        showEditModal = false
+        editingCycle = nil
+    }
 
+    /// Save
+    func saveCycle() {
         do {
             try Date.validateInterval(from: manualStartDate, to: manualEndDate)
 
-            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser)
-            if let target = cycles.first(where: { $0.id == cycleDisplay.id }) {
-                _ = try sleepDataManager.updateSleepCycle(
-                    target,
+            if let editing = editingCycle {
+                try sleepDataManager.updateSleepCycle(
+                    by: editing.id,
                     startDate: manualStartDate,
                     endDate: manualEndDate,
                     quality: selectedQuality
                 )
+            } else {
+                _ = try sleepDataManager.startSleepCycle(for: currentUser, startDate: manualStartDate)
+                _ = try sleepDataManager.endSleepCycle(for: currentUser,
+                                                       endDate: manualEndDate,
+                                                       quality: selectedQuality)
             }
 
             reloadAllData()
-            isEditingLastCycle = false
-            showManualEntry = false
-            entryMode = .toggle
+            showEditModal = false
+            editingCycle = nil
         } catch {
             toastyManager?.showError(error)
         }
@@ -188,4 +157,3 @@ final class SleepViewModel: ObservableObject {
         }
     }
 }
-
