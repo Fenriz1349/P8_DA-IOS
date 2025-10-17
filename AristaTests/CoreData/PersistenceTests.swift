@@ -15,7 +15,7 @@ final class AristaTests: XCTestCase {
     var context: NSManagedObjectContext!
 
     override func setUpWithError() throws {
-        controller = PersistenceController.createTestContainer()
+        controller = SharedTestHelper.createTestContainer()
         context = controller.container.viewContext
     }
 
@@ -110,7 +110,7 @@ final class AristaTests: XCTestCase {
             code: NSPersistentStoreIncompatibleVersionHashError,
             userInfo: [NSLocalizedDescriptionKey: "Model version incompatible"]
         )
-        let controller = PersistenceController.createTestContainer()
+        let controller = SharedTestHelper.createTestContainer()
         
         // When
         controller.handlePersistentStoreError(error)
@@ -126,7 +126,7 @@ final class AristaTests: XCTestCase {
             code: NSFileReadNoPermissionError,
             userInfo: [NSLocalizedDescriptionKey: "Permission denied"]
         )
-        let controller = PersistenceController.createTestContainer()
+        let controller = SharedTestHelper.createTestContainer()
         
         // When
         controller.handlePersistentStoreError(error)
@@ -142,7 +142,7 @@ final class AristaTests: XCTestCase {
             code: NSFileReadNoSuchFileError,
             userInfo: [NSLocalizedDescriptionKey: "File not found"]
         )
-        let controller = PersistenceController.createTestContainer()
+        let controller = SharedTestHelper.createTestContainer()
         
         // When
         controller.handlePersistentStoreError(error)
@@ -158,7 +158,7 @@ final class AristaTests: XCTestCase {
             code: NSPersistentStoreOpenError,
             userInfo: [NSLocalizedDescriptionKey: "Insufficient storage"]
         )
-        let controller = PersistenceController.createTestContainer()
+        let controller = SharedTestHelper.createTestContainer()
         
         // When
         controller.handlePersistentStoreError(error)
@@ -174,7 +174,7 @@ final class AristaTests: XCTestCase {
             code: 9999,
             userInfo: [NSLocalizedDescriptionKey: "Unknown error"]
         )
-        let controller = PersistenceController.createTestContainer()
+        let controller = SharedTestHelper.createTestContainer()
         
         // When
         controller.handlePersistentStoreError(error)

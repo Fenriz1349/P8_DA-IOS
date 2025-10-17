@@ -7,10 +7,6 @@
 
 import Foundation
 
-enum EditAccountViewModelError: Error {
-    case noLoggedUser
-}
-
 @MainActor
 final class EditAccountViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
@@ -30,22 +26,15 @@ final class EditAccountViewModel: ObservableObject {
 
     init(appCoordinator: AppCoordinator) throws {
         self.appCoordinator = appCoordinator
-        self.user = try Self.getCurrentUser(from: appCoordinator)
-        try loadUserData()
+        self.user = try appCoordinator.validateCurrentUser()
+        loadUserData()
     }
 
-    func configure(toastyManager: ToastyManager) {
+    func configureToasty(toastyManager: ToastyManager) {
         self.toastyManager = toastyManager
     }
 
-    private static func getCurrentUser(from coordinator: AppCoordinator) throws -> User {
-        guard let currentUser = coordinator.currentUser else {
-            throw EditAccountViewModelError.noLoggedUser
-        }
-        return currentUser
-    }
-
-    private func loadUserData() throws {
+    private func loadUserData() {
         self.firstName = user.firstName
         self.lastName = user.lastName
         self.email = user.email
@@ -64,74 +53,44 @@ final class EditAccountViewModel: ObservableObject {
 
     // MARK: - Update Methods
 
-    func saveChanges() throws {
-        let builder = try builder()
-        var hasChanges = false
+    func saveChanges() {
+        guard hasUserChanges() else { return }
 
-        if firstName != user.firstName {
+        do {
+            let builder = try builder()
+
             try builder.firstName(firstName)
-            hasChanges = true
-        }
-
-        if lastName != user.lastName {
-            try builder.lastName(lastName)
-            hasChanges = true
-        }
-
-        if selectedGender != user.genderEnum {
-            builder.gender(selectedGender)
-            hasChanges = true
-        }
-
-        if !Calendar.current.isDate(birthdate, inSameDayAs: user.birthdate ?? Date()) {
-            builder.birthDate(birthdate)
-            hasChanges = true
-        }
-
-        if let heightValue = Int(height), heightValue > 0, heightValue != user.height {
-            try builder.height(heightValue)
-            hasChanges = true
-        }
-
-        if let weightValue = Int(weight), weightValue > 0, weightValue != user.weight {
-            try builder.weight(weightValue)
-            hasChanges = true
-        }
-
-        if let calorieValue = Int(calorieGoal), calorieValue > 0, calorieValue != user.calorieGoal {
-            try builder.calorieGoal(calorieValue)
-            hasChanges = true
-        }
-
-        if let sleepValue = Int(sleepGoal), sleepValue > 0, sleepValue != user.sleepGoal {
-            try builder.sleepGoal(sleepValue)
-            hasChanges = true
-        }
-
-        if let waterValue = Int(waterGoal), waterValue > 0, waterValue != user.waterGoal {
-            try builder.waterGoal(waterValue)
-            hasChanges = true
-        }
-
-        if hasChanges {
-            try builder.save()
+                .lastName(lastName)
+                .gender(selectedGender)
+                .birthDate(birthdate)
+                .height(Int(height) ?? 0)
+                .weight(Int(weight) ?? 0)
+                .calorieGoal(Int(calorieGoal) ?? 0)
+                .sleepGoal(Int(sleepGoal) ?? 0)
+                .waterGoal(Int(waterGoal) ?? 0)
+                .save()
+        } catch {
+            toastyManager?.showError(error)
         }
     }
 
-    func deleteAccount() throws {
-        try appCoordinator.deleteCurrentUser()
+    private func hasUserChanges() -> Bool {
+        return firstName != user.firstName ||
+               lastName != user.lastName ||
+               selectedGender != user.genderEnum ||
+               !Calendar.current.isDate(birthdate, inSameDayAs: user.birthdate ?? Date()) ||
+               (Int(height) ?? 0) != user.height ||
+               (Int(weight) ?? 0) != user.weight ||
+               (Int(calorieGoal) ?? 0) != user.calorieGoal ||
+               (Int(sleepGoal) ?? 0) != user.sleepGoal ||
+               (Int(waterGoal) ?? 0) != user.waterGoal
     }
-    
-    private func handleEditError(_ error: Error) {
-        let errorMessage: String
 
-        if let editError = error as? EditAccountViewModelError {
-            switch editError {
-            case .noLoggedUser:
-                errorMessage = "There always be a looged User at this point. Please relaunch Arista."
-            }
-
-            toastyManager?.show(message: errorMessage)
+    func deleteAccount() {
+        do {
+            try appCoordinator.deleteCurrentUser()
+        } catch {
+            toastyManager?.showError(error)
         }
     }
 }

@@ -21,7 +21,7 @@ final class EditAccountViewModelTests: XCTestCase {
     override func setUp() {
         super.setUp()
         
-        testContainer = PersistenceController.createTestContainer()
+        testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         dataManager = UserDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: dataManager)
@@ -56,7 +56,7 @@ final class EditAccountViewModelTests: XCTestCase {
     func test_init_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
         XCTAssertThrowsError(try EditAccountViewModel(appCoordinator: coordinator)) { error in
-            XCTAssertEqual(error as? EditAccountViewModelError, .noLoggedUser)
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
     

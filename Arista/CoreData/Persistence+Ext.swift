@@ -26,11 +26,6 @@ extension PersistenceController {
         }
     }
 
-    /// Create an unique PersistenceController for each test
-    static func createTestContainer() -> PersistenceController {
-        return PersistenceController(inMemory: true)
-    }
-
     /// Erase All data, used for tests
     func clearAllData() {
            let request: NSFetchRequest<NSFetchRequestResult> = User.fetchRequest()

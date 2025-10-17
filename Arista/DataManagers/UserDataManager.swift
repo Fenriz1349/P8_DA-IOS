@@ -8,11 +8,24 @@
 import Foundation
 import CoreData
 
-enum UserDataManagerError: Error, Equatable {
+enum UserDataManagerError: Error, Equatable, LocalizedError {
     case invalidInput
     case userNotFound
     case noLoggedUser
     case emailAlreadyUsed
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidInput:
+            return "Les données saisies ne sont pas valides."
+        case .userNotFound:
+            return "Utilisateur introuvable."
+        case .noLoggedUser:
+            return "Aucun utilisateur connecté trouvé."
+        case .emailAlreadyUsed:
+            return "Cette adresse email est déjà utilisée."
+        }
+    }
 }
 
 final class UserDataManager {
@@ -46,7 +59,6 @@ final class UserDataManager {
         user.lastName = lastName
 
         try context.save()
-        context.refreshAllObjects()
 
         return user
     }
@@ -55,8 +67,8 @@ final class UserDataManager {
     func fetchUser(by id: UUID) throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
-        request.predicate = NSPredicate(format: "id == %@", id.uuidString)
-        guard let user = try? context.fetch(request).first else {
+        request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
+        guard let user = try context.fetch(request).first else {
             throw UserDataManagerError.userNotFound
         }
         return user
@@ -65,8 +77,8 @@ final class UserDataManager {
     func fetchLoggedUser() throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
-        request.predicate = NSPredicate(format: "isLogged== true", )
-        guard let user = try? context.fetch(request).first else {
+        request.predicate = NSPredicate(format: "isLogged == true")
+        guard let user = try context.fetch(request).first else {
             throw UserDataManagerError.noLoggedUser
         }
         return user
@@ -91,11 +103,10 @@ final class UserDataManager {
 
     // MARK: - Logging Off Method
     func loggedOffAllUsers() throws {
+        let context = container.viewContext
         let users = fetchAllUsers()
-        for user in users {
-            let builder = UserUpdateBuilder(user: user, dataManager: self)
-            try builder.isLogged(false).save()
-        }
+        for user in users { user.isLogged = false }
+        try context.save()
     }
 
     // MARK: - Delete User Method

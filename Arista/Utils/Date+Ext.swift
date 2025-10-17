@@ -7,6 +7,17 @@
 
 import Foundation
 
+enum DateValidationError: Error, LocalizedError {
+    case endDateBeforeStartDate
+
+    var errorDescription: String? {
+        switch self {
+        case .endDateBeforeStartDate:
+            return "L'heure de fin doit être après l'heure de début."
+        }
+    }
+}
+
 extension Date {
     /// Get only year month and day of a date
     var ymdComponents: DateComponents {
@@ -18,6 +29,45 @@ extension Date {
         let otherComponents = other.ymdComponents
         return selfComponents.year == otherComponents.year &&
                selfComponents.month == otherComponents.month &&
-               selfComponents.day == otherComponents.day
+        selfComponents.day == otherComponents.day
+    }
+
+    func duration(to endDate: Date) -> TimeInterval {
+        return endDate.timeIntervalSince(self)
+    }
+
+    static func validateInterval(from startDate: Date, to endDate: Date) throws {
+        guard endDate > startDate else {
+            throw DateValidationError.endDateBeforeStartDate
+        }
+    }
+
+    func formattedInterval(to endDate: Date) -> String {
+            let duration = duration(to: endDate)
+            let hours = Int(duration) / 3600
+            let minutes = (Int(duration) % 3600) / 60
+            return "\(hours)h \(minutes)min"
+        }
+
+    /// Format hour only (ex: "14:30")
+    var formattedTime: String {
+        let formatter = DateFormatter()
+        formatter.timeStyle = .short
+        return formatter.string(from: self)
+    }
+
+    /// Format date only (ex: "15 oct. 2024")
+    var formattedDate: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        return formatter.string(from: self)
+    }
+
+    /// Format date + hour (ex: "15 oct. 2024 à 14:30")
+    var formattedDateTime: String {
+        let formatter = DateFormatter()
+        formatter.dateStyle = .medium
+        formatter.timeStyle = .short
+        return formatter.string(from: self)
     }
 }

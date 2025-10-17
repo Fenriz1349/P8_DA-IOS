@@ -15,23 +15,20 @@ final class AccountViewModelTests: XCTestCase {
     var context: NSManagedObjectContext!
     var dataManager: UserDataManager!
     var coordinator: AppCoordinator!
-    var spyToastyManager: SpyToastyManager!
     
     override func setUp() {
         super.setUp()
         
-        testContainer = PersistenceController.createTestContainer()
+        testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         dataManager = UserDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: dataManager)
-        spyToastyManager = SpyToastyManager()
     }
     
     override func tearDown() {
         testContainer = nil
         context = nil
         coordinator = nil
-        spyToastyManager = nil
         super.tearDown()
     }
     
@@ -51,7 +48,6 @@ final class AccountViewModelTests: XCTestCase {
         XCTAssertEqual(sut.user.email, user.email)
         XCTAssertEqual(sut.user.genderEnum, user.genderEnum)
         XCTAssertFalse(sut.showEditAccount)
-        XCTAssertNil(sut.toastyManager) // Initially nil before configure
     }
     
     func test_init_withNoLoggedUser_throwsError() throws {
@@ -59,26 +55,10 @@ final class AccountViewModelTests: XCTestCase {
         
         // When / Then
         XCTAssertThrowsError(try AccountViewModel(appCoordinator: coordinator)) { error in
-            XCTAssertEqual(error as? AccountViewModelError, .noLoggedUser)
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
-    
-    // MARK: - ToastyManager Configuration Tests
-    func test_configure_setsToastyManager() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        try context.save()
-        try coordinator.login(id: user.id)
-        let sut = try AccountViewModel(appCoordinator: coordinator)
-        
-        // When
-        sut.configure(toastyManager: spyToastyManager)
-        
-        // Then
-        XCTAssertNotNil(sut.toastyManager)
-        XCTAssertTrue(sut.toastyManager === spyToastyManager)
-    }
-    
+
     // MARK: - EditAccount ViewModel Tests
     func test_editAccountViewModel_withValidUser_returnsEditViewModel() throws {
         // Given

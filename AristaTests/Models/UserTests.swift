@@ -15,7 +15,7 @@ final class UserTests: XCTestCase {
     var context: NSManagedObjectContext!
 
     override func setUpWithError() throws {
-        controller = PersistenceController.createTestContainer()
+        controller = SharedTestHelper.createTestContainer()
         context = controller.container.viewContext
     }
 

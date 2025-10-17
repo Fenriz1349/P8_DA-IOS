@@ -8,10 +8,21 @@
 import SwiftUI
 import CustomTextFields
 
-enum AuthenticationError: Error {
+enum AuthenticationError: Error, LocalizedError {
     case invalidCredentials
     case validationFailed
     case emailAlreadyUsed
+
+    var errorDescription: String? {
+        switch self {
+        case .invalidCredentials:
+            return "Email ou mot de passe incorrect. Vérifiez vos identifiants."
+        case .validationFailed:
+            return "Veuillez compléter correctement tous les champs requis."
+        case .emailAlreadyUsed:
+            return "Cette adresse email est déjà utilisée. Utilisez une adresse différente."
+        }
+    }
 }
 
 @MainActor
@@ -131,14 +142,12 @@ final class AuthenticationViewModel: ObservableObject {
         if !isMailValid {
             emailValidationState = .invalid
             hasErrors = true
-            print("❌ Invalid email: \(email)")
         }
 
         // Validate password
         if !isPasswordValid {
             passwordValidationState = .invalid
             hasErrors = true
-            print("❌ Invalid password")
         }
 
         // Validate creation mode fields
@@ -146,13 +155,11 @@ final class AuthenticationViewModel: ObservableObject {
             if !isFirstNameValid {
                 firstNameValidationState = .invalid
                 hasErrors = true
-                print("❌ Invalid first name: \(firstName)")
             }
 
             if !isLastNameValid {
                 lastNameValidationState = .invalid
                 hasErrors = true
-                print("❌ Invalid last name: \(lastName)")
             }
         }
 
@@ -164,34 +171,18 @@ final class AuthenticationViewModel: ObservableObject {
         if validateAllFields() {
             Task {
                 do {
-                    try creationMode ? createUserAndLogin() : login()
-                    print("✅ Authentication successful!")
+                    if creationMode {
+                        try createUserAndLogin()
+                    } else {
+                        try login()
+                    }
                 } catch {
-                    print("❌ Auth error:", error)
-                    handleAuthenticationError(error)
+                    toastyManager?.showError(error)
                     showAuthError()
                 }
             }
         } else {
-            print("❌ Form validation failed")
             showValidationError()
-        }
-    }
-
-    private func handleAuthenticationError(_ error: Error) {
-        let errorMessage: String
-
-        if let authError = error as? AuthenticationError {
-            switch authError {
-            case .invalidCredentials:
-                errorMessage = "Invalid email or password. Please check your credentials."
-            case .validationFailed:
-                errorMessage = "Please complete all required fields correctly."
-            case .emailAlreadyUsed:
-                errorMessage = "This email address is already registered. Please use a different email."
-            }
-
-            toastyManager?.show(message: errorMessage)
         }
     }
 
@@ -215,7 +206,6 @@ final class AuthenticationViewModel: ObservableObject {
     // MARK: - Authentication Methods
     func login() throws {
         guard isLoginFormValid else {
-            print("❌ Login form validation failed")
             throw AuthenticationError.validationFailed
         }
 
@@ -223,26 +213,21 @@ final class AuthenticationViewModel: ObservableObject {
 
         guard let user = users.first(where: { $0.email == email }),
               user.verifyPassword(password) else {
-            print("❌ Email already Used: \(email)")
             throw AuthenticationError.invalidCredentials
         }
 
-        print("✅ User found, attempting login")
         try appCoordinator.login(id: user.id)
     }
 
     func createUserAndLogin() throws {
         guard isCreationFormValid else {
-            print("❌ Creation form validation failed")
             throw AuthenticationError.validationFailed
         }
-        
+
         guard !appCoordinator.isEmailAlreadyUsed(email) else {
-            print("❌ Invalid credentials for email: \(email)")
             throw AuthenticationError.emailAlreadyUsed
         }
 
-        print("🔄 Attempting to create user with email: \(email)")
         try appCoordinator.dataManager.createUser(
             email: email,
             password: password,
@@ -250,7 +235,6 @@ final class AuthenticationViewModel: ObservableObject {
             lastName: lastName
         )
 
-        print("✅ User created successfully, attempting login")
         try login()
     }
 }

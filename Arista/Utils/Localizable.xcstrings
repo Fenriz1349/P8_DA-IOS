@@ -1,6 +1,12 @@
 {
   "sourceLanguage" : "en",
   "strings" : {
+    "" : {
+
+    },
+    "(%@)" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -11,6 +17,19 @@
         }
       },
       "shouldTranslate" : false
+    },
+    "%@ → %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ → %2$@"
+          }
+        }
+      }
+    },
+    "%d" : {
+
     },
     "%lld" : {
       "localizations" : {
@@ -45,6 +64,9 @@
         }
       }
     },
+    "00" : {
+
+    },
     "addExercice" : {
       "localizations" : {
         "en" : {
@@ -64,10 +86,14 @@
     "AddMealView" : {
       "shouldTranslate" : false
     },
-    "AddSleepCycleView" : {
-      "shouldTranslate" : false
+    "Annuler" : {
+
+    },
+    "Aucun cycle de sommeil" : {
+
     },
     "beginning%@" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -127,7 +153,16 @@
         }
       }
     },
+    "Depuis %@" : {
+
+    },
+    "Dernier sommeil" : {
+
+    },
     "Edit Profile" : {
+
+    },
+    "En cours..." : {
 
     },
     "error.cleaningMessage" : {
@@ -350,6 +385,15 @@
         }
       }
     },
+    "Heure de coucher" : {
+
+    },
+    "Heure de réveil" : {
+
+    },
+    "Historique (7 derniers jours)" : {
+
+    },
     "hourStart" : {
       "localizations" : {
         "en" : {
@@ -399,6 +443,7 @@
       }
     },
     "length%lldhours" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -433,6 +478,9 @@
     "login" : {
 
     },
+    "Modifier" : {
+
+    },
     "newExercice" : {
       "localizations" : {
         "en" : {
@@ -449,6 +497,12 @@
         }
       }
     },
+    "Non évaluée" : {
+
+    },
+    "Nouveau cycle" : {
+
+    },
     "profil" : {
       "localizations" : {
         "en" : {
@@ -464,6 +518,15 @@
           }
         }
       }
+    },
+    "Qualité" : {
+
+    },
+    "Qualité du sommeil" : {
+
+    },
+    "Sauvegarder" : {
+
     },
     "sleep" : {
       "localizations" : {
@@ -488,6 +551,7 @@
 
     },
     "sleepHistory" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -502,6 +566,12 @@
           }
         }
       }
+    },
+    "Sommeil" : {
+
+    },
+    "Sommeil en cours" : {
+
     },
     "Water" : {
 

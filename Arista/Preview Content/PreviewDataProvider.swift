@@ -5,7 +5,7 @@
 //  Created by Julien Cotte on 13/08/2025.
 //
 
-import Foundation
+import SwiftUI
 import CoreData
 
 @MainActor
@@ -26,7 +26,6 @@ struct PreviewDataProvider {
         createSampleAliments(in: context)
         let user = createSampleUser(in: context)
         createSampleExercises(for: user, in: context)
-        createSampleSleepCycles(for: user, in: context)
         createSampleMeals(for: user, in: context)
 
         do {
@@ -130,35 +129,6 @@ extension PreviewDataProvider {
         }
     }
 
-    static func createSampleSleepCycles(for user: User, in context: NSManagedObjectContext) {
-        let now = Date()
-        let calendar = Calendar.current
-
-        // Create 7 days of sleepCycle
-        for daysAgo in 0...6 {
-            let sleepDate = calendar.date(byAdding: .day, value: -daysAgo, to: now) ?? now
-
-            let bedtimeHour = Int.random(in: 22...23)
-            let bedtimeMinute = Int.random(in: 0...59)
-
-            let bedtime = calendar.date(bySettingHour: bedtimeHour,
-                                      minute: bedtimeMinute,
-                                      second: 0,
-                                      of: sleepDate) ?? sleepDate
-
-            let sleepDuration = Double.random(in: 6.5...9.0) * 3600 // en secondes
-            let wakeupTime = bedtime.addingTimeInterval(sleepDuration)
-
-            let quality = Int64(min(10, max(1, Int(sleepDuration / 3600 - 2))))
-
-            let sleepCycle = SleepCycle(context: context)
-            sleepCycle.dateBegging = bedtime
-            sleepCycle.dateEnding = wakeupTime
-            sleepCycle.quality = Int16(quality)
-            sleepCycle.user = user
-        }
-    }
-
     static func createSampleMeals(for user: User, in context: NSManagedObjectContext) {
         let request: NSFetchRequest<Aliment> = Aliment.fetchRequest()
         guard let aliments = try? context.fetch(request) else { return }
@@ -204,8 +174,8 @@ extension PreviewDataProvider {
     }
 }
 
+// MARK: - Preview AppCoordinator
 extension PreviewDataProvider {
-    // MARK: - Preview AppCoordinator
     static var sampleCoordinator: AppCoordinator {
         let dataManager = UserDataManager(container: previewData.container)
         let coordinator = AppCoordinator(dataManager: dataManager)
@@ -234,5 +204,19 @@ extension PreviewDataProvider {
 
     static func makeSampleEditAccountViewModel() -> EditAccountViewModel {
         return try! EditAccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+    }
+}
+
+struct PreviewContainer<Content: View, VM: ObservableObject>: View {
+    @ObservedObject var viewModel: VM
+    let content: (VM) -> Content
+
+    init(_ viewModel: VM, @ViewBuilder content: @escaping (VM) -> Content) {
+        self.viewModel = viewModel
+        self.content = content
+    }
+
+    var body: some View {
+        content(viewModel)
     }
 }

@@ -14,13 +14,11 @@ struct ContentView: View {
         if appCoordinator.isAuthenticated {
             NavigationStack {
                 TabView {
-                    Group {
-                        if let accountVM = try? appCoordinator.makeAccountViewModel() {
-                            AccountView(viewModel: accountVM)
-                        }
-                    }
-                    .tabItem {
-                        Label("profil", systemImage: "person")
+                    if let accountVM = try? appCoordinator.makeAccountViewModel() {
+                        AccountView(viewModel: accountVM)
+                            .tabItem {
+                                Label("profil", systemImage: "person")
+                            }
                     }
 
                     Text("exercices")
@@ -28,10 +26,12 @@ struct ContentView: View {
                             Label("exercices", systemImage: "flame")
                         }
 
-                    Text("sleep")
-                        .tabItem {
-                            Label("sleep", systemImage: "moon")
-                        }
+                    if let sleepVM = try? appCoordinator.makeSleepViewModel() {
+                        SleepView(viewModel: sleepVM)
+                            .tabItem {
+                                Label("sleep", systemImage: "moon")
+                            }
+                    }
                 }
                 .environmentObject(appCoordinator)
             }
@@ -44,4 +44,5 @@ struct ContentView: View {
 
 #Preview {
     ContentView()
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

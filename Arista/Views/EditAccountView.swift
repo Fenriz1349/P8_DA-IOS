@@ -83,36 +83,36 @@ struct EditAccountView: View {
 
                 HStack(spacing: 12) {
                     Button(action: {
-                        try? viewModel.saveChanges()
+                        viewModel.saveChanges()
                         dismiss()
-                    }) {
+                    }, label: {
                         CustomButtonLabel(message: "Save Changes", color: .blue)
                             .frame(height: 44)
                             .frame(maxWidth: .infinity)
-                    }
+                    })
 
                     Button(action: {
-                        try? viewModel.deleteAccount()
+                        viewModel.deleteAccount()
                         dismiss()
-                    }) {
+                    }, label: {
                         CustomButtonLabel(message: "Delete Account", color: .red)
                             .frame(height: 44)
                             .frame(maxWidth: .infinity)
-                    }
+                    })
+                    .listRowBackground(Color.clear)
                 }
-                .listRowBackground(Color.clear)
-            }
-            .padding()
-            .navigationTitle("Edit Profile")
-            .navigationBarTitleDisplayMode(.inline)
-            .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
-                        dismiss()
+                .padding()
+                .navigationTitle("Edit Profile")
+                .navigationBarTitleDisplayMode(.inline)
+                .toolbar {
+                    ToolbarItem(placement: .topBarLeading) {
+                        Button("Cancel") {
+                            dismiss()
+                        }
                     }
+                }.onAppear {
+                    viewModel.configureToasty(toastyManager: toastyManager)
                 }
-            }.onAppear {
-                viewModel.configure(toastyManager: toastyManager)
             }
         }
     }
@@ -120,4 +120,5 @@ struct EditAccountView: View {
 
 #Preview {
     EditAccountView(viewModel: PreviewDataProvider.makeSampleEditAccountViewModel())
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

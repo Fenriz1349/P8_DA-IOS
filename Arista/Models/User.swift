@@ -47,6 +47,7 @@ extension User {
     var hasWeight: Bool { weight > 0 }
 
     var hasHeight: Bool { height > 0 }
+
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
