@@ -14,11 +14,10 @@
 		53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */; };
 		53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587462B235E9000E4EF99 /* PersistenceTests.swift */; };
 		53E587632B235FF600E4EF99 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* AccountView.swift */; };
-		53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587642B23600400E4EF99 /* ExerciseListView.swift */; };
+		53E587652B23600400E4EF99 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587642B23600400E4EF99 /* ExerciseView.swift */; };
 		53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587682B23616A00E4EF99 /* AccountViewModel.swift */; };
-		53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */; };
-		53E5876D2B236D9E00E4EF99 /* EditExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* EditExerciseView.swift */; };
-		53E5876F2B236DBC00E4EF99 /* EditExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876E2B236DBC00E4EF99 /* EditExerciseViewModel.swift */; };
+		53E5876B2B23648500E4EF99 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876A2B23648500E4EF99 /* ExerciseViewModel.swift */; };
+		53E5876D2B236D9E00E4EF99 /* EditExerciseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* EditExerciseModal.swift */; };
 		6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6652E852D7B00501E0E /* ToastyMessage.swift */; };
 		6802E6682E852E0E00501E0E /* ToastyType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6672E852E0E00501E0E /* ToastyType.swift */; };
 		6802E66A2E852FC100501E0E /* ToastyManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6692E852FC100501E0E /* ToastyManager.swift */; };
@@ -48,7 +47,7 @@
 		6852288A2E97AD6D008E33EE /* SleepClockCalculator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228892E97AD6D008E33EE /* SleepClockCalculator.swift */; };
 		6852288C2E97AE5A008E33EE /* HourTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6852288B2E97AE5A008E33EE /* HourTextView.swift */; };
 		6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6852288D2E97AF1D008E33EE /* SleepArcView.swift */; };
-		685228912E97BCBB008E33EE /* HistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228902E97BCBB008E33EE /* HistorySection.swift */; };
+		685228912E97BCBB008E33EE /* SleepHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228902E97BCBB008E33EE /* SleepHistorySection.swift */; };
 		685228942E97E329008E33EE /* EditSleepCycleModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228932E97E329008E33EE /* EditSleepCycleModal.swift */; };
 		685228962E97E437008E33EE /* GradeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228952E97E437008E33EE /* GradeLabel.swift */; };
 		685228982E97E8EC008E33EE /* GradePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685228972E97E8EC008E33EE /* GradePicker.swift */; };
@@ -57,6 +56,10 @@
 		68561AB12EA6266C00DB1F64 /* ExerciceDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68561AB02EA6266C00DB1F64 /* ExerciceDataManager.swift */; };
 		685B235B2E79ADCF003CFFA3 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */; };
 		685B235D2E79AE32003CFFA3 /* EditAccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */; };
+		685FB58E2EA805AB003E4C6D /* ExerciseTypeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */; };
+		685FB5902EA807C4003E4C6D /* ExerciseHistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */; };
+		685FB5932EA808E2003E4C6D /* PreviewExerciseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */; };
+		685FB5952EA80EA3003E4C6D /* ExerciseHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB5942EA80EA3003E4C6D /* ExerciseHistorySection.swift */; };
 		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
 		686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027AB2E3B9F8900BF8EA8 /* Gender.swift */; };
 		686D56902E7447110088AD98 /* CustomLabels in Frameworks */ = {isa = PBXBuildFile; productRef = 686D568F2E7447110088AD98 /* CustomLabels */; };
@@ -81,6 +84,7 @@
 		68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C882E6B03450004F6DA /* AppCoordinator.swift */; };
 		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
 		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
+		68EFABCE2EA7AD3400E2F937 /* ExerciseTypeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */; };
 		68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4DA082E7C522500CFECA5 /* EditAccountView.swift */; };
 /* End PBXBuildFile section */
 
@@ -104,11 +108,10 @@
 		53E587422B235E9000E4EF99 /* AristaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AristaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E587462B235E9000E4EF99 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
 		53E587622B235FF600E4EF99 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
-		53E587642B23600400E4EF99 /* ExerciseListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListView.swift; sourceTree = "<group>"; };
+		53E587642B23600400E4EF99 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
 		53E587682B23616A00E4EF99 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
-		53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseListViewModel.swift; sourceTree = "<group>"; };
-		53E5876C2B236D9E00E4EF99 /* EditExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseView.swift; sourceTree = "<group>"; };
-		53E5876E2B236DBC00E4EF99 /* EditExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseViewModel.swift; sourceTree = "<group>"; };
+		53E5876A2B23648500E4EF99 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
+		53E5876C2B236D9E00E4EF99 /* EditExerciseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseModal.swift; sourceTree = "<group>"; };
 		6802E6652E852D7B00501E0E /* ToastyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyMessage.swift; sourceTree = "<group>"; };
 		6802E6672E852E0E00501E0E /* ToastyType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyType.swift; sourceTree = "<group>"; };
 		6802E6692E852FC100501E0E /* ToastyManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManager.swift; sourceTree = "<group>"; };
@@ -137,7 +140,7 @@
 		685228892E97AD6D008E33EE /* SleepClockCalculator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepClockCalculator.swift; sourceTree = "<group>"; };
 		6852288B2E97AE5A008E33EE /* HourTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HourTextView.swift; sourceTree = "<group>"; };
 		6852288D2E97AF1D008E33EE /* SleepArcView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepArcView.swift; sourceTree = "<group>"; };
-		685228902E97BCBB008E33EE /* HistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistorySection.swift; sourceTree = "<group>"; };
+		685228902E97BCBB008E33EE /* SleepHistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepHistorySection.swift; sourceTree = "<group>"; };
 		685228932E97E329008E33EE /* EditSleepCycleModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditSleepCycleModal.swift; sourceTree = "<group>"; };
 		685228952E97E437008E33EE /* GradeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradeLabel.swift; sourceTree = "<group>"; };
 		685228972E97E8EC008E33EE /* GradePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradePicker.swift; sourceTree = "<group>"; };
@@ -146,6 +149,10 @@
 		68561AB02EA6266C00DB1F64 /* ExerciceDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceDataManager.swift; sourceTree = "<group>"; };
 		685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
 		685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModelTests.swift; sourceTree = "<group>"; };
+		685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeGrid.swift; sourceTree = "<group>"; };
+		685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryRow.swift; sourceTree = "<group>"; };
+		685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewExerciseDataProvider.swift; sourceTree = "<group>"; };
+		685FB5942EA80EA3003E4C6D /* ExerciseHistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistorySection.swift; sourceTree = "<group>"; };
 		686027A92E3B973100BF8EA8 /* ExerciceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceType.swift; sourceTree = "<group>"; };
 		686027AB2E3B9F8900BF8EA8 /* Gender.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gender.swift; sourceTree = "<group>"; };
 		686D56912E7455900088AD98 /* AccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelTests.swift; sourceTree = "<group>"; };
@@ -171,6 +178,7 @@
 		68E89C882E6B03450004F6DA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
 		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCard.swift; sourceTree = "<group>"; };
 		68F4DA082E7C522500CFECA5 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -239,6 +247,7 @@
 				53E587372B235E9000E4EF99 /* Preview Assets.xcassets */,
 				684321242E4CC5E1003FDAEE /* PreviewDataProvider.swift */,
 				68E7C2C82EA242B9001C039B /* PreviewSleepDataProvider.swift */,
+				685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -262,8 +271,10 @@
 		53E587602B235FD700E4EF99 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				53E587642B23600400E4EF99 /* ExerciseListView.swift */,
-				53E5876C2B236D9E00E4EF99 /* EditExerciseView.swift */,
+				685FB5912EA80819003E4C6D /* ExerciceHistory */,
+				68EFABCC2EA7AD1A00E2F937 /* ExercicesGrid */,
+				53E587642B23600400E4EF99 /* ExerciseView.swift */,
+				53E5876C2B236D9E00E4EF99 /* EditExerciseModal.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -271,8 +282,7 @@
 		53E587612B235FDC00E4EF99 /* ViewModels */ = {
 			isa = PBXGroup;
 			children = (
-				53E5876A2B23648500E4EF99 /* ExerciseListViewModel.swift */,
-				53E5876E2B236DBC00E4EF99 /* EditExerciseViewModel.swift */,
+				53E5876A2B23648500E4EF99 /* ExerciseViewModel.swift */,
 			);
 			path = ViewModels;
 			sourceTree = "<group>";
@@ -375,7 +385,7 @@
 			isa = PBXGroup;
 			children = (
 				685228842E97A4B6008E33EE /* SleepHistoryRow.swift */,
-				685228902E97BCBB008E33EE /* HistorySection.swift */,
+				685228902E97BCBB008E33EE /* SleepHistorySection.swift */,
 				685228992E97ECE9008E33EE /* CurrentStateSection.swift */,
 			);
 			path = SleepHistory;
@@ -411,6 +421,15 @@
 				68561AB02EA6266C00DB1F64 /* ExerciceDataManager.swift */,
 			);
 			path = Datamanager;
+			sourceTree = "<group>";
+		};
+		685FB5912EA80819003E4C6D /* ExerciceHistory */ = {
+			isa = PBXGroup;
+			children = (
+				685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */,
+				685FB5942EA80EA3003E4C6D /* ExerciseHistorySection.swift */,
+			);
+			path = ExerciceHistory;
 			sourceTree = "<group>";
 		};
 		686027A42E3B94F800BF8EA8 /* Models */ = {
@@ -629,6 +648,15 @@
 			path = Grade;
 			sourceTree = "<group>";
 		};
+		68EFABCC2EA7AD1A00E2F937 /* ExercicesGrid */ = {
+			isa = PBXGroup;
+			children = (
+				68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */,
+				685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */,
+			);
+			path = ExercicesGrid;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -735,6 +763,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				685FB5902EA807C4003E4C6D /* ExerciseHistoryRow.swift in Sources */,
 				68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */,
 				685228962E97E437008E33EE /* GradeLabel.swift in Sources */,
 				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,
@@ -743,6 +772,7 @@
 				68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */,
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				6852288A2E97AD6D008E33EE /* SleepClockCalculator.swift in Sources */,
+				685FB5932EA808E2003E4C6D /* PreviewExerciseDataProvider.swift in Sources */,
 				53E587632B235FF600E4EF99 /* AccountView.swift in Sources */,
 				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
 				6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */,
@@ -752,34 +782,36 @@
 				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
 				6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */,
+				685FB5952EA80EA3003E4C6D /* ExerciseHistorySection.swift in Sources */,
 				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
 				68E89C7E2E6AE5B80004F6DA /* Exercice.swift in Sources */,
 				6813E7612E867B97007F008C /* SleepViewModel.swift in Sources */,
 				6852289C2E97F044008E33EE /* MainSleepCycleButton.swift in Sources */,
+				685FB58E2EA805AB003E4C6D /* ExerciseTypeGrid.swift in Sources */,
 				685B235B2E79ADCF003CFFA3 /* EditAccountViewModel.swift in Sources */,
 				68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */,
 				685228852E97A4B6008E33EE /* SleepHistoryRow.swift in Sources */,
 				686027AC2E3B9F8900BF8EA8 /* Gender.swift in Sources */,
-				53E587652B23600400E4EF99 /* ExerciseListView.swift in Sources */,
+				68EFABCE2EA7AD3400E2F937 /* ExerciseTypeCard.swift in Sources */,
+				53E587652B23600400E4EF99 /* ExerciseView.swift in Sources */,
 				6802E66E2E8530E900501E0E /* ToastyContainer.swift in Sources */,
-				53E5876B2B23648500E4EF99 /* ExerciseListViewModel.swift in Sources */,
+				53E5876B2B23648500E4EF99 /* ExerciseViewModel.swift in Sources */,
 				68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
 				685228942E97E329008E33EE /* EditSleepCycleModal.swift in Sources */,
 				6813E76C2E86D362007F008C /* SleepView.swift in Sources */,
 				68561AB12EA6266C00DB1F64 /* ExerciceDataManager.swift in Sources */,
 				68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */,
-				685228912E97BCBB008E33EE /* HistorySection.swift in Sources */,
+				685228912E97BCBB008E33EE /* SleepHistorySection.swift in Sources */,
 				689510082E60473600461030 /* UserDataManager.swift in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
 				6813E7652E868E6B007F008C /* Grade.swift in Sources */,
 				68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */,
-				53E5876D2B236D9E00E4EF99 /* EditExerciseView.swift in Sources */,
+				53E5876D2B236D9E00E4EF99 /* EditExerciseModal.swift in Sources */,
 				6852289A2E97ECE9008E33EE /* CurrentStateSection.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
 				68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */,
 				6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */,
-				53E5876F2B236DBC00E4EF99 /* EditExerciseViewModel.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */,
 				53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */,

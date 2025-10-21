@@ -10,6 +10,7 @@ import CustomLabels
 
 struct EditSleepCycleModal: View {
     @ObservedObject var viewModel: SleepViewModel
+#warning("Trouver un moyen d'afficher toasty même sur une modale")
     @EnvironmentObject private var toastyManager: ToastyManager
 
 

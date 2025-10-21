@@ -10,14 +10,11 @@ import CoreData
 
 enum ExerciceDataManagerError: Error, Equatable, LocalizedError {
     case exerciceNotFound
-    case activeSessionAlreadyExists
 
     var errorDescription: String? {
         switch self {
-        case .exerciceNotFound:
-            return "Aucun cycle de sommeil actif trouvé."
-        case .activeSessionAlreadyExists:
-            return "Un cycle de sommeil est déjà en cours."
+        case .exerciceNotFound: return "Exercice non trouvé."
+        }
     }
 }
 
@@ -31,49 +28,31 @@ final class ExerciceDataManager {
         self.userDataManager = userDataManager ?? UserDataManager(container: container)
     }
 
-    // MARK: - Create Sleep Cycle
-    func startSleepCycle(for user: User, startDate: Date = Date()) throws -> SleepCycle {
+    // MARK: - Create
+    func createExercice(for user: User,
+                        date: Date = Date(),
+                        duration: Int = 0,
+                        type: ExerciceType = .other,
+                        intensity: Int = 5) throws -> Exercice {
         let context = container.viewContext
 
-        guard try !hasActiveSleepCycle(for: user) else {
-            throw SleepDataManagerError.activeSessionAlreadyExists
-        }
-
-        let sleepCycle = SleepCycle(context: context)
-        sleepCycle.id = UUID()
-        sleepCycle.dateStart = startDate
-        sleepCycle.dateEnding = nil
-        sleepCycle.quality = 0
-        sleepCycle.user = user
+        let exercice = Exercice(context: context)
+        exercice.id = UUID()
+        exercice.date = date
+        exercice.duration = Int16(duration)
+        exercice.intensity = Int16(intensity)
+        exercice.user = user
 
         try context.save()
 
-        return sleepCycle
-    }
-
-    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int16 = 0) throws -> SleepCycle {
-        guard let activeCycle = try getActiveSleepCycle(for: user) else {
-            throw SleepDataManagerError.sleepCycleNotFound
-        }
-
-        guard activeCycle.dateStart <= endDate else {
-            throw SleepDataManagerError.invalidDateInterval
-        }
-
-        let context = container.viewContext
-        activeCycle.dateEnding = endDate
-        activeCycle.quality = quality
-
-        try context.save()
-
-        return activeCycle
+        return exercice
     }
 
     // MARK: - Fetch Methods
-    func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
+    func fetchExercices(for user: User, limit: Int? = nil) throws -> [Exercice] {
         let context = container.viewContext
 
-        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+        let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
         if let limit = limit {
@@ -83,49 +62,39 @@ final class ExerciceDataManager {
         return try context.fetch(request)
     }
 
-    func hasActiveSleepCycle(for user: User) throws -> Bool {
-        return try getActiveSleepCycle(for: user) != nil
-    }
-
-    func getActiveSleepCycle(for user: User) throws -> SleepCycle? {
+    func fetchLastWeekExercices(for user: User) throws -> [Exercice] {
         let context = container.viewContext
-        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+        let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
 
-        request.predicate = NSPredicate(
-            format: "user.id == %@ AND dateEnding == nil",
-            user.id as CVarArg
-        )
-        request.fetchLimit = 1
+        let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
+        request.predicate = NSPredicate(format: "user == %@ AND date >= %@", user, oneWeekAgo as NSDate)
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
 
-        return try context.fetch(request).first
+        return try context.fetch(request)
     }
 
     // MARK: - Delete Methods
-    func deleteSleepCycle(_ sleepCycle: SleepCycle) throws {
+    func deleteExercice(_ exercice: Exercice) throws {
         let context = container.viewContext
-        context.delete(sleepCycle)
+        context.delete(exercice)
         try context.save()
     }
 
     // MARK: - Update Methods
-    func updateSleepCycle(
-        by id: UUID,
-        startDate: Date,
-        endDate: Date,
-        quality: Int16
-    ) throws {
+    func updateExercice(by id: UUID, date: Date, type: ExerciceType, duration: Int16, intensity: Int16) throws {
         let context = container.viewContext
-        let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
+        let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
         request.fetchLimit = 1
 
-        guard let cycle = try context.fetch(request).first else {
-            throw SleepDataManagerError.sleepCycleNotFound
+        guard let exercice = try context.fetch(request).first else {
+            throw ExerciceDataManagerError.exerciceNotFound
         }
 
-        cycle.dateStart = startDate
-        cycle.dateEnding = endDate
-        cycle.quality = quality
+        exercice.date = date
+        exercice.type = type.rawValue
+        exercice.duration = duration
+        exercice.intensity = intensity
 
         try context.save()
     }

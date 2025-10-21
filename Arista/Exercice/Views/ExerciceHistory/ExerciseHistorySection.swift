@@ -1,15 +1,15 @@
 //
-//  HistorySection.swift
+//  ExerciseHistorySection.swift
 //  Arista
 //
-//  Created by Julien Cotte on 09/10/2025.
+//  Created by Julien Cotte on 21/10/2025.
 //
 
 import SwiftUI
 import CustomLabels
 
-struct HistorySection: View {
-    @ObservedObject var viewModel: SleepViewModel
+struct ExerciseHistorySection: View {
+    @ObservedObject var viewModel: ExerciseViewModel
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
@@ -18,33 +18,38 @@ struct HistorySection: View {
                 .padding(.horizontal)
 
             List {
-                ForEach(viewModel.historyCycles) { cycle in
-                    SleepHistoryRow(cycle: cycle)
+                ForEach(viewModel.exercices) { exercise in
+                    ExerciseHistoryRow(exercise: exercise)
                         .contentShape(Rectangle())
                         .onTapGesture {
-                            viewModel.openEditModal(for: cycle)
+                            viewModel.openEditModal(for: exercise)
                         }
+                        .padding(.horizontal)
                         .swipeActions(edge: .trailing) {
                             Button(role: .destructive) {
                                 withAnimation {
-                                    viewModel.deleteHistoryCycle(cycle)
+                                    viewModel.deleteExercise(exercise)
                                 }
                             } label: {
                                 CustomButtonIcon(icon: "trash", color: .red)
+                            }
+                            Button {
+                                viewModel.openEditModal(for: exercise)
+                            } label: {
+                                CustomButtonIcon(icon: "pencil", color: .yellow)
                             }
                         }
                         .listRowInsets(EdgeInsets())
                 }
             }
-            .frame(height: CGFloat(viewModel.historyCycles.count) * 60)
             .listStyle(.plain)
         }
         .sheet(isPresented: $viewModel.showEditModal) {
-            EditSleepCycleModal(viewModel: viewModel)
+            EditExerciseModal(viewModel: viewModel)
         }
     }
 }
 
 #Preview {
-    HistorySection(viewModel: PreviewSleepDataProvider.activeAndHistoryViewModel)
+    ExerciseHistorySection(viewModel: PreviewExerciseDataProvider.filledViewModel)
 }

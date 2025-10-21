@@ -24,12 +24,11 @@ struct SleepView: View {
                     GradePicker(title: viewModel.title, quality: $viewModel.selectedQuality)
                 }
             }
-            HistorySection(viewModel: viewModel)
+            SleepHistorySection(viewModel: viewModel)
         }
         .padding()
         .navigationTitle("Sommeil")
         .onAppear {
-            viewModel.reloadAllData()
             viewModel.configureToasty(toastyManager: toastyManager)
         }
     }

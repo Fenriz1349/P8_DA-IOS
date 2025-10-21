@@ -56,10 +56,11 @@ extension Date {
         return formatter.string(from: self)
     }
 
-    /// Format date only (ex: "15 oct. 2024")
+    /// Format date only (ex: "mardi 21 octobre 2025")
     var formattedDate: String {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateFormat = "EEEE d MMMM yyyy"
         return formatter.string(from: self)
     }
 

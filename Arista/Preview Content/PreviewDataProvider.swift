@@ -11,20 +11,12 @@ import CoreData
 @MainActor
 struct PreviewDataProvider {
 
-    private struct ExerciseTestData {
-        let type: ExerciceType
-        let duration: Int64
-        let intensity: Int64
-        let daysAgo: Int
-    }
-
     /// Main Container for preview
     static var previewData: PersistenceController = {
         let controller = PersistenceController(inMemory: true)
         let context = controller.container.viewContext
 
         let user = createSampleUser(in: context)
-        createSampleExercises(for: user, in: context)
 
         do {
             try context.save()
@@ -75,25 +67,6 @@ extension PreviewDataProvider {
         user.weight = 60
         user.isLogged = true
         return user
-    }
-
-    static func createSampleExercises(for user: User, in context: NSManagedObjectContext) {
-        let exercisesData = [
-            ExerciseTestData(type: .running, duration: 45, intensity: 7, daysAgo: 0),
-            ExerciseTestData(type: .swimming, duration: 60, intensity: 6, daysAgo: -1),
-            ExerciseTestData(type: .football, duration: 120, intensity: 8, daysAgo: -2),
-            ExerciseTestData(type: .yoga, duration: 30, intensity: 4, daysAgo: -3),
-            ExerciseTestData(type: .cycling, duration: 90, intensity: 7, daysAgo: -4)
-        ]
-
-        for data in exercisesData {
-            let exercise = Exercice(context: context)
-            exercise.typeEnum = data.type
-            exercise.duration = Int16(data.duration)
-            exercise.intensity = Int16(data.intensity)
-            exercise.date = Calendar.current.date(byAdding: .day, value: data.daysAgo, to: Date()) ?? Date()
-            exercise.user = user
-        }
     }
 }
 
