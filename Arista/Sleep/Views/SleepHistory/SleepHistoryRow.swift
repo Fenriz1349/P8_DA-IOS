@@ -12,7 +12,7 @@ struct SleepHistoryRow: View {
 
     var body: some View {
         HStack(spacing: 12) {
-            SleepQualityLabel(quality: cycle.quality)
+            GradeLabel(grade: cycle.sleepQuality)
 
             VStack(alignment: .leading, spacing: 4) {
                 Text(cycle.dateStart.formattedDate)
@@ -39,7 +39,7 @@ struct SleepHistoryRow: View {
 
             Text(cycle.qualityDescription)
                 .font(.caption)
-                .foregroundColor(cycle.sleepQuality.qualityColor)
+                .foregroundColor(cycle.sleepQuality.color)
             Image(systemName: "chevron.right")
                 .font(.caption)
         }

@@ -25,6 +25,7 @@ final class SleepViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
     private let sleepDataManager: SleepDataManager
     private let currentUserId: UUID
+    let title = "Qualité"
     let currentUser: User
 
     /// UI / Published Properties
@@ -32,7 +33,7 @@ final class SleepViewModel: ObservableObject {
     @Published var currentCycle: SleepCycleDisplay?
     @Published var editingCycle: SleepCycleDisplay?
     @Published var historyCycles: [SleepCycleDisplay] = []
-    @Published var selectedQuality: Int16 = 0
+    @Published var selectedQuality: Int = 0
     @Published var showEditModal = false
 
     /// Manual Entry
@@ -89,7 +90,7 @@ final class SleepViewModel: ObservableObject {
         do {
             _ = try sleepDataManager.endSleepCycle(for: currentUser,
                                                    endDate: endDate,
-                                                   quality: selectedQuality)
+                                                   quality: Int16(selectedQuality))
             reloadAllData()
             selectedQuality = 0
         } catch {
@@ -127,13 +128,13 @@ final class SleepViewModel: ObservableObject {
                     by: editing.id,
                     startDate: manualStartDate,
                     endDate: manualEndDate,
-                    quality: selectedQuality
+                    quality: Int16(selectedQuality)
                 )
             } else {
                 _ = try sleepDataManager.startSleepCycle(for: currentUser, startDate: manualStartDate)
                 _ = try sleepDataManager.endSleepCycle(for: currentUser,
                                                        endDate: manualEndDate,
-                                                       quality: selectedQuality)
+                                                       quality: Int16(selectedQuality))
             }
 
             reloadAllData()

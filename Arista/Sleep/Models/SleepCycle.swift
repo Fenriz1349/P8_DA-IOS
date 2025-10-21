@@ -23,35 +23,16 @@ extension SleepCycle {
         return NSFetchRequest<SleepCycle>(entityName: "SleepCycle")
     }
 
-    var isCompleted: Bool { return dateEnding != nil }
-
-    var isActive: Bool { return dateEnding == nil }
-
-    var sleepQuality: SleepQuality {
-        return SleepQuality(from: quality)
-    }
-
-    var qualityDescription: String {
-        return sleepQuality.description
-    }
-
     static func mapToDisplay(from cycles: [SleepCycle]) -> [SleepCycleDisplay] {
-        cycles.map {
-            SleepCycleDisplay(
-                id: $0.id,
-                dateStart: $0.dateStart,
-                dateEnding: $0.dateEnding,
-                quality: $0.quality
-            )
-        }
+        cycles.map { $0.toDisplay}
     }
 
     var toDisplay: SleepCycleDisplay {
         SleepCycleDisplay(
-            id: self.id,
-            dateStart: self.dateStart,
-            dateEnding: self.dateEnding,
-            quality: self.quality
+            id: id,
+            dateStart: dateStart,
+            dateEnding: dateEnding,
+            quality: Int(quality)
         )
     }
 }
@@ -60,13 +41,13 @@ struct SleepCycleDisplay: Identifiable, Equatable {
     let id: UUID
     let dateStart: Date
     let dateEnding: Date?
-    let quality: Int16
+    let quality: Int
 
-    var sleepQuality: SleepQuality {
-        return SleepQuality(from: quality)
-    }
+    var isCompleted: Bool { return dateEnding != nil }
 
-    var qualityDescription: String {
-        return sleepQuality.description
-    }
+    var isActive: Bool { return dateEnding == nil }
+
+    var sleepQuality: Grade { return Grade(quality) }
+
+    var qualityDescription: String { return sleepQuality.description }
 }

@@ -7,18 +7,17 @@
 
 import SwiftUI
 
-struct SleepQualityLabel: View {
-    let quality: Int16
-    private var sleepQuality: SleepQuality { SleepQuality(from: quality) }
+struct GradeLabel: View {
+    let grade: Grade
 
     var body: some View {
 
         ZStack {
             Circle()
-                .fill(sleepQuality.qualityColor)
+                .fill(grade.color)
                 .frame(width: 32, height: 32)
 
-            Text("\(quality)")
+            Text("\(grade.value)")
                 .font(.system(size: 14, weight: .bold))
                 .foregroundColor(.white)
         }
@@ -26,5 +25,5 @@ struct SleepQualityLabel: View {
 }
 
 #Preview {
-    SleepQualityLabel(quality: 5)
+    GradeLabel(grade: Grade(5))
 }

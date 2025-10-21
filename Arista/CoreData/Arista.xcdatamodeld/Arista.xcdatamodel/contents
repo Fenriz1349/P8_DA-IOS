@@ -3,6 +3,7 @@
     <entity name="Exercice" representedClassName="Exercice" syncable="YES">
         <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="duration" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="intensity" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" attributeType="String" customClassName="ExerciceType"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>

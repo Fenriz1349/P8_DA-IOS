@@ -51,7 +51,7 @@ final class EditAccountViewModel: ObservableObject {
         return UserUpdateBuilder(user: user, dataManager: appCoordinator.dataManager)
     }
 
-    // MARK: - Update Methods
+    /// Update Methods
 
     func saveChanges() {
         guard hasUserChanges() else { return }

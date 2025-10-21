@@ -112,7 +112,7 @@ struct PreviewSleepDataProvider {
             let start = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: date)!
             let end = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: date)!
                 .addingTimeInterval(86400)
-            let quality = Int16(Int.random(in: 1...10))
+            let quality = Int.random(in: 1...10)
 
             let display = SleepCycleDisplay(
                 id: UUID(),

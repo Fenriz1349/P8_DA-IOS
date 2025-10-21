@@ -28,12 +28,6 @@
         }
       }
     },
-    "%d" : {
-
-    },
-    "%d/10" : {
-
-    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -497,9 +491,6 @@
         }
       }
     },
-    "Non évaluée" : {
-
-    },
     "Nouveau cycle" : {
 
     },
@@ -518,9 +509,6 @@
           }
         }
       }
-    },
-    "Qualité" : {
-
     },
     "sleep" : {
       "localizations" : {

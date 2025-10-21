@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct AddExerciseView: View {
+struct EditExerciseView: View {
     @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: AddExerciseViewModel
 
@@ -34,5 +34,5 @@ struct AddExerciseView: View {
 }
 
 #Preview {
-    AddExerciseView(viewModel: AddExerciseViewModel(context: PreviewDataProvider.PreviewContext))
+    EditExerciseView(viewModel: AddExerciseViewModel(context: PreviewDataProvider.PreviewContext))
 }

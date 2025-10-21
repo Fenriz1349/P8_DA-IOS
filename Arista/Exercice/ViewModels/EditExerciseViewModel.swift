@@ -8,7 +8,7 @@
 import Foundation
 import CoreData
 
-class AddExerciseViewModel: ObservableObject {
+class EditExerciseViewModel: ObservableObject {
     @Published var category: String = ""
     @Published var startTime: String = ""
     @Published var duration: String = ""

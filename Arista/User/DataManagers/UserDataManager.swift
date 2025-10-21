@@ -16,14 +16,10 @@ enum UserDataManagerError: Error, Equatable, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidInput:
-            return "Les données saisies ne sont pas valides."
-        case .userNotFound:
-            return "Utilisateur introuvable."
-        case .noLoggedUser:
-            return "Aucun utilisateur connecté trouvé."
-        case .emailAlreadyUsed:
-            return "Cette adresse email est déjà utilisée."
+        case .invalidInput: return "Les données saisies ne sont pas valides."
+        case .userNotFound: return "Utilisateur introuvable."
+        case .noLoggedUser: return "Aucun utilisateur connecté trouvé."
+        case .emailAlreadyUsed: return "Cette adresse email est déjà utilisée."
         }
     }
 }
@@ -36,7 +32,7 @@ final class UserDataManager {
         self.container = container
     }
 
-    // MARK: - User Creation Method
+    /// User Creation Method
     func createUser(email: String, password: String, firstName: String, lastName: String) throws -> User {
         guard !email.isEmpty, !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty else {
             throw UserDataManagerError.invalidInput
@@ -63,7 +59,7 @@ final class UserDataManager {
         return user
     }
 
-    // MARK: - Users Fetching Methods
+    /// Users Fetching Methods
     func fetchUser(by id: UUID) throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
@@ -93,7 +89,7 @@ final class UserDataManager {
         return users
     }
 
-    // MARK: - Loggin In Method
+    /// Loggin In Method
     func loggedIn(id: UUID) throws {
         try loggedOffAllUsers()
         let user = try fetchUser(by: id)
@@ -101,7 +97,7 @@ final class UserDataManager {
         try builder.isLogged(true).save()
     }
 
-    // MARK: - Logging Off Method
+    /// Logging Off Method
     func loggedOffAllUsers() throws {
         let context = container.viewContext
         let users = fetchAllUsers()
@@ -109,7 +105,7 @@ final class UserDataManager {
         try context.save()
     }
 
-    // MARK: - Delete User Method
+    /// Delete User Method
     func deleteUser(by id: UUID) throws {
         let user = try fetchUser(by: id)
         let context = container.viewContext

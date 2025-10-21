@@ -1,31 +1,27 @@
 //
-//  SleepDataManager.swift
+//  ExerciceDataManager.swift
 //  Arista
 //
-//  Created by Julien Cotte on 25/09/2025.
+//  Created by Julien Cotte on 20/10/2025.
 //
 
 import Foundation
 import CoreData
 
-enum SleepDataManagerError: Error, Equatable, LocalizedError {
-    case sleepCycleNotFound
+enum ExerciceDataManagerError: Error, Equatable, LocalizedError {
+    case exerciceNotFound
     case activeSessionAlreadyExists
-    case invalidDateInterval
 
     var errorDescription: String? {
         switch self {
-        case .sleepCycleNotFound:
+        case .exerciceNotFound:
             return "Aucun cycle de sommeil actif trouvé."
         case .activeSessionAlreadyExists:
             return "Un cycle de sommeil est déjà en cours."
-        case .invalidDateInterval:
-            return "Les dates fournies ne sont pas valides."
-        }
     }
 }
 
-final class SleepDataManager {
+final class ExerciceDataManager {
     private let container: NSPersistentContainer
     private let userDataManager: UserDataManager
 
@@ -137,7 +133,7 @@ final class SleepDataManager {
 }
 
 #if DEBUG
-extension SleepDataManager {
+extension ExerciceDataManager {
     var viewContext: NSManagedObjectContext {
         return container.viewContext
     }
