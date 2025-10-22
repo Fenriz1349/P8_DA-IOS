@@ -13,7 +13,7 @@ final class ExerciseViewModel: ObservableObject {
     /// Dependencies
     private let appCoordinator: AppCoordinator
     private let exerciceDataManager: ExerciceDataManager
-    private let currentUser: User
+    let currentUser: User
 
     /// Published properties
     @Published var toastyManager: ToastyManager?
@@ -58,8 +58,8 @@ final class ExerciseViewModel: ObservableObject {
                     by: selected.id,
                     date: date,
                     type: selectedType,
-                    duration: Int16(duration),
-                    intensity: Int16(intensity)
+                    duration: duration,
+                    intensity: intensity
                 )
             } else {
                 _ = try exerciceDataManager.createExercice(
@@ -80,11 +80,9 @@ final class ExerciseViewModel: ObservableObject {
     /// Delete
     func deleteExercise(_ exercice: ExerciceDisplay) {
         do {
-            let items = try exerciceDataManager.fetchExercices(for: currentUser)
-            if let target = items.first(where: { $0.id == exercice.id }) {
-                try exerciceDataManager.deleteExercice(target)
-                reloadAll()
-            }
+            let target = try  exerciceDataManager.fetchExercice(by: exercice.id)
+            try exerciceDataManager.deleteExercice(target)
+            reloadAll()
         } catch {
             lastError = error
         }

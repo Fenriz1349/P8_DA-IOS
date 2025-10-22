@@ -108,3 +108,22 @@ struct SharedTestHelper {
         try context.save()
     }
 }
+
+extension SharedTestHelper {
+    static func createSampleExercice(for user: User,
+                                     in context: NSManagedObjectContext,
+                                     date: Date = Date(),
+                                     duration: Int = 30,
+                                     type: ExerciceType = .running,
+                                     intensity: Int = 5) -> Exercice {
+        let exercice = Exercice(context: context)
+        exercice.id = UUID()
+        exercice.date = date
+        exercice.duration = Int16(duration)
+        exercice.intensity = Int16(intensity)
+        exercice.type = type.rawValue
+        exercice.user = user
+        return exercice
+    }
+}
+

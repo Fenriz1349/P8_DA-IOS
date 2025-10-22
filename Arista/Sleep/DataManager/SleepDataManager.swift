@@ -52,7 +52,7 @@ final class SleepDataManager {
         return sleepCycle
     }
 
-    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int16 = 0) throws -> SleepCycle {
+    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int = 0) throws -> SleepCycle {
         guard let activeCycle = try getActiveSleepCycle(for: user) else {
             throw SleepDataManagerError.sleepCycleNotFound
         }
@@ -63,7 +63,7 @@ final class SleepDataManager {
 
         let context = container.viewContext
         activeCycle.dateEnding = endDate
-        activeCycle.quality = quality
+        activeCycle.quality = Int16(quality)
 
         try context.save()
 
@@ -113,12 +113,7 @@ final class SleepDataManager {
     }
 
     /// Update Methods
-    func updateSleepCycle(
-        by id: UUID,
-        startDate: Date,
-        endDate: Date,
-        quality: Int16
-    ) throws {
+    func updateSleepCycle(by id: UUID, startDate: Date, endDate: Date, quality: Int) throws {
         let context = container.viewContext
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
@@ -130,7 +125,7 @@ final class SleepDataManager {
 
         cycle.dateStart = startDate
         cycle.dateEnding = endDate
-        cycle.quality = quality
+        cycle.quality = Int16(quality)
 
         try context.save()
     }

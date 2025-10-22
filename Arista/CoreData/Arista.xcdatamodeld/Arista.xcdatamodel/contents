@@ -6,7 +6,7 @@
         <attribute name="id" optional="YES" attributeType="UUID" usesScalarValueType="NO"/>
         <attribute name="intensity" attributeType="Integer 16" minValueString="0" maxValueString="10" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="type" attributeType="String" customClassName="ExerciceType"/>
-        <relationship name="user" optional="YES" maxCount="1" deletionRule="Cascade" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>
     </entity>
     <entity name="SleepCycle" representedClassName="SleepCycle" syncable="YES">
         <attribute name="dateEnding" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
@@ -30,8 +30,8 @@
         <attribute name="sleepGoal" attributeType="Integer 16" defaultValueString="480" usesScalarValueType="YES"/>
         <attribute name="waterGoal" attributeType="Integer 16" defaultValueString="25" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Integer 16" defaultValueString="0.0" usesScalarValueType="YES"/>
-        <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="Exercice" inverseName="user" inverseEntity="Exercice"/>
-        <relationship name="sleepCycles" optional="YES" toMany="YES" deletionRule="Cascade" destinationEntity="SleepCycle" inverseName="user" inverseEntity="SleepCycle"/>
+        <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercice" inverseName="user" inverseEntity="Exercice"/>
+        <relationship name="sleepCycles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SleepCycle" inverseName="user" inverseEntity="SleepCycle"/>
         <uniquenessConstraints>
             <uniquenessConstraint>
                 <constraint value="email"/>

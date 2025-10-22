@@ -24,7 +24,6 @@ final class SleepViewModel: ObservableObject {
     /// Dependencies
     private let appCoordinator: AppCoordinator
     private let sleepDataManager: SleepDataManager
-    private let currentUserId: UUID
     let title = "Qualité"
     let currentUser: User
 
@@ -51,7 +50,6 @@ final class SleepViewModel: ObservableObject {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
         self.currentUser = try appCoordinator.validateCurrentUser()
-        self.currentUserId = currentUser.id
         reloadAllData()
     }
 
@@ -89,7 +87,7 @@ final class SleepViewModel: ObservableObject {
         do {
             _ = try sleepDataManager.endSleepCycle(for: currentUser,
                                                    endDate: endDate,
-                                                   quality: Int16(selectedQuality))
+                                                   quality: selectedQuality)
             reloadAllData()
             selectedQuality = 0
         } catch {
@@ -127,13 +125,12 @@ final class SleepViewModel: ObservableObject {
                     by: editing.id,
                     startDate: manualStartDate,
                     endDate: manualEndDate,
-                    quality: Int16(selectedQuality)
-                )
+                    quality: selectedQuality)
             } else {
                 _ = try sleepDataManager.startSleepCycle(for: currentUser, startDate: manualStartDate)
                 _ = try sleepDataManager.endSleepCycle(for: currentUser,
                                                        endDate: manualEndDate,
-                                                       quality: Int16(selectedQuality))
+                                                       quality: selectedQuality)
             }
 
             reloadAllData()
