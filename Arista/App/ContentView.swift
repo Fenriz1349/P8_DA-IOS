@@ -21,10 +21,12 @@ struct ContentView: View {
                             }
                     }
 
-                    Text("exercices")
-                        .tabItem {
-                            Label("exercices", systemImage: "flame")
-                        }
+                    if let exerciceVM = try? appCoordinator.makeExerciceViewModel() {
+                        ExerciseView(viewModel: exerciceVM)
+                            .tabItem {
+                                Label("exercices", systemImage: "flame")
+                            }
+                    }
 
                     if let sleepVM = try? appCoordinator.makeSleepViewModel() {
                         SleepView(viewModel: sleepVM)

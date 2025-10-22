@@ -15,12 +15,9 @@ enum AuthenticationError: Error, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidCredentials:
-            return "Email ou mot de passe incorrect. Vérifiez vos identifiants."
-        case .validationFailed:
-            return "Veuillez compléter correctement tous les champs requis."
-        case .emailAlreadyUsed:
-            return "Cette adresse email est déjà utilisée. Utilisez une adresse différente."
+        case .invalidCredentials: return "Email ou mot de passe incorrect. Vérifiez vos identifiants."
+        case .validationFailed: return "Veuillez compléter correctement tous les champs requis."
+        case .emailAlreadyUsed: return "Cette adresse email est déjà utilisée. Utilisez une adresse différente."
         }
     }
 }
@@ -49,7 +46,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Properties
+    /// Properties
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var firstName: String = ""
@@ -57,7 +54,7 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var creationMode: Bool = false
     @Published var buttonState: ButtonState = .disabled
 
-    // MARK: - Validation states for CustomTextFields
+    /// Validation states for CustomTextFields
     @Published var emailValidationState: ValidationState = .neutral
     @Published var passwordValidationState: ValidationState = .neutral
     @Published var firstNameValidationState: ValidationState = .neutral
@@ -72,7 +69,7 @@ final class AuthenticationViewModel: ObservableObject {
         self.toastyManager = toastyManager
     }
 
-    // MARK: - Computed Properties
+    /// Computed Properties
     var isFormValid: Bool {
         creationMode ? isCreationFormValid : isLoginFormValid
     }
@@ -101,12 +98,12 @@ final class AuthenticationViewModel: ObservableObject {
         ExampleValidationRules.validateLastName(lastName)
     }
 
-    // MARK: - Button State Management
+    /// Button State Management
     func updateButtonState() {
         buttonState = isFormValid ? .enabled : .disabled
     }
 
-    // MARK: - Validation Management
+    /// Validation Management
     func resetFieldValidation(_ field: FieldType) {
         switch field {
         case .email:
@@ -166,7 +163,7 @@ final class AuthenticationViewModel: ObservableObject {
         return !hasErrors
     }
 
-    // MARK: - Submit Handling
+    /// Submit Handling
     func handleSubmit() {
         if validateAllFields() {
             Task {
@@ -203,7 +200,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    // MARK: - Authentication Methods
+    /// Authentication Methods
     func login() throws {
         guard isLoginFormValid else {
             throw AuthenticationError.validationFailed

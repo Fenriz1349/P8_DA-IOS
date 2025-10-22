@@ -28,12 +28,6 @@
         }
       }
     },
-    "%d" : {
-
-    },
-    "%d/10" : {
-
-    },
     "%lld" : {
       "localizations" : {
         "en" : {
@@ -57,6 +51,12 @@
     "%lld kcal" : {
 
     },
+    "%lld kcal brûlées" : {
+
+    },
+    "%lld min" : {
+
+    },
     "%lldh %lldmin" : {
       "localizations" : {
         "en" : {
@@ -71,6 +71,7 @@
 
     },
     "addExercice" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -119,6 +120,7 @@
 
     },
     "category" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -350,6 +352,9 @@
         }
       }
     },
+    "Exercice" : {
+
+    },
     "exercices" : {
       "localizations" : {
         "en" : {
@@ -395,6 +400,7 @@
 
     },
     "hourStart" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -411,6 +417,7 @@
       }
     },
     "intensity" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -427,6 +434,7 @@
       }
     },
     "length" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -460,6 +468,7 @@
       }
     },
     "length%lldmin" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -482,6 +491,7 @@
 
     },
     "newExercice" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -496,9 +506,6 @@
           }
         }
       }
-    },
-    "Non évaluée" : {
-
     },
     "Nouveau cycle" : {
 
@@ -519,7 +526,7 @@
         }
       }
     },
-    "Qualité" : {
+    "Sélectionnez une date" : {
 
     },
     "sleep" : {
@@ -565,6 +572,9 @@
 
     },
     "Sommeil en cours" : {
+
+    },
+    "Type d'exercice" : {
 
     },
     "Water" : {

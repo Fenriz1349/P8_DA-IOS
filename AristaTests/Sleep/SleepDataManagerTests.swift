@@ -67,7 +67,7 @@ final class SleepDataManagerTests: XCTestCase {
         // Given
         let startDate = Date()
         let endDate = startDate.addingTimeInterval(8 * 3600)
-        let quality: Int16 = 8
+        let quality: Int = 8
         
         try manager.startSleepCycle(for: testUser, startDate: startDate)
         
@@ -77,7 +77,7 @@ final class SleepDataManagerTests: XCTestCase {
         // Then
         XCTAssertNotNil(completedCycle.dateEnding)
         XCTAssertEqual(completedCycle.dateEnding, endDate)
-        XCTAssertEqual(completedCycle.quality, quality)
+        XCTAssertEqual(completedCycle.quality, Int16(quality))
         XCTAssertEqual(completedCycle.dateStart, startDate)
     }
     
@@ -210,14 +210,13 @@ final class SleepDataManagerTests: XCTestCase {
         // Given
         let startDate = Date().addingTimeInterval(-9 * 3600)
         let endDate = Date().addingTimeInterval(-1 * 3600)
-        let quality: Int16 = 6
         
         let createdCycle = try manager.startSleepCycle(for: testUser, startDate: startDate)
         try manager.endSleepCycle(for: testUser, endDate: endDate, quality: 4)
         
         let newStart = startDate.addingTimeInterval(-3600)
         let newEnd = endDate.addingTimeInterval(3600)
-        let newQuality: Int16 = 9
+        let newQuality: Int = 9
         
         // When
         try manager.updateSleepCycle(by: createdCycle.id,
@@ -232,7 +231,7 @@ final class SleepDataManagerTests: XCTestCase {
         XCTAssertNotNil(updated)
         XCTAssertEqual(updated?.dateStart, newStart)
         XCTAssertEqual(updated?.dateEnding, newEnd)
-        XCTAssertEqual(updated?.quality, newQuality)
+        XCTAssertEqual(updated?.quality, Int16(newQuality))
     }
     
     func test_updateSleepCycle_withInvalidID_shouldThrowNotFound() throws {

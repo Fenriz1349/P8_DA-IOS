@@ -24,7 +24,7 @@ final class SleepViewModel: ObservableObject {
     /// Dependencies
     private let appCoordinator: AppCoordinator
     private let sleepDataManager: SleepDataManager
-    private let currentUserId: UUID
+    let title = "Qualité"
     let currentUser: User
 
     /// UI / Published Properties
@@ -32,7 +32,7 @@ final class SleepViewModel: ObservableObject {
     @Published var currentCycle: SleepCycleDisplay?
     @Published var editingCycle: SleepCycleDisplay?
     @Published var historyCycles: [SleepCycleDisplay] = []
-    @Published var selectedQuality: Int16 = 0
+    @Published var selectedQuality: Int = 0
     @Published var showEditModal = false
 
     /// Manual Entry
@@ -50,7 +50,6 @@ final class SleepViewModel: ObservableObject {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
         self.currentUser = try appCoordinator.validateCurrentUser()
-        self.currentUserId = currentUser.id
         reloadAllData()
     }
 
@@ -60,9 +59,8 @@ final class SleepViewModel: ObservableObject {
 
     /// Data Loading
     func reloadAllData() {
-        objectWillChange.send()
         do {
-            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 8)
+            let cycles = try sleepDataManager.fetchRecentSleepCycles(for: currentUser)
             let displays = SleepCycle.mapToDisplay(from: cycles)
 
             currentCycle = displays.first
@@ -127,8 +125,7 @@ final class SleepViewModel: ObservableObject {
                     by: editing.id,
                     startDate: manualStartDate,
                     endDate: manualEndDate,
-                    quality: selectedQuality
-                )
+                    quality: selectedQuality)
             } else {
                 _ = try sleepDataManager.startSleepCycle(for: currentUser, startDate: manualStartDate)
                 _ = try sleepDataManager.endSleepCycle(for: currentUser,

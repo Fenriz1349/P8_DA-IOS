@@ -21,15 +21,14 @@ struct SleepView: View {
             HStack {
                 CurrentStateSection(viewModel: viewModel)
                 if viewModel.currentState.isActive {
-                    SleepQualityPicker(quality: $viewModel.selectedQuality)
+                    GradePicker(title: viewModel.title, quality: $viewModel.selectedQuality)
                 }
             }
-            HistorySection(viewModel: viewModel)
+            SleepHistorySection(viewModel: viewModel)
         }
         .padding()
         .navigationTitle("Sommeil")
         .onAppear {
-            viewModel.reloadAllData()
             viewModel.configureToasty(toastyManager: toastyManager)
         }
     }

@@ -9,8 +9,10 @@ import SwiftUI
 import CustomLabels
 
 struct EditSleepCycleModal: View {
-    @Environment(\.dismiss) private var dismiss
     @ObservedObject var viewModel: SleepViewModel
+#warning("Trouver un moyen d'afficher toasty même sur une modale")
+    @EnvironmentObject private var toastyManager: ToastyManager
+
 
     var body: some View {
         NavigationStack {
@@ -29,9 +31,9 @@ struct EditSleepCycleModal: View {
                         displayedComponents: [.date, .hourAndMinute]
                     )
                 }
-                SleepQualityPicker(quality: $viewModel.selectedQuality)
+                GradePicker(title: viewModel.title, quality: $viewModel.selectedQuality)
                 Button(action: viewModel.saveCycle) {
-                    CustomButtonLabel(iconLeading: "square.and.arrow.down", message: "Sauvegarder", color: .blue)
+                    SaveButton()
                 }
                 Spacer()
             }
@@ -45,14 +47,19 @@ struct EditSleepCycleModal: View {
                     }
                 }
             }
+            .onAppear {
+                viewModel.configureToasty(toastyManager: toastyManager)
+            }
         }
     }
 }
 
 #Preview("New Cycle") {
     EditSleepCycleModal(viewModel: PreviewSleepDataProvider.newCycleViewModel)
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }
 
 #Preview("Edit Cycle") {
-    return EditSleepCycleModal(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
+    EditSleepCycleModal(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

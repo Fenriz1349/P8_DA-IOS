@@ -15,12 +15,9 @@ enum SleepDataManagerError: Error, Equatable, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .sleepCycleNotFound:
-            return "Aucun cycle de sommeil actif trouvé."
-        case .activeSessionAlreadyExists:
-            return "Un cycle de sommeil est déjà en cours."
-        case .invalidDateInterval:
-            return "Les dates fournies ne sont pas valides."
+        case .sleepCycleNotFound: return "Aucun cycle de sommeil actif trouvé."
+        case .activeSessionAlreadyExists: return "Un cycle de sommeil est déjà en cours."
+        case .invalidDateInterval: return "Les dates fournies ne sont pas valides."
         }
     }
 }
@@ -35,7 +32,7 @@ final class SleepDataManager {
         self.userDataManager = userDataManager ?? UserDataManager(container: container)
     }
 
-    // MARK: - Create Sleep Cycle
+    /// Create Sleep Cycle
     func startSleepCycle(for user: User, startDate: Date = Date()) throws -> SleepCycle {
         let context = container.viewContext
 
@@ -55,7 +52,7 @@ final class SleepDataManager {
         return sleepCycle
     }
 
-    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int16 = 0) throws -> SleepCycle {
+    func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int = 0) throws -> SleepCycle {
         guard let activeCycle = try getActiveSleepCycle(for: user) else {
             throw SleepDataManagerError.sleepCycleNotFound
         }
@@ -66,25 +63,29 @@ final class SleepDataManager {
 
         let context = container.viewContext
         activeCycle.dateEnding = endDate
-        activeCycle.quality = quality
+        activeCycle.quality = Int16(quality)
 
         try context.save()
 
         return activeCycle
     }
 
-    // MARK: - Fetch Methods
-    func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
+    /// Fetch Methods
+    func fetchSleepCycles(for user: User) throws -> [SleepCycle] {
         let context = container.viewContext
 
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
-        if let limit = limit {
-            request.fetchLimit = limit
-        }
 
         return try context.fetch(request)
+    }
+
+    func fetchRecentSleepCycles(for user: User) throws -> [SleepCycle] {
+        let allCycles = try fetchSleepCycles(for: user)
+        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+
+        return allCycles.filter { $0.dateStart >= sevenDaysAgo }
     }
 
     func hasActiveSleepCycle(for user: User) throws -> Bool {
@@ -104,20 +105,15 @@ final class SleepDataManager {
         return try context.fetch(request).first
     }
 
-    // MARK: - Delete Methods
+    /// Delete Methods
     func deleteSleepCycle(_ sleepCycle: SleepCycle) throws {
         let context = container.viewContext
         context.delete(sleepCycle)
         try context.save()
     }
 
-    // MARK: - Update Methods
-    func updateSleepCycle(
-        by id: UUID,
-        startDate: Date,
-        endDate: Date,
-        quality: Int16
-    ) throws {
+    /// Update Methods
+    func updateSleepCycle(by id: UUID, startDate: Date, endDate: Date, quality: Int) throws {
         let context = container.viewContext
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
         request.predicate = NSPredicate(format: "id == %@", id as CVarArg)
@@ -129,7 +125,7 @@ final class SleepDataManager {
 
         cycle.dateStart = startDate
         cycle.dateEnding = endDate
-        cycle.quality = quality
+        cycle.quality = Int16(quality)
 
         try context.save()
     }

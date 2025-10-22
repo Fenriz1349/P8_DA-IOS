@@ -46,6 +46,10 @@ final class AppCoordinator: ObservableObject {
         return try SleepViewModel(appCoordinator: self)
     }
 
+    func makeExerciceViewModel() throws -> ExerciseViewModel {
+        return try ExerciseViewModel(appCoordinator: self)
+    }
+
     private func restoreUserSession() {
         if let userIdString = UserDefaults.standard.string(forKey: currentUserIdKey),
            let userId = UUID(uuidString: userIdString) {
