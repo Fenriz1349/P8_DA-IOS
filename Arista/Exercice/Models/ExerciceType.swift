@@ -8,11 +8,8 @@
 enum ExerciceType: String, CaseIterable, Identifiable {
     var id: String { rawValue }
 
-    case cardio, strength, yoga, pilates, running, walking
-    case cycling, swimming, climbing, dance, boxing
-    case crossfit, football, basketball, tennis, golf
-    case rowing, skiing, surfing, hiking, stretching
-    case other
+    case cardio, strength, yoga, pilates, running, walking, cycling, swimming, climbing, dance, boxing, crossfit,
+         football, basketball, tennis, golf, rowing, skiing, surfing, hiking, stretching, volleyball, fencing, other
 
     var displayName: String {
         switch self {
@@ -37,6 +34,8 @@ enum ExerciceType: String, CaseIterable, Identifiable {
         case .surfing: return "Surf"
         case .hiking: return "Randonnée"
         case .stretching: return "Étirements"
+        case .volleyball: return "Volley-ball"
+        case .fencing: return "Escrime"
         case .other: return "Autre"
         }
     }
@@ -64,6 +63,8 @@ enum ExerciceType: String, CaseIterable, Identifiable {
         case .surfing: return "figure.surfing"
         case .hiking: return "figure.hiking"
         case .stretching: return "figure.cooldown"
+        case .volleyball: return "volleyball"
+        case .fencing: return "figure.fencing"
         case .other: return "ellipsis"
         }
     }
@@ -71,13 +72,12 @@ enum ExerciceType: String, CaseIterable, Identifiable {
     var calorieFactor: Double {
         switch self {
         case .running, .cycling, .swimming: return 1.5
-        case .football, .basketball, .boxing: return 1.3
+        case .football, .basketball, .boxing, .volleyball: return 1.3
         case .yoga, .pilates, .stretching: return 0.6
-        case .strength, .crossfit: return 1.1
+        case .strength, .crossfit, .fencing: return 1.1
         case .walking, .hiking: return 0.8
         default: return 1.0
         }
     }
-
 }
 

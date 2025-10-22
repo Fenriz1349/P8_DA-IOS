@@ -1,39 +1,68 @@
 //
-//  AddExerciseView.swift
+//  EditExerciseModal.swift
 //  Arista
 //
-//  Created by Vincent Saluzzo on 08/12/2023.
+//  Created by Julien Cotte on 22/10/2025.
 //
 
 import SwiftUI
+import CustomLabels
 
 struct EditExerciseModal: View {
-    @Environment(\.presentationMode) var presentationMode
     @ObservedObject var viewModel: ExerciseViewModel
+    @EnvironmentObject private var toastyManager: ToastyManager
 
     var body: some View {
-//        NavigationView {
-//            VStack {
-//                Form {
-//                    TextField("category", text: $viewModel.category)
-//                    TextField("hourStart", text: $viewModel.startTime)
-//                    TextField("length", text: $viewModel.duration)
-//                    TextField("intensity", text: $viewModel.intensity)
-//                }.formStyle(.grouped)
-//                Spacer()
-//                Button("addExercice") {
-//                    if viewModel.addExercise() {
-//                        presentationMode.wrappedValue.dismiss()
-//                    }
-//                }.buttonStyle(.borderedProminent)
-//            }
-//            .navigationTitle("newExercice")
+        VStack(spacing: 20) {
 
-//        }
+            VStack(alignment: .leading, spacing: 8) {
+                Text("Type d'exercice")
+                    .font(.headline)
+                ExerciseTypeGrid(selectedType: $viewModel.selectedType)
+            }
+
+            HStack {
+                DatePicker(
+                    "Sélectionnez une date",
+                    selection: $viewModel.date,
+                    displayedComponents: [.date]
+                )
+                .labelsHidden()
+                DurationStepper(title: "Durée", value: $viewModel.duration)
+            }
+            HStack {
+                GradePicker(title: "Intensité", quality: $viewModel.intensity)
+                Text(viewModel.caloriesBurned)
+            }
+            
+
+            Button(action: viewModel.saveExercise) {
+                SaveButton()
+            }
+            .padding(.top, 12)
+            
+            Spacer()
+        }
+        .padding()
+        .toolbar {
+            ToolbarItem(placement: .cancellationAction) {
+                Button("Annuler") {
+                    viewModel.showEditModal = false
+                }
+            }
+        }
+        .onAppear {
+            viewModel.configureToasty(toastyManager: toastyManager)
+        }
     }
 }
 
-#Preview("Liste des exercices") {
-    EditExerciseModal(viewModel: PreviewExerciseDataProvider.filledViewModel)
+#Preview("New Exercise") {
+    EditExerciseModal(viewModel: PreviewExerciseDataProvider.newExerciseViewModel)
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }
 
+#Preview("Edit Exercise") {
+    EditExerciseModal(viewModel: PreviewExerciseDataProvider.editExerciseViewModel)
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
+}

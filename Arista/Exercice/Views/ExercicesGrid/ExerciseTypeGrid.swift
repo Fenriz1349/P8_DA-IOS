@@ -11,14 +11,14 @@ struct ExerciseTypeGrid: View {
     @Binding var selectedType: ExerciceType
 
     private let columns = [
-        GridItem(.adaptive(minimum: 80), spacing: 12)
+        GridItem(.adaptive(minimum: 60), spacing: 12)
     ]
 
     var body: some View {
-        ScrollView {
+        VStack {
             LazyVGrid(columns: columns, spacing: 12) {
                 ForEach(ExerciceType.allCases, id: \.self) { type in
-                    ExerciseTypeCard(type: type, isSelected: type == selectedType) {
+                    CompactExerciseCard(type: type, isSelected: type == selectedType) {
                         selectedType = type
                     }
                 }

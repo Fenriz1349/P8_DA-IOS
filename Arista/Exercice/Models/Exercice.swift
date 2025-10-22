@@ -57,8 +57,6 @@ struct ExerciceDisplay: Identifiable, Equatable {
     var intensityDescription: String { return exerciceIntensity.description }
     
     var caloriesBurned: Int {
-        let base = Double(duration) * Double(intensity) * type.calorieFactor
-        return Int(base / 10)
+        return Int(Double(duration) * Double(intensity) * type.calorieFactor)
     }
-
 }

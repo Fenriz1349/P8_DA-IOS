@@ -33,7 +33,7 @@ struct EditSleepCycleModal: View {
                 }
                 GradePicker(title: viewModel.title, quality: $viewModel.selectedQuality)
                 Button(action: viewModel.saveCycle) {
-                    CustomButtonLabel(iconLeading: "square.and.arrow.down", message: "Sauvegarder", color: .blue)
+                    SaveButton()
                 }
                 Spacer()
             }
@@ -56,8 +56,10 @@ struct EditSleepCycleModal: View {
 
 #Preview("New Cycle") {
     EditSleepCycleModal(viewModel: PreviewSleepDataProvider.newCycleViewModel)
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }
 
 #Preview("Edit Cycle") {
-    return EditSleepCycleModal(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
+    EditSleepCycleModal(viewModel: PreviewSleepDataProvider.activeCycleViewModel)
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

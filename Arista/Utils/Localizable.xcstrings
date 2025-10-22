@@ -526,6 +526,9 @@
         }
       }
     },
+    "Sélectionnez une date" : {
+
+    },
     "sleep" : {
       "localizations" : {
         "en" : {
@@ -569,6 +572,9 @@
 
     },
     "Sommeil en cours" : {
+
+    },
+    "Type d'exercice" : {
 
     },
     "Water" : {

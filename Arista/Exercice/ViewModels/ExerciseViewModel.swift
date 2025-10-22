@@ -21,12 +21,17 @@ final class ExerciseViewModel: ObservableObject {
     @Published var selectedExercice: ExerciceDisplay?
     @Published var showEditModal = false
     @Published var lastError: Error?
+    @Published var lastSelectedType: ExerciceType = .other
 
     /// Fields for editing/adding
     @Published var selectedType: ExerciceType = .other
     @Published var date: Date = Date()
-    @Published var duration: Int = 0
+    @Published var duration: Int = 30
     @Published var intensity: Int = 5
+    
+    var caloriesBurned: String {
+        return "\(Int(Double(duration) * Double(intensity) * selectedType.calorieFactor)) kcal"
+    }
 
     /// Init
     init(appCoordinator: AppCoordinator, dataManager: ExerciceDataManager? = nil) throws {
@@ -70,6 +75,7 @@ final class ExerciseViewModel: ObservableObject {
                     intensity: intensity
                 )
             }
+            lastSelectedType = selectedType
             reloadAll()
             showEditModal = false
         } catch {
@@ -98,9 +104,9 @@ final class ExerciseViewModel: ObservableObject {
             selectedType = exercice.type
         } else {
             date = Date()
-            duration = 0
+            duration = 30
             intensity = 5
-            selectedType = .other
+            selectedType = lastSelectedType
         }
         showEditModal = true
     }

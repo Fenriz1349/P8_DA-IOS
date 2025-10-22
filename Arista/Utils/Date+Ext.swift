@@ -43,11 +43,11 @@ extension Date {
     }
 
     func formattedInterval(to endDate: Date) -> String {
-            let duration = duration(to: endDate)
-            let hours = Int(duration) / 3600
-            let minutes = (Int(duration) % 3600) / 60
-            return hours > 0 ? "\(hours)h \(minutes)min": "\(minutes)min"
-        }
+        let duration = duration(to: endDate)
+        let hours = Int(duration) / 3600
+        let minutes = (Int(duration) % 3600) / 60
+        return hours > 0 ? "\(hours)h \(minutes)min": "\(minutes)min"
+    }
 
     /// Format hour only (ex: "14:30")
     var formattedTime: String {
