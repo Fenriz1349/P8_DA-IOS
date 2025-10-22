@@ -61,9 +61,8 @@ final class SleepViewModel: ObservableObject {
 
     /// Data Loading
     func reloadAllData() {
-        objectWillChange.send()
         do {
-            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser, limit: 8)
+            let cycles = try sleepDataManager.fetchRecentSleepCycles(for: currentUser)
             let displays = SleepCycle.mapToDisplay(from: cycles)
 
             currentCycle = displays.first

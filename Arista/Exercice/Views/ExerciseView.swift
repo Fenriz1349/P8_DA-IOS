@@ -30,6 +30,6 @@ struct ExerciseView: View {
 }
 
 #Preview("Liste des exercices") {
-    ExerciseView(viewModel: PreviewExerciseDataProvider.makePreviewViewModel())
+    ExerciseView(viewModel: PreviewExerciseDataProvider.filledViewModel)
         .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

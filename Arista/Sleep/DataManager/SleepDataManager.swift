@@ -71,17 +71,21 @@ final class SleepDataManager {
     }
 
     /// Fetch Methods
-    func fetchSleepCycles(for user: User, limit: Int? = nil) throws -> [SleepCycle] {
+    func fetchSleepCycles(for user: User) throws -> [SleepCycle] {
         let context = container.viewContext
 
         let request: NSFetchRequest<SleepCycle> = SleepCycle.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
-        if let limit = limit {
-            request.fetchLimit = limit
-        }
 
         return try context.fetch(request)
+    }
+
+    func fetchRecentSleepCycles(for user: User) throws -> [SleepCycle] {
+        let allCycles = try fetchSleepCycles(for: user)
+        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
+
+        return allCycles.filter { $0.dateStart >= sevenDaysAgo }
     }
 
     func hasActiveSleepCycle(for user: User) throws -> Bool {

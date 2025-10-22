@@ -49,28 +49,21 @@ final class ExerciceDataManager {
     }
 
     // MARK: - Fetch Methods
-    func fetchExercices(for user: User, limit: Int? = nil) throws -> [Exercice] {
+    func fetchExercices(for user: User) throws -> [Exercice] {
         let context = container.viewContext
 
         let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
-        request.sortDescriptors = [NSSortDescriptor(key: "dateStart", ascending: false)]
-        if let limit = limit {
-            request.fetchLimit = limit
-        }
+        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
 
         return try context.fetch(request)
     }
 
     func fetchLastWeekExercices(for user: User) throws -> [Exercice] {
-        let context = container.viewContext
-        let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
+        let allExercices = try fetchExercices(for: user)
+        let sevenDaysAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date()) ?? Date()
 
-        let oneWeekAgo = Calendar.current.date(byAdding: .day, value: -7, to: Date())!
-        request.predicate = NSPredicate(format: "user == %@ AND date >= %@", user, oneWeekAgo as NSDate)
-        request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-
-        return try context.fetch(request)
+        return allExercices.filter { $0.date >= sevenDaysAgo }
     }
 
     // MARK: - Delete Methods

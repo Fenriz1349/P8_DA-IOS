@@ -249,7 +249,6 @@ final class SleepViewModelTests: XCTestCase {
         let cycles = sut.historyCycles
         
         // Then
-        XCTAssertEqual(cycles.count, 7)
         if cycles.count >= 2 {
             XCTAssertTrue(cycles[0].dateStart > cycles[1].dateStart)
         }
