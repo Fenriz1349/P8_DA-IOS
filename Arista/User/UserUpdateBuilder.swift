@@ -11,14 +11,10 @@ import CoreData
 enum UserUpdateBuilderError: Error, Equatable {
     case emptyFirstName
     case emptyLastName
-    case emptyEmail
     case emptyPassword
     case nullCalorieGoal
     case nullSleepGoal
     case nullWaterGoal
-    case nullWeight
-    case nullHeight
-    case invalidBirthDate
 }
 
 class UserUpdateBuilder {
@@ -45,15 +41,6 @@ class UserUpdateBuilder {
             throw UserUpdateBuilderError.emptyLastName
         }
         user.lastName = value
-        return self
-    }
-
-    @discardableResult
-    func email(_ value: String) throws -> UserUpdateBuilder {
-        guard !value.isEmpty else {
-            throw UserUpdateBuilderError.emptyEmail
-        }
-        user.email = value
         return self
     }
 

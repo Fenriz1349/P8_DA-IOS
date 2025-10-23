@@ -13,9 +13,9 @@
 		53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587392B235E9000E4EF99 /* Persistence.swift */; };
 		53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 53E5873B2B235E9000E4EF99 /* Arista.xcdatamodeld */; };
 		53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587462B235E9000E4EF99 /* PersistenceTests.swift */; };
-		53E587632B235FF600E4EF99 /* AccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* AccountView.swift */; };
+		53E587632B235FF600E4EF99 /* UserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587622B235FF600E4EF99 /* UserView.swift */; };
 		53E587652B23600400E4EF99 /* ExerciseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587642B23600400E4EF99 /* ExerciseView.swift */; };
-		53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587682B23616A00E4EF99 /* AccountViewModel.swift */; };
+		53E587692B23616A00E4EF99 /* UserViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E587682B23616A00E4EF99 /* UserViewModel.swift */; };
 		53E5876B2B23648500E4EF99 /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876A2B23648500E4EF99 /* ExerciseViewModel.swift */; };
 		53E5876D2B236D9E00E4EF99 /* EditExerciseModal.swift in Sources */ = {isa = PBXBuildFile; fileRef = 53E5876C2B236D9E00E4EF99 /* EditExerciseModal.swift */; };
 		6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E6652E852D7B00501E0E /* ToastyMessage.swift */; };
@@ -64,15 +64,13 @@
 		685951122EA970DF00A8744E /* CompactExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951112EA970DF00A8744E /* CompactExerciseCard.swift */; };
 		685951142EA971D200A8744E /* DurationStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951132EA971D200A8744E /* DurationStepper.swift */; };
 		685951162EA975DC00A8744E /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951152EA975DC00A8744E /* SaveButton.swift */; };
-		685B235B2E79ADCF003CFFA3 /* EditAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */; };
-		685B235D2E79AE32003CFFA3 /* EditAccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */; };
 		685FB58E2EA805AB003E4C6D /* ExerciseTypeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */; };
 		685FB5902EA807C4003E4C6D /* ExerciseHistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */; };
 		685FB5932EA808E2003E4C6D /* PreviewExerciseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */; };
 		685FB5952EA80EA3003E4C6D /* ExerciseHistorySection.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB5942EA80EA3003E4C6D /* ExerciseHistorySection.swift */; };
 		686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686027A92E3B973100BF8EA8 /* ExerciceType.swift */; };
 		686D56902E7447110088AD98 /* CustomLabels in Frameworks */ = {isa = PBXBuildFile; productRef = 686D568F2E7447110088AD98 /* CustomLabels */; };
-		686D56922E7455900088AD98 /* AccountViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D56912E7455900088AD98 /* AccountViewModelTests.swift */; };
+		686D56922E7455900088AD98 /* UserViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 686D56912E7455900088AD98 /* UserViewModelTests.swift */; };
 		689510082E60473600461030 /* UserDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 689510072E60473600461030 /* UserDataManager.swift */; };
 		6895100B2E60711600461030 /* UserTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100A2E60711600461030 /* UserTests.swift */; };
 		6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6895100D2E607DF600461030 /* UserDataManagerTests.swift */; };
@@ -94,7 +92,7 @@
 		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
 		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
 		68EFABCE2EA7AD3400E2F937 /* ExerciseTypeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */; };
-		68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4DA082E7C522500CFECA5 /* EditAccountView.swift */; };
+		68F4DA092E7C522500CFECA5 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4DA082E7C522500CFECA5 /* EditUserView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -116,9 +114,9 @@
 		53E5873C2B235E9000E4EF99 /* Arista.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Arista.xcdatamodel; sourceTree = "<group>"; };
 		53E587422B235E9000E4EF99 /* AristaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = AristaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		53E587462B235E9000E4EF99 /* PersistenceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersistenceTests.swift; sourceTree = "<group>"; };
-		53E587622B235FF600E4EF99 /* AccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountView.swift; sourceTree = "<group>"; };
+		53E587622B235FF600E4EF99 /* UserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserView.swift; sourceTree = "<group>"; };
 		53E587642B23600400E4EF99 /* ExerciseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseView.swift; sourceTree = "<group>"; };
-		53E587682B23616A00E4EF99 /* AccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModel.swift; sourceTree = "<group>"; };
+		53E587682B23616A00E4EF99 /* UserViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModel.swift; sourceTree = "<group>"; };
 		53E5876A2B23648500E4EF99 /* ExerciseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		53E5876C2B236D9E00E4EF99 /* EditExerciseModal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditExerciseModal.swift; sourceTree = "<group>"; };
 		6802E6652E852D7B00501E0E /* ToastyMessage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyMessage.swift; sourceTree = "<group>"; };
@@ -166,14 +164,12 @@
 		685951112EA970DF00A8744E /* CompactExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactExerciseCard.swift; sourceTree = "<group>"; };
 		685951132EA971D200A8744E /* DurationStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationStepper.swift; sourceTree = "<group>"; };
 		685951152EA975DC00A8744E /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
-		685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModel.swift; sourceTree = "<group>"; };
-		685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountViewModelTests.swift; sourceTree = "<group>"; };
 		685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeGrid.swift; sourceTree = "<group>"; };
 		685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryRow.swift; sourceTree = "<group>"; };
 		685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewExerciseDataProvider.swift; sourceTree = "<group>"; };
 		685FB5942EA80EA3003E4C6D /* ExerciseHistorySection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistorySection.swift; sourceTree = "<group>"; };
 		686027A92E3B973100BF8EA8 /* ExerciceType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceType.swift; sourceTree = "<group>"; };
-		686D56912E7455900088AD98 /* AccountViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccountViewModelTests.swift; sourceTree = "<group>"; };
+		686D56912E7455900088AD98 /* UserViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserViewModelTests.swift; sourceTree = "<group>"; };
 		689510072E60473600461030 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		6895100A2E60711600461030 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		6895100D2E607DF600461030 /* UserDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManagerTests.swift; sourceTree = "<group>"; };
@@ -197,7 +193,7 @@
 		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCard.swift; sourceTree = "<group>"; };
-		68F4DA082E7C522500CFECA5 /* EditAccountView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditAccountView.swift; sourceTree = "<group>"; };
+		68F4DA082E7C522500CFECA5 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -531,10 +527,9 @@
 				68E89C862E6AE8C40004F6DA /* User.swift */,
 				68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */,
 				689510072E60473600461030 /* UserDataManager.swift */,
-				53E587682B23616A00E4EF99 /* AccountViewModel.swift */,
-				685B235A2E79ADCF003CFFA3 /* EditAccountViewModel.swift */,
-				53E587622B235FF600E4EF99 /* AccountView.swift */,
-				68F4DA082E7C522500CFECA5 /* EditAccountView.swift */,
+				53E587682B23616A00E4EF99 /* UserViewModel.swift */,
+				53E587622B235FF600E4EF99 /* UserView.swift */,
+				68F4DA082E7C522500CFECA5 /* EditUserView.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -575,8 +570,7 @@
 				6895100A2E60711600461030 /* UserTests.swift */,
 				6895100D2E607DF600461030 /* UserDataManagerTests.swift */,
 				68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */,
-				686D56912E7455900088AD98 /* AccountViewModelTests.swift */,
-				685B235C2E79AE32003CFFA3 /* EditAccountViewModelTests.swift */,
+				686D56912E7455900088AD98 /* UserViewModelTests.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -729,7 +723,7 @@
 				53E5873A2B235E9000E4EF99 /* Persistence.swift in Sources */,
 				6852288A2E97AD6D008E33EE /* SleepClockCalculator.swift in Sources */,
 				685FB5932EA808E2003E4C6D /* PreviewExerciseDataProvider.swift in Sources */,
-				53E587632B235FF600E4EF99 /* AccountView.swift in Sources */,
+				53E587632B235FF600E4EF99 /* UserView.swift in Sources */,
 				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
 				6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */,
 				685228882E97AD03008E33EE /* CurrentTimeIndicator.swift in Sources */,
@@ -747,7 +741,6 @@
 				6852289C2E97F044008E33EE /* MainSleepCycleButton.swift in Sources */,
 				685FB58E2EA805AB003E4C6D /* ExerciseTypeGrid.swift in Sources */,
 				685951142EA971D200A8744E /* DurationStepper.swift in Sources */,
-				685B235B2E79ADCF003CFFA3 /* EditAccountViewModel.swift in Sources */,
 				68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */,
 				685228852E97A4B6008E33EE /* SleepHistoryRow.swift in Sources */,
 				68EFABCE2EA7AD3400E2F937 /* ExerciseTypeCard.swift in Sources */,
@@ -768,11 +761,11 @@
 				53E5876D2B236D9E00E4EF99 /* EditExerciseModal.swift in Sources */,
 				6852289A2E97ECE9008E33EE /* CurrentStateSection.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
-				68F4DA092E7C522500CFECA5 /* EditAccountView.swift in Sources */,
+				68F4DA092E7C522500CFECA5 /* EditUserView.swift in Sources */,
 				6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */,
-				53E587692B23616A00E4EF99 /* AccountViewModel.swift in Sources */,
+				53E587692B23616A00E4EF99 /* UserViewModel.swift in Sources */,
 				6802E66A2E852FC100501E0E /* ToastyManager.swift in Sources */,
 				68E89C872E6AE8C40004F6DA /* User.swift in Sources */,
 				6802E6682E852E0E00501E0E /* ToastyType.swift in Sources */,
@@ -802,12 +795,11 @@
 				6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */,
 				6816D5642EAA024C00ED8D20 /* ExerciceTests.swift in Sources */,
 				6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */,
-				685B235D2E79AE32003CFFA3 /* EditAccountViewModelTests.swift in Sources */,
 				68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */,
 				68C6C97B2E61E35600108FE9 /* PasswordHasherTest.swift in Sources */,
 				6813E7672E86CE11007F008C /* DateExtensionsTests.swift in Sources */,
 				6802E6792E85391C00501E0E /* ToastyTypeTests.swift in Sources */,
-				686D56922E7455900088AD98 /* AccountViewModelTests.swift in Sources */,
+				686D56922E7455900088AD98 /* UserViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

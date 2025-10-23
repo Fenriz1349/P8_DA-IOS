@@ -9,10 +9,9 @@ import SwiftUI
 import CustomTextFields
 import CustomLabels
 
-struct EditAccountView: View {
-    @ObservedObject var viewModel: EditAccountViewModel
+struct EditUserView: View {
+    @ObservedObject var viewModel: UserViewModel
     @EnvironmentObject private var toastyManager: ToastyManager
-    @Environment(\.dismiss) var dismiss
 
     var body: some View {
         NavigationStack {
@@ -73,34 +72,35 @@ struct EditAccountView: View {
                     .pickerStyle(.wheel)
                     .frame(width: 100, height: 80)
                 }
-
+                Button(action: {
+                    viewModel.saveChanges()
+                }, label: {
+                    SaveButton()
+                })
                 HStack(spacing: 12) {
-                    Button(action: {
-                        viewModel.saveChanges()
-                        dismiss()
-                    }, label: {
-                        CustomButtonLabel(message: "Save Changes", color: .blue)
-                            .frame(height: 44)
-                            .frame(maxWidth: .infinity)
-                    })
+                   
 
                     Button(action: {
                         viewModel.deleteAccount()
-                        dismiss()
                     }, label: {
                         CustomButtonLabel(message: "Delete Account", color: .red)
-                            .frame(height: 44)
+                            .frame(height: 50)
                             .frame(maxWidth: .infinity)
                     })
-                    .listRowBackground(Color.clear)
+                    Button( action: {
+                      viewModel.logout()
+                    }, label: {
+                        CustomButtonLabel(message: "logout", color: .red)
+                            .frame( height: 50)
+                    })
                 }
                 .padding()
-                .navigationTitle("Edit Profile")
+                .navigationTitle("Modifier le  Profil")
                 .navigationBarTitleDisplayMode(.inline)
                 .toolbar {
                     ToolbarItem(placement: .topBarLeading) {
                         Button("Cancel") {
-                            dismiss()
+                            viewModel.closeEditModal()
                         }
                     }
                 }.onAppear {
@@ -112,6 +112,6 @@ struct EditAccountView: View {
 }
 
 #Preview {
-    EditAccountView(viewModel: PreviewDataProvider.makeSampleEditAccountViewModel())
+    EditUserView(viewModel: PreviewDataProvider.makeSampleUserViewModel())
         .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

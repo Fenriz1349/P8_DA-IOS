@@ -89,35 +89,6 @@ final class UserUpdateBuilderTests: XCTestCase {
         XCTAssertEqual(updatedUser.lastName, "Batman")
     }
 
-    func testUpdateEmail_emptyString_throwError() throws {
-        // Given / When
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        
-        // Then
-        XCTAssertThrowsError(
-            try builder.email("").save()
-        ) { error in
-            guard let userError = error as? UserUpdateBuilderError else {
-                XCTFail("Expected URLError, got \(type(of: error))")
-                return
-            }
-            XCTAssertEqual(userError, .emptyEmail)
-        }
-    }
-
-    func testUpdateEmail() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-
-        // When
-        try builder.email("Autremail@test.com").save()
-
-        // Then
-        let updatedUser = try manager.fetchUser(by: user.id)
-        XCTAssertEqual(updatedUser.email, "Autremail@test.com")
-    }
     func testUpdateSalt() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
@@ -295,7 +266,6 @@ final class UserUpdateBuilderTests: XCTestCase {
         // When
         try builder.firstName("Selina")
             .lastName("Kyle")
-            .email("catwoman@test.com")
             .password("newPassword")
             .salt()
             .isLogged(true)
@@ -305,7 +275,6 @@ final class UserUpdateBuilderTests: XCTestCase {
             .save()
         
         // Then
-        XCTAssertEqual(user.email, "catwoman@test.com")
         XCTAssertEqual(user.hashPassword, "newPassword")
         XCTAssertEqual(user.firstName, "Selina")
         XCTAssertEqual(user.lastName, "Kyle")

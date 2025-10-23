@@ -14,8 +14,8 @@ struct ContentView: View {
         if appCoordinator.isAuthenticated {
             NavigationStack {
                 TabView {
-                    if let accountVM = try? appCoordinator.makeAccountViewModel() {
-                        AccountView(viewModel: accountVM)
+                    if let accountVM = try? appCoordinator.makeUserViewModel() {
+                        UserView(viewModel: accountVM)
                             .tabItem {
                                 Label("profil", systemImage: "person")
                             }

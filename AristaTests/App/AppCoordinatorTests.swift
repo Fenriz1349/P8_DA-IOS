@@ -121,7 +121,7 @@ final class AppCoordinatorTests: XCTestCase {
         try coordinator.login(id: user.id)
         
         // When
-        let viewModel = try coordinator.makeAccountViewModel()
+        let viewModel = try coordinator.makeUserViewModel()
         
         // Then
         XCTAssertNotNil(viewModel)
@@ -130,7 +130,7 @@ final class AppCoordinatorTests: XCTestCase {
 
     func test_makeAccountViewModel_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
-        XCTAssertThrowsError(try coordinator.makeAccountViewModel()) { error in
+        XCTAssertThrowsError(try coordinator.makeUserViewModel()) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
@@ -161,7 +161,7 @@ final class AppCoordinatorTests: XCTestCase {
         try coordinator.login(id: user.id)
         
         // When
-        let viewModel = try coordinator.makeEditAccountViewModel()
+        let viewModel = try coordinator.makeUserViewModel()
         
         // Then
         XCTAssertNotNil(viewModel)
@@ -170,7 +170,7 @@ final class AppCoordinatorTests: XCTestCase {
 
     func test_makeEditAccountViewModel_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
-        XCTAssertThrowsError(try coordinator.makeEditAccountViewModel()) { error in
+        XCTAssertThrowsError(try coordinator.makeUserViewModel()) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }

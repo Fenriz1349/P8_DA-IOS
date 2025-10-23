@@ -8,13 +8,13 @@
 import SwiftUI
 import CustomLabels
 
-struct AccountView: View {
-    @ObservedObject var viewModel: AccountViewModel
+struct UserView: View {
+    @ObservedObject var viewModel: UserViewModel
 
     var body: some View {
         VStack(alignment: .leading) {
             Button("", systemImage: "gear") {
-                viewModel.showEditAccount = true
+                viewModel.openEditModal()
             }
             .foregroundColor(.gray)
             .font(.title2)
@@ -31,23 +31,15 @@ struct AccountView: View {
                 .scaleEffect(1.2)
             Spacer()
 
-            Button( action: {
-                try? viewModel.logout()
-            }, label: {
-                CustomButtonLabel(message: "logout", color: .red)
-                    .frame(width: 200, height: 50)
-            })
-            .frame(maxWidth: .infinity)
-            Spacer()
-        }.sheet(isPresented: $viewModel.showEditAccount) {
-            if let editAccountViewModel = viewModel.editAccountViewModel {
-                EditAccountView(viewModel: editAccountViewModel)
-            }
         }
         .padding(.horizontal)
+        .sheet(isPresented: $viewModel.showEditModal) {
+            EditUserView(viewModel: viewModel)
+        }
     }
 }
 
 #Preview {
-    AccountView(viewModel: PreviewDataProvider.makeSampleAccountViewModel())
+    UserView(viewModel: PreviewDataProvider.makeSampleUserViewModel())
+        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

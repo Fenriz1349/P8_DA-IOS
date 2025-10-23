@@ -90,12 +90,8 @@ extension PreviewDataProvider {
         AuthenticationViewModel(appCoordinator: sampleCoordinator)
     }
 
-    static func makeSampleAccountViewModel() -> AccountViewModel {
-        return try! AccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
-    }
-
-    static func makeSampleEditAccountViewModel() -> EditAccountViewModel {
-        return try! EditAccountViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
+    static func makeSampleUserViewModel() -> UserViewModel {
+        return try! UserViewModel(appCoordinator: PreviewDataProvider.sampleCoordinator)
     }
 }
 
