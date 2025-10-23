@@ -46,7 +46,6 @@ final class AccountViewModelTests: XCTestCase {
         XCTAssertEqual(sut.user.firstName, user.firstName)
         XCTAssertEqual(sut.user.lastName, user.lastName)
         XCTAssertEqual(sut.user.email, user.email)
-        XCTAssertEqual(sut.user.genderEnum, user.genderEnum)
         XCTAssertFalse(sut.showEditAccount)
     }
     

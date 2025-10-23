@@ -100,4 +100,108 @@ final class DateExtensionsTests: XCTestCase {
         // Then
         XCTAssertEqual(duration, 28800.0, accuracy: 0.001) // 8 * 3600
     }
+    
+    // MARK: - isSameDay Tests
+
+    func test_isSameDay_withSameCalendarDay_returnsTrue() {
+        // Given
+        let calendar = Calendar.current
+        let date1 = calendar.date(from: DateComponents(year: 2025, month: 10, day: 22, hour: 8))!
+        let date2 = calendar.date(from: DateComponents(year: 2025, month: 10, day: 22, hour: 23))!
+        
+        // When
+        let result = date1.isSameDay(as: date2)
+        
+        // Then
+        XCTAssertTrue(result)
+    }
+
+    func test_isSameDay_withDifferentDays_returnsFalse() {
+        // Given
+        let calendar = Calendar.current
+        let date1 = calendar.date(from: DateComponents(year: 2025, month: 10, day: 22))!
+        let date2 = calendar.date(from: DateComponents(year: 2025, month: 10, day: 23))!
+        
+        // When
+        let result = date1.isSameDay(as: date2)
+        
+        // Then
+        XCTAssertFalse(result)
+    }
+
+    // MARK: - formattedInterval Tests
+
+    func test_formattedInterval_withMinutesOnly_returnsMinutes() {
+        // Given
+        let start = Date()
+        let end = start.addingTimeInterval(15 * 60)
+        
+        // When
+        let result = start.formattedInterval(to: end)
+        
+        // Then
+        XCTAssertEqual(result, "15min")
+    }
+
+    func test_formattedInterval_withHoursAndMinutes_returnsFormattedString() {
+        // Given
+        let start = Date()
+        let end = start.addingTimeInterval((2 * 3600) + (30 * 60))
+        
+        // When
+        let result = start.formattedInterval(to: end)
+        
+        // Then
+        XCTAssertEqual(result, "2h 30min")
+    }
+
+    func test_formattedInterval_withExactHours_returnsHoursOnly() {
+        // Given
+        let start = Date()
+        let end = start.addingTimeInterval(3 * 3600)
+        
+        // When
+        let result = start.formattedInterval(to: end)
+        
+        // Then
+        XCTAssertEqual(result, "3h")
+    }
+
+    // MARK: - formattedDate / formattedDateTime / formattedTime
+
+    func test_formattedDate_containsWeekdayMonthAndYear() {
+        // Given
+        let formatter = DateFormatter()
+        formatter.locale = Locale(identifier: "fr_FR")
+        formatter.dateFormat = "EEEE d MMMM yyyy"
+        let date = formatter.date(from: "mardi 21 octobre 2025")!
+        
+        // When
+        let formatted = date.formattedDate
+        
+        // Then
+        XCTAssertTrue(formatted.contains("mardi"))
+        XCTAssertTrue(formatted.contains("2025"))
+    }
+
+    func test_formattedDateTime_containsDateAndTime() {
+        // Given
+        let date = Date(timeIntervalSince1970: 0) // 1 janv. 1970
+        let result = date.formattedDateTime
+        print(result)
+        
+        // Then
+        XCTAssertTrue(result.contains("1970"))
+        XCTAssertTrue(result.contains(":00"))
+    }
+
+    func test_formattedTime_containsHoursAndMinutes() {
+        // Given
+        let date = Date()
+        let result = date.formattedTime
+        
+        // Then
+        XCTAssertTrue(result.contains(":"))
+    }
+
 }

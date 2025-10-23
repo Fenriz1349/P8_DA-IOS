@@ -11,7 +11,6 @@ struct GradeLabel: View {
     let grade: Grade
 
     var body: some View {
-
         ZStack {
             Circle()
                 .fill(grade.color)

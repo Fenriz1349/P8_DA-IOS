@@ -47,7 +47,6 @@ final class EditAccountViewModelTests: XCTestCase {
         XCTAssertEqual(sut.firstName, user.firstName)
         XCTAssertEqual(sut.lastName, user.lastName)
         XCTAssertEqual(sut.email, user.email)
-        XCTAssertEqual(sut.selectedGender, user.genderEnum)
         XCTAssertEqual(sut.calorieGoal, String(user.calorieGoal))
         XCTAssertEqual(sut.sleepGoal, String(user.sleepGoal))
         XCTAssertEqual(sut.waterGoal, String(user.waterGoal))
@@ -78,13 +77,9 @@ final class EditAccountViewModelTests: XCTestCase {
         // When
         sut.firstName = "NewFirstName"
         sut.lastName = "NewLastName"
-        sut.selectedGender = .male
-        sut.height = "180"
-        sut.weight = "75"
         sut.calorieGoal = "2500"
         sut.sleepGoal = "420"
         sut.waterGoal = "30"
-        sut.birthdate = newBirthdate
         
         try sut.saveChanges()
         
@@ -94,13 +89,9 @@ final class EditAccountViewModelTests: XCTestCase {
         // Verify modified fields
         XCTAssertEqual(updatedUser.firstName, "NewFirstName")
         XCTAssertEqual(updatedUser.lastName, "NewLastName")
-        XCTAssertEqual(updatedUser.genderEnum, .male)
-        XCTAssertEqual(updatedUser.height, 180)
-        XCTAssertEqual(updatedUser.weight, 75)
         XCTAssertEqual(updatedUser.calorieGoal, 2500)
         XCTAssertEqual(updatedUser.sleepGoal, 420)
         XCTAssertEqual(updatedUser.waterGoal, 30)
-        XCTAssertTrue(Calendar.current.isDate(updatedUser.birthdate!, inSameDayAs: newBirthdate))
         
         // Verify unmodified/protected fields remain unchanged
         XCTAssertEqual(updatedUser.id, originalId)

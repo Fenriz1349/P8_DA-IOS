@@ -89,19 +89,6 @@ final class UserUpdateBuilderTests: XCTestCase {
         XCTAssertEqual(updatedUser.lastName, "Batman")
     }
 
-    func testUpdateGender() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        let randomGender: Gender = Gender.allCases.randomElement() ?? .male
-        // When
-        try builder.gender(randomGender).save()
-
-        // Then
-        let updatedUser = try manager.fetchUser(by: user.id)
-        XCTAssertEqual(updatedUser.gender, randomGender.rawValue)
-    }
-
     func testUpdateEmail_emptyString_throwError() throws {
         // Given / When
         let user = SharedTestHelper.createSampleUser(in: context)
@@ -266,37 +253,6 @@ final class UserUpdateBuilderTests: XCTestCase {
         let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
     }
-
-    func testUpdateHeight_nullOrNegativeValue_throwError() throws {
-        // Given / When
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        let randomNegative: Int = Int.random(in: -1000...0)
-        
-        // Then
-        XCTAssertThrowsError(
-            try builder.height(randomNegative).save()
-        ) { error in
-            guard let userError = error as? UserUpdateBuilderError else {
-                XCTFail("Expected URLError, got \(type(of: error))")
-                return
-            }
-            XCTAssertEqual(userError, .nullHeight)
-        }
-    }
-
-    func testUpdateHeight() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        let randomCalorieGoal: Int = Int.random(in: 1...3000)
-        // When
-        try builder.waterGoal(randomCalorieGoal).save()
-
-        // Then
-        let updatedUser = try manager.fetchUser(by: user.id)
-        XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
-    }
     
     func testUpdateWaterGoal_nullValue_throwError() throws {
         // Given / When
@@ -328,36 +284,6 @@ final class UserUpdateBuilderTests: XCTestCase {
         let updatedUser = try manager.fetchUser(by: user.id)
         XCTAssertEqual(Int(updatedUser.waterGoal), randomCalorieGoal)
     }
-
-    func testUpdateWeight_nullValue_throwError() throws {
-        // Given / When
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        let randomNegative: Int = Int.random(in: -1000...0)
-        
-        // Then
-        XCTAssertThrowsError(
-            try builder.weight(randomNegative).save()
-        ) { error in
-            guard let userError = error as? UserUpdateBuilderError else {
-                XCTFail("Expected URLError, got \(type(of: error))")
-                return
-            }
-            XCTAssertEqual(userError, .nullWeight)
-        }
-    }
-
-    func testUpdateBirthDate() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        // When
-        try builder.birthDate(Date()).save()
-
-        // Then
-        let updatedUser = try manager.fetchUser(by: user.id)
-        XCTAssertTrue(updatedUser.birthdate!.isSameDay(as: Date()))
-    }
     
     func testUpdate_allvalues_success() throws {
         // Given
@@ -373,13 +299,9 @@ final class UserUpdateBuilderTests: XCTestCase {
             .password("newPassword")
             .salt()
             .isLogged(true)
-            .birthDate(Date())
             .calorieGoal(1000)
             .sleepGoal(800)
             .waterGoal(10)
-            .gender(.female)
-            .height(180)
-            .weight(80)
             .save()
         
         // Then
@@ -390,12 +312,8 @@ final class UserUpdateBuilderTests: XCTestCase {
         XCTAssertEqual(user.id, oldId)
         XCTAssertNotEqual(oldSalt,user.salt)
         XCTAssertTrue(user.isLogged)
-        XCTAssertEqual(user.birthdate!.ymdComponents, Date().ymdComponents)
         XCTAssertEqual(user.calorieGoal, 1000)
         XCTAssertEqual(user.sleepGoal, 800)
         XCTAssertEqual(user.waterGoal, 10)
-        XCTAssertEqual(user.gender, "female")
-        XCTAssertEqual(user.height, 180)
-        XCTAssertEqual(user.weight, 80)
     }
 }

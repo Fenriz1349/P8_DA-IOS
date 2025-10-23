@@ -49,12 +49,6 @@ class UserUpdateBuilder {
     }
 
     @discardableResult
-    func gender(_ value: Gender) -> UserUpdateBuilder {
-        user.gender = value.rawValue
-        return self
-    }
-
-    @discardableResult
     func email(_ value: String) throws -> UserUpdateBuilder {
         guard !value.isEmpty else {
             throw UserUpdateBuilderError.emptyEmail
@@ -108,30 +102,6 @@ class UserUpdateBuilder {
             throw UserUpdateBuilderError.nullWaterGoal
         }
         user.waterGoal = Int16(value)
-        return self
-    }
-
-    @discardableResult
-    func height(_ value: Int) throws -> UserUpdateBuilder {
-        guard value > 0 else {
-            throw UserUpdateBuilderError.nullHeight
-        }
-        user.height = Int16(value)
-        return self
-    }
-
-    @discardableResult
-    func weight(_ value: Int) throws -> UserUpdateBuilder {
-        guard value > 0 else {
-            throw UserUpdateBuilderError.nullWeight
-        }
-        user.weight = Int16(value)
-        return self
-    }
-
-    @discardableResult
-    func birthDate(_ value: Date) -> UserUpdateBuilder {
-        user.birthdate = value
         return self
     }
 

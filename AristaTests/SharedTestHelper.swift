@@ -127,3 +127,20 @@ extension SharedTestHelper {
     }
 }
 
+extension SharedTestHelper {
+    static func createSampleSleepCycle(for user: User,
+                                       in context: NSManagedObjectContext,
+                                       startOffset: TimeInterval = -8 * 3600,
+                                       duration: TimeInterval = 8 * 3600,
+                                       quality: Int = 7) -> SleepCycle {
+        let cycle = SleepCycle(context: context)
+        cycle.id = UUID()
+        cycle.dateStart = Date().addingTimeInterval(startOffset)
+        cycle.dateEnding = cycle.dateStart.addingTimeInterval(duration)
+        cycle.quality = Int16(quality)
+        cycle.user = user
+        return cycle
+    }
+}
+
+

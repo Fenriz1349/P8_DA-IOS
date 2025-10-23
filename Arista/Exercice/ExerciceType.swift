@@ -80,4 +80,3 @@ enum ExerciceType: String, CaseIterable, Identifiable {
         }
     }
 }
-

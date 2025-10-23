@@ -44,10 +44,16 @@ extension Date {
 
     func formattedInterval(to endDate: Date) -> String {
         let duration = duration(to: endDate)
-        let hours = Int(duration) / 3600
-        let minutes = (Int(duration) % 3600) / 60
-        return hours > 0 ? "\(hours)h \(minutes)min": "\(minutes)min"
+        let totalHours = Int(duration) / 3600
+        let totalMinutes = (Int(duration) % 3600) / 60
+
+        switch (totalHours, totalMinutes) {
+        case (0, let minutes): return "\(minutes)min"
+        case (let hours, 0): return "\(hours)h"
+        default: return "\(totalHours)h \(totalMinutes)min"
+        }
     }
+
 
     /// Format hour only (ex: "14:30")
     var formattedTime: String {

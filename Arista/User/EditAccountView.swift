@@ -29,13 +29,6 @@ struct EditAccountView: View {
                     type: .alphaNumber
                 )
 
-                Picker("Gender", selection: $viewModel.selectedGender) {
-                    ForEach(Gender.allCases, id: \.self) { gender in
-                        Text(gender.rawValue.capitalized).tag(gender)
-                    }
-                }
-                .pickerStyle(.segmented)
-
                 HStack {
                     Text("Calorie Goal")
                     Spacer()
