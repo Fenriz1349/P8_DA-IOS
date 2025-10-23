@@ -45,6 +45,16 @@
       },
       "shouldTranslate" : false
     },
+    "%lld %@" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$lld %2$@"
+          }
+        }
+      }
+    },
     "%lld dl" : {
 
     },
@@ -159,9 +169,6 @@
 
     },
     "Dernier sommeil" : {
-
-    },
-    "Edit Profile" : {
 
     },
     "En cours..." : {
@@ -485,6 +492,9 @@
 
     },
     "Modifier" : {
+
+    },
+    "Modifier le  Profil" : {
 
     },
     "newExercice" : {

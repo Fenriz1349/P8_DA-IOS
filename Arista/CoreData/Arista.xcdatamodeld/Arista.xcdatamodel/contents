@@ -8,6 +8,12 @@
         <attribute name="type" attributeType="String" customClassName="ExerciceType"/>
         <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="exercices" inverseEntity="User"/>
     </entity>
+    <entity name="Goal" representedClassName="Goal" syncable="YES">
+        <attribute name="date" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="id" attributeType="UUID" usesScalarValueType="NO"/>
+        <attribute name="totalWater" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
+        <relationship name="user" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="User" inverseName="goals" inverseEntity="User"/>
+    </entity>
     <entity name="SleepCycle" representedClassName="SleepCycle" syncable="YES">
         <attribute name="dateEnding" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
         <attribute name="dateStart" attributeType="Date" usesScalarValueType="NO"/>
@@ -27,6 +33,7 @@
         <attribute name="sleepGoal" attributeType="Integer 16" defaultValueString="480" usesScalarValueType="YES"/>
         <attribute name="waterGoal" attributeType="Integer 16" defaultValueString="25" usesScalarValueType="YES"/>
         <relationship name="exercices" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Exercice" inverseName="user" inverseEntity="Exercice"/>
+        <relationship name="goals" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Goal" inverseName="user" inverseEntity="Goal"/>
         <relationship name="sleepCycles" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="SleepCycle" inverseName="user" inverseEntity="SleepCycle"/>
         <uniquenessConstraints>
             <uniquenessConstraint>

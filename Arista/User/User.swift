@@ -23,6 +23,7 @@ public class User: NSManagedObject {
 
     @NSManaged public var exercices: Set<Exercice>?
     @NSManaged public var sleepCycles: Set<SleepCycle>?
+    @NSManaged public var goals: Set<Goal>?
 }
 
 extension User {

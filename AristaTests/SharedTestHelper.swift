@@ -143,4 +143,25 @@ extension SharedTestHelper {
     }
 }
 
+extension SharedTestHelper {
+    static func makeGoal(for user: User,
+                         in context: NSManagedObjectContext,
+                         date: Date,
+                         water: Int16 = 20) -> Goal {
+        let goal = Goal(context: context)
+        goal.id = UUID()
+        goal.date = date
+        goal.totalWater = water
+        goal.user = user
+        return goal
+    }
 
+    static func makeWeekGoals(for user: User,
+                              in context: NSManagedObjectContext) -> [Goal] {
+        let today = Date()
+        return (0..<7).compactMap { offset in
+            guard let date = Calendar.current.date(byAdding: .day, value: -offset, to: today) else { return nil }
+            return makeGoal(for: user, in: context, date: date, water: Int16(20 + offset))
+        }
+    }
+}
