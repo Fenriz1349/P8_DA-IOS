@@ -25,7 +25,6 @@ struct PreviewSleepDataProvider {
     /// Base ViewModel Factory
     static func makePreviewViewModel() -> SleepViewModel {
         let mockCoordinator = PreviewDataProvider.sampleCoordinator
-
         let mockManager = SleepDataManager(container: PreviewDataProvider.previewData.container)
 
         let viewModel = try! SleepViewModel(
@@ -33,8 +32,7 @@ struct PreviewSleepDataProvider {
             sleepDataManager: mockManager
         )
 
-        viewModel.currentCycle = PreviewSleepDataProvider.completedSleepCycle
-        viewModel.historyCycles = PreviewSleepDataProvider.sampleSleepCycles
+        viewModel.reloadAllData()
 
         return viewModel
     }
@@ -70,11 +68,12 @@ struct PreviewSleepDataProvider {
         let viewModel = makePreviewViewModel()
         viewModel.showEditModal = true
 
-        let cycle = PreviewSleepDataProvider.completedSleepCycle
-        viewModel.currentCycle = cycle
-        viewModel.manualStartDate = cycle.dateStart
-        viewModel.manualEndDate = cycle.dateEnding ?? Date()
-        viewModel.selectedQuality = cycle.quality
+        if let cycle = viewModel.historyCycles.first {
+            viewModel.currentCycle = cycle
+            viewModel.manualStartDate = cycle.dateStart
+            viewModel.manualEndDate = cycle.dateEnding ?? Date()
+            viewModel.selectedQuality = cycle.quality
+        }
 
         return viewModel
     }
@@ -90,41 +89,13 @@ struct PreviewSleepDataProvider {
     /// Active + History (1 active + 7 completed)
     static var activeAndHistoryViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
-
         viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
-        viewModel.historyCycles = PreviewSleepDataProvider.sampleSleepCycles
-
         viewModel.showEditModal = false
         viewModel.selectedQuality = 0
-
         return viewModel
     }
 
-    /// Sample Data
-
-    /// 7 completed sleep cycles (from newest to oldest)
-    static var sampleSleepCycles: [SleepCycleDisplay] {
-        let now = Date()
-        var displays: [SleepCycleDisplay] = []
-
-        for index in 0..<7 {
-            let date = now.addingTimeInterval(Double(-index) * 86400)
-            let start = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: date)!
-            let end = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: date)!
-                .addingTimeInterval(86400)
-            let quality = Int.random(in: 1...10)
-
-            let display = SleepCycleDisplay(
-                id: UUID(),
-                dateStart: start,
-                dateEnding: end,
-                quality: quality
-            )
-            displays.append(display)
-        }
-
-        return displays
-    }
+    /// Sample Data Helpers
 
     /// Active sleep cycle (still ongoing)
     static var activeSleepCycle: SleepCycleDisplay {

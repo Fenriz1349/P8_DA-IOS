@@ -12,14 +12,14 @@ struct UserView: View {
 
     var body: some View {
         ScrollView {
-            VStack(alignment: .leading, spacing: 24) {
+            VStack(alignment: .leading) {
                 HStack {
-                    VStack(alignment: .leading, spacing: 4) {
+                    VStack(alignment: .leading, spacing: 2) {
                         Text("Bonjour")
-                            .font(.title3)
+                            .font(.subheadline)
                             .foregroundColor(.secondary)
-                        Text("\(viewModel.user.firstName) \(viewModel.user.lastName)")
-                            .font(.largeTitle)
+                        Text(viewModel.userDisplay.fullName)
+                            .font(.title)
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
                     }
@@ -33,27 +33,35 @@ struct UserView: View {
                     .font(.title2)
                 }
                 .padding(.horizontal)
-                .padding(.top)
+                .padding(.top, 8)
 
-                VStack(spacing: 16) {
+                VStack(spacing: 8) {
                     GoalSliderView(
                         type: .water,
                         goal: Int(viewModel.user.waterGoal),
                         current: $viewModel.currentWater
                     )
+                    .padding(.horizontal)
 
                     GoalSliderView(
                         type: .steps,
                         goal: Int(viewModel.user.stepsGoal),
                         current: $viewModel.currentSteps
                     )
+                    .padding(.horizontal)
+                    CaloriesProgressBar(current: viewModel.todayCalories, goal: viewModel.userDisplay.calorieGoal)
+                        .padding(.horizontal)
+                    CaloriesBarChart(data: viewModel.lastSevenDaysCalories, goal: viewModel.userDisplay.calorieGoal)
+                        .padding(.horizontal)
+                    SleepMetricsModule(metrics: viewModel.sleepMetrics)
                 }
                 .padding(.top, 8)
-
-                Spacer()
             }
         }
         .background(Color(.systemGroupedBackground))
+        .onAppear {
+            viewModel.refreshData()
+        }
         .sheet(isPresented: $viewModel.showEditModal) {
             EditUserView(viewModel: viewModel)
         }

@@ -12,7 +12,9 @@ struct GoalSliderView: View {
     let goal: Int
     @Binding var current: Double
 
-    private var progress: Double { current / Double(goal)}
+    private var progress: Double {
+        current / Double(goal)
+    }
 
     private var dynamicMax: Double {
         let baseGoal = Double(goal)
@@ -31,37 +33,40 @@ struct GoalSliderView: View {
         return baseStep
     }
 
-    private var displayProgress: Double { min(progress, 1.0) }
+    private var displayProgress: Double {
+        min(progress, 1.0)
+    }
 
     private var fillColor: Color {
         progress > 1.0 ? .green : type.color.opacity(0.3)
     }
 
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            HStack(alignment: .firstTextBaseline, spacing: 8) {
+        VStack(alignment: .leading, spacing: 8) {
+            HStack(alignment: .firstTextBaseline, spacing: 6) {
                 Text(type.icon)
-                    .font(.title2)
+                    .font(.title3)
                 Text(type.title)
-                    .font(.headline)
+                    .font(.subheadline)
+                    .fontWeight(.semibold)
                     .foregroundColor(.primary)
-                GoalBadge(progress: progress)
                 Text(type.formatted(Int(current)))
-                    .font(.system(size: 24, weight: .bold))
+                    .font(.system(size: 20, weight: .bold))
                     .foregroundColor(progress >= 1.0 ? .green : type.color)
                 Text("/ \(type.formatted(goal))")
-                    .font(.subheadline)
+                    .font(.caption)
                     .foregroundColor(.secondary)
+                GoalBadge(progress: progress)
             }
 
             ZStack(alignment: .leading) {
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(Color.gray.opacity(0.2))
-                    .frame(height: 40)
+                    .frame(height: 32)
 
-                RoundedRectangle(cornerRadius: 12)
+                RoundedRectangle(cornerRadius: 10)
                     .fill(fillColor)
-                    .frame(width: CGFloat(displayProgress) * (UIScreen.main.bounds.width - 64), height: 40)
+                    .frame(width: CGFloat(displayProgress) * (UIScreen.main.bounds.width - 64), height: 32)
                     .animation(.spring(), value: displayProgress)
 
                 Slider(
@@ -70,16 +75,16 @@ struct GoalSliderView: View {
                     step: dynamicStep
                 )
                 .tint(progress >= 1.0 ? .green : type.color)
-                .padding(.horizontal, 8)
+                .padding(.horizontal, 6)
             }
         }
-        .padding()
+        .padding(.vertical, 12)
+        .padding(.horizontal)
         .background(
             RoundedRectangle(cornerRadius: 16)
                 .fill(Color(.systemBackground))
                 .shadow(color: .black.opacity(0.05), radius: 8, x: 0, y: 2)
         )
-        .padding(.horizontal)
     }
 }
 

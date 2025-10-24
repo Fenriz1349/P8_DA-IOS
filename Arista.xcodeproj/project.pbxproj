@@ -100,6 +100,11 @@
 		68F521352EAB5A27005902AB /* GoalSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521342EAB5A27005902AB /* GoalSliderView.swift */; };
 		68F521372EAB5CD0005902AB /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521362EAB5CD0005902AB /* GoalType.swift */; };
 		68F5213A2EAB649F005902AB /* GoalBadge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521392EAB649F005902AB /* GoalBadge.swift */; };
+		68F5213C2EAB999C005902AB /* CaloriesProgressBar.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5213B2EAB999C005902AB /* CaloriesProgressBar.swift */; };
+		68F5213E2EAB9C68005902AB /* CaloriesBarChart.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5213D2EAB9C68005902AB /* CaloriesBarChart.swift */; };
+		68F521402EAB9C7C005902AB /* DayCalories.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F5213F2EAB9C7C005902AB /* DayCalories.swift */; };
+		68F521432EABADD0005902AB /* SleepMetricsModule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521422EABADD0005902AB /* SleepMetricsModule.swift */; };
+		68F521452EABAEF0005902AB /* SleepMetrics.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521442EABAEF0005902AB /* SleepMetrics.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -208,6 +213,11 @@
 		68F521342EAB5A27005902AB /* GoalSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSliderView.swift; sourceTree = "<group>"; };
 		68F521362EAB5CD0005902AB /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
 		68F521392EAB649F005902AB /* GoalBadge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalBadge.swift; sourceTree = "<group>"; };
+		68F5213B2EAB999C005902AB /* CaloriesProgressBar.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesProgressBar.swift; sourceTree = "<group>"; };
+		68F5213D2EAB9C68005902AB /* CaloriesBarChart.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CaloriesBarChart.swift; sourceTree = "<group>"; };
+		68F5213F2EAB9C7C005902AB /* DayCalories.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCalories.swift; sourceTree = "<group>"; };
+		68F521422EABADD0005902AB /* SleepMetricsModule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepMetricsModule.swift; sourceTree = "<group>"; };
+		68F521442EABAEF0005902AB /* SleepMetrics.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepMetrics.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -259,6 +269,7 @@
 				6816D5592EA9F5FA00ED8D20 /* Shared */,
 				6816D55A2EA9F71800ED8D20 /* Authentication */,
 				68E7C2CE2EA2767A001C039B /* User */,
+				68F521412EAB9C9A005902AB /* Goal */,
 				68E7C2CA2EA24384001C039B /* Sleep */,
 				68E7C2D32EA27CAE001C039B /* Exercice */,
 				53E587342B235E9000E4EF99 /* Assets.xcassets */,
@@ -410,7 +421,6 @@
 		6820CDD92EAA426800A7D74A /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				68F521382EAB647C005902AB /* GoalViews */,
 				53E587622B235FF600E4EF99 /* UserView.swift */,
 				68F4DA082E7C522500CFECA5 /* EditUserView.swift */,
 			);
@@ -442,6 +452,7 @@
 		6852288F2E97BC8A008E33EE /* SleepHistory */ = {
 			isa = PBXGroup;
 			children = (
+				68F521422EABADD0005902AB /* SleepMetricsModule.swift */,
 				685228842E97A4B6008E33EE /* SleepHistoryRow.swift */,
 				685228902E97BCBB008E33EE /* SleepHistorySection.swift */,
 				685228992E97ECE9008E33EE /* CurrentStateSection.swift */,
@@ -516,6 +527,7 @@
 			isa = PBXGroup;
 			children = (
 				68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */,
+				68F521442EABAEF0005902AB /* SleepMetrics.swift */,
 				6802E67D2E85897D00501E0E /* SleepDataManager.swift */,
 				6813E7602E867B97007F008C /* SleepViewModel.swift */,
 				68E7C2CC2EA243D8001C039B /* Views */,
@@ -549,11 +561,8 @@
 			isa = PBXGroup;
 			children = (
 				68E89C862E6AE8C40004F6DA /* User.swift */,
-				6820CDDC2EAA467100A7D74A /* Goal.swift */,
-				68F521362EAB5CD0005902AB /* GoalType.swift */,
 				68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */,
 				689510072E60473600461030 /* UserDataManager.swift */,
-				6820CDDF2EAA471400A7D74A /* GoalDataManager.swift */,
 				53E587682B23616A00E4EF99 /* UserViewModel.swift */,
 				6820CDD92EAA426800A7D74A /* Views */,
 			);
@@ -639,8 +648,22 @@
 			children = (
 				68F521342EAB5A27005902AB /* GoalSliderView.swift */,
 				68F521392EAB649F005902AB /* GoalBadge.swift */,
+				68F5213B2EAB999C005902AB /* CaloriesProgressBar.swift */,
+				68F5213D2EAB9C68005902AB /* CaloriesBarChart.swift */,
 			);
 			path = GoalViews;
+			sourceTree = "<group>";
+		};
+		68F521412EAB9C9A005902AB /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				6820CDDC2EAA467100A7D74A /* Goal.swift */,
+				68F521362EAB5CD0005902AB /* GoalType.swift */,
+				68F5213F2EAB9C7C005902AB /* DayCalories.swift */,
+				6820CDDF2EAA471400A7D74A /* GoalDataManager.swift */,
+				68F521382EAB647C005902AB /* GoalViews */,
+			);
+			path = Goal;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -750,11 +773,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				6820CDE02EAA471400A7D74A /* GoalDataManager.swift in Sources */,
+				68F521432EABADD0005902AB /* SleepMetricsModule.swift in Sources */,
 				685FB5902EA807C4003E4C6D /* ExerciseHistoryRow.swift in Sources */,
 				68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */,
 				685228962E97E437008E33EE /* GradeLabel.swift in Sources */,
 				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,
 				68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */,
+				68F5213C2EAB999C005902AB /* CaloriesProgressBar.swift in Sources */,
 				685228982E97E8EC008E33EE /* GradePicker.swift in Sources */,
 				68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */,
 				685951102EA96EFD00A8744E /* Int+Ext.swift in Sources */,
@@ -766,6 +791,7 @@
 				6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */,
 				685228882E97AD03008E33EE /* CurrentTimeIndicator.swift in Sources */,
 				6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */,
+				68F521452EABAEF0005902AB /* SleepMetrics.swift in Sources */,
 				6852288C2E97AE5A008E33EE /* HourTextView.swift in Sources */,
 				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
@@ -790,6 +816,7 @@
 				68F521372EAB5CD0005902AB /* GoalType.swift in Sources */,
 				68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
+				68F5213E2EAB9C68005902AB /* CaloriesBarChart.swift in Sources */,
 				685228942E97E329008E33EE /* EditSleepCycleModal.swift in Sources */,
 				6813E76C2E86D362007F008C /* SleepView.swift in Sources */,
 				68561AB12EA6266C00DB1F64 /* ExerciceDataManager.swift in Sources */,
@@ -806,6 +833,7 @@
 				6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */,
+				68F521402EAB9C7C005902AB /* DayCalories.swift in Sources */,
 				53E587692B23616A00E4EF99 /* UserViewModel.swift in Sources */,
 				68F5213A2EAB649F005902AB /* GoalBadge.swift in Sources */,
 				6802E66A2E852FC100501E0E /* ToastyManager.swift in Sources */,

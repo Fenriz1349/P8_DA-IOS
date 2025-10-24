@@ -11,7 +11,7 @@ struct GoalBadge: View {
     let progress: Double
 
     var body: some View {
-        if progress >= 1.0 && progress < 1.05 {
+        if progress >= 1.0 && progress < 1.1 {
             HStack(spacing: 4) {
                 Text("💪")
                 Text("Objectif atteint !")
@@ -19,7 +19,7 @@ struct GoalBadge: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.green)
             }
-        } else if progress >= 1.05 {
+        } else if progress >= 1.1 {
             HStack(spacing: 4) {
                 Text("🎉")
                 Text("Objectif dépassé !")
@@ -27,8 +27,6 @@ struct GoalBadge: View {
                     .fontWeight(.semibold)
                     .foregroundColor(.green)
             }
-        } else {
-            Spacer()
         }
     }
 }

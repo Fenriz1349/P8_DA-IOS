@@ -79,3 +79,18 @@ struct GoalDisplay: Identifiable, Equatable {
             .reduce(0, +)
     }
 }
+
+extension GoalDisplay {
+    func toDayCalories() -> DayCalories {
+        DayCalories(
+            date: date,
+            calories: totalCalories
+        )
+    }
+}
+
+extension Array where Element == GoalDisplay {
+    func toDayCalories() -> [DayCalories] {
+        self.map { $0.toDayCalories() }
+    }
+}

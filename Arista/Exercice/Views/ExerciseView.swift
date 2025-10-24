@@ -22,7 +22,6 @@ struct ExerciseView: View {
             }
         }
         .padding()
-        .navigationTitle("Exercice")
         .onAppear {
             viewModel.configureToasty(toastyManager: toastyManager)
         }

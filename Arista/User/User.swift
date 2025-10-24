@@ -10,7 +10,6 @@ import CoreData
 
 @objc(User)
 public class User: NSManagedObject {
-    @NSManaged public var calorieGoal: Int16
     @NSManaged public var email: String
     @NSManaged public var firstName: String
     @NSManaged public var hashPassword: String
@@ -21,6 +20,7 @@ public class User: NSManagedObject {
     @NSManaged public var sleepGoal: Int16
     @NSManaged public var waterGoal: Int16
     @NSManaged public var stepsGoal: Int32
+    @NSManaged public var calorieGoal: Int16
 
     @NSManaged public var exercices: Set<Exercice>?
     @NSManaged public var sleepCycles: Set<SleepCycle>?
@@ -37,4 +37,42 @@ extension User {
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
+
+    func toDisplay() -> UserDisplay {
+        UserDisplay(
+            id: id,
+            firstName: firstName,
+            lastName: lastName,
+            email: email,
+            calorieGoal: Int(calorieGoal),
+            sleepGoal: Int(sleepGoal),
+            waterGoal: Int(waterGoal),
+            stepsGoal: Int(stepsGoal)
+        )
+    }
+}
+
+struct UserDisplay: Identifiable, Equatable {
+    let id: UUID
+    let firstName: String
+    let lastName: String
+    let email: String
+    let calorieGoal: Int
+    let sleepGoal: Int
+    let waterGoal: Int
+    let stepsGoal: Int
+    
+    var fullName: String { "\(firstName) \(lastName)" }
+    
+    var calorieGoalFormatted: String { "\(calorieGoal) kcal" }
+    
+    var sleepGoalFormatted: String {
+        let hours = sleepGoal / 60
+        let minutes = sleepGoal % 60
+        return minutes > 0 ? "\(hours)h\(minutes)" : "\(hours)h"
+    }
+    
+    var waterGoalFormatted: String { String(format: "%.1f L", Double(waterGoal) / 10) }
+    
+    var stepsGoalFormatted: String { stepsGoal.formatSteps }
 }

@@ -10,16 +10,8 @@
     "/ %@" : {
 
     },
-    "%@ %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$@ %2$@"
-          }
-        }
-      },
-      "shouldTranslate" : false
+    "/ %lld kcal" : {
+
     },
     "%@ → %@" : {
       "localizations" : {
@@ -60,6 +52,9 @@
     "%lld min" : {
 
     },
+    "%lld%%" : {
+
+    },
     "%lldh %lldmin" : {
       "localizations" : {
         "en" : {
@@ -74,6 +69,9 @@
 
     },
     "💪" : {
+
+    },
+    "🔥" : {
 
     },
     "00" : {
@@ -171,6 +169,9 @@
 
     },
     "Dernier sommeil" : {
+
+    },
+    "Durée moyenne" : {
 
     },
     "En cours..." : {
@@ -361,9 +362,6 @@
         }
       }
     },
-    "Exercice" : {
-
-    },
     "exercices" : {
       "localizations" : {
         "en" : {
@@ -406,6 +404,9 @@
     "Historique (7 derniers jours)" : {
 
     },
+    "Historique 7 jours" : {
+
+    },
     "hourStart" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -439,6 +440,9 @@
           }
         }
       }
+    },
+    "Jour" : {
+
     },
     "length" : {
       "extractionState" : "stale",
@@ -520,6 +524,9 @@
     "Nouveau cycle" : {
 
     },
+    "Objectif" : {
+
+    },
     "Objectif atteint !" : {
 
     },
@@ -541,6 +548,9 @@
           }
         }
       }
+    },
+    "Qualité moyenne" : {
+
     },
     "Sélectionnez une date" : {
 
@@ -584,7 +594,7 @@
         }
       }
     },
-    "Sommeil" : {
+    "Sommeil (7 derniers jours)" : {
 
     },
     "Sommeil en cours" : {
