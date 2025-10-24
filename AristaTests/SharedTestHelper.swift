@@ -16,7 +16,7 @@ struct SharedTestHelper {
         return PersistenceController(inMemory: true)
     }
 
-    // MARK: - Sample Data
+    /// Sample Data
     static let sampleUserData = (
         firstName: "John",
         lastName: "Cena",
@@ -31,8 +31,8 @@ struct SharedTestHelper {
         password: "Password123!"
     )
 
-    // MARK: - User Creation Helpers
-
+    /// User Creation Helpers
+    @discardableResult
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
@@ -44,6 +44,7 @@ struct SharedTestHelper {
         return user
     }
 
+    @discardableResult
     static func createSampleUser2(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
@@ -55,6 +56,7 @@ struct SharedTestHelper {
         return user
     }
 
+    @discardableResult
     static func createUser(
         firstName: String,
         lastName: String,
@@ -69,6 +71,7 @@ struct SharedTestHelper {
         return user
     }
 
+    @discardableResult
     static func createUsers(count: Int, in context: NSManagedObjectContext) -> [User] {
         var users: [User] = []
 
@@ -82,11 +85,14 @@ struct SharedTestHelper {
 
         return users
     }
+
+    @discardableResult
     static func createRandomUsers(in context: NSManagedObjectContext) -> [User] {
         let randomCount: Int = Int.random(in: 1...100)
         return createUsers(count: randomCount, in: context)
     }
     
+    @discardableResult
     static func createInvalidUser(in context: NSManagedObjectContext) -> User {
            let user = User(context: context)
            user.id = UUID()
@@ -102,7 +108,7 @@ struct SharedTestHelper {
             }
         }
 
-    // MARK: - Save Helper
+    /// Save Helper
 
     static func saveContext(_ context: NSManagedObjectContext) throws {
         try context.save()
@@ -110,6 +116,7 @@ struct SharedTestHelper {
 }
 
 extension SharedTestHelper {
+    @discardableResult
     static func createSampleExercice(for user: User,
                                      in context: NSManagedObjectContext,
                                      date: Date = Date(),
@@ -127,3 +134,46 @@ extension SharedTestHelper {
     }
 }
 
+extension SharedTestHelper {
+    @discardableResult
+    static func createSampleSleepCycle(for user: User,
+                                       in context: NSManagedObjectContext,
+                                       startOffset: TimeInterval = -8 * 3600,
+                                       duration: TimeInterval = 8 * 3600,
+                                       quality: Int = 7) -> SleepCycle {
+        let cycle = SleepCycle(context: context)
+        cycle.id = UUID()
+        cycle.dateStart = Date().addingTimeInterval(startOffset)
+        cycle.dateEnding = cycle.dateStart.addingTimeInterval(duration)
+        cycle.quality = Int16(quality)
+        cycle.user = user
+        return cycle
+    }
+}
+
+extension SharedTestHelper {
+    @discardableResult
+    static func makeGoal(for user: User,
+                         in context: NSManagedObjectContext,
+                         date: Date,
+                         water: Int16 = 20,
+                         steps: Int32 = 6000) -> Goal {
+        let goal = Goal(context: context)
+        goal.id = UUID()
+        goal.date = date
+        goal.totalWater = water
+        goal.totalSteps = steps
+        goal.user = user
+        return goal
+    }
+
+    @discardableResult
+    static func makeWeekGoals(for user: User,
+                              in context: NSManagedObjectContext) -> [Goal] {
+        let today = Date()
+        return (0..<7).compactMap { offset in
+            guard let date = Calendar.current.date(byAdding: .day, value: -offset, to: today) else { return nil }
+            return makeGoal(for: user, in: context, date: date, water: Int16(20 + offset))
+        }
+    }
+}

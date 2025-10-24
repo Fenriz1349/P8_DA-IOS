@@ -106,16 +106,16 @@ struct PreviewExerciseDataProvider {
     }
 
     static var editExerciseViewModel: ExerciseViewModel {
-        let vm = makePreviewViewModel()
-        vm.showEditModal = true
-        vm.selectedExercice = sampleExercises.first
-        if let exercise = vm.selectedExercice {
-            vm.duration = exercise.duration
-            vm.intensity = exercise.intensity
-            vm.selectedType = exercise.type
-            vm.date = exercise.date
+        let viewModel = makePreviewViewModel()
+        viewModel.showEditModal = true
+        viewModel.selectedExercice = sampleExercises.first
+        if let exercise = viewModel.selectedExercice {
+            viewModel.duration = exercise.duration
+            viewModel.intensity = exercise.intensity
+            viewModel.selectedType = exercise.type
+            viewModel.date = exercise.date
         }
-        return vm
+        return viewModel
     }
 
 }

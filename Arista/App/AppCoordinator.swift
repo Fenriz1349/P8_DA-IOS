@@ -34,12 +34,8 @@ final class AppCoordinator: ObservableObject {
         AuthenticationViewModel(appCoordinator: self)
     }
 
-    func makeAccountViewModel() throws -> AccountViewModel {
-        return try AccountViewModel(appCoordinator: self)
-    }
-
-    func makeEditAccountViewModel() throws -> EditAccountViewModel {
-        return try EditAccountViewModel(appCoordinator: self)
+    func makeUserViewModel() throws -> UserViewModel {
+        return try UserViewModel(appCoordinator: self)
     }
 
     func makeSleepViewModel() throws -> SleepViewModel {

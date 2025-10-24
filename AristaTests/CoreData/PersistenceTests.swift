@@ -24,7 +24,7 @@ final class AristaTests: XCTestCase {
         context = nil
     }
 
-    // MARK: - DataBase Creation Tests
+    /// DataBase Creation Tests
 
     func testCreateDatabase_ShouldWork() throws {
         // Then
@@ -69,7 +69,7 @@ final class AristaTests: XCTestCase {
         XCTAssertEqual(user2.firstName, "Jane")
     }
 
-    // MARK: - User DataBase Deletion Tests
+    /// User DataBase Deletion Tests
 
     func testDeleteUser_ShouldWork() throws {
         // Given
@@ -101,7 +101,7 @@ final class AristaTests: XCTestCase {
         XCTAssertEqual(controller.count(for: User.self), 0)
     }
 
-    // MARK: - Error Handling Tests
+    /// Error Handling Tests
 
     func testMigrationError_ShouldHandleGracefully() {
         // Given
@@ -183,10 +183,10 @@ final class AristaTests: XCTestCase {
         XCTAssertTrue(true)
     }
     
-    // MARK: - Context Save Error Tests
+    /// Context Save Error Tests
         
     func testSaveContextWithValidationError_ShouldThrowError() {
-        // Given - Créer un utilisateur avec des données invalides
+        // Given
         let user = User(context: context)
         user.id = UUID()
         

@@ -27,7 +27,6 @@ struct SleepView: View {
             SleepHistorySection(viewModel: viewModel)
         }
         .padding()
-        .navigationTitle("Sommeil")
         .onAppear {
             viewModel.configureToasty(toastyManager: toastyManager)
         }

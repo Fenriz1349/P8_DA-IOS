@@ -34,7 +34,7 @@ final class SleepDataManagerTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Start Sleep Cycle Tests
+    /// Start Sleep Cycle Tests
     
     func test_startSleepCycle_withValidUser_shouldCreateSleepCycle() throws {
         // Given
@@ -61,7 +61,7 @@ final class SleepDataManagerTests: XCTestCase {
         }
     }
     
-    // MARK: - End Sleep Cycle Tests
+    /// End Sleep Cycle Tests
     
     func test_endSleepCycle_withActiveCycle_shouldUpdateCycle() throws {
         // Given
@@ -104,7 +104,7 @@ final class SleepDataManagerTests: XCTestCase {
         XCTAssertEqual(completedCycle.quality, 0)
     }
     
-    // MARK: - Active Sleep Cycle Tests
+    /// Active Sleep Cycle Tests
     
     func test_hasActiveSleepCycle_withActiveCycle_shouldReturnTrue() throws {
         // Given
@@ -118,7 +118,7 @@ final class SleepDataManagerTests: XCTestCase {
     }
     
     func test_hasActiveSleepCycle_withoutActiveCycle_shouldReturnFalse() throws {
-        // Given - Aucun cycle
+        // Given - No cycle
         
         // When
         let hasActive = try manager.hasActiveSleepCycle(for: testUser)
@@ -163,7 +163,7 @@ final class SleepDataManagerTests: XCTestCase {
         XCTAssertNil(activeCycle)
     }
     
-    // MARK: - Fetch Sleep Cycles Tests
+    /// Fetch Sleep Cycles Tests
     
     func test_fetchSleepCycles_withMultipleCycles_shouldReturnSortedCycles() throws {
         // Given
@@ -184,13 +184,12 @@ final class SleepDataManagerTests: XCTestCase {
         
         // Then
         XCTAssertEqual(cycles.count, 3)
-        // Vérifier l'ordre (plus récent en premier)
         XCTAssertEqual(cycles[0].dateStart, date3)
         XCTAssertEqual(cycles[1].dateStart, date2)
         XCTAssertEqual(cycles[2].dateStart, date1)
     }
     
-    // MARK: - Delete Sleep Cycle Tests
+    /// Delete Sleep Cycle Tests
     
     func test_deleteSleepCycle_shouldRemoveCycleFromStore() throws {
         // Given
@@ -204,7 +203,7 @@ final class SleepDataManagerTests: XCTestCase {
         XCTAssertEqual(try manager.fetchSleepCycles(for: testUser).count, 0)
     }
     
-    // MARK: - Update Sleep Cycle Tests
+    /// Update Sleep Cycle Tests
     
     func test_updateSleepCycle_shouldModifyExistingCycle() throws {
         // Given

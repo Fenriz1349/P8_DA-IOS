@@ -34,13 +34,12 @@ struct EditExerciseModal: View {
                 GradePicker(title: "Intensité", quality: $viewModel.intensity)
                 Text(viewModel.caloriesBurned)
             }
-            
 
             Button(action: viewModel.saveExercise) {
                 SaveButton()
             }
             .padding(.top, 12)
-            
+
             Spacer()
         }
         .padding()

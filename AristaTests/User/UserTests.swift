@@ -10,7 +10,7 @@ import CoreData
 @testable import Arista
 
 final class UserTests: XCTestCase {
-    
+
     var controller: PersistenceController!
     var context: NSManagedObjectContext!
 
@@ -23,43 +23,50 @@ final class UserTests: XCTestCase {
         controller = nil
         context = nil
     }
-    
-    // MARK: - Has Value Tests
-    
-    func testCreateUserWithNullSizeAndWeight() throws {
+
+    func test_createUser_shouldPersistAndRetrieve() throws {
         // Given
-        let user = SharedTestHelper.createUser(
-            firstName: "John",
-            lastName: "Doe",
-            email: "test@test.com",
-            in: context
-        )
-        
+        SharedTestHelper.createSampleUser(in: context)
+
         // When
-        user.height = 0
-        user.weight = 0
-        
+        try SharedTestHelper.saveContext(context)
+
         // Then
-        XCTAssertFalse(user.hasHeight)
-        XCTAssertFalse(user.hasWeight)
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        let results = try context.fetch(request)
+        XCTAssertEqual(results.count, 1)
+        XCTAssertEqual(results.first?.email, SharedTestHelper.sampleUserData.email)
+        XCTAssertTrue(results.first?.hashPassword.isEmpty == false)
     }
-    
-    func testCreateUserWithPositiveSizeAndWeight() throws {
+
+    func test_userGoals_haveDefaultValues() throws {
         // Given
-        let user = SharedTestHelper.createUser(
-            firstName: "John",
-            lastName: "Doe",
-            email: "test@test.com",
-            in: context
-        )
-        
-        // When
-        user.height = 1
-        user.weight = 1
-        
+        let user = SharedTestHelper.createSampleUser(in: context)
+
         // Then
-        XCTAssertTrue(user.hasHeight)
-        XCTAssertTrue(user.hasWeight)
+        XCTAssertEqual(user.calorieGoal, 300)
+        XCTAssertEqual(user.sleepGoal, 480)
+        XCTAssertEqual(user.waterGoal, 25)
+        XCTAssertEqual(user.stepsGoal, 8000)
+    }
+
+    func test_user_canLinkExercicesAndSleepCyclesAndGoals() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        let exercice = SharedTestHelper.createSampleExercice(for: user, in: context)
+        let sleepCycle = SharedTestHelper.createSampleSleepCycle(for: user, in: context)
+        let goal = SharedTestHelper.makeGoal(for: user, in: context, date: Date())
+
+        // When
+        try SharedTestHelper.saveContext(context)
+
+        // Then
+        XCTAssertEqual(user.exercices?.count, 1)
+        XCTAssertEqual(user.sleepCycles?.count, 1)
+        XCTAssertEqual(user.goals?.count, 1)
+        XCTAssertTrue(user.exercices?.contains(exercice) ?? false)
+        XCTAssertTrue(user.sleepCycles?.contains(sleepCycle) ?? false)
+        XCTAssertTrue(user.goals?.contains(goal) ?? false)
     }
 }
 

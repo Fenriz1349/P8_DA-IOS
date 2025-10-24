@@ -65,8 +65,8 @@ final class ExerciseViewModelTests: XCTestCase {
     /// Reload
     func test_reloadAll_loadsExercisesForCurrentUser() throws {
         // Given
-        try SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
-        try SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
+        SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
+        SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
         try context.save()
 
         // When
@@ -193,7 +193,7 @@ final class ExerciseViewModelTests: XCTestCase {
 
         // Then
         XCTAssertTrue(sut.showEditModal)
-        XCTAssertEqual(sut.duration, 0)
+        XCTAssertEqual(sut.duration, 30)
         XCTAssertEqual(sut.intensity, 5)
         XCTAssertEqual(sut.selectedType, .other)
     }

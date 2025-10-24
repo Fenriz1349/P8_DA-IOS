@@ -66,8 +66,8 @@ final class ExerciceDataManagerTests: XCTestCase {
     /// Fetch
     func test_fetchExercices_returnsAllForUser() throws {
         // Given
-        try SharedTestHelper.createSampleExercice(for: testUser, in: context)
-        try SharedTestHelper.createSampleExercice(for: testUser, in: context)
+        SharedTestHelper.createSampleExercice(for: testUser, in: context)
+        SharedTestHelper.createSampleExercice(for: testUser, in: context)
         try context.save()
         
         // When

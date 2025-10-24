@@ -11,7 +11,7 @@ import CoreData
 @MainActor
 struct PreviewSleepDataProvider {
 
-    // MARK: - Convenience context
+    /// Convenience context
     private static var context: NSManagedObjectContext {
         PreviewDataProvider.PreviewContext
     }
@@ -22,10 +22,9 @@ struct PreviewSleepDataProvider {
 
     private static var calendar: Calendar { .current }
 
-    // MARK: - Base ViewModel Factory
+    /// Base ViewModel Factory
     static func makePreviewViewModel() -> SleepViewModel {
         let mockCoordinator = PreviewDataProvider.sampleCoordinator
-
         let mockManager = SleepDataManager(container: PreviewDataProvider.previewData.container)
 
         let viewModel = try! SleepViewModel(
@@ -33,13 +32,12 @@ struct PreviewSleepDataProvider {
             sleepDataManager: mockManager
         )
 
-        viewModel.currentCycle = PreviewSleepDataProvider.completedSleepCycle
-        viewModel.historyCycles = PreviewSleepDataProvider.sampleSleepCycles
+        viewModel.reloadAllData()
 
         return viewModel
     }
 
-    // MARK: - New Cycle (manual entry)
+    /// New Cycle (manual entry)
     static var newCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.showEditModal = true
@@ -51,7 +49,7 @@ struct PreviewSleepDataProvider {
 
         return viewModel
     }
-    
+
     static var noCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.currentCycle = nil
@@ -65,21 +63,22 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - Edit Cycle (completed)
+    /// Edit Cycle (completed)
     static var editCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.showEditModal = true
 
-        let cycle = PreviewSleepDataProvider.completedSleepCycle
-        viewModel.currentCycle = cycle
-        viewModel.manualStartDate = cycle.dateStart
-        viewModel.manualEndDate = cycle.dateEnding ?? Date()
-        viewModel.selectedQuality = cycle.quality
+        if let cycle = viewModel.historyCycles.first {
+            viewModel.currentCycle = cycle
+            viewModel.manualStartDate = cycle.dateStart
+            viewModel.manualEndDate = cycle.dateEnding ?? Date()
+            viewModel.selectedQuality = cycle.quality
+        }
 
         return viewModel
     }
 
-    // MARK: - Active Cycle (currently running)
+    /// Active Cycle (currently running)
     static var activeCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
@@ -87,44 +86,16 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - Active + History (1 active + 7 completed)
+    /// Active + History (1 active + 7 completed)
     static var activeAndHistoryViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
-
         viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
-        viewModel.historyCycles = PreviewSleepDataProvider.sampleSleepCycles
-
         viewModel.showEditModal = false
         viewModel.selectedQuality = 0
-
         return viewModel
     }
 
-    // MARK: - Sample Data
-
-    /// 7 completed sleep cycles (from newest to oldest)
-    static var sampleSleepCycles: [SleepCycleDisplay] {
-        let now = Date()
-        var displays: [SleepCycleDisplay] = []
-
-        for index in 0..<7 {
-            let date = now.addingTimeInterval(Double(-index) * 86400)
-            let start = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: date)!
-            let end = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: date)!
-                .addingTimeInterval(86400)
-            let quality = Int.random(in: 1...10)
-
-            let display = SleepCycleDisplay(
-                id: UUID(),
-                dateStart: start,
-                dateEnding: end,
-                quality: quality
-            )
-            displays.append(display)
-        }
-
-        return displays
-    }
+    /// Sample Data Helpers
 
     /// Active sleep cycle (still ongoing)
     static var activeSleepCycle: SleepCycleDisplay {
