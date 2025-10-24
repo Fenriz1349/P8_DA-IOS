@@ -80,21 +80,19 @@ final class GoalDataManagerTests: XCTestCase {
         _ = try manager.createOrUpdate(for: testUser, date: today, amount: 22)
 
         /// When
-        let fetched = try manager.fetchGoal(for: testUser, date: today)
+        let fetched = try manager.fetchGoal(for: testUser, date: today)!
 
         /// Then
         XCTAssertEqual(fetched.totalWater, 22)
         XCTAssertEqual(fetched.user.id, testUser.id)
     }
 
-    func test_fetchGoal_withInvalidDate_shouldThrowError() throws {
+    func test_fetchGoal_withInvalidDate_shoulReturnNil() throws {
         /// Given
         let missingDate = Calendar.current.date(byAdding: .day, value: -3, to: Date())!
 
         /// When / Then
-        XCTAssertThrowsError(try manager.fetchGoal(for: testUser, date: missingDate)) { error in
-            XCTAssertEqual(error as? GoalDataManagerError, .goalNotFound)
-        }
+        XCTAssertNil(try manager.fetchGoal(for: testUser, date: missingDate))
     }
 
     func test_deleteGoal_shouldRemoveGoalFromStore() throws {
