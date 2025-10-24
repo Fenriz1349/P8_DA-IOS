@@ -1,38 +1,59 @@
 //
-//  AccountView.swift
+//  UserView.swift
 //  Arista
 //
 //  Created by Vincent Saluzzo on 08/12/2023.
 //
 
 import SwiftUI
-import CustomLabels
 
 struct UserView: View {
     @ObservedObject var viewModel: UserViewModel
 
     var body: some View {
-        VStack(alignment: .leading) {
-            Button("", systemImage: "gear") {
-                viewModel.openEditModal()
+        ScrollView {
+            VStack(alignment: .leading, spacing: 24) {
+                HStack {
+                    VStack(alignment: .leading, spacing: 4) {
+                        Text("Bonjour")
+                            .font(.title3)
+                            .foregroundColor(.secondary)
+                        Text("\(viewModel.user.firstName) \(viewModel.user.lastName)")
+                            .font(.largeTitle)
+                            .fontWeight(.bold)
+                            .foregroundColor(.blue)
+                    }
+                    
+                    Spacer()
+                    
+                    Button("", systemImage: "gear") {
+                        viewModel.openEditModal()
+                    }
+                    .foregroundColor(.gray)
+                    .font(.title2)
+                }
+                .padding(.horizontal)
+                .padding(.top)
+                
+                VStack(spacing: 16) {
+                    GoalSliderView(
+                        type: .water,
+                        goal: Int(viewModel.user.waterGoal),
+                        current: $viewModel.currentWater
+                    )
+                    
+                    GoalSliderView(
+                        type: .steps,
+                        goal: Int(viewModel.user.stepsGoal),
+                        current: $viewModel.currentSteps
+                    )
+                }
+                .padding(.top, 8)
+                
+                Spacer()
             }
-            .foregroundColor(.gray)
-            .font(.title2)
-            .frame(maxWidth: .infinity, alignment: .trailing)
-
-            Spacer()
-            Text("hello")
-                .font(.largeTitle)
-            Text("\(viewModel.user.firstName) \(viewModel.user.lastName)")
-                .font(.largeTitle)
-                .fontWeight(.bold)
-                .foregroundColor(.blue)
-                .padding()
-                .scaleEffect(1.2)
-            Spacer()
-
         }
-        .padding(.horizontal)
+        .background(Color(.systemGroupedBackground))
         .sheet(isPresented: $viewModel.showEditModal) {
             EditUserView(viewModel: viewModel)
         }

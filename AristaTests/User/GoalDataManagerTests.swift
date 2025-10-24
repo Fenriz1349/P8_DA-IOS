@@ -35,12 +35,12 @@ final class GoalDataManagerTests: XCTestCase {
 
     // MARK: - Water Tests
 
-    func test_addWater_shouldCreateNewGoal() throws {
+    func test_updateWater_shouldCreateNewGoal() throws {
         /// Given
         let today = Date()
 
         /// When
-        let goal = try manager.addWater(for: testUser, date: today, amount: 25)
+        let goal = try manager.updateWater(for: testUser, date: today, newWater: 25)
 
         /// Then
         XCTAssertEqual(goal.totalWater, 25)
@@ -49,43 +49,28 @@ final class GoalDataManagerTests: XCTestCase {
         XCTAssertEqual(goal.date.formattedDate, today.formattedDate)
     }
 
-    func test_addWater_shouldIncrementExistingGoal() throws {
+    func test_updateWater_shouldUpdateExistingGoal() throws {
         /// Given
         let today = Date()
-        _ = try manager.addWater(for: testUser, date: today, amount: 20)
+        _ = try manager.updateWater(for: testUser, date: today, newWater: 20)
 
         /// When
-        let updated = try manager.addWater(for: testUser, date: today, amount: 15)
+        let updated = try manager.updateWater(for: testUser, date: today, newWater: 15)
 
         /// Then
-        XCTAssertEqual(updated.totalWater, 35)
-        let all = try manager.fetchGoals(for: testUser)
-        XCTAssertEqual(all.count, 1)
-    }
-
-    func test_addWater_multipleIncrementsOnSameDay() throws {
-        /// Given
-        let today = Date()
-        
-        /// When
-        _ = try manager.addWater(for: testUser, date: today, amount: 5)
-        _ = try manager.addWater(for: testUser, date: today, amount: 10)
-        let final = try manager.addWater(for: testUser, date: today, amount: 8)
-        
-        /// Then
-        XCTAssertEqual(final.totalWater, 23)
+        XCTAssertEqual(updated.totalWater, 15)
         let all = try manager.fetchGoals(for: testUser)
         XCTAssertEqual(all.count, 1)
     }
 
     // MARK: - Steps Tests
 
-    func test_addSteps_shouldCreateNewGoal() throws {
+    func test_updateSteps_shouldCreateNewGoal() throws {
         /// Given
         let today = Date()
 
         /// When
-        let goal = try manager.addSteps(for: testUser, date: today, amount: 5000)
+        let goal = try manager.updateSteps(for: testUser, date: today, newSteps: 5000)
 
         /// Then
         XCTAssertEqual(goal.totalSteps, 5000)
@@ -94,44 +79,30 @@ final class GoalDataManagerTests: XCTestCase {
         XCTAssertEqual(goal.date.formattedDate, today.formattedDate)
     }
 
-    func test_addSteps_shouldIncrementExistingGoal() throws {
+    func test_updateSteps_shouldUpdateExistingGoal() throws {
         /// Given
         let today = Date()
-        _ = try manager.addSteps(for: testUser, date: today, amount: 3000)
+        _ = try manager.updateSteps(for: testUser, date: today, newSteps: 3000)
 
         /// When
-        let updated = try manager.addSteps(for: testUser, date: today, amount: 2000)
+        let updated = try manager.updateSteps(for: testUser, date: today, newSteps: 2000)
 
         /// Then
-        XCTAssertEqual(updated.totalSteps, 5000)
+        XCTAssertEqual(updated.totalSteps, 2000)
         let all = try manager.fetchGoals(for: testUser)
         XCTAssertEqual(all.count, 1)
     }
 
-    func test_addSteps_multipleIncrementsOnSameDay() throws {
-        /// Given
-        let today = Date()
-        
-        /// When
-        _ = try manager.addSteps(for: testUser, date: today, amount: 1000)
-        _ = try manager.addSteps(for: testUser, date: today, amount: 2500)
-        let final = try manager.addSteps(for: testUser, date: today, amount: 1500)
-        
-        /// Then
-        XCTAssertEqual(final.totalSteps, 5000)
-        let all = try manager.fetchGoals(for: testUser)
-        XCTAssertEqual(all.count, 1)
-    }
 
     // MARK: - Integration Tests
 
-    func test_addWaterAndSteps_shouldUpdateSameGoal() throws {
+    func test_updateWaterAndSteps_shouldUpdateSameGoal() throws {
         /// Given
         let today = Date()
         
         /// When
-        let waterGoal = try manager.addWater(for: testUser, date: today, amount: 20)
-        let stepsGoal = try manager.addSteps(for: testUser, date: today, amount: 5000)
+        let waterGoal = try manager.updateWater(for: testUser, date: today, newWater: 20)
+        let stepsGoal = try manager.updateSteps(for: testUser, date: today, newSteps: 5000)
         
         /// Then
         XCTAssertEqual(waterGoal.id, stepsGoal.id)
@@ -150,8 +121,8 @@ final class GoalDataManagerTests: XCTestCase {
         let today = referenceDate
         let yesterday = Calendar.current.date(byAdding: .day, value: -1, to: referenceDate)!
         
-        _ = try manager.addWater(for: testUser, date: today, amount: 20)
-        _ = try manager.addWater(for: testUser, date: yesterday, amount: 15)
+        _ = try manager.updateWater(for: testUser, date: today, newWater: 20)
+        _ = try manager.updateWater(for: testUser, date: yesterday, newWater: 15)
 
         /// When
         let goals = try manager.fetchGoals(for: testUser)
@@ -165,8 +136,8 @@ final class GoalDataManagerTests: XCTestCase {
     func test_fetchLastWeekGoals_shouldReturnOnlyRecentGoals() throws {
         /// Given
         let oldDate = Calendar.current.date(byAdding: .day, value: -10, to: Date())!
-        _ = try manager.addWater(for: testUser, date: oldDate, amount: 10)
-        _ = try manager.addWater(for: testUser, amount: 30)
+        _ = try manager.updateWater(for: testUser, date: oldDate, newWater: 10)
+        _ = try manager.updateWater(for: testUser, newWater: 30)
 
         /// When
         let recentGoals = try manager.fetchLastWeekGoals(for: testUser)
@@ -179,7 +150,7 @@ final class GoalDataManagerTests: XCTestCase {
     func test_fetchGoal_shouldReturnGoalForGivenDate() throws {
         /// Given
         let today = Date()
-        _ = try manager.addWater(for: testUser, date: today, amount: 22)
+        _ = try manager.updateWater(for: testUser, date: today, newWater: 22)
 
         /// When
         let fetched = try manager.fetchGoal(for: testUser, date: today)
@@ -205,7 +176,7 @@ final class GoalDataManagerTests: XCTestCase {
 
     func test_deleteGoal_shouldRemoveGoalFromStore() throws {
         /// Given
-        let goal = try manager.addWater(for: testUser, amount: 25)
+        let goal = try manager.updateWater(for: testUser, newWater: 25)
         XCTAssertEqual(try manager.fetchGoals(for: testUser).count, 1)
 
         /// When

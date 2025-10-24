@@ -52,12 +52,16 @@ struct GoalDisplay: Identifiable, Equatable {
     var isToday: Bool {
         Calendar.current.isDateInToday(date)
     }
+    
+    var stepsCalories: Int { Int(Double(totalSteps) * 0.04) }
 
     var totalCalories: Int {
-        exercices
+        let exerciseCalories = exercices
             .filter { Calendar.current.isDate($0.date, inSameDayAs: date) }
             .map(\.caloriesBurned)
             .reduce(0, +)
+
+        return exerciseCalories + stepsCalories
     }
 
     var totalSleepMinutes: Int {

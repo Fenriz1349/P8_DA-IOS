@@ -14,6 +14,7 @@ final class UserViewModelTests: XCTestCase {
     var testContainer: PersistenceController!
     var context: NSManagedObjectContext!
     var dataManager: UserDataManager!
+    var goalDataManager: GoalDataManager!
     var coordinator: AppCoordinator!
 
     override func setUp() {
@@ -21,12 +22,15 @@ final class UserViewModelTests: XCTestCase {
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         dataManager = UserDataManager(container: testContainer.container)
+        goalDataManager = GoalDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: dataManager)
     }
 
     override func tearDown() {
         testContainer = nil
         context = nil
+        dataManager = nil
+        goalDataManager = nil
         coordinator = nil
         super.tearDown()
     }
@@ -38,17 +42,16 @@ final class UserViewModelTests: XCTestCase {
         try coordinator.login(id: user.id)
 
         // When
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         // Then
         XCTAssertEqual(sut.user.firstName, user.firstName)
         XCTAssertEqual(sut.user.lastName, user.lastName)
-        XCTAssertEqual(sut.user.email, user.email)
         XCTAssertFalse(sut.showEditModal)
     }
 
     func test_init_withNoLoggedUser_throwsError() throws {
-        XCTAssertThrowsError(try UserViewModel(appCoordinator: coordinator)) { error in
+        XCTAssertThrowsError(try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
@@ -58,7 +61,7 @@ final class UserViewModelTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
         try coordinator.login(id: user.id)
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         // When
         sut.openEditModal()
@@ -74,7 +77,7 @@ final class UserViewModelTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
         try coordinator.login(id: user.id)
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         XCTAssertTrue(coordinator.isAuthenticated)
 
@@ -91,7 +94,7 @@ final class UserViewModelTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
         try coordinator.login(id: user.id)
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         XCTAssertTrue(coordinator.isAuthenticated)
 
@@ -108,7 +111,7 @@ final class UserViewModelTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
         try coordinator.login(id: user.id)
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         // When
         sut.loadUser()
@@ -116,7 +119,6 @@ final class UserViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(sut.firstName, user.firstName)
         XCTAssertEqual(sut.lastName, user.lastName)
-        XCTAssertEqual(sut.email, user.email)
     }
 
     func test_saveChanges_shouldUpdateUserData() throws {
@@ -124,7 +126,7 @@ final class UserViewModelTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
         try coordinator.login(id: user.id)
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
         sut.firstName = "Alex"
         sut.lastName = "Dupont"
 
@@ -142,7 +144,7 @@ final class UserViewModelTests: XCTestCase {
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
         try coordinator.login(id: user.id)
-        let sut = try UserViewModel(appCoordinator: coordinator)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         sut.firstName = ""
         sut.lastName = ""
@@ -155,5 +157,60 @@ final class UserViewModelTests: XCTestCase {
 
         // Then
         XCTAssertNotNil(sut.toastyManager)
+    }
+    
+    // MARK: - Goal Tests
+    
+    func test_loadTodayGoal_shouldLoadExistingGoal() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        
+        _ = try goalDataManager.updateWater(for: user, newWater: 15)
+        _ = try goalDataManager.updateSteps(for: user, newSteps: 5000)
+        
+        // When
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
+        
+        // Then
+        XCTAssertEqual(sut.currentWater, 15)
+        XCTAssertEqual(sut.currentSteps, 5000)
+    }
+    
+    func test_updateWater_shouldSaveToGoalDataManager() async throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
+        
+        // When
+        sut.currentWater = 20
+        
+        // Give time for Task to complete
+        try await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
+        
+        // Then
+        let goal = try goalDataManager.fetchGoal(for: user)
+        XCTAssertEqual(goal?.totalWater, 20)
+    }
+    
+    func test_updateSteps_shouldSaveToGoalDataManager() async throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
+        
+        // When
+        sut.currentSteps = 8000
+        
+        // Give time for Task to complete
+        try await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
+        
+        // Then
+        let goal = try goalDataManager.fetchGoal(for: user)
+        XCTAssertEqual(goal?.totalSteps, 8000)
     }
 }

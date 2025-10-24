@@ -7,6 +7,9 @@
     "(%@)" : {
 
     },
+    "/ %@" : {
+
+    },
     "%@ %@" : {
       "localizations" : {
         "en" : {
@@ -45,16 +48,6 @@
       },
       "shouldTranslate" : false
     },
-    "%lld %@" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lld %2$@"
-          }
-        }
-      }
-    },
     "%lld dl" : {
 
     },
@@ -76,6 +69,12 @@
           }
         }
       }
+    },
+    "🎉" : {
+
+    },
+    "💪" : {
+
     },
     "00" : {
 
@@ -119,6 +118,9 @@
           }
         }
       }
+    },
+    "Bonjour" : {
+
     },
     "Calorie Goal" : {
 
@@ -379,6 +381,7 @@
       }
     },
     "hello" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -515,6 +518,12 @@
       }
     },
     "Nouveau cycle" : {
+
+    },
+    "Objectif atteint !" : {
+
+    },
+    "Objectif dépassé !" : {
 
     },
     "profil" : {
