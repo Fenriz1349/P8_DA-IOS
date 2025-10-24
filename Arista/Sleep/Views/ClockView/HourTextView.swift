@@ -23,12 +23,12 @@ struct HourTextView: View {
         let angle = SleepClockCalculator.angleForHour(hour)
         let radius = size / 2 - 24
 
-        // Convert angle to coordinates
+        /// Convert angle to coordinates
         let radians = (angle - 90) * .pi / 180 // -90 to have midnight at top
         let xPos = cos(radians) * radius
         let yPos = sin(radians) * radius
 
-        // Primary hours (0, 6, 12, 18) in bold
+        /// Primary hours (0, 6, 12, 18) in bold
         let isPrimaryHour = hour % 6 == 0
 
         return Text(hour == 0 ? "00" : "\(hour)")

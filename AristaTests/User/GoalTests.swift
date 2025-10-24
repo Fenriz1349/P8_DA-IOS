@@ -28,8 +28,6 @@ final class GoalTests: XCTestCase {
         controller = nil
     }
 
-    // MARK: - Tests
-
     func test_toDisplay_shouldMapBasicValues() throws {
         /// Given
         let goal = SharedTestHelper.makeGoal(for: user, in: context, date: Date(), water: 25)

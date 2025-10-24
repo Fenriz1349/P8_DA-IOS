@@ -18,7 +18,7 @@ struct SleepArcView: View {
     var body: some View {
         let startAngle = SleepClockCalculator.angleForTime(cycle.dateStart)
         let duration = SleepClockCalculator.displayedDuration(for: cycle)
-        
+
         let durationAngle = (duration / (12 * 3600)) * 360
 
         Circle()

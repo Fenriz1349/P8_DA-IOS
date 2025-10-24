@@ -159,7 +159,7 @@ final class UserViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.toastyManager)
     }
     
-    // MARK: - Goal Tests
+    /// Goal Tests
     
     func test_loadTodayGoal_shouldLoadExistingGoal() throws {
         // Given
@@ -188,7 +188,6 @@ final class UserViewModelTests: XCTestCase {
         // When
         sut.currentWater = 20
         
-        // Give time for Task to complete
         try await Task.sleep(nanoseconds: 100_000_000) // 0.1 second
         
         // Then

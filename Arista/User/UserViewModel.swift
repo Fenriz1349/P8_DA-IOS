@@ -26,14 +26,10 @@ final class UserViewModel: ObservableObject {
     @Published var sleepGoal = ""
     @Published var waterGoal = ""
     @Published var stepsGoal = ""
-    
+
     /// Daily Goals
-    @Published var currentWater: Double = 0 {
-        didSet { updateWater() }
-    }
-    @Published var currentSteps: Double = 0 {
-        didSet { updateSteps() }
-    }
+    @Published var currentWater: Double = 0 { didSet { updateWater() }}
+    @Published var currentSteps: Double = 0 { didSet { updateSteps() }}
 
     /// Initialization
     init(
@@ -114,14 +110,14 @@ final class UserViewModel: ObservableObject {
             toastyManager?.showError(error)
         }
     }
-    
+
     /// Goal Updates
     private func updateWater() {
         Task {
             do {
                 _ = try goalDataManager.updateWater(for: user, newWater: Int16(currentWater))
             } catch {
-                print("Error updating water: \(error)")
+                toastyManager?.showError(error)
             }
         }
     }
@@ -131,7 +127,7 @@ final class UserViewModel: ObservableObject {
             do {
                 _ = try goalDataManager.updateSteps(for: user, newSteps: Int32(currentSteps))
             } catch {
-                print("Error updating steps: \(error)")
+                toastyManager?.showError(error)
             }
         }
     }

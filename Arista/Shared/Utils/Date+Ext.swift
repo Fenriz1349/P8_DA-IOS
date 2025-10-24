@@ -54,7 +54,6 @@ extension Date {
         }
     }
 
-
     /// Format hour only (ex: "14:30")
     var formattedTime: String {
         let formatter = DateFormatter()

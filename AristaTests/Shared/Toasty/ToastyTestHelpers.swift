@@ -11,12 +11,12 @@ import XCTest
 @MainActor
 struct ToastyTestHelpers {
     
-    // MARK: - Sample Data
+    /// Sample Data
     static let testMessage = "This is a test error message"
     static let longMessage = "This is a very long error message that could span multiple lines in the UI"
     static let emptyMessage = ""
 
-    // MARK: - Factory Methods
+    ///Factory Methods
     static func createSampleMessage() -> ToastyMessage {
         return ToastyMessage(message: testMessage, type: .error)
     }

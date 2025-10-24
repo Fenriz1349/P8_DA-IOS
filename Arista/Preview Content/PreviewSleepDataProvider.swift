@@ -11,7 +11,7 @@ import CoreData
 @MainActor
 struct PreviewSleepDataProvider {
 
-    // MARK: - Convenience context
+    /// Convenience context
     private static var context: NSManagedObjectContext {
         PreviewDataProvider.PreviewContext
     }
@@ -22,7 +22,7 @@ struct PreviewSleepDataProvider {
 
     private static var calendar: Calendar { .current }
 
-    // MARK: - Base ViewModel Factory
+    /// Base ViewModel Factory
     static func makePreviewViewModel() -> SleepViewModel {
         let mockCoordinator = PreviewDataProvider.sampleCoordinator
 
@@ -39,7 +39,7 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - New Cycle (manual entry)
+    /// New Cycle (manual entry)
     static var newCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.showEditModal = true
@@ -51,7 +51,7 @@ struct PreviewSleepDataProvider {
 
         return viewModel
     }
-    
+
     static var noCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.currentCycle = nil
@@ -65,7 +65,7 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - Edit Cycle (completed)
+    /// Edit Cycle (completed)
     static var editCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.showEditModal = true
@@ -79,7 +79,7 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - Active Cycle (currently running)
+    /// Active Cycle (currently running)
     static var activeCycleViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
         viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
@@ -87,7 +87,7 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - Active + History (1 active + 7 completed)
+    /// Active + History (1 active + 7 completed)
     static var activeAndHistoryViewModel: SleepViewModel {
         let viewModel = makePreviewViewModel()
 
@@ -100,7 +100,7 @@ struct PreviewSleepDataProvider {
         return viewModel
     }
 
-    // MARK: - Sample Data
+    /// Sample Data
 
     /// 7 completed sleep cycles (from newest to oldest)
     static var sampleSleepCycles: [SleepCycleDisplay] {

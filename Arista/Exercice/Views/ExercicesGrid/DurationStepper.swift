@@ -12,7 +12,7 @@ struct DurationStepper: View {
     @Binding var value: Int
     var range: ClosedRange<Int> = 0...300
     var step: Int = 5
-    
+
     var body: some View {
         HStack {
             Text(title)

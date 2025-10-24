@@ -17,9 +17,8 @@ final class GoalDataManager {
 
     func updateWater(for user: User, date: Date = Date(), newWater: Int16) throws -> Goal {
         let context = container.viewContext
-        
         let normalizedDate = Calendar.current.date(from: date.ymdComponents)!
-        
+
         let goal: Goal
         if let existingGoal = try fetchGoal(for: user, date: date) {
             goal = existingGoal
@@ -38,9 +37,8 @@ final class GoalDataManager {
 
     func updateSteps(for user: User, date: Date = Date(), newSteps: Int32) throws -> Goal {
         let context = container.viewContext
-        
         let normalizedDate = Calendar.current.date(from: date.ymdComponents)!
-        
+
         let goal: Goal
         if let existingGoal = try fetchGoal(for: user, date: date) {
             goal = existingGoal
@@ -56,13 +54,13 @@ final class GoalDataManager {
         try context.save()
         return goal
     }
-    
+
     /// Fetch Methods
     func fetchGoal(for user: User, date: Date = Date()) throws -> Goal? {
         let context = container.viewContext
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
-        
+
         let allGoals = try context.fetch(request)
         return allGoals.first(where: { $0.date.isSameDay(as: date) })
     }
@@ -73,7 +71,7 @@ final class GoalDataManager {
         let request: NSFetchRequest<Goal> = Goal.fetchRequest()
         request.predicate = NSPredicate(format: "user.id == %@", user.id as CVarArg)
         request.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
-        
+
         let results = try context.fetch(request)
 
         return results

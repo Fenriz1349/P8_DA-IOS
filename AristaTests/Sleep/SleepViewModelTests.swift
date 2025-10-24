@@ -45,7 +45,7 @@ final class SleepViewModelTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Initialization Tests
+    /// Initialization Tests
     
     func test_init_withLoggedUser_setsUpCorrectly() throws {
         // Then
@@ -65,8 +65,7 @@ final class SleepViewModelTests: XCTestCase {
         }
     }
     
-    // MARK: - Current State Tests
-    
+    /// Current State Tests
     
     func test_isActive_returnsExpectedValues() {
         // Given
@@ -129,7 +128,7 @@ final class SleepViewModelTests: XCTestCase {
         }
     }
     
-    // MARK: - Start Sleep Cycle Tests
+    /// Start Sleep Cycle Tests
     
     func test_startSleepCycle_success_updatesStateAndLastCycle() throws {
         // Given
@@ -153,7 +152,7 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertEqual(spyToastyManager.showCallCount, 0)
     }
     
-    // MARK: - End Sleep Cycle Tests
+    /// End Sleep Cycle Tests
     
     func test_endSleepCycle_success_updatesStateAndLastCycle() throws {
         // Given
@@ -203,7 +202,7 @@ final class SleepViewModelTests: XCTestCase {
         let startDate = Date()
         try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
         
-        let endDate = startDate.addingTimeInterval(-3600) // 1 heure avant
+        let endDate = startDate.addingTimeInterval(-3600) // 1 hour before
         
         // When
         sut.endSleepCycle(endDate: endDate)
@@ -213,7 +212,7 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertEqual(spyToastyManager.lastType, .error)
     }
     
-    // MARK: - ToastyManager Configuration Tests
+    /// ToastyManager Configuration Tests
     
     func test_configure_setsToastyManager() throws {
         // When
@@ -224,10 +223,10 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertTrue(sut.toastyManager === spyToastyManager)
     }
 
-    // MARK: - History Cycles Tests
+    /// History Cycles Tests
 
     func test_historyCycles_withNoCycles_returnsEmptyArray() throws {
-        // Given - Aucun cycle créé
+        // Given - No cycle created
         
         // When
         let cycles = sut.historyCycles
@@ -290,7 +289,7 @@ final class SleepViewModelTests: XCTestCase {
         }
     }
 
-    // MARK: - Delete Cycle Tests
+    /// Delete Cycle Tests
 
     func test_deleteHistoryCycle_removesCycle() throws {
         // Given
@@ -316,7 +315,7 @@ final class SleepViewModelTests: XCTestCase {
         )
     }
 
-    // MARK: - Cancel Edit Tests
+    /// Cancel Edit Tests
 
     func test_cancelEdit_hidesModalAndClearsEditingCycle() throws {
         // Given
@@ -339,7 +338,7 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertNil(sut.editingCycle)
     }
 
-    // MARK: - Save Cycle Tests
+    /// Save Cycle Tests
 
     func test_saveCycle_createsNewCycle() throws {
         // Given
@@ -380,7 +379,7 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertFalse(sut.showEditModal)
     }
 
-    // MARK: - Start Sleep Cycle Error Tests
+    /// Start Sleep Cycle Error Tests
 
     func test_startSleepCycle_whenAlreadyActive_showsError() throws {
         // Given

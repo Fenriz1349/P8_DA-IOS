@@ -59,14 +59,14 @@ extension PreviewDataProvider {
         user.email = "charlotte.corino@preview.com"
         user.hashPassword = PasswordHasher.hash(password: "Password123!", salt: user.salt)
         user.calorieGoal = 2000
-        user.sleepGoal = 480 // 8 heures
+        user.sleepGoal = 480 // 8 hours
         user.waterGoal = 25 // 2.5L
         user.isLogged = true
         return user
     }
 }
 
-// MARK: - Preview AppCoordinator
+/// Preview AppCoordinator
 extension PreviewDataProvider {
     static var sampleCoordinator: AppCoordinator {
         let dataManager = UserDataManager(container: previewData.container)
@@ -85,7 +85,7 @@ extension PreviewDataProvider {
         ToastyManager()
     }
 
-    // MARK: - Preview ViewModels
+    /// Preview ViewModels
     static var sampleAuthenticationViewModel: AuthenticationViewModel {
         AuthenticationViewModel(appCoordinator: sampleCoordinator)
     }

@@ -16,7 +16,7 @@ struct SharedTestHelper {
         return PersistenceController(inMemory: true)
     }
 
-    // MARK: - Sample Data
+    /// Sample Data
     static let sampleUserData = (
         firstName: "John",
         lastName: "Cena",
@@ -31,7 +31,7 @@ struct SharedTestHelper {
         password: "Password123!"
     )
 
-    // MARK: - User Creation Helpers
+    /// User Creation Helpers
     @discardableResult
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
@@ -108,7 +108,7 @@ struct SharedTestHelper {
             }
         }
 
-    // MARK: - Save Helper
+    /// Save Helper
 
     static func saveContext(_ context: NSManagedObjectContext) throws {
         try context.save()

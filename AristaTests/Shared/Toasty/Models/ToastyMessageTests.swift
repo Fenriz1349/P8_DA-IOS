@@ -11,7 +11,7 @@ import XCTest
 @MainActor
 final class ToastyMessageTests: XCTestCase {
     
-    // MARK: - Basic Creation Tests
+    /// Basic Creation Tests
     func testMessageCreationWithValidData() {
         // Given
         let type = ToastyType.error
@@ -52,7 +52,7 @@ final class ToastyMessageTests: XCTestCase {
         XCTAssertEqual(toasty.message, longMessage)
     }
     
-    // MARK: - Helper Tests
+    /// Helper Tests
     func testSampleMessageCreation() {
         // Given & When
         let toasty = ToastyTestHelpers.createSampleMessage()

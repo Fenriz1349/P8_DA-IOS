@@ -10,12 +10,12 @@ import XCTest
 
 final class DateExtensionsTests: XCTestCase {
     
-    // MARK: - validateInterval Tests
+    /// validateInterval Tests
     
     func test_validateInterval_withValidDates_shouldNotThrow() {
         // Given
         let startDate = Date()
-        let endDate = startDate.addingTimeInterval(3600) // 1 heure plus tard
+        let endDate = startDate.addingTimeInterval(3600) // 1 hour later
         
         // When / Then
         XCTAssertNoThrow(try Date.validateInterval(from: startDate, to: endDate))
@@ -24,7 +24,7 @@ final class DateExtensionsTests: XCTestCase {
     func test_validateInterval_withInvalidDates_shouldThrowError() {
         // Given
         let startDate = Date()
-        let endDate = startDate.addingTimeInterval(-3600) // 1 heure avant
+        let endDate = startDate.addingTimeInterval(-3600) // 1 hour before
         
         // When / Then
         XCTAssertThrowsError(try Date.validateInterval(from: startDate, to: endDate)) { error in
@@ -46,18 +46,18 @@ final class DateExtensionsTests: XCTestCase {
     func test_validateInterval_withVerySmallDifference_shouldNotThrow() {
         // Given
         let startDate = Date()
-        let endDate = startDate.addingTimeInterval(0.001) // 1 milliseconde plus tard
+        let endDate = startDate.addingTimeInterval(0.001) // 1 milliseconde later
         
         // When / Then
         XCTAssertNoThrow(try Date.validateInterval(from: startDate, to: endDate))
     }
     
-    // MARK: - duration Tests
+    /// duration Tests
     
     func test_duration_withPositiveInterval_returnsCorrectDuration() {
         // Given
         let startDate = Date()
-        let endDate = startDate.addingTimeInterval(3600) // 1 heure
+        let endDate = startDate.addingTimeInterval(3600) // 1 hour
         
         // When
         let duration = startDate.duration(to: endDate)
@@ -69,7 +69,7 @@ final class DateExtensionsTests: XCTestCase {
     func test_duration_withNegativeInterval_returnsNegativeDuration() {
         // Given
         let startDate = Date()
-        let endDate = startDate.addingTimeInterval(-1800) // 30 minutes avant
+        let endDate = startDate.addingTimeInterval(-1800) // 30 minutes before
         
         // When
         let duration = startDate.duration(to: endDate)
@@ -92,7 +92,7 @@ final class DateExtensionsTests: XCTestCase {
     func test_duration_withMultipleHours_returnsCorrectDuration() {
         // Given
         let startDate = Date()
-        let endDate = startDate.addingTimeInterval(8 * 3600) // 8 heures
+        let endDate = startDate.addingTimeInterval(8 * 3600) // 8 hours
         
         // When
         let duration = startDate.duration(to: endDate)
@@ -101,7 +101,7 @@ final class DateExtensionsTests: XCTestCase {
         XCTAssertEqual(duration, 28800.0, accuracy: 0.001) // 8 * 3600
     }
     
-    // MARK: - isSameDay Tests
+    /// isSameDay Tests
 
     func test_isSameDay_withSameCalendarDay_returnsTrue() {
         // Given
@@ -129,7 +129,7 @@ final class DateExtensionsTests: XCTestCase {
         XCTAssertFalse(result)
     }
 
-    // MARK: - formattedInterval Tests
+    /// formattedInterval Tests
 
     func test_formattedInterval_withMinutesOnly_returnsMinutes() {
         // Given
@@ -167,7 +167,7 @@ final class DateExtensionsTests: XCTestCase {
         XCTAssertEqual(result, "3h")
     }
 
-    // MARK: - formattedDate / formattedDateTime / formattedTime
+    /// formattedDate / formattedDateTime / formattedTime
 
     func test_formattedDate_containsWeekdayMonthAndYear() {
         // Given

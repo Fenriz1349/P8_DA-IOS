@@ -105,7 +105,7 @@ final class UserDataManagerTests: XCTestCase {
         XCTAssertEqual(user.stepsGoal, 8000)
     }
     
-    // MARK: - Fetching User Tests
+    /// Fetching User Tests
     
     func testFetchUser_withExistingUser_returnUser() throws {
         // Given / Then

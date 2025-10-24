@@ -25,7 +25,7 @@ final class SleepClockCalculator {
         let hour = calendar.component(.hour, from: date) % 12
         let minute = calendar.component(.minute, from: date)
         let totalMinutes = Double(hour * 60 + minute)
-        return (totalMinutes / (12 * 60)) * 360 - 90 
+        return (totalMinutes / (12 * 60)) * 360 - 90
     }
 
     /// Determines the 12 consecutive hours to display on the clock.
@@ -50,9 +50,9 @@ final class SleepClockCalculator {
     static func displayedDuration(for cycle: SleepCycleDisplay) -> TimeInterval {
         let end = cycle.dateEnding ?? Date()
         let duration = end.timeIntervalSince(cycle.dateStart)
-        
-            let adjustedDuration = duration < 0 ? duration + (24 * 3600) : duration
-        
+
+        let adjustedDuration = duration < 0 ? duration + (24 * 3600) : duration
+
         return min(adjustedDuration, maxDuration)
     }
 }

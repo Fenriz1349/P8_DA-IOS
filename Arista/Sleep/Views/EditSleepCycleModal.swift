@@ -13,7 +13,6 @@ struct EditSleepCycleModal: View {
 #warning("Trouver un moyen d'afficher toasty même sur une modale")
     @EnvironmentObject private var toastyManager: ToastyManager
 
-
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {

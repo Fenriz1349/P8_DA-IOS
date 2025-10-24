@@ -24,7 +24,7 @@ extension Goal {
     func toDisplay() -> GoalDisplay {
         let userExercises = user.exercices?.map { $0.toDisplay } ?? []
         let userSleepCycles = user.sleepCycles?.map { $0.toDisplay } ?? []
-        
+
         return GoalDisplay(
             id: id,
             date: date,
@@ -34,7 +34,7 @@ extension Goal {
             sleepCycles: userSleepCycles
         )
     }
-    
+
     static func mapToDisplay(from goals: [Goal]) -> [GoalDisplay] {
         goals.map { $0.toDisplay() }
     }
@@ -52,7 +52,7 @@ struct GoalDisplay: Identifiable, Equatable {
     var isToday: Bool {
         Calendar.current.isDateInToday(date)
     }
-    
+
     var stepsCalories: Int { Int(Double(totalSteps) * 0.04) }
 
     var totalCalories: Int {

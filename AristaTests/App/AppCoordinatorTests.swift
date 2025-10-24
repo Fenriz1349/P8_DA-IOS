@@ -35,7 +35,7 @@ final class AppCoordinatorTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Auth state
+    /// Auth state
     
     func test_setCurrentUser_updatesCurrentUser_and_isAuthenticatedTrue() throws {
         // Given
@@ -72,7 +72,7 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertEqual(validatedUser.id, user.id)
     }
 
-    // MARK: - Logout
+    /// Logout
     
     func test_logout_setsCurrentUserNil_andLogsOffAllUsers() throws {
         // Given
@@ -88,7 +88,7 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertNil(coordinator.currentUser)
     }
     
-    // MARK: - Delete User
+    /// Delete User
     
     func test_deleteCurrentUser_removesUserFromStore() throws {
         // Given
@@ -112,7 +112,7 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertNil(coordinator.currentUser)
     }
 
-    // MARK: - ViewModel creation tests
+    /// ViewModel creation tests
 
     func test_makeAccountViewModel_withLoggedUser_returnsViewModel() throws {
         // Given
@@ -141,7 +141,6 @@ final class AppCoordinatorTests: XCTestCase {
         
         // Then
         XCTAssertNotNil(viewModel)
-        // Le ViewModel doit pouvoir être créé même sans utilisateur connecté
         XCTAssertNil(coordinator.currentUser)
     }
 

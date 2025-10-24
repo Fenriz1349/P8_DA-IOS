@@ -23,9 +23,9 @@ struct UserView: View {
                             .fontWeight(.bold)
                             .foregroundColor(.blue)
                     }
-                    
+
                     Spacer()
-                    
+
                     Button("", systemImage: "gear") {
                         viewModel.openEditModal()
                     }
@@ -34,14 +34,14 @@ struct UserView: View {
                 }
                 .padding(.horizontal)
                 .padding(.top)
-                
+
                 VStack(spacing: 16) {
                     GoalSliderView(
                         type: .water,
                         goal: Int(viewModel.user.waterGoal),
                         current: $viewModel.currentWater
                     )
-                    
+
                     GoalSliderView(
                         type: .steps,
                         goal: Int(viewModel.user.stepsGoal),
@@ -49,7 +49,7 @@ struct UserView: View {
                     )
                 }
                 .padding(.top, 8)
-                
+
                 Spacer()
             }
         }

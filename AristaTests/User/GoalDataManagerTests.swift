@@ -33,7 +33,7 @@ final class GoalDataManagerTests: XCTestCase {
         super.tearDown()
     }
 
-    // MARK: - Water Tests
+    /// Water Tests
 
     func test_updateWater_shouldCreateNewGoal() throws {
         /// Given
@@ -63,7 +63,7 @@ final class GoalDataManagerTests: XCTestCase {
         XCTAssertEqual(all.count, 1)
     }
 
-    // MARK: - Steps Tests
+    /// Steps Tests
 
     func test_updateSteps_shouldCreateNewGoal() throws {
         /// Given
@@ -94,7 +94,7 @@ final class GoalDataManagerTests: XCTestCase {
     }
 
 
-    // MARK: - Integration Tests
+    /// Integration Tests
 
     func test_updateWaterAndSteps_shouldUpdateSameGoal() throws {
         /// Given
@@ -113,7 +113,7 @@ final class GoalDataManagerTests: XCTestCase {
         XCTAssertEqual(all.count, 1)
     }
 
-    // MARK: - Fetch Tests
+    /// Fetch Tests
 
     func test_fetchGoals_shouldReturnAllUserGoals() throws {
         /// Given
@@ -172,7 +172,7 @@ final class GoalDataManagerTests: XCTestCase {
         XCTAssertNil(fetched)
     }
 
-    // MARK: - Delete Tests
+    /// Delete Tests
 
     func test_deleteGoal_shouldRemoveGoalFromStore() throws {
         /// Given

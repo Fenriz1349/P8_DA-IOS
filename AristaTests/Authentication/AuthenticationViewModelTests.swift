@@ -43,7 +43,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         super.tearDown()
     }
 
-    // MARK: - Initial State Tests
+    ///Initial State Tests
     func test_initialState_shouldHaveEmptyFieldsAndNeutralValidation() {
         XCTAssertEqual(sut.email, "")
         XCTAssertEqual(sut.password, "")
@@ -59,7 +59,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.lastNameValidationState, .neutral)
     }
 
-    // MARK: - Form Validation Tests
+    /// Form Validation Tests
     func test_isFormValid_withEmptyFields_shouldBeFalse() {
         XCTAssertFalse(sut.isFormValid)
     }
@@ -111,7 +111,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertFalse(sut.isCreationFormValid)
     }
     
-    // MARK: - Individual Field Validation Tests
+    /// Individual Field Validation Tests
     func test_isMailValid_withValidEmail_shouldBeTrue() {
         sut.email = "test@example.com"
         XCTAssertTrue(sut.isMailValid)
@@ -142,7 +142,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertFalse(sut.isFirstNameValid)
     }
     
-    // MARK: - Button State Management Tests
+    /// Button State Management Tests
     func test_updateButtonState_withValidForm_shouldEnableButton() {
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = SharedTestHelper.sampleUserData.password
@@ -172,7 +172,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.buttonBackgroundColor, .red)
     }
 
-    // MARK: - Validation State Management Tests
+    /// Validation State Management Tests
     func test_resetFieldValidation_shouldResetSpecificField() {
         // Given
         sut.emailValidationState = .invalid
@@ -297,7 +297,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertEqual(sut.lastNameValidationState, .invalid)
     }
 
-    // MARK: - Submit Handling Tests
+    /// Submit Handling Tests
     func test_handleSubmit_withValidForm_shouldNotSetErrorState() {
         // Given
         let expectation = XCTestExpectation(description: "Submit should complete")
@@ -329,7 +329,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         // When
         sut.handleSubmit()
         
-        // Then - Should immediately set error state
+        // Then
         XCTAssertEqual(sut.buttonState, .error)
         XCTAssertEqual(sut.emailValidationState, .invalid)
         XCTAssertEqual(sut.passwordValidationState, .invalid)
@@ -343,7 +343,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         wait(for: [expectation], timeout: 3.0)
     }
     
-    // MARK: - Login Tests (Updated)
+    /// Login Tests (Updated)
     func test_login_withValidCredentials_shouldSucceed() throws {
         // Given
         let testUser = SharedTestHelper.createSampleUser(in: context)
@@ -388,7 +388,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertFalse(coordinator.isAuthenticated)
     }
     
-    // MARK: - Create Account Tests (Updated)
+    /// Create Account Tests
     func test_createUserAndLogin_withValidForm_shouldSucceed() throws {
         // Given
         sut.email = SharedTestHelper.sampleUserData.email
@@ -424,7 +424,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         let existingUser = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
         
-        sut.email = existingUser.email // Même email
+        sut.email = existingUser.email
         sut.password = SharedTestHelper.sampleUserData.password
         sut.firstName = SharedTestHelper.sampleUserData.firstName
         sut.lastName = SharedTestHelper.sampleUserData.lastName
@@ -435,26 +435,21 @@ final class AuthenticationViewModelTests: XCTestCase {
         }
     }
     
-    // MARK: - Mode Switching Tests
+    /// Mode Switching Tests
     func test_creationMode_shouldAffectFormValidation() {
         // Given
         sut.email = SharedTestHelper.sampleUserData.email
         sut.password = SharedTestHelper.sampleUserData.password
         
-        // Login mode should be valid
         XCTAssertTrue(sut.isFormValid)
         
-        // When switching to creation mode without names
         sut.creationMode = true
         
-        // Then creation mode should be invalid
         XCTAssertFalse(sut.isFormValid)
         
-        // When adding names
         sut.firstName = SharedTestHelper.sampleUserData.firstName
         sut.lastName = SharedTestHelper.sampleUserData.lastName
         
-        // Then creation mode should be valid
         XCTAssertTrue(sut.isFormValid)
     }
 }

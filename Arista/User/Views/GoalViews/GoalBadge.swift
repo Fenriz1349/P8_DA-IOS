@@ -9,7 +9,7 @@ import SwiftUI
 
 struct GoalBadge: View {
     let progress: Double
-    
+
     var body: some View {
         if progress >= 1.0 && progress < 1.05 {
             HStack(spacing: 4) {

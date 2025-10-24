@@ -35,7 +35,7 @@ final class PasswordHasherTest: XCTestCase {
         let hash = PasswordHasher.hash(password: "secret", salt: salt)
         XCTAssertTrue(PasswordHasher.verify(password: "secret", salt: salt, against: hash))
     }
-    // verify bad password return false
+
     func testVerify_incorrectPassword_returnsFalse() {
         let salt = UUID()
         let hash = PasswordHasher.hash(password: "secret", salt: salt)

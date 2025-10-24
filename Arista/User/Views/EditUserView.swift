@@ -78,8 +78,6 @@ struct EditUserView: View {
                     SaveButton()
                 })
                 HStack(spacing: 12) {
-                   
-
                     Button(action: {
                         viewModel.deleteAccount()
                     }, label: {

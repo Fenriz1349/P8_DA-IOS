@@ -11,7 +11,7 @@ import SwiftUI
 
 final class ToastTypeTests: XCTestCase {
 
-    // MARK: - Basic Properties Tests
+    /// Basic Properties Tests
     func testErrorTypeHasCorrectProperties() {
         // Given
         let errorType = ToastyType.error

@@ -135,19 +135,16 @@ final class AuthenticationViewModel: ObservableObject {
     func validateAllFields() -> Bool {
         var hasErrors = false
 
-        // Validate email
         if !isMailValid {
             emailValidationState = .invalid
             hasErrors = true
         }
 
-        // Validate password
         if !isPasswordValid {
             passwordValidationState = .invalid
             hasErrors = true
         }
 
-        // Validate creation mode fields
         if creationMode {
             if !isFirstNameValid {
                 firstNameValidationState = .invalid
@@ -162,7 +159,7 @@ final class AuthenticationViewModel: ObservableObject {
 
         return !hasErrors
     }
-    
+
     func onFieldChange(_ field: FieldType) {
         updateButtonState()
         resetFieldValidation(field)

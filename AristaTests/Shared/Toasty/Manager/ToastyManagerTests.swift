@@ -24,14 +24,14 @@ final class ToastyManagerTests: XCTestCase {
         super.tearDown()
     }
     
-    // MARK: - Initial State Tests
+    /// Initial State Tests
     func testInitialStateIsEmpty() {
         // Given & When & Then
         XCTAssertNil(sut.currentToast)
         XCTAssertFalse(sut.hasToast)
     }
     
-    // MARK: - Show Toast Tests
+    /// Show Toast Tests
     func testShowErrorSetsCurrentToast() {
         // Given
         let message = ToastyTestHelpers.testMessage
@@ -61,7 +61,7 @@ final class ToastyManagerTests: XCTestCase {
         XCTAssertTrue(sut.hasToast)
     }
     
-    // MARK: - Dismiss Tests
+    /// Dismiss Tests
     func testDismissRemovesToast() {
         // Given
         sut.show(message: "Test message")
@@ -79,12 +79,12 @@ final class ToastyManagerTests: XCTestCase {
         // Given
         XCTAssertFalse(sut.hasToast)
         
-        // When & Then (should not crash)
+        // When & Then
         sut.dismiss()
         XCTAssertFalse(sut.hasToast)
     }
     
-    // MARK: - Toast Replacement Tests
+    /// Toast Replacement Tests
     func testNewToastReplacesExisting() {
         // Given
         let firstMessage = "First message"
@@ -102,7 +102,7 @@ final class ToastyManagerTests: XCTestCase {
         XCTAssertTrue(sut.hasToast)
     }
     
-    // MARK: - State Consistency Tests
+    ///State Consistency Tests
     func testHasToastPropertyIsConsistent() {
         // Initially false
         XCTAssertFalse(sut.hasToast)
