@@ -33,6 +33,7 @@ final class UserDataManager {
     }
 
     /// User Creation Method
+    @discardableResult
     func createUser(email: String, password: String, firstName: String, lastName: String) throws -> User {
         guard !email.isEmpty, !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty else {
             throw UserDataManagerError.invalidInput

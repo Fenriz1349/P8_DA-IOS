@@ -26,7 +26,6 @@ struct AuthenticationView: View {
 
             Toggle("createProfile.question", isOn: $viewModel.creationMode)
 
-            // Email Field
             CustomTextField.triggered(
                 placeholder: "mailAdress",
                 text: $viewModel.email,
@@ -34,12 +33,10 @@ struct AuthenticationView: View {
                 errorMessage: "Please enter a valid email address",
                 validationState: $viewModel.emailValidationState
             )
-            .onChange(of: viewModel.email) { _ in
-                viewModel.updateButtonState()
-                viewModel.resetFieldValidation(.email)
+            .onChange(of: viewModel.email) {
+                viewModel.onFieldChange(.email)
             }
 
-            // Password Field
             CustomTextField.triggered(
                 placeholder: "password",
                 text: $viewModel.password,
@@ -47,36 +44,30 @@ struct AuthenticationView: View {
                 errorMessage: "Password must contain 8+ characters, uppercase, number, and special character",
                 validationState: $viewModel.passwordValidationState
             )
-            .onChange(of: viewModel.password) { _ in
-                viewModel.updateButtonState()
-                viewModel.resetFieldValidation(.password)
+            .onChange(of: viewModel.password) {
+                viewModel.onFieldChange(.password)
             }
 
             if viewModel.creationMode {
-                // First Name Field
                 CustomTextField.nameField(
                     placeholder: "firstName",
                     text: $viewModel.firstName,
                     validationState: $viewModel.firstNameValidationState
                 )
-                .onChange(of: viewModel.firstName) { _ in
-                    viewModel.updateButtonState()
-                    viewModel.resetFieldValidation(.firstName)
+                .onChange(of: viewModel.firstName) {
+                    viewModel.onFieldChange(.firstName)
                 }
 
-                // Last Name Field
                 CustomTextField.nameField(
                     placeholder: "lastName",
                     text: $viewModel.lastName,
                     validationState: $viewModel.lastNameValidationState
                 )
-                .onChange(of: viewModel.lastName) { _ in
-                    viewModel.updateButtonState()
-                    viewModel.resetFieldValidation(.lastName)
+                .onChange(of: viewModel.lastName) {
+                    viewModel.onFieldChange(.lastName)
                 }
             }
 
-            // Submit Button
             Button {
                 viewModel.handleSubmit()
             } label: {

@@ -32,7 +32,7 @@ struct SharedTestHelper {
     )
 
     // MARK: - User Creation Helpers
-
+    @discardableResult
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
@@ -44,6 +44,7 @@ struct SharedTestHelper {
         return user
     }
 
+    @discardableResult
     static func createSampleUser2(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
@@ -55,6 +56,7 @@ struct SharedTestHelper {
         return user
     }
 
+    @discardableResult
     static func createUser(
         firstName: String,
         lastName: String,
@@ -69,6 +71,7 @@ struct SharedTestHelper {
         return user
     }
 
+    @discardableResult
     static func createUsers(count: Int, in context: NSManagedObjectContext) -> [User] {
         var users: [User] = []
 
@@ -82,11 +85,14 @@ struct SharedTestHelper {
 
         return users
     }
+
+    @discardableResult
     static func createRandomUsers(in context: NSManagedObjectContext) -> [User] {
         let randomCount: Int = Int.random(in: 1...100)
         return createUsers(count: randomCount, in: context)
     }
     
+    @discardableResult
     static func createInvalidUser(in context: NSManagedObjectContext) -> User {
            let user = User(context: context)
            user.id = UUID()
@@ -110,6 +116,7 @@ struct SharedTestHelper {
 }
 
 extension SharedTestHelper {
+    @discardableResult
     static func createSampleExercice(for user: User,
                                      in context: NSManagedObjectContext,
                                      date: Date = Date(),
@@ -128,6 +135,7 @@ extension SharedTestHelper {
 }
 
 extension SharedTestHelper {
+    @discardableResult
     static func createSampleSleepCycle(for user: User,
                                        in context: NSManagedObjectContext,
                                        startOffset: TimeInterval = -8 * 3600,
@@ -144,6 +152,7 @@ extension SharedTestHelper {
 }
 
 extension SharedTestHelper {
+    @discardableResult
     static func makeGoal(for user: User,
                          in context: NSManagedObjectContext,
                          date: Date,
@@ -158,6 +167,7 @@ extension SharedTestHelper {
         return goal
     }
 
+    @discardableResult
     static func makeWeekGoals(for user: User,
                               in context: NSManagedObjectContext) -> [Goal] {
         let today = Date()

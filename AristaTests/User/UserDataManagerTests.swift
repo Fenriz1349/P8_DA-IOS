@@ -69,7 +69,7 @@ final class UserDataManagerTests: XCTestCase {
 
     func testCreateUser_withUsedEmail_throwError() throws {
         // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
+        SharedTestHelper.createSampleUser(in: context)
         try context.save()
         
         XCTAssertThrowsError(
@@ -155,7 +155,7 @@ final class UserDataManagerTests: XCTestCase {
     func testFetchLoggedUser_returnsTheLoggedUser() throws {
         // Given
         let user1 = SharedTestHelper.createSampleUser(in: context)
-        let user2 = SharedTestHelper.createSampleUser2(in: context)
+        SharedTestHelper.createSampleUser2(in: context)
         let builder = UserUpdateBuilder(user: user1, dataManager: manager)
         try context.save()
         

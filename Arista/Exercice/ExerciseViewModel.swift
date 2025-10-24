@@ -28,7 +28,7 @@ final class ExerciseViewModel: ObservableObject {
     @Published var date: Date = Date()
     @Published var duration: Int = 30
     @Published var intensity: Int = 5
-    
+
     var caloriesBurned: String {
         return "\(Int(Double(duration) * Double(intensity) * selectedType.calorieFactor)) kcal"
     }

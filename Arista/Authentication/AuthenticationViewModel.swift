@@ -162,6 +162,11 @@ final class AuthenticationViewModel: ObservableObject {
 
         return !hasErrors
     }
+    
+    func onFieldChange(_ field: FieldType) {
+        updateButtonState()
+        resetFieldValidation(field)
+    }
 
     /// Submit Handling
     func handleSubmit() {

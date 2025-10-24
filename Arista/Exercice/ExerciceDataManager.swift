@@ -32,6 +32,7 @@ final class ExerciceDataManager {
     }
 
     /// Create
+    @discardableResult
     func createExercice(for user: User,
                         date: Date = Date(),
                         duration: Int = 0,
@@ -90,8 +91,6 @@ final class ExerciceDataManager {
 
         return allExercices.filter { $0.date >= oneWeekAgo }
     }
-
-
 
     /// Update
     func updateExercice(by id: UUID,

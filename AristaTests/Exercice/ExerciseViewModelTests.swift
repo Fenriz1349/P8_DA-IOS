@@ -65,8 +65,8 @@ final class ExerciseViewModelTests: XCTestCase {
     /// Reload
     func test_reloadAll_loadsExercisesForCurrentUser() throws {
         // Given
-        try SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
-        try SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
+        SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
+        SharedTestHelper.createSampleExercice(for: sut.currentUser, in: context)
         try context.save()
 
         // When

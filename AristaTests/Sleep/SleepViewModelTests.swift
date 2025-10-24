@@ -361,7 +361,7 @@ final class SleepViewModelTests: XCTestCase {
         // Given
         let startDate = Date().addingTimeInterval(-8 * 3600)
         let endDate = Date()
-        let created = try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
+        try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: startDate)
         try sleepDataManager.endSleepCycle(for: sut.currentUser,
                                            endDate: endDate,
                                            quality: 5)

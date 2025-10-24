@@ -26,7 +26,7 @@ final class UserTests: XCTestCase {
 
     func test_createUser_shouldPersistAndRetrieve() throws {
         // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
+        SharedTestHelper.createSampleUser(in: context)
 
         // When
         try SharedTestHelper.saveContext(context)

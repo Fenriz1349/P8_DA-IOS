@@ -48,6 +48,7 @@ final class GoalTests: XCTestCase {
         /// Given
         let today = Date()
         let goal = SharedTestHelper.makeGoal(for: user, in: context, date: today, water: 15)
+        goal.totalSteps = 400
 
         _ = SharedTestHelper.createSampleExercice(for: user, in: context,
                                                   date: today, duration: 60, type: .running, intensity: 5)
@@ -62,7 +63,7 @@ final class GoalTests: XCTestCase {
         /// Then
         XCTAssertEqual(display.exercices.count, 1)
         XCTAssertEqual(display.sleepCycles.count, 1)
-        XCTAssertEqual(display.totalCalories, 450)
+        XCTAssertEqual(display.totalCalories, 466)
         XCTAssertEqual(display.totalSleepMinutes, 480)
     }
 
@@ -104,6 +105,7 @@ final class GoalTests: XCTestCase {
         // Given
         let today = Date()
         let goal = SharedTestHelper.makeGoal(for: user, in: context, date: today)
+        goal.totalSteps = 0
 
         let oldDate = Calendar.current.date(byAdding: .day, value: -3, to: today)!
         _ = SharedTestHelper.createSampleExercice(for: user, in: context,

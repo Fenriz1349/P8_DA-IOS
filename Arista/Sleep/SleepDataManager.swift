@@ -33,6 +33,7 @@ final class SleepDataManager {
     }
 
     /// Create Sleep Cycle
+    @discardableResult
     func startSleepCycle(for user: User, startDate: Date = Date()) throws -> SleepCycle {
         let context = container.viewContext
 
@@ -52,6 +53,7 @@ final class SleepDataManager {
         return sleepCycle
     }
 
+    @discardableResult
     func endSleepCycle(for user: User, endDate: Date = Date(), quality: Int = 0) throws -> SleepCycle {
         guard let activeCycle = try getActiveSleepCycle(for: user) else {
             throw SleepDataManagerError.sleepCycleNotFound
