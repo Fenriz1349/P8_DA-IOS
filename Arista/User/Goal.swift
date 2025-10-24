@@ -12,6 +12,7 @@ public class Goal: NSManagedObject {
     @NSManaged public var id: UUID
     @NSManaged public var date: Date
     @NSManaged public var totalWater: Int16
+    @NSManaged public var totalSteps: Int32
     @NSManaged public var user: User
 }
 
@@ -28,6 +29,7 @@ extension Goal {
             id: id,
             date: date,
             totalWater: Int(totalWater),
+            totalSteps: Int(totalSteps),
             exercices: userExercises,
             sleepCycles: userSleepCycles
         )
@@ -42,6 +44,7 @@ struct GoalDisplay: Identifiable, Equatable {
     let id: UUID
     let date: Date
     let totalWater: Int
+    let totalSteps: Int
 
     let exercices: [ExerciceDisplay]
     let sleepCycles: [SleepCycleDisplay]

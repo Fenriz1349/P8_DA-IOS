@@ -147,11 +147,13 @@ extension SharedTestHelper {
     static func makeGoal(for user: User,
                          in context: NSManagedObjectContext,
                          date: Date,
-                         water: Int16 = 20) -> Goal {
+                         water: Int16 = 20,
+                         steps: Int32 = 6000) -> Goal {
         let goal = Goal(context: context)
         goal.id = UUID()
         goal.date = date
         goal.totalWater = water
+        goal.totalSteps = steps
         goal.user = user
         return goal
     }

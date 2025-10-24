@@ -15,7 +15,7 @@ final class GoalDataManager {
         self.container = container
     }
 
-    func createOrUpdate(for user: User, date: Date = Date(), amount: Int16) throws -> Goal {
+    func addWater(for user: User, date: Date = Date(), amount: Int16) throws -> Goal {
         let context = container.viewContext
         
         let normalizedDate = Calendar.current.date(from: date.ymdComponents)!
@@ -30,6 +30,27 @@ final class GoalDataManager {
             goal.date = normalizedDate
             goal.user = user
             goal.totalWater = amount
+        }
+
+        try context.save()
+        return goal
+    }
+
+    func addSteps(for user: User, date: Date = Date(), amount: Int32) throws -> Goal {
+        let context = container.viewContext
+        
+        let normalizedDate = Calendar.current.date(from: date.ymdComponents)!
+        
+        let goal: Goal
+        if let existingGoal = try fetchGoal(for: user, date: date) {
+            goal = existingGoal
+            goal.totalSteps += amount
+        } else {
+            goal = Goal(context: context)
+            goal.id = UUID()
+            goal.date = normalizedDate
+            goal.user = user
+            goal.totalSteps = amount
         }
 
         try context.save()

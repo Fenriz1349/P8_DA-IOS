@@ -99,9 +99,10 @@ final class UserDataManagerTests: XCTestCase {
         XCTAssertNotNil(user.id)
         XCTAssertNotNil(user.salt)
         XCTAssertFalse(user.isLogged)
-        XCTAssertEqual(user.calorieGoal, 2000)
+        XCTAssertEqual(user.calorieGoal, 300)
         XCTAssertEqual(user.sleepGoal, 480)
         XCTAssertEqual(user.waterGoal, 25)
+        XCTAssertEqual(user.stepsGoal, 8000)
     }
     
     // MARK: - Fetching User Tests

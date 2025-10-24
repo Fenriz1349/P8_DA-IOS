@@ -20,6 +20,7 @@ public class User: NSManagedObject {
     @NSManaged public var salt: UUID
     @NSManaged public var sleepGoal: Int16
     @NSManaged public var waterGoal: Int16
+    @NSManaged public var stepsGoal: Int32
 
     @NSManaged public var exercices: Set<Exercice>?
     @NSManaged public var sleepCycles: Set<SleepCycle>?
@@ -28,9 +29,10 @@ public class User: NSManagedObject {
 
 extension User {
     /// in User goals will use this format to always use Int:
-    /// calorieGoal - unit: kCal, default value: 2000 kCal
+    /// calorieGoal - unit: kCal, default value: 300 kCal
     /// sleeepGoal - unit: minute, default value: 480 minutes (8hours)
-    /// waterGoal - unit: deciliter, default valut: 25 dl (2,5 liter)
+    /// waterGoal - unit: deciliter, default value: 25 dl (2,5 liter)
+    /// stepsGoal - unit: step, default value: 8000 steps/day
 
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
