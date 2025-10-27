@@ -24,11 +24,14 @@ enum ExerciceDataManagerError: Error, Equatable, LocalizedError {
 final class ExerciceDataManager {
     private let container: NSPersistentContainer
     private let userDataManager: UserDataManager
-
+    private let goalManager: GoalDataManager
+    
     init(container: NSPersistentContainer = PersistenceController.shared.container,
-         userDataManager: UserDataManager? = nil) {
+         userDataManager: UserDataManager? = nil,
+         goalManager: GoalDataManager? = nil) {
         self.container = container
         self.userDataManager = userDataManager ?? UserDataManager(container: container)
+        self.goalManager = goalManager ?? GoalDataManager(container: container)
     }
 
     /// Create
@@ -52,6 +55,7 @@ final class ExerciceDataManager {
         exercice.user = user
 
         do {
+            try goalManager.fetchOrCreateGoal(for: user, date: date)
             try context.save()
             return exercice
         } catch {
@@ -111,6 +115,7 @@ final class ExerciceDataManager {
         exercice.intensity = Int16(intensity)
 
         do {
+            try goalManager.fetchOrCreateGoal(for: exercice.user, date: date)
             try context.save()
         } catch {
             throw ExerciceDataManagerError.failedToSave

@@ -10,15 +10,15 @@ import SwiftUI
 struct CaloriesProgressBar: View {
     let current: Int
     let goal: Int
-    
+
     private var progress: Double { Double(current) / Double(goal) }
-    
+
     private var displayProgress: Double { min(progress, 1.0) }
-    
+
     private var fillColor: Color {
         progress > 1.0 ? .green : Color.orange.opacity(0.3)
     }
-    
+
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
@@ -36,17 +36,17 @@ struct CaloriesProgressBar: View {
                     .foregroundColor(.secondary)
                 GoalBadge(progress: progress)
             }
-            
+
             ZStack(alignment: .leading) {
                 RoundedRectangle(cornerRadius: 12)
                     .fill(Color.gray.opacity(0.2))
                     .frame(height: 32)
-                
+
                 RoundedRectangle(cornerRadius: 12)
                     .fill(fillColor)
                     .frame(width: CGFloat(displayProgress) * (UIScreen.main.bounds.width - 64), height: 32)
                     .animation(.spring(), value: displayProgress)
-                
+
                 HStack {
                     Spacer()
                     Text("\(Int(progress * 100))%")
@@ -68,20 +68,11 @@ struct CaloriesProgressBar: View {
 
 #Preview {
     VStack(spacing: 20) {
-        CaloriesProgressBar(
-            current: 150,
-            goal: 300
-        )
-        
-        CaloriesProgressBar(
-            current: 300,
-            goal: 300
-        )
-        
-        CaloriesProgressBar(
-            current: 450,
-            goal: 300
-        )
+        CaloriesProgressBar(current: 150, goal: 300)
+
+        CaloriesProgressBar(current: 300, goal: 300)
+
+        CaloriesProgressBar(current: 450, goal: 300)
     }
     .background(Color(.systemGroupedBackground))
 }

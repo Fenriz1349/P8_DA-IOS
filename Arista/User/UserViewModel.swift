@@ -20,15 +20,17 @@ final class UserViewModel: ObservableObject {
     @Published var toastyManager: ToastyManager?
 
     /// UI / Published Properties
+    @Published var showingResetAlert = false
     @Published var showEditModal = false
+    let alertMessage = "Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible."
 
     /// Edit form fields
     @Published var firstName = ""
     @Published var lastName = ""
-    @Published var calorieGoal = ""
-    @Published var sleepGoal = ""
-    @Published var waterGoal = ""
-    @Published var stepsGoal = ""
+    @Published var calorieGoal: Int = 2000
+    @Published var sleepGoal: Int = 480
+    @Published var waterGoal: Int = 25
+    @Published var stepsGoal: Int = 10000
 
     /// Daily Goals
     @Published var currentWater: Double = 0 { didSet { updateWater() }}
@@ -133,10 +135,10 @@ final class UserViewModel: ObservableObject {
     func loadUserForEditing() {
         firstName = user.firstName
         lastName = user.lastName
-        calorieGoal = String(user.calorieGoal)
-        sleepGoal = String(user.sleepGoal)
-        waterGoal = String(user.waterGoal)
-        stepsGoal = String(user.stepsGoal)
+        calorieGoal = Int(user.calorieGoal)
+        sleepGoal = Int(user.sleepGoal)
+        waterGoal = Int(user.waterGoal)
+        stepsGoal = Int(user.stepsGoal)
     }
 
     func loadTodayGoal() {
@@ -171,9 +173,10 @@ final class UserViewModel: ObservableObject {
             try builder
                 .firstName(firstName)
                 .lastName(lastName)
-                .calorieGoal(Int(calorieGoal) ?? 0)
-                .sleepGoal(Int(sleepGoal) ?? 0)
-                .waterGoal(Int(waterGoal) ?? 0)
+                .calorieGoal(calorieGoal)
+                .sleepGoal(sleepGoal)
+                .waterGoal(waterGoal)
+                .stepsGoal(stepsGoal)
                 .save()
 
             showEditModal = false

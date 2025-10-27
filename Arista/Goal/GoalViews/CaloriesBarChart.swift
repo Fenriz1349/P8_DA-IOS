@@ -29,7 +29,7 @@ struct CaloriesBarChart: View {
                 RuleMark(y: .value("Objectif", goal))
                     .foregroundStyle(.orange.opacity(0.5))
                     .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
-                
+
                 ForEach(data) { day in
                     BarMark(
                         x: .value("Jour", day.dayLabel),
@@ -94,7 +94,7 @@ struct CaloriesBarChart: View {
         DayCalories(date: Calendar.current.date(byAdding: .day, value: -1, to: Date())!, calories: 280),
         DayCalories(date: Date(), calories: 500)
     ]
-    
+
     return CaloriesBarChart(data: sampleData, goal: 300)
         .background(Color(.systemGroupedBackground))
 }

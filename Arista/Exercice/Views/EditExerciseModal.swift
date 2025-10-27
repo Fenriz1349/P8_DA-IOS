@@ -10,58 +10,65 @@ import CustomLabels
 
 struct EditExerciseModal: View {
     @ObservedObject var viewModel: ExerciseViewModel
-    @EnvironmentObject private var toastyManager: ToastyManager
 
     var body: some View {
-        VStack(spacing: 20) {
+        NavigationStack {
+            VStack(spacing: 20) {
+                VStack(alignment: .leading, spacing: 8) {
+                    Text("Type d'exercice")
+                        .font(.headline)
+                    ExerciseTypeGrid(selectedType: $viewModel.selectedType)
+                }
 
-            VStack(alignment: .leading, spacing: 8) {
-                Text("Type d'exercice")
-                    .font(.headline)
-                ExerciseTypeGrid(selectedType: $viewModel.selectedType)
-            }
+                HStack {
+                    DatePicker(
+                        "Sélectionnez une date",
+                        selection: $viewModel.date,
+                        displayedComponents: [.date]
+                    )
+                    .labelsHidden()
+                    DurationStepper(title: "Durée", value: $viewModel.duration)
+                        .onChange(of: viewModel.duration) {
+                            viewModel.validateData()
+                        }
+                }
 
-            HStack {
-                DatePicker(
-                    "Sélectionnez une date",
-                    selection: $viewModel.date,
-                    displayedComponents: [.date]
+                HStack {
+                    GradePicker(title: "Intensité", quality: $viewModel.intensity)
+                        .onChange(of: viewModel.intensity) {
+                            viewModel.validateData()
+                        }
+                    Text(viewModel.caloriesBurned)
+                }
+
+                ValidatedButton(
+                    iconLeading: "checkmark",
+                    title: "Enregistrer",
+                    color: viewModel.validationState == .invalid ? .gray : .blue,
+                    isEnabled: viewModel.validationState != .invalid,
+                    action: viewModel.saveExercise
                 )
-                .labelsHidden()
-                DurationStepper(title: "Durée", value: $viewModel.duration)
-            }
-            HStack {
-                GradePicker(title: "Intensité", quality: $viewModel.intensity)
-                Text(viewModel.caloriesBurned)
-            }
+                .padding(.top, 12)
 
-            Button(action: viewModel.saveExercise) {
-                SaveButton()
+                Spacer()
             }
-            .padding(.top, 12)
-
-            Spacer()
-        }
-        .padding()
-        .toolbar {
-            ToolbarItem(placement: .cancellationAction) {
-                Button("Annuler") {
-                    viewModel.showEditModal = false
+            .padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Annuler") {
+                        viewModel.showEditModal = false
+                    }
                 }
             }
-        }
-        .onAppear {
-            viewModel.configureToasty(toastyManager: toastyManager)
         }
     }
 }
 
 #Preview("New Exercise") {
     EditExerciseModal(viewModel: PreviewExerciseDataProvider.newExerciseViewModel)
-        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }
 
 #Preview("Edit Exercise") {
     EditExerciseModal(viewModel: PreviewExerciseDataProvider.editExerciseViewModel)
-        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }

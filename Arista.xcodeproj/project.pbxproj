@@ -29,6 +29,7 @@
 		6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */; };
 		6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67D2E85897D00501E0E /* SleepDataManager.swift */; };
 		6802E6802E858DE000501E0E /* SleepDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */; };
+		68089CB62EAFC74700B27567 /* GoalStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68089CB52EAFC74700B27567 /* GoalStepper.swift */; };
 		6813E7612E867B97007F008C /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7602E867B97007F008C /* SleepViewModel.swift */; };
 		6813E7632E867CC9007F008C /* SleepViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7622E867CC9007F008C /* SleepViewModelTests.swift */; };
 		6813E7652E868E6B007F008C /* Grade.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7642E868E6B007F008C /* Grade.swift */; };
@@ -67,7 +68,7 @@
 		685951102EA96EFD00A8744E /* Int+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6859510F2EA96EFD00A8744E /* Int+Ext.swift */; };
 		685951122EA970DF00A8744E /* CompactExerciseCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951112EA970DF00A8744E /* CompactExerciseCard.swift */; };
 		685951142EA971D200A8744E /* DurationStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951132EA971D200A8744E /* DurationStepper.swift */; };
-		685951162EA975DC00A8744E /* SaveButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951152EA975DC00A8744E /* SaveButton.swift */; };
+		685951162EA975DC00A8744E /* ValidatedButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685951152EA975DC00A8744E /* ValidatedButton.swift */; };
 		685FB58E2EA805AB003E4C6D /* ExerciseTypeGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */; };
 		685FB5902EA807C4003E4C6D /* ExerciseHistoryRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */; };
 		685FB5932EA808E2003E4C6D /* PreviewExerciseDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */; };
@@ -142,6 +143,7 @@
 		6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManagerTests.swift; sourceTree = "<group>"; };
 		6802E67D2E85897D00501E0E /* SleepDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManager.swift; sourceTree = "<group>"; };
 		6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManagerTests.swift; sourceTree = "<group>"; };
+		68089CB52EAFC74700B27567 /* GoalStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStepper.swift; sourceTree = "<group>"; };
 		6813E7602E867B97007F008C /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
 		6813E7622E867CC9007F008C /* SleepViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModelTests.swift; sourceTree = "<group>"; };
 		6813E7642E868E6B007F008C /* Grade.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Grade.swift; sourceTree = "<group>"; };
@@ -179,7 +181,7 @@
 		6859510F2EA96EFD00A8744E /* Int+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Ext.swift"; sourceTree = "<group>"; };
 		685951112EA970DF00A8744E /* CompactExerciseCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CompactExerciseCard.swift; sourceTree = "<group>"; };
 		685951132EA971D200A8744E /* DurationStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DurationStepper.swift; sourceTree = "<group>"; };
-		685951152EA975DC00A8744E /* SaveButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveButton.swift; sourceTree = "<group>"; };
+		685951152EA975DC00A8744E /* ValidatedButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ValidatedButton.swift; sourceTree = "<group>"; };
 		685FB58D2EA805AB003E4C6D /* ExerciseTypeGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeGrid.swift; sourceTree = "<group>"; };
 		685FB58F2EA807C4003E4C6D /* ExerciseHistoryRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseHistoryRow.swift; sourceTree = "<group>"; };
 		685FB5922EA808E2003E4C6D /* PreviewExerciseDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewExerciseDataProvider.swift; sourceTree = "<group>"; };
@@ -378,9 +380,18 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		68089CB22EAF862400B27567 /* Validation */ = {
+			isa = PBXGroup;
+			children = (
+				685951152EA975DC00A8744E /* ValidatedButton.swift */,
+			);
+			path = Validation;
+			sourceTree = "<group>";
+		};
 		6816D5592EA9F5FA00ED8D20 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
+				68089CB22EAF862400B27567 /* Validation */,
 				68EFABCB2EA7551200E2F937 /* Grade */,
 				6802E6642E852D6700501E0E /* Toasty */,
 				6843211D2E4CC07D003FDAEE /* Utils */,
@@ -464,7 +475,6 @@
 			isa = PBXGroup;
 			children = (
 				6852289B2E97F044008E33EE /* MainSleepCycleButton.swift */,
-				685951152EA975DC00A8744E /* SaveButton.swift */,
 			);
 			path = SleepActions;
 			sourceTree = "<group>";
@@ -650,6 +660,7 @@
 				68F521392EAB649F005902AB /* GoalBadge.swift */,
 				68F5213B2EAB999C005902AB /* CaloriesProgressBar.swift */,
 				68F5213D2EAB9C68005902AB /* CaloriesBarChart.swift */,
+				68089CB52EAFC74700B27567 /* GoalStepper.swift */,
 			);
 			path = GoalViews;
 			sourceTree = "<group>";
@@ -795,7 +806,7 @@
 				6852288C2E97AE5A008E33EE /* HourTextView.swift in Sources */,
 				68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */,
 				53E587312B235E8F00E4EF99 /* AristaApp.swift in Sources */,
-				685951162EA975DC00A8744E /* SaveButton.swift in Sources */,
+				685951162EA975DC00A8744E /* ValidatedButton.swift in Sources */,
 				6802E6662E852D7B00501E0E /* ToastyMessage.swift in Sources */,
 				685FB5952EA80EA3003E4C6D /* ExerciseHistorySection.swift in Sources */,
 				685951122EA970DF00A8744E /* CompactExerciseCard.swift in Sources */,
@@ -830,6 +841,7 @@
 				6852289A2E97ECE9008E33EE /* CurrentStateSection.swift in Sources */,
 				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
 				68F4DA092E7C522500CFECA5 /* EditUserView.swift in Sources */,
+				68089CB62EAFC74700B27567 /* GoalStepper.swift in Sources */,
 				6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */,
 				684321232E4CC534003FDAEE /* Persistence+Ext.swift in Sources */,
 				6802E66C2E85309A00501E0E /* ToastyView.swift in Sources */,

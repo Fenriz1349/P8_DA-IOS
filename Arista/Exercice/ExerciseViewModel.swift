@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CustomTextFields
 
 @MainActor
 final class ExerciseViewModel: ObservableObject {
@@ -28,12 +29,17 @@ final class ExerciseViewModel: ObservableObject {
     @Published var date: Date = Date()
     @Published var duration: Int = 30
     @Published var intensity: Int = 5
+    @Published var validationState: ValidationState = .neutral
 
     var caloriesBurned: String {
         return "\(Int(Double(duration) * Double(intensity) * selectedType.calorieFactor)) kcal"
     }
 
-    /// Init
+    var isValidData: Bool {
+        duration > 0 && intensity > 0
+    }
+
+    /// Initialisation
     init(appCoordinator: AppCoordinator, dataManager: ExerciceDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.exerciceDataManager = dataManager ?? ExerciceDataManager()
@@ -55,8 +61,23 @@ final class ExerciseViewModel: ObservableObject {
         }
     }
 
+    /// Validation
+    func validateData() {
+        validationState = isValidData ? .valid : .invalid
+    }
+
+    func resetValidation() {
+        validationState = .neutral
+    }
+
     /// Create / Update
     func saveExercise() {
+        validateData()
+
+        guard isValidData else {
+            return
+        }
+
         do {
             if let selected = selectedExercice {
                 try exerciceDataManager.updateExercice(
@@ -78,6 +99,7 @@ final class ExerciseViewModel: ObservableObject {
             lastSelectedType = selectedType
             reloadAll()
             showEditModal = false
+            resetValidation()
         } catch {
             lastError = error
         }
@@ -108,6 +130,7 @@ final class ExerciseViewModel: ObservableObject {
             intensity = 5
             selectedType = lastSelectedType
         }
+        resetValidation()
         showEditModal = true
     }
 }

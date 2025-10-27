@@ -61,18 +61,18 @@ struct UserDisplay: Identifiable, Equatable {
     let sleepGoal: Int
     let waterGoal: Int
     let stepsGoal: Int
-    
+
     var fullName: String { "\(firstName) \(lastName)" }
-    
+
     var calorieGoalFormatted: String { "\(calorieGoal) kcal" }
-    
+
     var sleepGoalFormatted: String {
         let hours = sleepGoal / 60
         let minutes = sleepGoal % 60
         return minutes > 0 ? "\(hours)h\(minutes)" : "\(hours)h"
     }
-    
+
     var waterGoalFormatted: String { String(format: "%.1f L", Double(waterGoal) / 10) }
-    
+
     var stepsGoalFormatted: String { stepsGoal.formatSteps }
 }
