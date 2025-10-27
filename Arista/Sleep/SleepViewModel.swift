@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CustomTextFields
 
 enum SleepTrackingState: Equatable {
     case none
@@ -38,11 +39,21 @@ final class SleepViewModel: ObservableObject {
     /// Manual Entry
     @Published var manualStartDate: Date = Date()
     @Published var manualEndDate: Date = Date()
+    @Published var dateValidationState: ValidationState = .neutral
 
     /// Computed State
     var currentState: SleepTrackingState {
         guard let cycle = currentCycle else { return .none }
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)
+    }
+
+    var isValidData: Bool {
+        manualEndDate > manualStartDate
+    }
+
+    var dateErrorMessage: String? {
+        guard dateValidationState == .invalid else { return nil }
+        return "La date de réveil doit être après la date de coucher"
     }
 
     /// Initialization
@@ -71,6 +82,19 @@ final class SleepViewModel: ObservableObject {
             currentCycle = nil
             historyCycles = []
         }
+    }
+
+    /// Validation
+    func validateDates() {
+        if isValidData {
+            dateValidationState = .valid
+        } else {
+            dateValidationState = .invalid
+        }
+    }
+
+    func resetValidation() {
+        dateValidationState = .neutral
     }
 
     /// Toggle Actions
@@ -107,19 +131,25 @@ final class SleepViewModel: ObservableObject {
         manualStartDate = cycle.dateStart
         manualEndDate = cycle.dateEnding ?? Date()
         selectedQuality = cycle.quality
+        resetValidation()
         showEditModal = true
     }
 
     func cancelEdit() {
         showEditModal = false
         editingCycle = nil
+        resetValidation()
     }
 
     /// Save
     func saveCycle() {
+        validateDates()
+        
+        guard isValidData else {
+            return
+        }
+        
         do {
-            try Date.validateInterval(from: manualStartDate, to: manualEndDate)
-
             if let editing = editingCycle {
                 try sleepDataManager.updateSleepCycle(
                     by: editing.id,
@@ -136,6 +166,7 @@ final class SleepViewModel: ObservableObject {
             reloadAllData()
             showEditModal = false
             editingCycle = nil
+            resetValidation()
         } catch {
             toastyManager?.showError(error)
         }

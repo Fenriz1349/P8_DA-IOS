@@ -11,11 +11,10 @@ import CustomLabels
 
 struct EditUserView: View {
     @ObservedObject var viewModel: UserViewModel
-    @EnvironmentObject private var toastyManager: ToastyManager
 
     var body: some View {
         NavigationStack {
-            VStack {
+            VStack(spacing: 20) {
                 CustomTextField(
                     placeholder: "First Name",
                     text: $viewModel.firstName,
@@ -72,37 +71,34 @@ struct EditUserView: View {
                     .pickerStyle(.wheel)
                     .frame(width: 100, height: 80)
                 }
-                Button(action: {
-                    viewModel.saveChanges()
-                }, label: {
-                    SaveButton()
-                })
+                
+                ValidatedButton(
+                    iconLeading: "checkmark",
+                    title: "Enregistrer",
+                    color: .blue,
+                    isEnabled: true,
+                    action: viewModel.saveChanges
+                )
+                
                 HStack(spacing: 12) {
-                    Button(action: {
-                        viewModel.deleteAccount()
-                    }, label: {
+                    Button(action: viewModel.deleteAccount) {
                         CustomButtonLabel(message: "Delete Account", color: .red)
-                            .frame(height: 50)
-                            .frame(maxWidth: .infinity)
-                    })
-                    Button( action: {
-                      viewModel.logout()
-                    }, label: {
-                        CustomButtonLabel(message: "logout", color: .red)
-                            .frame( height: 50)
-                    })
-                }
-                .padding()
-                .navigationTitle("Modifier le  Profil")
-                .navigationBarTitleDisplayMode(.inline)
-                .toolbar {
-                    ToolbarItem(placement: .topBarLeading) {
-                        Button("Cancel") {
-                            viewModel.closeEditModal()
-                        }
                     }
-                }.onAppear {
-                    viewModel.configureToasty(toastyManager: toastyManager)
+                    
+                    Button(action: viewModel.logout) {
+                        CustomButtonLabel(message: "logout", color: .red)
+                    }
+                }
+                
+                Spacer()
+            }
+            .padding()
+            .navigationBarTitleDisplayMode(.inline)
+            .toolbar {
+                ToolbarItem(placement: .topBarLeading) {
+                    Button("Cancel") {
+                        viewModel.closeEditModal()
+                    }
                 }
             }
         }
@@ -111,5 +107,4 @@ struct EditUserView: View {
 
 #Preview {
     EditUserView(viewModel: PreviewDataProvider.makeSampleUserViewModel())
-        .environmentObject(PreviewDataProvider.sampleToastyManager)
 }
