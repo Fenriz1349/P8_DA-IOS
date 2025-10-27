@@ -12,9 +12,10 @@ enum UserUpdateBuilderError: Error, Equatable {
     case emptyFirstName
     case emptyLastName
     case emptyPassword
-    case nullCalorieGoal
-    case nullSleepGoal
-    case nullWaterGoal
+    case negativeCalorieGoal
+    case negativeSleepGoal
+    case negativeWaterGoal
+    case negativeStepsGoal
 }
 
 class UserUpdateBuilder {
@@ -67,8 +68,8 @@ class UserUpdateBuilder {
 
     @discardableResult
     func calorieGoal(_ value: Int) throws -> UserUpdateBuilder {
-        guard value > 0 else {
-            throw UserUpdateBuilderError.nullCalorieGoal
+        guard value >= 0 else {
+            throw UserUpdateBuilderError.negativeCalorieGoal
         }
         user.calorieGoal = Int16(value)
         return self
@@ -76,8 +77,8 @@ class UserUpdateBuilder {
 
     @discardableResult
     func sleepGoal(_ value: Int) throws -> UserUpdateBuilder {
-        guard value > 0 else {
-            throw UserUpdateBuilderError.nullSleepGoal
+        guard value >= 0 else {
+            throw UserUpdateBuilderError.negativeSleepGoal
         }
         user.sleepGoal = Int16(value)
         return self
@@ -85,10 +86,19 @@ class UserUpdateBuilder {
 
     @discardableResult
     func waterGoal(_ value: Int) throws -> UserUpdateBuilder {
-        guard value > 0 else {
-            throw UserUpdateBuilderError.nullWaterGoal
+        guard value >= 0 else {
+            throw UserUpdateBuilderError.negativeWaterGoal
         }
         user.waterGoal = Int16(value)
+        return self
+    }
+    
+    @discardableResult
+    func stepsGoal(_ value: Int) throws -> UserUpdateBuilder {
+        guard value >= 0 else {
+            throw UserUpdateBuilderError.negativeStepsGoal
+        }
+        user.stepsGoal = Int32(value)
         return self
     }
 

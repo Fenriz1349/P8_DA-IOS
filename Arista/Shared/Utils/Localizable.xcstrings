@@ -40,12 +40,6 @@
       },
       "shouldTranslate" : false
     },
-    "%lld dl" : {
-
-    },
-    "%lld kcal" : {
-
-    },
     "%lld kcal brûlées" : {
 
     },
@@ -54,16 +48,6 @@
     },
     "%lld%%" : {
 
-    },
-    "%lldh %lldmin" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "new",
-            "value" : "%1$lldh %2$lldmin"
-          }
-        }
-      }
     },
     "🎉" : {
 
@@ -120,13 +104,7 @@
     "Bonjour" : {
 
     },
-    "Calorie Goal" : {
-
-    },
     "Calories" : {
-
-    },
-    "Cancel" : {
 
     },
     "category" : {
@@ -145,6 +123,9 @@
           }
         }
       }
+    },
+    "Confirmer la suppression" : {
+
     },
     "createProfile" : {
 
@@ -498,6 +479,9 @@
     "login" : {
 
     },
+    "Modifier le profil" : {
+
+    },
     "newExercice" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -524,6 +508,9 @@
     "Objectif dépassé !" : {
 
     },
+    "Objectifs quotidiens" : {
+
+    },
     "profil" : {
       "localizations" : {
         "en" : {
@@ -539,6 +526,9 @@
           }
         }
       }
+    },
+    "Profil" : {
+
     },
     "Qualité moyenne" : {
 
@@ -561,12 +551,6 @@
           }
         }
       }
-    },
-    "Sleep" : {
-
-    },
-    "Sleep Goal" : {
-
     },
     "sleepHistory" : {
       "extractionState" : "stale",
@@ -591,13 +575,10 @@
     "Sommeil en cours" : {
 
     },
+    "Supprimer" : {
+
+    },
     "Type d'exercice" : {
-
-    },
-    "Water" : {
-
-    },
-    "Water Goal" : {
 
     },
     "welcome" : {

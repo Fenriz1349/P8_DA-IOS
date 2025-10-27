@@ -144,11 +144,11 @@ final class SleepViewModel: ObservableObject {
     /// Save
     func saveCycle() {
         validateDates()
-        
+
         guard isValidData else {
             return
         }
-        
+
         do {
             if let editing = editingCycle {
                 try sleepDataManager.updateSleepCycle(

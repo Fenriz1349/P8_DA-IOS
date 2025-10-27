@@ -1,10 +1,3 @@
-//
-//  EditAccountView.swift
-//  Arista
-//
-//  Created by Julien Cotte on 18/09/2025.
-//
-
 import SwiftUI
 import CustomTextFields
 import CustomLabels
@@ -14,92 +7,73 @@ struct EditUserView: View {
 
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                CustomTextField(
-                    placeholder: "First Name",
-                    text: $viewModel.firstName,
-                    type: .alphaNumber
-                )
+            ScrollView {
+                VStack(spacing: 30) {
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("Profil")
+                            .font(.headline)
 
-                CustomTextField(
-                    placeholder: "Last Name",
-                    text: $viewModel.lastName,
-                    type: .alphaNumber
-                )
+                        CustomTextField(
+                            placeholder: "Prénom",
+                            text: $viewModel.firstName,
+                            type: .alphaNumber
+                        )
 
-                HStack {
-                    Text("Calorie Goal")
-                    Spacer()
-                    Picker("Calories", selection: Binding<Int>(
-                        get: { Int(viewModel.calorieGoal) ?? 2000 },
-                        set: { viewModel.calorieGoal = String($0) }
-                    )) {
-                        ForEach(1200...4000, id: \.self) { value in
-                            Text("\(value) kcal").tag(value)
+                        CustomTextField(
+                            placeholder: "Nom",
+                            text: $viewModel.lastName,
+                            type: .alphaNumber
+                        )
+                    }
+
+                    VStack(alignment: .leading, spacing: 16) {
+                        Text("Objectifs quotidiens")
+                            .font(.headline)
+                        GoalStepper(type: .calories, value: $viewModel.calorieGoal)
+                        GoalStepper(type: .steps, value: $viewModel.stepsGoal)
+                        GoalStepper(type: .sleep, value: $viewModel.sleepGoal)
+                        GoalStepper(type: .water, value: $viewModel.waterGoal)
+                    }
+
+                    VStack(alignment: .leading, spacing: 16) {
+                        Button(action: viewModel.saveChanges) {
+                            CustomButtonLabel(
+                                iconLeading: "checkmark",
+                                message: "Enregistrer",
+                                color: .blue
+                            )
+                        }
+
+                        HStack(spacing: 12) {
+                            Button(role: .destructive) {
+                                viewModel.showingResetAlert = true
+                            } label: {
+                                CustomButtonLabel(message: "Supprimer le compte", color: .red)
+                            }
+
+                            Button(role: .destructive, action: viewModel.logout) {
+                                CustomButtonLabel(message: "Déconnexion", color: .orange)
+                            }
                         }
                     }
-                    .pickerStyle(.wheel)
-                    .frame(width: 120, height: 80)
                 }
-
-                HStack {
-                    Text("Sleep Goal")
-                    Spacer()
-                    Picker("Sleep", selection: Binding<Int>(
-                        get: { Int(viewModel.sleepGoal) ?? 480 },
-                        set: { viewModel.sleepGoal = String($0) }
-                    )) {
-                        ForEach(Array(stride(from: 240, through: 720, by: 30)), id: \.self) { value in
-                            Text("\(value/60)h \(value%60)min").tag(value)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(width: 120, height: 80)
-                }
-
-                HStack {
-                    Text("Water Goal")
-                    Spacer()
-                    Picker("Water", selection: Binding<Int>(
-                        get: { Int(viewModel.waterGoal) ?? 25 },
-                        set: { viewModel.waterGoal = String($0) }
-                    )) {
-                        ForEach(10...50, id: \.self) { value in
-                            Text("\(value) dl").tag(value)
-                        }
-                    }
-                    .pickerStyle(.wheel)
-                    .frame(width: 100, height: 80)
-                }
-                
-                ValidatedButton(
-                    iconLeading: "checkmark",
-                    title: "Enregistrer",
-                    color: .blue,
-                    isEnabled: true,
-                    action: viewModel.saveChanges
-                )
-                
-                HStack(spacing: 12) {
-                    Button(action: viewModel.deleteAccount) {
-                        CustomButtonLabel(message: "Delete Account", color: .red)
-                    }
-                    
-                    Button(action: viewModel.logout) {
-                        CustomButtonLabel(message: "logout", color: .red)
-                    }
-                }
-                
-                Spacer()
+                .padding()
             }
-            .padding()
-            .navigationBarTitleDisplayMode(.inline)
+            .navigationTitle("Modifier le profil")
             .toolbar {
-                ToolbarItem(placement: .topBarLeading) {
-                    Button("Cancel") {
+                ToolbarItem(placement: .cancellationAction) {
+                    Button("Annuler") {
                         viewModel.closeEditModal()
                     }
                 }
+            }
+            .alert("Confirmer la suppression", isPresented: $viewModel.showingResetAlert) {
+                Button("Annuler", role: .cancel) { }
+                Button("Supprimer", role: .destructive) {
+                    viewModel.deleteAccount()
+                }
+            } message: {
+                Text(viewModel.alertMessage)
             }
         }
     }

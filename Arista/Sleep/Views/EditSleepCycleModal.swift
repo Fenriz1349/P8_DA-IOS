@@ -43,7 +43,7 @@ struct EditSleepCycleModal: View {
                             .stroke(viewModel.dateValidationState.borderColor, lineWidth: 2)
                     )
                     .cornerRadius(8)
-                    
+
                     if let errorMessage = viewModel.dateErrorMessage {
                         HStack {
                             Text(errorMessage)

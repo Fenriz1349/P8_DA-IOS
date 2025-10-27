@@ -32,7 +32,7 @@ struct EditExerciseModal: View {
                             viewModel.validateData()
                         }
                 }
-                
+
                 HStack {
                     GradePicker(title: "Intensité", quality: $viewModel.intensity)
                         .onChange(of: viewModel.intensity) {

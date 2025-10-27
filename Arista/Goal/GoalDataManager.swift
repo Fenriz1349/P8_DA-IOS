@@ -85,6 +85,25 @@ final class GoalDataManager {
         return allGoals.filter { $0.date >= oneWeekAgo }
     }
 
+    @discardableResult
+    func fetchOrCreateGoal(for user: User, date: Date) throws -> Goal {
+        let context = container.viewContext
+        let normalizedDate = Calendar.current.date(from: date.ymdComponents)!
+
+        if let existing = try fetchGoal(for: user, date: date) {
+            return existing
+        } else {
+            let newGoal = Goal(context: context)
+            newGoal.id = UUID()
+            newGoal.date = normalizedDate
+            newGoal.user = user
+            newGoal.totalWater = 0
+            newGoal.totalSteps = 0
+            try context.save()
+            return newGoal
+        }
+    }
+
     func deleteGoal(_ goal: Goal) throws {
         let context = container.viewContext
         context.delete(goal)

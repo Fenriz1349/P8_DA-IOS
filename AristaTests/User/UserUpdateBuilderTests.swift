@@ -146,7 +146,7 @@ final class UserUpdateBuilderTests: XCTestCase {
                 XCTFail("Expected URLError, got \(type(of: error))")
                 return
             }
-            XCTAssertEqual(userError, .nullCalorieGoal)
+            XCTAssertEqual(userError, .negativeCalorieGoal)
         }
     }
 
@@ -177,7 +177,7 @@ final class UserUpdateBuilderTests: XCTestCase {
                 XCTFail("Expected URLError, got \(type(of: error))")
                 return
             }
-            XCTAssertEqual(userError, .nullSleepGoal)
+            XCTAssertEqual(userError, .negativeSleepGoal)
         }
     }
 
@@ -208,7 +208,7 @@ final class UserUpdateBuilderTests: XCTestCase {
                 XCTFail("Expected URLError, got \(type(of: error))")
                 return
             }
-            XCTAssertEqual(userError, .nullWaterGoal)
+            XCTAssertEqual(userError, .negativeWaterGoal)
         }
     }
 
@@ -239,7 +239,7 @@ final class UserUpdateBuilderTests: XCTestCase {
                 XCTFail("Expected URLError, got \(type(of: error))")
                 return
             }
-            XCTAssertEqual(userError, .nullWaterGoal)
+            XCTAssertEqual(userError, .negativeWaterGoal)
         }
     }
 

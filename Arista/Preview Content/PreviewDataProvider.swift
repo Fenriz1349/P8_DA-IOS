@@ -103,7 +103,7 @@ extension PreviewDataProvider {
 extension PreviewDataProvider {
     static func createSampleExercices(for user: User, in context: NSManagedObjectContext) {
         let today = Date()
-        
+
         let oneWeekExercicesData: [(offset: Int, type: ExerciceType, duration: Int, intensity: Int)] = [
             (0, .running, 30, 7),
             (0, .yoga, 45, 4),
@@ -134,7 +134,7 @@ extension PreviewDataProvider {
     static func createSampleSleepCycles(for user: User, in context: NSManagedObjectContext) {
         let calendar = Calendar.current
         let now = Date()
-        
+
         let oneWeekSleepData: [(duration: TimeInterval, quality: Int)] = [
             (7 * 3600, 6),
             (8 * 3600, 8),
@@ -144,13 +144,13 @@ extension PreviewDataProvider {
             (6.5 * 3600, 6),
             (8 * 3600, 8)
         ]
-        
+
         for (offset, data) in oneWeekSleepData.enumerated() {
             let index = offset + 1
             guard let sleepDate = calendar.date(byAdding: .day, value: -index, to: now) else { continue }
-            
+
             let sleepStart = calendar.date(bySettingHour: 23, minute: 0, second: 0, of: sleepDate)!
-            
+
             let cycle = SleepCycle(context: context)
             cycle.id = UUID()
             cycle.dateStart = sleepStart

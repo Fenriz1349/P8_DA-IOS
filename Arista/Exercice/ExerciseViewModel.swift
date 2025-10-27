@@ -60,12 +60,12 @@ final class ExerciseViewModel: ObservableObject {
             lastError = error
         }
     }
-    
+
     /// Validation
     func validateData() {
         validationState = isValidData ? .valid : .invalid
     }
-    
+
     func resetValidation() {
         validationState = .neutral
     }
@@ -73,11 +73,11 @@ final class ExerciseViewModel: ObservableObject {
     /// Create / Update
     func saveExercise() {
         validateData()
-        
+
         guard isValidData else {
             return
         }
-        
+
         do {
             if let selected = selectedExercice {
                 try exerciceDataManager.updateExercice(
