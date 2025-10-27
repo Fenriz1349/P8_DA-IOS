@@ -1,0 +1,151 @@
+//
+//  PreviewSleepDataProvider.swift
+//  Arista
+//
+//  Created by Julien Cotte on 17/10/2025.
+//
+
+import Foundation
+import CoreData
+
+@MainActor
+struct PreviewSleepDataProvider {
+
+    /// Convenience context
+    private static var context: NSManagedObjectContext {
+        PreviewDataProvider.PreviewContext
+    }
+
+    private static var user: User {
+        PreviewDataProvider.sampleUser
+    }
+
+    private static var calendar: Calendar { .current }
+
+    /// Base ViewModel Factory
+    static func makePreviewViewModel() -> SleepViewModel {
+        let mockCoordinator = PreviewDataProvider.sampleCoordinator
+        let mockManager = SleepDataManager(container: PreviewDataProvider.previewData.container)
+
+        let viewModel = try! SleepViewModel(
+            appCoordinator: mockCoordinator,
+            sleepDataManager: mockManager
+        )
+
+        viewModel.reloadAllData()
+
+        return viewModel
+    }
+
+    /// New Cycle (manual entry)
+    static var newCycleViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.showEditModal = true
+
+        let now = Date()
+        viewModel.manualEndDate = now
+        viewModel.manualStartDate = now.addingTimeInterval(-8 * 3600)
+        viewModel.selectedQuality = 5
+
+        return viewModel
+    }
+
+    static var noCycleViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.currentCycle = nil
+        viewModel.showEditModal = true
+
+        let now = Date()
+        viewModel.manualEndDate = now
+        viewModel.manualStartDate = now.addingTimeInterval(-8 * 3600)
+        viewModel.selectedQuality = 5
+
+        return viewModel
+    }
+
+    /// Edit Cycle (completed)
+    static var editCycleViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.showEditModal = true
+
+        if let cycle = viewModel.historyCycles.first {
+            viewModel.currentCycle = cycle
+            viewModel.manualStartDate = cycle.dateStart
+            viewModel.manualEndDate = cycle.dateEnding ?? Date()
+            viewModel.selectedQuality = cycle.quality
+        }
+
+        return viewModel
+    }
+
+    /// Active Cycle (currently running)
+    static var activeCycleViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
+        viewModel.showEditModal = false
+        return viewModel
+    }
+
+    /// Active + History (1 active + 7 completed)
+    static var activeAndHistoryViewModel: SleepViewModel {
+        let viewModel = makePreviewViewModel()
+        viewModel.currentCycle = PreviewSleepDataProvider.activeSleepCycle
+        viewModel.showEditModal = false
+        viewModel.selectedQuality = 0
+        return viewModel
+    }
+
+    /// Sample Data Helpers
+
+    /// Active sleep cycle (still ongoing)
+    static var activeSleepCycle: SleepCycleDisplay {
+        let start = Date().addingTimeInterval(-3 * 3600)
+        return SleepCycleDisplay(
+            id: UUID(),
+            dateStart: start,
+            dateEnding: nil,
+            quality: 0
+        )
+    }
+
+    /// Completed full night (22:30 → 6:45)
+    static var completedSleepCycle: SleepCycleDisplay {
+        let now = Date()
+        let start = calendar.date(bySettingHour: 22, minute: 30, second: 0, of: now)!
+        let end = calendar.date(bySettingHour: 6, minute: 45, second: 0, of: now)!
+            .addingTimeInterval(86400)
+        return SleepCycleDisplay(
+            id: UUID(),
+            dateStart: start,
+            dateEnding: end,
+            quality: 8
+        )
+    }
+
+    /// Short nap (14:00 → 15:30)
+    static var napCycle: SleepCycleDisplay {
+        let now = Date()
+        let start = calendar.date(bySettingHour: 14, minute: 0, second: 0, of: now)!
+        let end = calendar.date(bySettingHour: 15, minute: 30, second: 0, of: now)!
+        return SleepCycleDisplay(
+            id: UUID(),
+            dateStart: start,
+            dateEnding: end,
+            quality: 6
+        )
+    }
+
+    /// Bad quality night (23:00 → 5:30)
+    static var badQualityCycle: SleepCycleDisplay {
+        let yesterday = Date().addingTimeInterval(-86400)
+        let start = calendar.date(bySettingHour: 23, minute: 0, second: 0, of: yesterday)!
+        let end = calendar.date(bySettingHour: 5, minute: 30, second: 0, of: yesterday)!
+            .addingTimeInterval(86400)
+        return SleepCycleDisplay(
+            id: UUID(),
+            dateStart: start,
+            dateEnding: end,
+            quality: 2
+        )
+    }
+}
