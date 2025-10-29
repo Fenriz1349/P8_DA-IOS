@@ -117,14 +117,58 @@
         }
       }
     },
-    "Bonjour" : {
-
-    },
     "Calories" : {
 
     },
-    "Confirmer la suppression" : {
-
+    "common.button.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "common.button.delete" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer"
+          }
+        }
+      }
+    },
+    "common.button.save" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Save"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sauvegarder"
+          }
+        }
+      }
     },
     "Depuis %@" : {
 
@@ -136,6 +180,7 @@
 
     },
     "email" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -155,24 +200,22 @@
 
     },
     "error.auth.emailAlreadyUsed" : {
-      "comment" : "Email already used error",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "This email address is already in use. Please use a different one."
+            "value" : "This email address is already in use."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Cette adresse email est déjà utilisée. Utilisez une adresse différente."
+            "value" : "Cette adresse email est déjà utilisée."
           }
         }
       }
     },
     "error.auth.invalidCredentials" : {
-      "comment" : "Invalid credentials error",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -189,7 +232,6 @@
       }
     },
     "error.auth.validationFailed" : {
-      "comment" : "Validation failed error",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -226,10 +268,59 @@
     "error.unknownDescription" : {
 
     },
+    "error.user.invalidInput" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The entered data is not valid."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données saisies ne sont pas valides."
+          }
+        }
+      }
+    },
+    "error.user.noLoggedUser" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No logged in user found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun utilisateur connecté trouvé."
+          }
+        }
+      }
+    },
+    "error.user.userNotFound" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "User not found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Utilisateur introuvable."
+          }
+        }
+      }
+    },
     "exercices" : {
 
     },
     "firstName" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -260,7 +351,11 @@
     "Jour" : {
 
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
     "lastName" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -276,9 +371,6 @@
         }
       }
     },
-    "Modifier le profil" : {
-
-    },
     "Objectif" : {
 
     },
@@ -288,10 +380,8 @@
     "Objectif dépassé !" : {
 
     },
-    "Objectifs quotidiens" : {
-
-    },
     "password" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -310,9 +400,6 @@
     "profil" : {
 
     },
-    "Profil" : {
-
-    },
     "Qualité moyenne" : {
 
     },
@@ -328,13 +415,141 @@
     "Sommeil en cours" : {
 
     },
-    "Supprimer" : {
-
-    },
     "Type d'exercice" : {
 
     },
+    "user.deleteAccount.alert.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to permanently delete your account? This action is irreversible."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible."
+          }
+        }
+      }
+    },
+    "user.deleteAccount.alert.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm Deletion"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer la suppression"
+          }
+        }
+      }
+    },
+    "user.edit.button.deleteAccount" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Account"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le compte"
+          }
+        }
+      }
+    },
+    "user.edit.button.logout" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log Out"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déconnexion"
+          }
+        }
+      }
+    },
+    "user.edit.navigationTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le profil"
+          }
+        }
+      }
+    },
+    "user.edit.section.dailyGoals" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Goals"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectifs quotidiens"
+          }
+        }
+      }
+    },
+    "user.edit.section.profile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
+    },
+    "user.greeting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonjour"
+          }
+        }
+      }
+    },
     "validation.email.invalid" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -351,6 +566,7 @@
       }
     },
     "validation.password.requirements" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

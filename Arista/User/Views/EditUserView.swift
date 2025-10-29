@@ -10,24 +10,24 @@ struct EditUserView: View {
             ScrollView {
                 VStack(spacing: 30) {
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Profil")
+                        Text("user.edit.section.profile")
                             .font(.headline)
 
                         CustomTextField(
-                            placeholder: "Prénom",
+                            placeholder: "firstName".localized,
                             text: $viewModel.firstName,
                             type: .alphaNumber
                         )
 
                         CustomTextField(
-                            placeholder: "Nom",
+                            placeholder:  "lastName".localized,
                             text: $viewModel.lastName,
                             type: .alphaNumber
                         )
                     }
 
                     VStack(alignment: .leading, spacing: 16) {
-                        Text("Objectifs quotidiens")
+                        Text("user.edit.section.dailyGoals")
                             .font(.headline)
                         GoalStepper(type: .calories, value: $viewModel.calorieGoal)
                         GoalStepper(type: .steps, value: $viewModel.stepsGoal)
@@ -39,7 +39,7 @@ struct EditUserView: View {
                         Button(action: viewModel.saveChanges) {
                             CustomButtonLabel(
                                 iconLeading: "checkmark",
-                                message: "Enregistrer",
+                                message:  "common.button.save".localized,
                                 color: .blue
                             )
                         }
@@ -48,28 +48,37 @@ struct EditUserView: View {
                             Button(role: .destructive) {
                                 viewModel.showingResetAlert = true
                             } label: {
-                                CustomButtonLabel(message: "Supprimer le compte", color: .red)
+                                CustomButtonLabel(
+                                    message: "user.edit.button.deleteAccount".localized,
+                                    color: .red
+                                )
                             }
 
                             Button(role: .destructive, action: viewModel.logout) {
-                                CustomButtonLabel(message: "Déconnexion", color: .orange)
+                                CustomButtonLabel(
+                                    message: "user.edit.button.logout".localized,
+                                    color: .orange
+                                )
                             }
                         }
                     }
                 }
                 .padding()
             }
-            .navigationTitle("Modifier le profil")
+            .navigationTitle("user.edit.navigationTitle")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Annuler") {
+                    Button("common.button.cancel") {
                         viewModel.closeEditModal()
                     }
                 }
             }
-            .alert("Confirmer la suppression", isPresented: $viewModel.showingResetAlert) {
-                Button("Annuler", role: .cancel) { }
-                Button("Supprimer", role: .destructive) {
+            .alert(
+                "user.deleteAccount.alert.title".localized,
+                isPresented: $viewModel.showingResetAlert
+            ) {
+                Button("common.button.cancel".localized, role: .cancel) { }
+                Button("common.button.delete".localized, role: .destructive) {
                     viewModel.deleteAccount()
                 }
             } message: {

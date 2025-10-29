@@ -15,7 +15,7 @@ struct UserView: View {
             VStack(alignment: .leading) {
                 HStack {
                     VStack(alignment: .leading, spacing: 2) {
-                        Text("Bonjour")
+                        Text("user.greeting")
                             .font(.subheadline)
                             .foregroundColor(.secondary)
                         Text(viewModel.userDisplay.fullName)
@@ -55,7 +55,6 @@ struct UserView: View {
                         .padding(.horizontal)
                     SleepMetricsModule(metrics: viewModel.sleepMetrics)
                 }
-                .padding(.top, 8)
             }
         }
         .background(Color(.systemGroupedBackground))

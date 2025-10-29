@@ -16,10 +16,10 @@ enum UserDataManagerError: Error, Equatable, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidInput: return "Les données saisies ne sont pas valides."
-        case .userNotFound: return "Utilisateur introuvable."
-        case .noLoggedUser: return "Aucun utilisateur connecté trouvé."
-        case .emailAlreadyUsed: return "Cette adresse email est déjà utilisée."
+        case .invalidInput: return String(localized: "error.user.invalidInput")
+        case .userNotFound: return String(localized: "error.user.userNotFound")
+        case .noLoggedUser: return String(localized: "error.user.noLoggedUser")
+        case .emailAlreadyUsed: return String(localized: "error.auth.emailAlreadyUsed")
         }
     }
 }
@@ -32,7 +32,14 @@ final class UserDataManager {
         self.container = container
     }
 
-    /// User Creation Method
+    /// Creates a new user with the provided credentials and personal information
+    /// - Parameters:
+    ///   - email: User's email address
+    ///   - password: User's password (will be hashed)
+    ///   - firstName: User's first name
+    ///   - lastName: User's last name
+    /// - Returns: The newly created User entity
+    /// - Throws: UserDataManagerError if validation fails or email already exists
     @discardableResult
     func createUser(email: String, password: String, firstName: String, lastName: String) throws -> User {
         guard !email.isEmpty, !password.isEmpty, !firstName.isEmpty, !lastName.isEmpty else {
@@ -60,7 +67,10 @@ final class UserDataManager {
         return user
     }
 
-    /// Users Fetching Methods
+    /// Fetches a user by their unique identifier
+    /// - Parameter id: The UUID of the user to fetch
+    /// - Returns: The User entity matching the provided ID
+    /// - Throws: UserDataManagerError.userNotFound if no user exists with the given ID
     func fetchUser(by id: UUID) throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
@@ -71,6 +81,9 @@ final class UserDataManager {
         return user
     }
 
+    /// Fetches the currently logged-in user
+    /// - Returns: The User entity marked as logged in
+    /// - Throws: UserDataManagerError.noLoggedUser if no user is currently logged in
     func fetchLoggedUser() throws -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
@@ -81,6 +94,8 @@ final class UserDataManager {
         return user
     }
 
+    /// Fetches all users from the database
+    /// - Returns: An array of all User entities, or an empty array if none exist
     func fetchAllUsers() -> [User] {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
@@ -90,7 +105,9 @@ final class UserDataManager {
         return users
     }
 
-    /// Loggin In Method
+    /// Logs in a user by their ID, logging out all other users
+    /// - Parameter id: The UUID of the user to log in
+    /// - Throws: UserDataManagerError if the user is not found or cannot be updated
     func loggedIn(id: UUID) throws {
         try loggedOffAllUsers()
         let user = try fetchUser(by: id)
@@ -98,7 +115,8 @@ final class UserDataManager {
         try builder.isLogged(true).save()
     }
 
-    /// Logging Off Method
+    /// Logs out all users by setting their isLogged flag to false
+    /// - Throws: Error if the context cannot be saved
     func loggedOffAllUsers() throws {
         let context = container.viewContext
         let users = fetchAllUsers()
@@ -106,7 +124,9 @@ final class UserDataManager {
         try context.save()
     }
 
-    /// Delete User Method
+    /// Deletes a user from the database
+    /// - Parameter id: The UUID of the user to delete
+    /// - Throws: UserDataManagerError if the user is not found or cannot be deleted
     func deleteUser(by id: UUID) throws {
         let user = try fetchUser(by: id)
         let context = container.viewContext

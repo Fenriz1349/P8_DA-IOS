@@ -27,10 +27,10 @@ struct AuthenticationView: View {
             Toggle("auth.createProfile.toggle", isOn: $viewModel.creationMode)
 
             CustomTextField.triggered(
-                placeholder: String(localized: "email"),
+                placeholder: "email".localized,
                 text: $viewModel.email,
                 type: .email,
-                errorMessage: String(localized: "validation.email.invalid"),
+                errorMessage: "validation.email.invalid".localized,
                 validationState: $viewModel.emailValidationState
             )
             .onChange(of: viewModel.email) {
@@ -38,10 +38,10 @@ struct AuthenticationView: View {
             }
 
             CustomTextField.triggered(
-                placeholder: String(localized: "password"),
+                placeholder: "password".localized,
                 text: $viewModel.password,
                 type: .password,
-                errorMessage: String(localized: "validation.password.requirements"),
+                errorMessage: "validation.password.requirements".localized,
                 validationState: $viewModel.passwordValidationState
             )
             .onChange(of: viewModel.password) {
@@ -50,7 +50,7 @@ struct AuthenticationView: View {
 
             if viewModel.creationMode {
                 CustomTextField.nameField(
-                    placeholder: String(localized: "firstName"),
+                    placeholder: "firstName".localized,
                     text: $viewModel.firstName,
                     validationState: $viewModel.firstNameValidationState
                 )
@@ -59,7 +59,7 @@ struct AuthenticationView: View {
                 }
 
                 CustomTextField.nameField(
-                    placeholder: String(localized: "lastName"),
+                    placeholder: "lastName".localized,
                     text: $viewModel.lastName,
                     validationState: $viewModel.lastNameValidationState
                 )

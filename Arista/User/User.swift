@@ -34,10 +34,13 @@ extension User {
     /// waterGoal - unit: deciliter, default value: 25 dl (2,5 liter)
     /// stepsGoal - unit: step, default value: 8000 steps/day
 
+    /// Creates and returns a fetch request for User entities
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
 
+    /// Converts the User entity to a UserDisplay view model
+    /// - Returns: UserDisplay instance with formatted user data
     func toDisplay() -> UserDisplay {
         UserDisplay(
             id: id,
