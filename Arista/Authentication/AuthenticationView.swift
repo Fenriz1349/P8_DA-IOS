@@ -20,17 +20,17 @@ struct AuthenticationView: View {
                     .frame(width: 200, height: 200)
             }
 
-            Text("welcome")
+            Text("auth.welcome.title")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
 
-            Toggle("createProfile.question", isOn: $viewModel.creationMode)
+            Toggle("auth.createProfile.toggle", isOn: $viewModel.creationMode)
 
             CustomTextField.triggered(
-                placeholder: "mailAdress",
+                placeholder: "email",
                 text: $viewModel.email,
                 type: .email,
-                errorMessage: "Please enter a valid email address",
+                errorMessage: "validation.email.invalid",
                 validationState: $viewModel.emailValidationState
             )
             .onChange(of: viewModel.email) {
@@ -41,7 +41,7 @@ struct AuthenticationView: View {
                 placeholder: "password",
                 text: $viewModel.password,
                 type: .password,
-                errorMessage: "Password must contain 8+ characters, uppercase, number, and special character",
+                errorMessage: "validation.password.requirements",
                 validationState: $viewModel.passwordValidationState
             )
             .onChange(of: viewModel.password) {
@@ -68,20 +68,15 @@ struct AuthenticationView: View {
                 }
             }
 
-            Button {
-                viewModel.handleSubmit()
-            } label: {
-                Text(viewModel.creationMode ? "createProfile" : "login")
-                    .font(.headline)
-                    .foregroundColor(.white)
-                    .frame(maxWidth: .infinity)
-                    .frame(height: 50)
-                    .background(viewModel.buttonBackgroundColor)
-                    .cornerRadius(12)
-                    .animation(.easeInOut(duration: 0.3), value: viewModel.buttonState)
-            }
+            ValidatedButton(
+                title: viewModel.creationMode ? "auth.createProfile.button" : "auth.login.button",
+                color: viewModel.buttonState.color,
+                isEnabled: viewModel.buttonState.isEnabled,
+                action: viewModel.handleSubmit
+            )
             .padding(.horizontal)
-        }.onAppear {
+        }
+        .onAppear {
             viewModel.configure(toastyManager: toastyManager)
         }
         .padding(.horizontal, 40)

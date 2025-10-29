@@ -160,17 +160,6 @@ final class AuthenticationViewModelTests: XCTestCase {
         
         XCTAssertEqual(sut.buttonState, .disabled)
     }
-    
-    func test_buttonBackgroundColor_shouldMatchButtonState() {
-        sut.buttonState = .disabled
-        XCTAssertEqual(sut.buttonBackgroundColor, .gray.opacity(0.6))
-        
-        sut.buttonState = .enabled
-        XCTAssertEqual(sut.buttonBackgroundColor, .green)
-        
-        sut.buttonState = .error
-        XCTAssertEqual(sut.buttonBackgroundColor, .red)
-    }
 
     /// Validation State Management Tests
     func test_resetFieldValidation_shouldResetSpecificField() {

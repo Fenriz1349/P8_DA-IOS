@@ -24,21 +24,7 @@
       }
     },
     "%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        }
-      },
-      "shouldTranslate" : false
+
     },
     "%lld kcal brûlées" : {
 
@@ -61,42 +47,74 @@
     "00" : {
 
     },
-    "addExercice" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Add Exercice"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ajouter Exercice"
-          }
-        }
-      }
-    },
     "Annuler" : {
 
     },
     "Aucun cycle de sommeil" : {
 
     },
-    "beginning%@" : {
+    "auth.createProfile.button" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beginning %@"
+            "value" : "Create profile"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Début: %@"
+            "value" : "Créer un profil"
+          }
+        }
+      }
+    },
+    "auth.createProfile.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create a profile?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un profil ?"
+          }
+        }
+      }
+    },
+    "auth.login.button" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se connecter"
+          }
+        }
+      }
+    },
+    "auth.welcome.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue"
           }
         }
       }
@@ -107,19 +125,19 @@
     "Calories" : {
 
     },
-    "category" : {
+    "cancel" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Activity type: "
+            "value" : "Cancel"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Type d’activité: "
+            "value" : "Annuler"
           }
         }
       }
@@ -127,21 +145,19 @@
     "Confirmer la suppression" : {
 
     },
-    "createProfile" : {
-
-    },
-    "createProfile.question" : {
+    "delete" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create Profile ?"
+            "value" : "Delete"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Créer un Profil ?"
+            "value" : "Supprimer"
           }
         }
       }
@@ -155,223 +171,112 @@
     "Durée moyenne" : {
 
     },
+    "email" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email"
+          }
+        }
+      }
+    },
     "En cours..." : {
 
     },
-    "error.cleaningMessage" : {
+    "error.auth.emailAlreadyUsed" : {
+      "comment" : "Email already used error",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error during cleaning"
+            "value" : "This email address is already in use. Please use a different one."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur pendant le nettoyage"
+            "value" : "Cette adresse email est déjà utilisée. Utilisez une adresse différente."
           }
         }
       }
     },
-    "error.coreDataMessage" : {
-      "extractionState" : "manual",
+    "error.auth.invalidCredentials" : {
+      "comment" : "Invalid credentials error",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error CoreData: "
+            "value" : "Invalid email or password. Please check your credentials."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur CoreData"
+            "value" : "Email ou mot de passe incorrect. Vérifiez vos identifiants."
           }
         }
       }
+    },
+    "error.auth.validationFailed" : {
+      "comment" : "Validation failed error",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please complete all required fields correctly."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez compléter correctement tous les champs requis."
+          }
+        }
+      }
+    },
+    "error.cleaningMessage" : {
+
     },
     "error.countMessage" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error during counting"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur de comptage"
-          }
-        }
-      }
+
     },
     "error.migrationDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Migration needed"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Migration nécessaire"
-          }
-        }
-      }
+
     },
     "error.missingFileDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Missing file"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fichier manquant"
-          }
-        }
-      }
+
     },
     "error.openStoreDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error storage / opening"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur stockage / ouverture"
-          }
-        }
-      }
+
     },
     "error.permissionDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permission Denied"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Permission refusée"
-          }
-        }
-      }
+
     },
     "error.unknownDescription" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Unknown Error"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur inconnu"
-          }
-        }
-      }
-    },
-    "error.UserFirstNameIsNil" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User.firstName should never be nil"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User.firstName ne doit jamais être nil"
-          }
-        }
-      }
-    },
-    "error.UserLastNameIsNil" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User.firstName should never be nil"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User.lastName ne doit jamais être nil"
-          }
-        }
-      }
-    },
-    "error.UserloginIsNil" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User.login should never be nil"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User.login ne doit jamais être nil"
-          }
-        }
-      }
+
     },
     "exercices" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercices"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercices"
-          }
-        }
-      }
+
     },
-    "hello" : {
-      "extractionState" : "stale",
+    "firstName" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hello"
+            "value" : "First name"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salut"
+            "value" : "Prénom"
           }
         }
       }
@@ -388,116 +293,30 @@
     "Historique 7 jours" : {
 
     },
-    "hourStart" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Hour start: "
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Heure de début: "
-          }
-        }
-      }
-    },
-    "intensity" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Intensity: "
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Intensité: "
-          }
-        }
-      }
-    },
     "Jour" : {
 
     },
-    "length" : {
-      "extractionState" : "stale",
+    "lastName" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Length( in minutes)"
+            "value" : "Last name"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Durée( en minute)"
+            "value" : "Nom"
           }
         }
       }
-    },
-    "length%lldhours" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Length: %lld hours"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Durée: %lld heures"
-          }
-        }
-      }
-    },
-    "length%lldmin" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Length: %lld min"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Durée: %lld min"
-          }
-        }
-      }
-    },
-    "login" : {
-
     },
     "Modifier le profil" : {
 
     },
-    "newExercice" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "New Exercice"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Nouvel Exercice"
-          }
-        }
-      }
+    "Nom" : {
+
     },
     "Objectif" : {
 
@@ -511,21 +330,27 @@
     "Objectifs quotidiens" : {
 
     },
-    "profil" : {
+    "password" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil"
+            "value" : "Password"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil"
+            "value" : "Mot de passe"
           }
         }
       }
+    },
+    "Prénom" : {
+
+    },
+    "profil" : {
+
     },
     "Profil" : {
 
@@ -533,41 +358,28 @@
     "Qualité moyenne" : {
 
     },
-    "Sélectionnez une date" : {
-
-    },
-    "sleep" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sleep"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Sommeil"
-          }
-        }
-      }
-    },
-    "sleepHistory" : {
+    "save" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sleep history"
+            "value" : "Save"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Historique de sommeil"
+            "value" : "Enregistrer"
           }
         }
       }
+    },
+    "Sélectionnez une date" : {
+
+    },
+    "sleep" : {
+
     },
     "Sommeil (7 derniers jours)" : {
 
@@ -581,18 +393,34 @@
     "Type d'exercice" : {
 
     },
-    "welcome" : {
+    "validation.email.invalid" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome !"
+            "value" : "Please enter a valid email address"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenue !"
+            "value" : "Veuillez entrer une adresse email valide"
+          }
+        }
+      }
+    },
+    "validation.password.requirements" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password must contain 8+ characters, uppercase, number, and special character"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial"
           }
         }
       }
