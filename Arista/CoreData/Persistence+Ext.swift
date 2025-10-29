@@ -11,7 +11,6 @@ import CoreData
 extension PersistenceController {
 
     func handlePersistentStoreError(_ error: NSError) {
-        print("error.coreDataMessage\(error.localizedDescription)")
         switch error.code {
         case NSPersistentStoreIncompatibleVersionHashError:
             print(String(localized: "error.migrationDescription"))

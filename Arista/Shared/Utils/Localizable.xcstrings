@@ -253,20 +253,102 @@
     "error.countMessage" : {
 
     },
+    "error.date.endDateBeforeStartDate" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ending hour should be after starting hour"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "L'heure de fin doit être après l'heure de début."
+          }
+        }
+      }
+    },
     "error.migrationDescription" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The database needs to be migrated. Please update the app or contact support."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "La base de données nécessite une migration. Veuillez mettre à jour l'application ou contacter le support."
+          }
+        }
+      }
     },
     "error.missingFileDescription" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A required file is missing. Please reinstall the app."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un fichier requis est manquant. Veuillez réinstaller l'application."
+          }
+        }
+      }
     },
     "error.openStoreDescription" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to open the database. The data may be corrupted."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d'ouvrir la base de données. Les données sont peut-être corrompues."
+          }
+        }
+      }
     },
     "error.permissionDescription" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The app does not have permission to access the required files."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'application n'a pas la permission d'accéder aux fichiers requis."
+          }
+        }
+      }
     },
     "error.unknownDescription" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unknown error occurred. Please try again."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur inconnue s'est produite. Veuillez réessayer."
+          }
+        }
+      }
     },
     "error.user.invalidInput" : {
       "localizations" : {
@@ -469,6 +551,7 @@
       }
     },
     "user.edit.button.logout" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
