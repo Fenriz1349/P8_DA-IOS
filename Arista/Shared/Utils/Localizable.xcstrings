@@ -334,6 +334,23 @@
         }
       }
     },
+    "error.unexpected" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unexpected error occurred."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur inattendue s'est produite."
+          }
+        }
+      }
+    },
     "error.unknownDescription" : {
       "localizations" : {
         "en" : {
@@ -432,9 +449,6 @@
     },
     "Jour" : {
 
-    },
-    "Key" : {
-      "extractionState" : "manual"
     },
     "lastName" : {
       "extractionState" : "stale",
