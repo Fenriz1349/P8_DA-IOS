@@ -48,6 +48,7 @@ final class UserViewModelTests: XCTestCase {
         XCTAssertEqual(sut.user.firstName, user.firstName)
         XCTAssertEqual(sut.user.lastName, user.lastName)
         XCTAssertFalse(sut.showEditModal)
+        XCTAssertFalse(sut.showingResetAlert)
     }
 
     func test_init_withNoLoggedUser_throwsError() throws {
@@ -106,7 +107,7 @@ final class UserViewModelTests: XCTestCase {
         XCTAssertNil(coordinator.currentUser)
     }
 
-    func test_loadUser_shouldUpdatePublishedProperties() throws {
+    func test_loadUserForEditing_shouldUpdatePublishedProperties() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
@@ -114,11 +115,15 @@ final class UserViewModelTests: XCTestCase {
         let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
 
         // When
-        sut.loadUser()
+        sut.loadUserForEditing()
 
         // Then
         XCTAssertEqual(sut.firstName, user.firstName)
         XCTAssertEqual(sut.lastName, user.lastName)
+        XCTAssertEqual(sut.calorieGoal, Int(user.calorieGoal))
+        XCTAssertEqual(sut.sleepGoal, Int(user.sleepGoal))
+        XCTAssertEqual(sut.waterGoal, Int(user.waterGoal))
+        XCTAssertEqual(sut.stepsGoal, Int(user.stepsGoal))
     }
 
     func test_saveChanges_shouldUpdateUserData() throws {
@@ -127,8 +132,13 @@ final class UserViewModelTests: XCTestCase {
         try context.save()
         try coordinator.login(id: user.id)
         let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
+        
+        sut.loadUserForEditing()
         sut.firstName = "Alex"
         sut.lastName = "Dupont"
+        sut.calorieGoal = 2500
+        sut.sleepGoal = 500
+        sut.waterGoal = 30
 
         // When
         sut.saveChanges()
@@ -136,6 +146,9 @@ final class UserViewModelTests: XCTestCase {
         // Then
         XCTAssertEqual(user.firstName, "Alex")
         XCTAssertEqual(user.lastName, "Dupont")
+        XCTAssertEqual(user.calorieGoal, 2500)
+        XCTAssertEqual(user.sleepGoal, 500)
+        XCTAssertEqual(user.waterGoal, 30)
         XCTAssertFalse(sut.showEditModal)
     }
 
@@ -159,7 +172,7 @@ final class UserViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.toastyManager)
     }
     
-    /// Goal Tests
+    // MARK: - Goal Tests
     
     func test_loadTodayGoal_shouldLoadExistingGoal() throws {
         // Given

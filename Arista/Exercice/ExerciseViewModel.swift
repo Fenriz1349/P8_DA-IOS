@@ -36,7 +36,7 @@ final class ExerciseViewModel: ObservableObject {
     }
 
     var isValidData: Bool {
-        duration > 0 && intensity > 0
+        duration > 0 && intensity > 0 && intensity <= 10
     }
 
     /// Initialisation
@@ -74,9 +74,7 @@ final class ExerciseViewModel: ObservableObject {
     func saveExercise() {
         validateData()
 
-        guard isValidData else {
-            return
-        }
+        guard isValidData else { return }
 
         do {
             if let selected = selectedExercice {

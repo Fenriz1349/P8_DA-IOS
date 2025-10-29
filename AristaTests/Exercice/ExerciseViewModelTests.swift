@@ -50,6 +50,7 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertNotNil(sut.currentUser)
         XCTAssertTrue(sut.exercices.isEmpty)
         XCTAssertFalse(sut.showEditModal)
+        XCTAssertEqual(sut.validationState, .neutral)
     }
 
     func test_init_withNoLoggedUser_throwsError() throws {
@@ -60,6 +61,54 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertThrowsError(try ExerciseViewModel(appCoordinator: coordinator, dataManager: dataManager)) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
+    }
+
+    /// Validation Tests
+    func test_validateData_withValidData_setsValid() {
+        // Given
+        sut.duration = 30
+        sut.intensity = 5
+        
+        // When
+        sut.validateData()
+        
+        // Then
+        XCTAssertEqual(sut.validationState, .valid)
+    }
+    
+    func test_validateData_withInvalidDuration_setsInvalid() {
+        // Given
+        sut.duration = -10
+        sut.intensity = 5
+        
+        // When
+        sut.validateData()
+        
+        // Then
+        XCTAssertEqual(sut.validationState, .invalid)
+    }
+    
+    func test_validateData_withInvalidIntensity_setsInvalid() {
+        // Given
+        sut.duration = 30
+        sut.intensity = 0
+        
+        // When
+        sut.validateData()
+        
+        // Then
+        XCTAssertEqual(sut.validationState, .invalid)
+    }
+    
+    func test_resetValidation_setsNeutral() {
+        // Given
+        sut.validationState = .invalid
+        
+        // When
+        sut.resetValidation()
+        
+        // Then
+        XCTAssertEqual(sut.validationState, .neutral)
     }
 
     /// Reload
@@ -91,7 +140,7 @@ final class ExerciseViewModelTests: XCTestCase {
     }
 
     /// Save
-    func test_saveExercise_createsNewExercise() throws {
+    func test_saveExercise_withValidData_createsNewExercise() throws {
         // Given
         sut.selectedExercice = nil
         sut.selectedType = .running
@@ -105,6 +154,8 @@ final class ExerciseViewModelTests: XCTestCase {
         let exercices = try dataManager.fetchExercices(for: sut.currentUser)
         XCTAssertEqual(exercices.count, 1)
         XCTAssertEqual(exercices.first?.type, ExerciceType.running.rawValue)
+        XCTAssertFalse(sut.showEditModal)
+        XCTAssertEqual(sut.validationState, .neutral)
     }
 
     func test_saveExercise_updatesExistingExercise() throws {
@@ -123,20 +174,23 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertEqual(updated?.duration, 60)
         XCTAssertEqual(updated?.intensity, 8)
         XCTAssertEqual(updated?.type, ExerciceType.yoga.rawValue)
+        XCTAssertFalse(sut.showEditModal)
     }
 
-    func test_saveExercise_withInvalidData_setsLastError() {
+    func test_saveExercise_withInvalidData_doesNotSave() throws {
         // Given
         sut.duration = -10
         sut.intensity = 15
         sut.selectedExercice = nil
+        let initialCount = try dataManager.fetchExercices(for: sut.currentUser).count
 
         // When
         sut.saveExercise()
 
         // Then
-        XCTAssertNotNil(sut.lastError)
-        XCTAssertEqual(sut.lastError as? ExerciceDataManagerError, .invalidData)
+        let finalCount = try dataManager.fetchExercices(for: sut.currentUser).count
+        XCTAssertEqual(finalCount, initialCount)
+        XCTAssertEqual(sut.validationState, .invalid)
     }
 
     /// Delete
@@ -185,17 +239,22 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertEqual(sut.duration, 30)
         XCTAssertEqual(sut.intensity, 8)
         XCTAssertEqual(sut.selectedType, .yoga)
+        XCTAssertEqual(sut.validationState, .neutral)
     }
 
     func test_openEditModal_withoutExercise_resetsFields() {
-        // Given / When
+        // Given
+        sut.lastSelectedType = .running
+        
+        // When
         sut.openEditModal(for: nil)
 
         // Then
         XCTAssertTrue(sut.showEditModal)
         XCTAssertEqual(sut.duration, 30)
         XCTAssertEqual(sut.intensity, 5)
-        XCTAssertEqual(sut.selectedType, .other)
+        XCTAssertEqual(sut.selectedType, .running)
+        XCTAssertEqual(sut.validationState, .neutral)
     }
 
     /// Toasty Configuration
@@ -206,5 +265,19 @@ final class ExerciseViewModelTests: XCTestCase {
         // Then
         XCTAssertNotNil(sut.toastyManager)
         XCTAssertTrue(sut.toastyManager === spyToastyManager)
+    }
+    
+    /// CaloriesBurned
+    func test_caloriesBurned_calculatesCorrectly() {
+        // Given
+        sut.duration = 60
+        sut.intensity = 7
+        sut.selectedType = .running // calorieFactor = 1.0
+        
+        // When
+        let calories = sut.caloriesBurned
+        
+        // Then
+        XCTAssertEqual(calories, "630 kcal")
     }
 }

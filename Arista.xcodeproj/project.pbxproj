@@ -299,6 +299,7 @@
 				6816D55B2EA9F7CB00ED8D20 /* Shared */,
 				6816D5602EA9FCAE00ED8D20 /* Authentication */,
 				68E7C2D52EA27D7E001C039B /* User */,
+				68EF9A572EB24E7400CF0BF2 /* Goal */,
 				68E7C2CD2EA26C0E001C039B /* Sleep */,
 				68E7C2D62EA293BF001C039B /* Exercice */,
 				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
@@ -613,11 +614,9 @@
 			isa = PBXGroup;
 			children = (
 				6895100A2E60711600461030 /* UserTests.swift */,
-				6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */,
 				6895100D2E607DF600461030 /* UserDataManagerTests.swift */,
 				68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */,
 				686D56912E7455900088AD98 /* UserViewModelTests.swift */,
-				6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -630,6 +629,15 @@
 				6859510D2EA9518A00A8744E /* ExerciseViewModelTests.swift */,
 			);
 			path = Exercice;
+			sourceTree = "<group>";
+		};
+		68EF9A572EB24E7400CF0BF2 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */,
+				6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */,
+			);
+			path = Goal;
 			sourceTree = "<group>";
 		};
 		68EFABCB2EA7551200E2F937 /* Grade */ = {
