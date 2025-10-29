@@ -15,12 +15,9 @@ enum AuthenticationError: Error, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidCredentials:
-            return NSLocalizedString("error.auth.invalidCredentials", comment: "Invalid credentials error")
-        case .validationFailed:
-            return NSLocalizedString("error.auth.validationFailed", comment: "Validation failed error")
-        case .emailAlreadyUsed:
-            return NSLocalizedString("error.auth.emailAlreadyUsed", comment: "Email already used error")
+        case .invalidCredentials: return String(localized: "error.auth.invalidCredentials")
+        case .validationFailed: return String(localized: "error.auth.validationFailed")
+        case .emailAlreadyUsed:return String(localized: "error.auth.emailAlreadyUsed")
         }
     }
 }
@@ -30,21 +27,36 @@ final class AuthenticationViewModel: ObservableObject {
     private let appCoordinator: AppCoordinator
     @Published var toastyManager: ToastyManager?
 
+    enum ButtonState {
+        case disabled, enabled, error
+    }
+
     enum FieldType {
         case email, password, firstName, lastName
     }
 
+    var buttonBackgroundColor: Color {
+        switch buttonState {
+        case .disabled:
+            return .gray.opacity(0.6)
+        case .enabled:
+            return .green
+        case .error:
+            return .red
+        }
+    }
+
     // MARK: - Published Properties
-    
+
     /// User input fields
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var firstName: String = ""
     @Published var lastName: String = ""
     @Published var creationMode: Bool = false
-    @Published var buttonState: ButtonValidationState = .disabled
+    @Published var buttonState: ButtonState = .disabled
 
-    /// Validation states for each form field
+    /// Validation states for each CustomTextField
     @Published var emailValidationState: ValidationState = .neutral
     @Published var passwordValidationState: ValidationState = .neutral
     @Published var firstNameValidationState: ValidationState = .neutral
@@ -63,38 +75,45 @@ final class AuthenticationViewModel: ObservableObject {
         self.toastyManager = toastyManager
     }
 
-    // MARK: - Form Validation
-    
+    // MARK: - Computed Properties
+
+    /// Returns true if all required fields are valid for the current mode
     var isFormValid: Bool {
         creationMode ? isCreationFormValid : isLoginFormValid
     }
 
+    /// Returns true if email and password are valid
     var isLoginFormValid: Bool {
         return !email.isEmpty && !password.isEmpty && isMailValid && isPasswordValid
     }
 
+    /// Returns true if all account creation fields are valid
     var isCreationFormValid: Bool {
         return !firstName.isEmpty && !lastName.isEmpty && isFirstNameValid && isLastNameValid && isLoginFormValid
     }
 
+    /// Validates email format
     var isMailValid: Bool { Validators.isValidEmail(email) }
 
+    /// Validates password strength
     var isPasswordValid: Bool { Validators.isStrongPassword(password) }
 
+    /// Validates first name format
     var isFirstNameValid: Bool { ExampleValidationRules.validateFirstName(firstName) }
 
+    /// Validates last name format
     var isLastNameValid: Bool { ExampleValidationRules.validateLastName(lastName) }
 
     // MARK: - Button State Management
-    
-    /// Updates the submit button state based on form validity
+
+    /// Updates button state based on form validity
     func updateButtonState() {
         buttonState = isFormValid ? .enabled : .disabled
     }
 
-    // MARK: - Field Validation Management
-    
-    /// Resets validation state for a specific field if it's currently invalid
+    // MARK: - Validation Management
+
+    /// Resets validation state for a specific field if currently invalid
     /// - Parameter field: The field type to reset
     func resetFieldValidation(_ field: FieldType) {
         switch field {
@@ -155,8 +174,8 @@ final class AuthenticationViewModel: ObservableObject {
         return !hasErrors
     }
 
-    /// Called when a field value changes - updates button state and resets field validation
-    /// - Parameter field: The field that changed
+    /// Called when a field value changes - updates button and resets field validation
+    /// - Parameter field: The field that was modified
     func onFieldChange(_ field: FieldType) {
         updateButtonState()
         resetFieldValidation(field)
@@ -184,7 +203,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    /// Shows validation error feedback on the button
+    /// Shows visual feedback for validation errors
     private func showValidationError() {
         buttonState = .error
 
@@ -193,7 +212,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    /// Shows authentication error feedback and resets validation states
+    /// Shows visual feedback for authentication errors and resets validation
     private func showAuthError() {
         resetAllValidationStates()
         buttonState = .error

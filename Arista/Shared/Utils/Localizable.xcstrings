@@ -54,7 +54,6 @@
 
     },
     "auth.createProfile.button" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -87,7 +86,6 @@
       }
     },
     "auth.login.button" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -125,42 +123,8 @@
     "Calories" : {
 
     },
-    "cancel" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annuler"
-          }
-        }
-      }
-    },
     "Confirmer la suppression" : {
 
-    },
-    "delete" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Delete"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Supprimer"
-          }
-        }
-      }
     },
     "Depuis %@" : {
 
@@ -315,9 +279,6 @@
     "Modifier le profil" : {
 
     },
-    "Nom" : {
-
-    },
     "Objectif" : {
 
     },
@@ -346,9 +307,6 @@
         }
       }
     },
-    "Prénom" : {
-
-    },
     "profil" : {
 
     },
@@ -357,23 +315,6 @@
     },
     "Qualité moyenne" : {
 
-    },
-    "save" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Save"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Enregistrer"
-          }
-        }
-      }
     },
     "Sélectionnez une date" : {
 
