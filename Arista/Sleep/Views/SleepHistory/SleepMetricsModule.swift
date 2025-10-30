@@ -37,17 +37,15 @@ struct SleepMetricsModule: View {
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-
-                    HStack(spacing: 4) {
-                        Text(metrics.statusIcon)
-                            .font(.caption)
-                        Text(metrics.statusText)
-                            .font(.caption2)
-                            .foregroundColor(metrics.progressColor)
-                    }
                 }
 
-                Spacer()
+                HStack(spacing: 4) {
+                    Text(metrics.statusIcon)
+                        .font(.caption)
+                    Text(metrics.statusText)
+                        .font(.caption2)
+                        .foregroundColor(metrics.progressColor)
+                }
 
                 VStack(alignment: .center, spacing: 4) {
                     Text("Qualité moyenne")

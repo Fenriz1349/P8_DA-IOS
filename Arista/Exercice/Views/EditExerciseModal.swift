@@ -15,26 +15,26 @@ struct EditExerciseModal: View {
         NavigationStack {
             VStack(spacing: 20) {
                 VStack(alignment: .leading, spacing: 8) {
-                    Text("Type d'exercice")
+                    Text("exercise.modal.typeLabel")
                         .font(.headline)
                     ExerciseTypeGrid(selectedType: $viewModel.selectedType)
                 }
 
                 HStack {
                     DatePicker(
-                        "Sélectionnez une date",
+                        "exercise.modal.selectDate",
                         selection: $viewModel.date,
                         displayedComponents: [.date]
                     )
                     .labelsHidden()
-                    DurationStepper(title: "Durée", value: $viewModel.duration)
+                    DurationStepper(title: "exercise.modal.duration".localized, value: $viewModel.duration)
                         .onChange(of: viewModel.duration) {
                             viewModel.validateData()
                         }
                 }
 
                 HStack {
-                    GradePicker(title: "Intensité", quality: $viewModel.intensity)
+                    GradePicker(title: "exercise.modal.intensity".localized, quality: $viewModel.intensity)
                         .onChange(of: viewModel.intensity) {
                             viewModel.validateData()
                         }
@@ -43,7 +43,7 @@ struct EditExerciseModal: View {
 
                 ValidatedButton(
                     iconLeading: "checkmark",
-                    title: "Enregistrer",
+                    title: "common.button.save".localized,
                     color: viewModel.validationState == .invalid ? .gray : .blue,
                     isEnabled: viewModel.validationState != .invalid,
                     action: viewModel.saveExercise
@@ -56,7 +56,7 @@ struct EditExerciseModal: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Annuler") {
+                    Button("common.button.cancel") {
                         viewModel.showEditModal = false
                     }
                 }

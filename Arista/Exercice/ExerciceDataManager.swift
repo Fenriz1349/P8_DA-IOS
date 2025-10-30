@@ -14,9 +14,9 @@ enum ExerciceDataManagerError: Error, Equatable, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .exerciceNotFound: return "L'exercice demandé est introuvable."
-        case .failedToSave: return "Impossible d'enregistrer l'exercice."
-        case .invalidData: return "Les données fournies sont invalides."
+        case .exerciceNotFound: return "error.exercise.notFound".localized
+        case .failedToSave: return "error.exercise.failedToSave".localized
+        case .invalidData: return "error.exercise.invalidData".localized
         }
     }
 }
@@ -34,7 +34,15 @@ final class ExerciceDataManager {
         self.goalManager = goalManager ?? GoalDataManager(container: container)
     }
 
-    /// Create
+    /// Creates a new exercise for a specific user
+    /// - Parameters:
+    ///   - user: The user for whom to create the exercise
+    ///   - date: The date of the exercise (defaults to current date)
+    ///   - duration: The duration in minutes (must be non-negative)
+    ///   - type: The type of exercise (defaults to .other)
+    ///   - intensity: The intensity level from 0 to 10 (defaults to 5)
+    /// - Returns: The newly created Exercice entity
+    /// - Throws: ExerciceDataManagerError.invalidData if parameters are invalid, or .failedToSave if save fails
     @discardableResult
     func createExercice(for user: User,
                         date: Date = Date(),
@@ -63,7 +71,10 @@ final class ExerciceDataManager {
         }
     }
 
-    /// Fetch
+    /// Fetches a specific exercise by its unique identifier
+    /// - Parameter id: The UUID of the exercise to fetch
+    /// - Returns: The matching Exercice entity
+    /// - Throws: ExerciceDataManagerError.exerciceNotFound if no exercise exists with the given ID
     func fetchExercice(by id: UUID) throws -> Exercice {
         let context = container.viewContext
         let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
@@ -77,6 +88,10 @@ final class ExerciceDataManager {
         return exercice
     }
 
+    /// Fetches all exercises for a specific user
+    /// - Parameter user: The user whose exercises to fetch
+    /// - Returns: An array of Exercice entities sorted by date (descending)
+    /// - Throws: Error if the fetch request fails
     func fetchExercices(for user: User) throws -> [Exercice] {
         let context = container.viewContext
         let request: NSFetchRequest<Exercice> = Exercice.fetchRequest()
@@ -86,6 +101,10 @@ final class ExerciceDataManager {
         return try context.fetch(request)
     }
 
+    /// Fetches exercises from the last 7 days for a specific user
+    /// - Parameter user: The user whose exercises to fetch
+    /// - Returns: An array of Exercice entities from the last week
+    /// - Throws: Error if the fetch request fails
     func fetchLastWeekExercices(for user: User) throws -> [Exercice] {
         let allExercices = try fetchExercices(for: user)
 
@@ -96,7 +115,15 @@ final class ExerciceDataManager {
         return allExercices.filter { $0.date >= oneWeekAgo }
     }
 
-    /// Update
+    /// Updates an existing exercise with new values
+    /// - Parameters:
+    ///   - id: The UUID of the exercise to update
+    ///   - date: The new date for the exercise
+    ///   - type: The new exercise type
+    ///   - duration: The new duration in minutes (must be non-negative)
+    ///   - intensity: The new intensity level from 0 to 10
+    /// - Throws: ExerciceDataManagerError.invalidData if parameters are invalid,
+    ///           .exerciceNotFound if exercise doesn't exist, or .failedToSave if save fails
     func updateExercice(by id: UUID,
                         date: Date,
                         type: ExerciceType,
@@ -122,7 +149,9 @@ final class ExerciceDataManager {
         }
     }
 
-    /// Delete
+    /// Deletes a specific exercise from the database
+    /// - Parameter exercice: The Exercice entity to delete
+    /// - Throws: ExerciceDataManagerError.exerciceNotFound if exercise doesn't exist, or .failedToSave if save fails
     func deleteExercice(_ exercice: Exercice) throws {
         let context = container.viewContext
         let exercice = try fetchExercice(by: exercice.id)

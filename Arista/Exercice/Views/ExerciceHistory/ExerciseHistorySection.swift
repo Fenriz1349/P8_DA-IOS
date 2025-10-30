@@ -13,7 +13,7 @@ struct ExerciseHistorySection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Historique (7 derniers jours)")
+            Text("exercise.history.title")
                 .font(.headline)
                 .padding(.horizontal)
 
