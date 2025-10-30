@@ -14,7 +14,7 @@ struct CurrentStateSection: View {
         VStack(spacing: 8) {
             switch viewModel.currentState {
             case .none:
-                Text("Aucun cycle de sommeil")
+                Text("sleep.state.noCycle".localized)
                     .font(.headline)
                     .foregroundColor(.secondary)
                     .padding()
@@ -22,10 +22,10 @@ struct CurrentStateSection: View {
 
             case .active(let cycle):
                 VStack {
-                    Text("Sommeil en cours")
+                    Text("sleep.state.active".localized)
                         .font(.headline)
                         .foregroundColor(.blue)
-                    Text("Depuis \(cycle.dateStart.formattedTime)")
+                    Text("sleep.state.since".localized + " " + cycle.dateStart.formattedTime)
                         .font(.subheadline)
                         .foregroundColor(.secondary)
                 }
@@ -34,7 +34,7 @@ struct CurrentStateSection: View {
 
             case .completed(let cycle):
                 VStack {
-                    Text("Dernier sommeil")
+                    Text("sleep.state.lastSleep".localized)
                         .font(.headline)
                     SleepHistoryRow(cycle: cycle)
                 }

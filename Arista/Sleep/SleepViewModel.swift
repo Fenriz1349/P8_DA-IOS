@@ -25,7 +25,7 @@ final class SleepViewModel: ObservableObject {
     /// Dependencies
     private let appCoordinator: AppCoordinator
     private let sleepDataManager: SleepDataManager
-    let title = "Qualité"
+    let title = "sleep.modal.quality".localized
     let currentUser: User
 
     /// UI / Published Properties
@@ -53,10 +53,14 @@ final class SleepViewModel: ObservableObject {
 
     var dateErrorMessage: String? {
         guard dateValidationState == .invalid else { return nil }
-        return "La date de réveil doit être après la date de coucher"
+        return "error.sleep.invalidDateInterval".localized
     }
 
-    /// Initialization
+    /// Initializes the ViewModel with required dependencies and validates the current user
+    /// - Parameters:
+    ///   - appCoordinator: The app coordinator managing navigation and user state
+    ///   - sleepDataManager: Manager for sleep data operations
+    /// - Throws: Error if no valid user is logged in
     init(appCoordinator: AppCoordinator, sleepDataManager: SleepDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
@@ -64,11 +68,14 @@ final class SleepViewModel: ObservableObject {
         reloadAllData()
     }
 
+    /// Configures the toasty notification manager
+    /// - Parameter toastyManager: The ToastyManager instance to use for notifications
     func configureToasty(toastyManager: ToastyManager) {
         self.toastyManager = toastyManager
     }
 
-    /// Data Loading
+    /// Reloads all sleep cycle data for the current user
+    /// Fetches recent sleep cycles and separates current cycle from history
     func reloadAllData() {
         do {
             let cycles = try sleepDataManager.fetchRecentSleepCycles(for: currentUser)
@@ -84,7 +91,8 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
-    /// Validation
+    /// Validates the manual entry dates
+    /// Sets validation state to valid if end date is after start date, invalid otherwise
     func validateDates() {
         if isValidData {
             dateValidationState = .valid
@@ -93,11 +101,13 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
+    /// Resets the date validation state to neutral
     func resetValidation() {
         dateValidationState = .neutral
     }
 
-    /// Toggle Actions
+    /// Starts a new sleep cycle for the current user
+    /// - Parameter startDate: The start date of the sleep cycle (defaults to current date)
     func startSleepCycle(startDate: Date = Date()) {
         do {
             _ = try sleepDataManager.startSleepCycle(for: currentUser, startDate: startDate)
@@ -107,6 +117,8 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
+    /// Ends the active sleep cycle for the current user
+    /// - Parameter endDate: The end date of the sleep cycle (defaults to current date)
     func endSleepCycle(endDate: Date = Date()) {
         do {
             _ = try sleepDataManager.endSleepCycle(for: currentUser,
@@ -119,7 +131,8 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
-    /// Edit Cycle
+    /// Opens the edit modal for a sleep cycle
+    /// - Parameter cycle: The cycle to edit, or nil to create a new manual entry
     func openEditModal(for cycle: SleepCycleDisplay?) {
         let cycle = cycle ?? SleepCycleDisplay(
             id: UUID(),
@@ -135,13 +148,15 @@ final class SleepViewModel: ObservableObject {
         showEditModal = true
     }
 
+    /// Cancels the edit operation and closes the modal
     func cancelEdit() {
         showEditModal = false
         editingCycle = nil
         resetValidation()
     }
 
-    /// Save
+    /// Saves the sleep cycle (creates new or updates existing)
+    /// Validates dates before saving and reloads data on success
     func saveCycle() {
         validateDates()
 
@@ -172,7 +187,8 @@ final class SleepViewModel: ObservableObject {
         }
     }
 
-    /// Delete
+    /// Deletes a sleep cycle from history
+    /// - Parameter cycleDisplay: The cycle display to delete
     func deleteHistoryCycle(_ cycleDisplay: SleepCycleDisplay) {
         do {
             let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser)

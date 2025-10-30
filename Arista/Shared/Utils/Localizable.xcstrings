@@ -47,12 +47,6 @@
     "00" : {
 
     },
-    "Annuler" : {
-
-    },
-    "Aucun cycle de sommeil" : {
-
-    },
     "auth.createProfile.button" : {
       "localizations" : {
         "en" : {
@@ -151,7 +145,7 @@
       }
     },
     "common.button.save" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -166,15 +160,6 @@
           }
         }
       }
-    },
-    "Depuis %@" : {
-
-    },
-    "Dernier sommeil" : {
-
-    },
-    "Durée moyenne" : {
-
     },
     "email" : {
       "extractionState" : "stale",
@@ -192,9 +177,6 @@
           }
         }
       }
-    },
-    "En cours..." : {
-
     },
     "error.auth.emailAlreadyUsed" : {
       "localizations" : {
@@ -251,7 +233,7 @@
 
     },
     "error.date.endDateBeforeStartDate" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -261,7 +243,7 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "L'heure de fin doit être après l'heure de début."
           }
         }
@@ -382,8 +364,59 @@
         }
       }
     },
+    "error.sleep.activeSessionExists" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A sleep cycle is already in progress."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un cycle de sommeil est déjà en cours."
+          }
+        }
+      }
+    },
+    "error.sleep.cycleNotFound" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No active sleep cycle found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun cycle de sommeil actif trouvé."
+          }
+        }
+      }
+    },
+    "error.sleep.invalidDateInterval" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake up time must be after bedtime."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'heure de réveil doit être après l'heure de coucher."
+          }
+        }
+      }
+    },
     "error.unexpected" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1235,15 +1268,6 @@
         }
       }
     },
-    "Heure de coucher" : {
-
-    },
-    "Heure de réveil" : {
-
-    },
-    "Historique (7 derniers jours)" : {
-
-    },
     "lastName" : {
       "extractionState" : "stale",
       "localizations" : {
@@ -1287,11 +1311,294 @@
     "sleep" : {
 
     },
-    "Sommeil (7 derniers jours)" : {
-
+    "sleep.button.end" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer"
+          }
+        }
+      }
     },
-    "Sommeil en cours" : {
-
+    "sleep.button.start" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer"
+          }
+        }
+      }
+    },
+    "sleep.history.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History (Last 7 days)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique (7 derniers jours)"
+          }
+        }
+      }
+    },
+    "sleep.metrics.averageDuration" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average duration"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée moyenne"
+          }
+        }
+      }
+    },
+    "sleep.metrics.averageQuality" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average quality"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualité moyenne"
+          }
+        }
+      }
+    },
+    "sleep.metrics.status.belowGoal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Below goal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En dessous de l'objectif"
+          }
+        }
+      }
+    },
+    "sleep.metrics.status.closeToGoal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close to goal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proche de l'objectif"
+          }
+        }
+      }
+    },
+    "sleep.metrics.status.goalAchieved" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal achieved"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif atteint"
+          }
+        }
+      }
+    },
+    "sleep.metrics.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep (Last 7 days)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sommeil (7 derniers jours)"
+          }
+        }
+      }
+    },
+    "sleep.modal.bedtime" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bedtime"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de coucher"
+          }
+        }
+      }
+    },
+    "sleep.modal.quality" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quality"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualité"
+          }
+        }
+      }
+    },
+    "sleep.modal.wakeTime" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake time"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de réveil"
+          }
+        }
+      }
+    },
+    "sleep.state.active" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep in progress"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sommeil en cours"
+          }
+        }
+      }
+    },
+    "sleep.state.inProgress" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In progress..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours..."
+          }
+        }
+      }
+    },
+    "sleep.state.lastSleep" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last sleep"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernier sommeil"
+          }
+        }
+      }
+    },
+    "sleep.state.noCycle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sleep cycle"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun cycle de sommeil"
+          }
+        }
+      }
+    },
+    "sleep.state.since" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Since"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depuis"
+          }
+        }
+      }
     },
     "user.deleteAccount.alert.message" : {
       "localizations" : {
@@ -1327,7 +1634,7 @@
       }
     },
     "user.edit.button.deleteAccount" : {
-      "extractionState" : "manual",
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {

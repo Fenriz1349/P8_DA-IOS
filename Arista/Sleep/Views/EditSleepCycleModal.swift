@@ -19,7 +19,7 @@ struct EditSleepCycleModal: View {
                 VStack(spacing: 16) {
                     VStack(alignment: .leading, spacing: 8) {
                         DatePicker(
-                            "Heure de coucher",
+                            "sleep.modal.bedtime".localized,
                             selection: $viewModel.manualStartDate,
                             displayedComponents: [.date, .hourAndMinute]
                         )
@@ -28,7 +28,7 @@ struct EditSleepCycleModal: View {
                         }
 
                         DatePicker(
-                            "Heure de réveil",
+                            "sleep.modal.wakeTime".localized,
                             selection: $viewModel.manualEndDate,
                             displayedComponents: [.date, .hourAndMinute]
                         )
@@ -59,7 +59,7 @@ struct EditSleepCycleModal: View {
 
                 ValidatedButton(
                     iconLeading: "checkmark",
-                    title: "Enregistrer",
+                    title: "common.button.save".localized,
                     color: viewModel.dateValidationState == .invalid ? .gray : .blue,
                     isEnabled: viewModel.dateValidationState != .invalid,
                     action: viewModel.saveCycle
@@ -71,7 +71,7 @@ struct EditSleepCycleModal: View {
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
-                    Button("Annuler") {
+                    Button("common.button.cancel".localized) {
                         viewModel.cancelEdit()
                     }
                 }
