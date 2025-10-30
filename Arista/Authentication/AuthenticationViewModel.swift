@@ -17,7 +17,7 @@ enum AuthenticationError: Error, LocalizedError {
         switch self {
         case .invalidCredentials: return String(localized: "error.auth.invalidCredentials")
         case .validationFailed: return String(localized: "error.auth.validationFailed")
-        case .emailAlreadyUsed:return String(localized: "error.auth.emailAlreadyUsed")
+        case .emailAlreadyUsed: return String(localized: "error.auth.emailAlreadyUsed")
         }
     }
 }

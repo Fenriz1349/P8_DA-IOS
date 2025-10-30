@@ -121,7 +121,7 @@ class UserUpdateBuilder {
         user.waterGoal = Int16(value)
         return self
     }
-    
+
     /// Updates the user's daily steps goal
     /// - Parameter value: The new steps goal (must be non-negative)
     /// - Returns: Self for method chaining

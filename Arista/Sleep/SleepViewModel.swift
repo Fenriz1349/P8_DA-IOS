@@ -47,10 +47,6 @@ final class SleepViewModel: ObservableObject {
         return cycle.dateEnding == nil ? .active(cycle) : .completed(cycle)
     }
 
-    var isValidData: Bool {
-        manualEndDate > manualStartDate
-    }
-
     var dateErrorMessage: String? {
         guard dateValidationState == .invalid else { return nil }
         return "error.sleep.invalidDateInterval".localized
@@ -94,9 +90,10 @@ final class SleepViewModel: ObservableObject {
     /// Validates the manual entry dates
     /// Sets validation state to valid if end date is after start date, invalid otherwise
     func validateDates() {
-        if isValidData {
+        do {
+            try Date.validateInterval(from: manualStartDate, to: manualEndDate)
             dateValidationState = .valid
-        } else {
+        } catch {
             dateValidationState = .invalid
         }
     }
@@ -159,10 +156,6 @@ final class SleepViewModel: ObservableObject {
     /// Validates dates before saving and reloads data on success
     func saveCycle() {
         validateDates()
-
-        guard isValidData else {
-            return
-        }
 
         do {
             if let editing = editingCycle {

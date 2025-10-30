@@ -46,20 +46,9 @@ struct ValidatedButton: View {
 
 #Preview {
     VStack(spacing: 20) {
-        ValidatedButton(
-            iconLeading: "checkmark",
-            title: "Enregistrer",
-            color: .blue,
-            isEnabled: true,
-            action: {}
-        )
+        ValidatedButton(iconLeading: "checkmark", title: "Enregistrer", color: .blue, isEnabled: true, action: {})
 
-        ValidatedButton(
-            title: "Enregistrer",
-            color: .gray,
-            isEnabled: false,
-            action: {}
-        )
+        ValidatedButton(title: "Enregistrer", color: .gray, isEnabled: false, action: {})
     }
     .padding()
 }

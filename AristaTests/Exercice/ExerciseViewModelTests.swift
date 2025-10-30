@@ -91,7 +91,7 @@ final class ExerciseViewModelTests: XCTestCase {
     func test_validateData_withInvalidIntensity_setsInvalid() {
         // Given
         sut.duration = 30
-        sut.intensity = 0
+        sut.intensity = 11
         
         // When
         sut.validateData()

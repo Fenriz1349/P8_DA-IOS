@@ -170,7 +170,6 @@ final class SleepDataManager {
 
         try context.save()
     }
-
 }
 
 #if DEBUG

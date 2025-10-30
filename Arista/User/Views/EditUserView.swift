@@ -20,7 +20,7 @@ struct EditUserView: View {
                         )
 
                         CustomTextField(
-                            placeholder:  "lastName".localized,
+                            placeholder: "lastName".localized,
                             text: $viewModel.lastName,
                             type: .alphaNumber
                         )
@@ -39,7 +39,7 @@ struct EditUserView: View {
                         Button(action: viewModel.saveChanges) {
                             CustomButtonLabel(
                                 iconLeading: "checkmark",
-                                message:  "common.button.save".localized,
+                                message: "common.button.save".localized,
                                 color: .blue
                             )
                         }

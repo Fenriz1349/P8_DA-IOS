@@ -25,7 +25,7 @@ final class ExerciceDataManager {
     private let container: NSPersistentContainer
     private let userDataManager: UserDataManager
     private let goalManager: GoalDataManager
-    
+
     init(container: NSPersistentContainer = PersistenceController.shared.container,
          userDataManager: UserDataManager? = nil,
          goalManager: GoalDataManager? = nil) {
