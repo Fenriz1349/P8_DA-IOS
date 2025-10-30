@@ -4,13 +4,16 @@
     "" : {
 
     },
+    " %@" : {
+
+    },
+    " %lld kcal" : {
+
+    },
     "(%@)" : {
 
     },
     "/ %@" : {
-
-    },
-    "/ %lld kcal" : {
 
     },
     "%@ → %@" : {
@@ -39,9 +42,6 @@
 
     },
     "💪" : {
-
-    },
-    "🔥" : {
 
     },
     "00" : {
@@ -116,9 +116,6 @@
           }
         }
       }
-    },
-    "Calories" : {
-
     },
     "common.button.cancel" : {
       "localizations" : {
@@ -435,6 +432,218 @@
         }
       }
     },
+    "goal.badge.achieved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal achieved!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif atteint !"
+          }
+        }
+      }
+    },
+    "goal.badge.exceeded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal exceeded!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif dépassé !"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.caloriesLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.dayLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.goalLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-Day History"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique 7 jours"
+          }
+        }
+      }
+    },
+    "goal.calories.goalSuffix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        }
+      }
+    },
+    "goal.calories.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
+    },
+    "goal.slider.goalPrefix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        }
+      }
+    },
+    "goal.type.calories" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
+    },
+    "goal.type.sleep" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sommeil"
+          }
+        }
+      }
+    },
+    "goal.type.steps" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Steps"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pas"
+          }
+        }
+      }
+    },
+    "goal.type.water" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydration"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hydratation"
+          }
+        }
+      }
+    },
     "Heure de coucher" : {
 
     },
@@ -442,12 +651,6 @@
 
     },
     "Historique (7 derniers jours)" : {
-
-    },
-    "Historique 7 jours" : {
-
-    },
-    "Jour" : {
 
     },
     "lastName" : {
@@ -466,15 +669,6 @@
           }
         }
       }
-    },
-    "Objectif" : {
-
-    },
-    "Objectif atteint !" : {
-
-    },
-    "Objectif dépassé !" : {
-
     },
     "password" : {
       "extractionState" : "stale",

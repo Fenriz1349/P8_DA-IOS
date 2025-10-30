@@ -14,7 +14,7 @@ struct GoalBadge: View {
         if progress >= 1.0 && progress < 1.1 {
             HStack(spacing: 4) {
                 Text("💪")
-                Text("Objectif atteint !")
+                Text("goal.badge.achieved")
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundColor(.green)
@@ -22,7 +22,7 @@ struct GoalBadge: View {
         } else if progress >= 1.1 {
             HStack(spacing: 4) {
                 Text("🎉")
-                Text("Objectif dépassé !")
+                Text("goal.badge.exceeded")
                     .font(.caption)
                     .fontWeight(.semibold)
                     .foregroundColor(.green)
