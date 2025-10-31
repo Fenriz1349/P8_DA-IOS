@@ -114,7 +114,7 @@ final class AppCoordinatorTests: XCTestCase {
 
     /// ViewModel creation tests
 
-    func test_makeAccountViewModel_withLoggedUser_returnsViewModel() throws {
+    func test_makeUserViewModel_withLoggedUser_returnsViewModel() throws {
         // Given
         let user = SharedTestHelper.createSampleUser(in: context)
         try context.save()
@@ -126,9 +126,11 @@ final class AppCoordinatorTests: XCTestCase {
         // Then
         XCTAssertNotNil(viewModel)
         XCTAssertEqual(viewModel.user.id, user.id)
+        XCTAssertEqual(viewModel.user.firstName, user.firstName)
+        XCTAssertEqual(viewModel.user.lastName, user.lastName)
     }
 
-    func test_makeAccountViewModel_withNoLoggedUser_throwsError() throws {
+    func test_makeUserViewModel_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
         XCTAssertThrowsError(try coordinator.makeUserViewModel()) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
@@ -152,27 +154,6 @@ final class AppCoordinatorTests: XCTestCase {
         // Then
         XCTAssertFalse(viewModel1 === viewModel2)
     }
-
-    func test_makeEditAccountViewModel_withLoggedUser_returnsViewModel() throws {
-        //Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        try context.save()
-        try coordinator.login(id: user.id)
-        
-        // When
-        let viewModel = try coordinator.makeUserViewModel()
-        
-        // Then
-        XCTAssertNotNil(viewModel)
-        XCTAssertEqual(viewModel.firstName, user.firstName)
-    }
-
-    func test_makeEditAccountViewModel_withNoLoggedUser_throwsError() throws {
-        // Given / When / Then
-        XCTAssertThrowsError(try coordinator.makeUserViewModel()) { error in
-            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
-        }
-    }
     
     func test_makeSleepViewModel_withLoggedUser_returnsViewModel() throws {
         //Given
@@ -190,6 +171,27 @@ final class AppCoordinatorTests: XCTestCase {
     func test_makeSleepViewModel_withNoLoggedUser_throwsError() throws {
         // Given / When / Then
         XCTAssertThrowsError(try coordinator.makeSleepViewModel()) { error in
+            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
+        }
+    }
+    
+    func test_makeExerciseViewModel_withLoggedUser_returnsViewModel() throws {
+        //Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+        
+        // When
+        let viewModel = try coordinator.makeExerciceViewModel()
+        
+        // Then
+        XCTAssertNotNil(viewModel)
+        XCTAssertEqual(viewModel.currentUser.id, user.id)
+    }
+
+    func test_makeExerciseViewModel_withNoLoggedUser_throwsError() throws {
+        // Given / When / Then
+        XCTAssertThrowsError(try coordinator.makeExerciceViewModel()) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }

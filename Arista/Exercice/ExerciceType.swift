@@ -13,30 +13,30 @@ enum ExerciceType: String, CaseIterable, Identifiable {
 
     var displayName: String {
         switch self {
-        case .cardio: return "Cardio"
-        case .strength: return "Musculation"
-        case .yoga: return "Yoga"
-        case .pilates: return "Pilates"
-        case .running: return "Course"
-        case .walking: return "Marche"
-        case .cycling: return "Vélo"
-        case .swimming: return "Natation"
-        case .climbing: return "Escalade"
-        case .dance: return "Danse"
-        case .boxing: return "Boxe"
-        case .crossfit: return "CrossFit"
-        case .football: return "Football"
-        case .basketball: return "Basket"
-        case .tennis: return "Tennis"
-        case .golf: return "Golf"
-        case .rowing: return "Aviron"
-        case .skiing: return "Ski"
-        case .surfing: return "Surf"
-        case .hiking: return "Randonnée"
-        case .stretching: return "Étirements"
-        case .volleyball: return "Volley-ball"
-        case .fencing: return "Escrime"
-        case .other: return "Autre"
+        case .cardio: return "exercise.type.cardio".localized
+        case .strength: return "exercise.type.strength".localized
+        case .yoga: return "exercise.type.yoga".localized
+        case .pilates: return "exercise.type.pilates".localized
+        case .running: return "exercise.type.running".localized
+        case .walking: return "exercise.type.walking".localized
+        case .cycling: return "exercise.type.cycling".localized
+        case .swimming: return "exercise.type.swimming".localized
+        case .climbing: return "exercise.type.climbing".localized
+        case .dance: return "exercise.type.dance".localized
+        case .boxing: return "exercise.type.boxing".localized
+        case .crossfit: return "exercise.type.crossfit".localized
+        case .football: return "exercise.type.football".localized
+        case .basketball: return "exercise.type.basketball".localized
+        case .tennis: return "exercise.type.tennis".localized
+        case .golf: return "exercise.type.golf".localized
+        case .rowing: return "exercise.type.rowing".localized
+        case .skiing: return "exercise.type.skiing".localized
+        case .surfing: return "exercise.type.surfing".localized
+        case .hiking: return "exercise.type.hiking".localized
+        case .stretching: return "exercise.type.stretching".localized
+        case .volleyball: return "exercise.type.volleyball".localized
+        case .fencing: return "exercise.type.fencing".localized
+        case .other: return "exercise.type.other".localized
         }
     }
 

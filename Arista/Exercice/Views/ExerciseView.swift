@@ -18,7 +18,7 @@ struct ExerciseView: View {
             Button {
                 viewModel.openEditModal(for: nil)
             } label: {
-                CustomButtonLabel(iconLeading: "plus", message: "Ajouter", color: .blue)
+                CustomButtonLabel(iconLeading: "plus", message: "exercise.button.add".localized, color: .blue)
             }
         }
         .padding()

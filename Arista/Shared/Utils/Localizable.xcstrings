@@ -4,13 +4,19 @@
     "" : {
 
     },
+    " %@" : {
+
+    },
+    " %lld kcal" : {
+
+    },
+    " %lld min" : {
+
+    },
     "(%@)" : {
 
     },
     "/ %@" : {
-
-    },
-    "/ %lld kcal" : {
 
     },
     "%@ → %@" : {
@@ -24,26 +30,9 @@
       }
     },
     "%lld" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "%lld"
-          }
-        }
-      },
-      "shouldTranslate" : false
-    },
-    "%lld kcal brûlées" : {
 
     },
-    "%lld min" : {
+    "%lld " : {
 
     },
     "%lld%%" : {
@@ -55,488 +44,1181 @@
     "💪" : {
 
     },
-    "🔥" : {
-
-    },
     "00" : {
 
     },
-    "addExercice" : {
+    "auth.createProfile.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un profil"
+          }
+        }
+      }
+    },
+    "auth.createProfile.toggle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create a profile?"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Créer un profil ?"
+          }
+        }
+      }
+    },
+    "auth.login.button" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log in"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Se connecter"
+          }
+        }
+      }
+    },
+    "auth.welcome.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Welcome"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bienvenue"
+          }
+        }
+      }
+    },
+    "common.button.cancel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Annuler"
+          }
+        }
+      }
+    },
+    "common.button.delete" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Add Exercice"
+            "value" : "Delete"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ajouter Exercice"
+            "value" : "Supprimer"
           }
         }
       }
     },
-    "Annuler" : {
-
-    },
-    "Aucun cycle de sommeil" : {
-
-    },
-    "beginning%@" : {
+    "common.button.save" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Beginning %@"
+            "value" : "Save"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Début: %@"
+            "value" : "Sauvegarder"
           }
         }
       }
     },
-    "Bonjour" : {
-
-    },
-    "Calories" : {
-
-    },
-    "category" : {
+    "email" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Activity type: "
+            "value" : "Email"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Type d’activité: "
+            "value" : "Email"
           }
         }
       }
     },
-    "Confirmer la suppression" : {
-
-    },
-    "createProfile" : {
-
-    },
-    "createProfile.question" : {
+    "error.auth.emailAlreadyUsed" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Create Profile ?"
+            "value" : "This email address is already in use."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Créer un Profil ?"
+            "value" : "Cette adresse email est déjà utilisée."
           }
         }
       }
     },
-    "Depuis %@" : {
-
+    "error.auth.invalidCredentials" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid email or password. Please check your credentials."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Email ou mot de passe incorrect. Vérifiez vos identifiants."
+          }
+        }
+      }
     },
-    "Dernier sommeil" : {
-
-    },
-    "Durée moyenne" : {
-
-    },
-    "En cours..." : {
-
+    "error.auth.validationFailed" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please complete all required fields correctly."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez compléter correctement tous les champs requis."
+          }
+        }
+      }
     },
     "error.cleaningMessage" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error during cleaning"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur pendant le nettoyage"
-          }
-        }
-      }
-    },
-    "error.coreDataMessage" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Error CoreData: "
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Erreur CoreData"
-          }
-        }
-      }
+
     },
     "error.countMessage" : {
+
+    },
+    "error.date.endDateBeforeStartDate" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error during counting"
+            "value" : "Ending hour should be after starting hour"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur de comptage"
+            "value" : "L'heure de fin doit être après l'heure de début."
+          }
+        }
+      }
+    },
+    "error.exercise.failedToSave" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Unable to save the exercise."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Impossible d'enregistrer l'exercice."
+          }
+        }
+      }
+    },
+    "error.exercise.invalidData" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The provided data is invalid."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Les données fournies sont invalides."
+          }
+        }
+      }
+    },
+    "error.exercise.notFound" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise not found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'exercice demandé est introuvable."
           }
         }
       }
     },
     "error.migrationDescription" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Migration needed"
+            "value" : "The database needs to be migrated. Please update the app or contact support."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Migration nécessaire"
+            "value" : "La base de données nécessite une migration. Veuillez mettre à jour l'application ou contacter le support."
           }
         }
       }
     },
     "error.missingFileDescription" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Missing file"
+            "value" : "A required file is missing. Please reinstall the app."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Fichier manquant"
+            "value" : "Un fichier requis est manquant. Veuillez réinstaller l'application."
           }
         }
       }
     },
     "error.openStoreDescription" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Error storage / opening"
+            "value" : "Unable to open the database. The data may be corrupted."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur stockage / ouverture"
+            "value" : "Impossible d'ouvrir la base de données. Les données sont peut-être corrompues."
           }
         }
       }
     },
     "error.permissionDescription" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permission Denied"
+            "value" : "The app does not have permission to access the required files."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Permission refusée"
+            "value" : "L'application n'a pas la permission d'accéder aux fichiers requis."
+          }
+        }
+      }
+    },
+    "error.sleep.activeSessionExists" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "A sleep cycle is already in progress."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Un cycle de sommeil est déjà en cours."
+          }
+        }
+      }
+    },
+    "error.sleep.cycleNotFound" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No active sleep cycle found."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun cycle de sommeil actif trouvé."
+          }
+        }
+      }
+    },
+    "error.sleep.invalidDateInterval" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake up time must be after bedtime."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "L'heure de réveil doit être après l'heure de coucher."
+          }
+        }
+      }
+    },
+    "error.unexpected" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "An unexpected error occurred."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Une erreur inattendue s'est produite."
           }
         }
       }
     },
     "error.unknownDescription" : {
-      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Unknown Error"
+            "value" : "An unknown error occurred. Please try again."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Erreur inconnu"
+            "value" : "Une erreur inconnue s'est produite. Veuillez réessayer."
           }
         }
       }
     },
-    "error.UserFirstNameIsNil" : {
-      "extractionState" : "manual",
+    "error.user.invalidInput" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User.firstName should never be nil"
+            "value" : "The entered data is not valid."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User.firstName ne doit jamais être nil"
+            "value" : "Les données saisies ne sont pas valides."
           }
         }
       }
     },
-    "error.UserLastNameIsNil" : {
-      "extractionState" : "manual",
+    "error.user.noLoggedUser" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User.firstName should never be nil"
+            "value" : "No logged in user found."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User.lastName ne doit jamais être nil"
+            "value" : "Aucun utilisateur connecté trouvé."
           }
         }
       }
     },
-    "error.UserloginIsNil" : {
-      "extractionState" : "manual",
+    "error.user.userNotFound" : {
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User.login should never be nil"
+            "value" : "User not found."
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "User.login ne doit jamais être nil"
+            "value" : "Utilisateur introuvable."
           }
         }
       }
     },
     "exercices" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercices"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Exercices"
-          }
-        }
-      }
+
     },
-    "hello" : {
+    "exercise.button.add" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hello"
+            "value" : "Add"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Salut"
+            "value" : "Ajouter"
           }
         }
       }
     },
-    "Heure de coucher" : {
-
+    "exercise.history.caloriesBurned" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kcal burned"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "kcal brûlées"
+          }
+        }
+      }
     },
-    "Heure de réveil" : {
-
-    },
-    "Historique (7 derniers jours)" : {
-
-    },
-    "Historique 7 jours" : {
-
-    },
-    "hourStart" : {
+    "exercise.history.duration" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Hour start: "
+            "value" : ""
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Heure de début: "
+            "value" : ""
           }
         }
       }
     },
-    "intensity" : {
+    "exercise.history.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History (Last 7 days)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique (7 derniers jours)"
+          }
+        }
+      }
+    },
+    "exercise.modal.duration" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Intensity: "
+            "value" : "Duration"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Intensité: "
+            "value" : "Durée"
           }
         }
       }
     },
-    "Jour" : {
-
-    },
-    "length" : {
+    "exercise.modal.intensity" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Length( in minutes)"
+            "value" : "Intensity"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Durée( en minute)"
+            "value" : "Intensité"
           }
         }
       }
     },
-    "length%lldhours" : {
+    "exercise.modal.selectDate" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Select a date"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sélectionnez une date"
+          }
+        }
+      }
+    },
+    "exercise.modal.typeLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise type"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Type d'exercice"
+          }
+        }
+      }
+    },
+    "exercise.type.basketball" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Length: %lld hours"
+            "value" : "Basketball"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Durée: %lld heures"
+            "value" : "Basket"
           }
         }
       }
     },
-    "length%lldmin" : {
+    "exercise.type.boxing" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Length: %lld min"
+            "value" : "Boxing"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Durée: %lld min"
+            "value" : "Boxe"
           }
         }
       }
     },
-    "login" : {
-
-    },
-    "Modifier le profil" : {
-
-    },
-    "newExercice" : {
+    "exercise.type.cardio" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "New Exercice"
+            "value" : "Cardio"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Nouvel Exercice"
+            "value" : "Cardio"
           }
         }
       }
     },
-    "Objectif" : {
-
-    },
-    "Objectif atteint !" : {
-
-    },
-    "Objectif dépassé !" : {
-
-    },
-    "Objectifs quotidiens" : {
-
-    },
-    "profil" : {
+    "exercise.type.climbing" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil"
+            "value" : "Climbing"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Profil"
+            "value" : "Escalade"
           }
         }
       }
     },
-    "Profil" : {
-
+    "exercise.type.crossfit" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CrossFit"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "CrossFit"
+          }
+        }
+      }
     },
-    "Qualité moyenne" : {
-
+    "exercise.type.cycling" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cycling"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vélo"
+          }
+        }
+      }
     },
-    "Sélectionnez une date" : {
-
+    "exercise.type.dance" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dance"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Danse"
+          }
+        }
+      }
     },
-    "sleep" : {
+    "exercise.type.fencing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fencing"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Escrime"
+          }
+        }
+      }
+    },
+    "exercise.type.football" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Soccer"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Football"
+          }
+        }
+      }
+    },
+    "exercise.type.golf" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golf"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Golf"
+          }
+        }
+      }
+    },
+    "exercise.type.hiking" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hiking"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Randonnée"
+          }
+        }
+      }
+    },
+    "exercise.type.other" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Autre"
+          }
+        }
+      }
+    },
+    "exercise.type.pilates" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilates"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Pilates"
+          }
+        }
+      }
+    },
+    "exercise.type.rowing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Rowing"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aviron"
+          }
+        }
+      }
+    },
+    "exercise.type.running" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Running"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Course"
+          }
+        }
+      }
+    },
+    "exercise.type.skiing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Skiing"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ski"
+          }
+        }
+      }
+    },
+    "exercise.type.strength" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Strength"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Musculation"
+          }
+        }
+      }
+    },
+    "exercise.type.stretching" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stretching"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Étirements"
+          }
+        }
+      }
+    },
+    "exercise.type.surfing" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surfing"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Surf"
+          }
+        }
+      }
+    },
+    "exercise.type.swimming" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Swimming"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Natation"
+          }
+        }
+      }
+    },
+    "exercise.type.tennis" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tennis"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tennis"
+          }
+        }
+      }
+    },
+    "exercise.type.volleyball" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volleyball"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Volley-ball"
+          }
+        }
+      }
+    },
+    "exercise.type.walking" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Walking"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Marche"
+          }
+        }
+      }
+    },
+    "exercise.type.yoga" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yoga"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Yoga"
+          }
+        }
+      }
+    },
+    "firstName" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "First name"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Prénom"
+          }
+        }
+      }
+    },
+    "goal.badge.achieved" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal achieved!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif atteint !"
+          }
+        }
+      }
+    },
+    "goal.badge.exceeded" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal exceeded!"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif dépassé !"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.caloriesLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.dayLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Day"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Jour"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.goalLabel" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif"
+          }
+        }
+      }
+    },
+    "goal.calories.chart.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "7-Day History"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique 7 jours"
+          }
+        }
+      }
+    },
+    "goal.calories.goalSuffix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        }
+      }
+    },
+    "goal.calories.title" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
+    },
+    "goal.slider.goalPrefix" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        }
+      }
+    },
+    "goal.type.calories" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Calories"
+          }
+        }
+      }
+    },
+    "goal.type.sleep" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -552,47 +1234,533 @@
         }
       }
     },
-    "sleepHistory" : {
+    "goal.type.steps" : {
       "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Sleep history"
+            "value" : "Steps"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Historique de sommeil"
+            "value" : "Pas"
           }
         }
       }
     },
-    "Sommeil (7 derniers jours)" : {
-
-    },
-    "Sommeil en cours" : {
-
-    },
-    "Supprimer" : {
-
-    },
-    "Type d'exercice" : {
-
-    },
-    "welcome" : {
+    "goal.type.water" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Welcome !"
+            "value" : "Hydration"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Bienvenue !"
+            "value" : "Hydratation"
+          }
+        }
+      }
+    },
+    "lastName" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last name"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom"
+          }
+        }
+      }
+    },
+    "password" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mot de passe"
+          }
+        }
+      }
+    },
+    "profil" : {
+
+    },
+    "Qualité moyenne" : {
+
+    },
+    "sleep" : {
+
+    },
+    "sleep.button.end" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "End"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Terminer"
+          }
+        }
+      }
+    },
+    "sleep.button.start" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Start"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Commencer"
+          }
+        }
+      }
+    },
+    "sleep.history.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "History (Last 7 days)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Historique (7 derniers jours)"
+          }
+        }
+      }
+    },
+    "sleep.metrics.averageDuration" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average duration"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Durée moyenne"
+          }
+        }
+      }
+    },
+    "sleep.metrics.averageQuality" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Average quality"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualité moyenne"
+          }
+        }
+      }
+    },
+    "sleep.metrics.status.belowGoal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Below goal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En dessous de l'objectif"
+          }
+        }
+      }
+    },
+    "sleep.metrics.status.closeToGoal" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close to goal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proche de l'objectif"
+          }
+        }
+      }
+    },
+    "sleep.metrics.status.goalAchieved" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Goal achieved"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectif atteint"
+          }
+        }
+      }
+    },
+    "sleep.metrics.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep (Last 7 days)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sommeil (7 derniers jours)"
+          }
+        }
+      }
+    },
+    "sleep.modal.bedtime" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bedtime"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de coucher"
+          }
+        }
+      }
+    },
+    "sleep.modal.quality" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Quality"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Qualité"
+          }
+        }
+      }
+    },
+    "sleep.modal.wakeTime" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wake time"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heure de réveil"
+          }
+        }
+      }
+    },
+    "sleep.state.active" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep in progress"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sommeil en cours"
+          }
+        }
+      }
+    },
+    "sleep.state.inProgress" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "In progress..."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "En cours..."
+          }
+        }
+      }
+    },
+    "sleep.state.lastSleep" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Last sleep"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Dernier sommeil"
+          }
+        }
+      }
+    },
+    "sleep.state.noCycle" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "No sleep cycle"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aucun cycle de sommeil"
+          }
+        }
+      }
+    },
+    "sleep.state.since" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Since"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Depuis"
+          }
+        }
+      }
+    },
+    "user.deleteAccount.alert.message" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Are you sure you want to permanently delete your account? This action is irreversible."
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible."
+          }
+        }
+      }
+    },
+    "user.deleteAccount.alert.title" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirm Deletion"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Confirmer la suppression"
+          }
+        }
+      }
+    },
+    "user.edit.button.deleteAccount" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Delete Account"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Supprimer le compte"
+          }
+        }
+      }
+    },
+    "user.edit.button.logout" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Log Out"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Déconnexion"
+          }
+        }
+      }
+    },
+    "user.edit.navigationTitle" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Edit Profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Modifier le profil"
+          }
+        }
+      }
+    },
+    "user.edit.section.dailyGoals" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Daily Goals"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Objectifs quotidiens"
+          }
+        }
+      }
+    },
+    "user.edit.section.profile" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profile"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
+    },
+    "user.greeting" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Hello"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonjour"
+          }
+        }
+      }
+    },
+    "validation.email.invalid" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a valid email address"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez entrer une adresse email valide"
+          }
+        }
+      }
+    },
+    "validation.password.requirements" : {
+      "extractionState" : "stale",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Password must contain 8+ characters, uppercase, number, and special character"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le mot de passe doit contenir au moins 8 caractères, une majuscule, un chiffre et un caractère spécial"
           }
         }
       }

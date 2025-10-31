@@ -20,8 +20,8 @@ struct MainSleepCycleButton: View {
 
     private var title: String {
         switch viewModel.currentState {
-        case .none, .completed: return "Commencer"
-        case .active: return "Terminer"
+        case .none, .completed: return "sleep.button.start".localized
+        case .active: return "sleep.button.end".localized
         }
     }
 

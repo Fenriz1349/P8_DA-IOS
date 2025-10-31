@@ -35,11 +35,11 @@ final class ExerciseViewModel: ObservableObject {
         return "\(Int(Double(duration) * Double(intensity) * selectedType.calorieFactor)) kcal"
     }
 
-    var isValidData: Bool {
-        duration > 0 && intensity > 0
-    }
-
-    /// Initialisation
+    /// Initializes the ViewModel with required dependencies and validates the current user
+    /// - Parameters:
+    ///   - appCoordinator: The app coordinator managing navigation and user state
+    ///   - dataManager: Manager for exercise data operations (defaults to new instance)
+    /// - Throws: Error if no valid user is logged in
     init(appCoordinator: AppCoordinator, dataManager: ExerciceDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.exerciceDataManager = dataManager ?? ExerciceDataManager()
@@ -47,11 +47,13 @@ final class ExerciseViewModel: ObservableObject {
         reloadAll()
     }
 
+    /// Configures the toasty notification manager
+    /// - Parameter toastyManager: The ToastyManager instance to use for notifications
     func configureToasty(toastyManager: ToastyManager) {
         self.toastyManager = toastyManager
     }
 
-    /// Fetch
+    /// Reloads all exercises from the last 7 days for the current user
     func reloadAll() {
         do {
             let items = try exerciceDataManager.fetchLastWeekExercices(for: currentUser)
@@ -61,22 +63,19 @@ final class ExerciseViewModel: ObservableObject {
         }
     }
 
-    /// Validation
+    /// Validates the current form data (duration and intensity)
     func validateData() {
-        validationState = isValidData ? .valid : .invalid
+        validationState = (intensity >= 0 && intensity <= 10 && duration >= 0) ? .valid : .invalid
     }
 
+    /// Resets the validation state to neutral
     func resetValidation() {
         validationState = .neutral
     }
 
-    /// Create / Update
+    /// Saves the current exercise (creates new or updates existing)
     func saveExercise() {
         validateData()
-
-        guard isValidData else {
-            return
-        }
 
         do {
             if let selected = selectedExercice {
@@ -105,7 +104,8 @@ final class ExerciseViewModel: ObservableObject {
         }
     }
 
-    /// Delete
+    /// Deletes a specific exercise
+    /// - Parameter exercice: The exercise display model to delete
     func deleteExercise(_ exercice: ExerciceDisplay) {
         do {
             let target = try  exerciceDataManager.fetchExercice(by: exercice.id)
@@ -116,7 +116,8 @@ final class ExerciseViewModel: ObservableObject {
         }
     }
 
-    /// Modal handling
+    /// Opens the edit modal for creating a new exercise or editing an existing one
+    /// - Parameter exercice: The exercise to edit, or nil to create a new one
     func openEditModal(for exercice: ExerciceDisplay? = nil) {
         selectedExercice = exercice
         if let exercice {

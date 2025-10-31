@@ -12,7 +12,7 @@ struct SleepMetricsModule: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Sommeil (7 derniers jours)")
+            Text("sleep.metrics.title".localized)
                 .font(.caption)
                 .fontWeight(.semibold)
                 .foregroundColor(.secondary)
@@ -23,31 +23,29 @@ struct SleepMetricsModule: View {
                         Image(systemName: "moon.fill")
                             .font(.caption)
                             .foregroundColor(.purple)
-                        Text("Durée moyenne")
+                        Text("sleep.metrics.averageDuration".localized)
                             .font(.caption2)
                             .foregroundColor(.secondary)
                     }
 
                     HStack(alignment: .firstTextBaseline, spacing: 4) {
                         Text(metrics.formattedAverageDuration)
-                            .font(.title2)
+                            .font(.caption)
                             .fontWeight(.bold)
                             .foregroundColor(.purple)
                         Text("/ \(metrics.formattedGoal)")
                             .font(.caption)
                             .foregroundColor(.secondary)
                     }
-
-                    HStack(spacing: 4) {
-                        Text(metrics.statusIcon)
-                            .font(.caption)
-                        Text(metrics.statusText)
-                            .font(.caption2)
-                            .foregroundColor(metrics.progressColor)
-                    }
                 }
 
-                Spacer()
+                HStack(spacing: 4) {
+                    Text(metrics.statusIcon)
+                        .font(.caption)
+                    Text(metrics.statusText)
+                        .font(.caption2)
+                        .foregroundColor(metrics.progressColor)
+                }
 
                 VStack(alignment: .center, spacing: 4) {
                     Text("Qualité moyenne")

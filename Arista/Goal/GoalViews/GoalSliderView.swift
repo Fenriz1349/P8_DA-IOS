@@ -44,8 +44,9 @@ struct GoalSliderView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
-                Text(type.icon)
+                Image(systemName: type.iconName)
                     .font(.title3)
+                    .foregroundColor(type.color)
                 Text(type.title)
                     .font(.subheadline)
                     .fontWeight(.semibold)
@@ -53,7 +54,10 @@ struct GoalSliderView: View {
                 Text(type.formatted(Int(current)))
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(progress >= 1.0 ? .green : type.color)
-                Text("/ \(type.formatted(goal))")
+                Text("goal.slider.goalPrefix")
+                    .font(.caption)
+                    .foregroundColor(.secondary)
+                    + Text(" \(type.formatted(goal))")
                     .font(.caption)
                     .foregroundColor(.secondary)
                 GoalBadge(progress: progress)

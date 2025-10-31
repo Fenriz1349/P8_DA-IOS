@@ -13,7 +13,8 @@ struct GoalStepper: View {
 
     var body: some View {
         HStack {
-            Text(type.icon)
+            Image(systemName: type.iconName)
+                .foregroundColor(type.color)
             Text(type.title)
                 .foregroundColor(type.color)
             Spacer()

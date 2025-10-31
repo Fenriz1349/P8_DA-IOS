@@ -12,6 +12,7 @@ struct DayCalories: Identifiable {
     let date: Date
     let calories: Int
 
+    /// Returns the abbreviated day name (e.g., "Lun", "Mar")
     var dayLabel: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "EEE"
@@ -19,6 +20,7 @@ struct DayCalories: Identifiable {
         return formatter.string(from: date).capitalized
     }
 
+    /// Returns the date in short format (e.g., "01/12")
     var shortDate: String {
         let formatter = DateFormatter()
         formatter.dateFormat = "dd/MM"

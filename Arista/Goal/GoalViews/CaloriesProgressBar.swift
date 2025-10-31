@@ -22,16 +22,20 @@ struct CaloriesProgressBar: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 8) {
             HStack(alignment: .firstTextBaseline, spacing: 6) {
-                Text("🔥")
+                Image(systemName: "flame.fill")
                     .font(.title3)
-                Text("Calories")
+                    .foregroundColor(.orange)
+                Text("goal.calories.title")
                     .font(.subheadline)
                     .fontWeight(.semibold)
                     .foregroundColor(.primary)
                 Text("\(current)")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(progress >= 1.0 ? .green : .orange)
-                Text("/ \(goal) kcal")
+                Text("goal.calories.goalSuffix")
+                    .font(.subheadline)
+                    .foregroundColor(.secondary)
+                    + Text(" \(goal) kcal")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 GoalBadge(progress: progress)
