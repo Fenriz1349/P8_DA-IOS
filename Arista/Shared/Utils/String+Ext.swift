@@ -13,11 +13,4 @@ extension String {
     var localized: String {
         String(localized: String.LocalizationValue(self))
     }
-
-    /// Returns the localized version of the string with interpolated parameters
-    /// - Parameter arguments: Values to interpolate in the localized string
-    /// - Returns: Localized string with parameters replaced
-    func localized(with arguments: CVarArg...) -> String {
-        String(format: self.localized, arguments: arguments)
-    }
 }

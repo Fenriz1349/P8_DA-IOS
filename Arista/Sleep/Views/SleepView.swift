@@ -21,7 +21,9 @@ struct SleepView: View {
             HStack {
                 CurrentStateSection(viewModel: viewModel)
                 if viewModel.currentState.isActive {
-                    GradePicker(title: viewModel.title, quality: $viewModel.selectedQuality)
+                    GradePicker(title: viewModel.title,
+                                isInLine: false,
+                                quality: $viewModel.selectedQuality)
                 }
             }
             SleepHistorySection(viewModel: viewModel)

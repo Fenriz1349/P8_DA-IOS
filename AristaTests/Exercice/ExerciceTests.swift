@@ -73,7 +73,7 @@ final class ExerciceTests: XCTestCase {
 
         // Then
         XCTAssertEqual(display.exerciceIntensity.value, 9)
-        XCTAssertEqual(display.intensityDescription, "Excellente")
+        XCTAssertEqual(display.intensityDescription, "grade.excellent".localized)
     }
 
     func test_caloriesBurned_shouldScaleWithTypeAndIntensity() {

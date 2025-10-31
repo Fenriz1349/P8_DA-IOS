@@ -2,22 +2,110 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : ""
+          }
+        }
+      }
     },
     " %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     " %lld kcal" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kcal"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld kcal"
+          }
+        }
+      }
     },
     " %lld min" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld min"
+          }
+        }
+      }
     },
     "(%@)" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%@)"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "(%@)"
+          }
+        }
+      }
+    },
+    "/" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/"
+          }
+        }
+      }
     },
     "/ %@" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/ %@"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "/ %@"
+          }
+        }
+      }
     },
     "%@ → %@" : {
       "localizations" : {
@@ -26,26 +114,98 @@
             "state" : "new",
             "value" : "%1$@ → %2$@"
           }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ → %2$@"
+          }
         }
       }
     },
     "%lld" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld"
+          }
+        }
+      }
     },
     "%lld " : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld "
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld "
+          }
+        }
+      }
     },
     "%lld%%" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%lld%%"
+          }
+        }
+      }
     },
     "🎉" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "🎉"
+          }
+        }
+      }
     },
     "💪" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "💪"
+          }
+        }
+      }
     },
     "00" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "00"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "00"
+          }
+        }
+      }
     },
     "auth.createProfile.button" : {
       "localizations" : {
@@ -128,7 +288,7 @@
       }
     },
     "common.button.delete" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -145,7 +305,7 @@
       }
     },
     "common.button.save" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -162,7 +322,7 @@
       }
     },
     "email" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -227,13 +387,39 @@
       }
     },
     "error.cleaningMessage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error during cleaning"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur pendant le comptage"
+          }
+        }
+      }
     },
     "error.countMessage" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Error during counting"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Erreur pendant le comptage"
+          }
+        }
+      }
     },
     "error.date.endDateBeforeStartDate" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -250,7 +436,7 @@
       }
     },
     "error.exercise.failedToSave" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -267,7 +453,7 @@
       }
     },
     "error.exercise.invalidData" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -284,7 +470,7 @@
       }
     },
     "error.exercise.notFound" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -365,7 +551,7 @@
       }
     },
     "error.sleep.activeSessionExists" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -382,7 +568,7 @@
       }
     },
     "error.sleep.cycleNotFound" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -399,7 +585,7 @@
       }
     },
     "error.sleep.invalidDateInterval" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -416,7 +602,7 @@
       }
     },
     "error.unexpected" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -496,11 +682,8 @@
         }
       }
     },
-    "exercices" : {
-
-    },
     "exercise.button.add" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -532,23 +715,6 @@
         }
       }
     },
-    "exercise.history.duration" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : ""
-          }
-        }
-      }
-    },
     "exercise.history.title" : {
       "localizations" : {
         "en" : {
@@ -566,7 +732,7 @@
       }
     },
     "exercise.modal.duration" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -583,7 +749,7 @@
       }
     },
     "exercise.modal.intensity" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -632,7 +798,7 @@
       }
     },
     "exercise.type.basketball" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -649,7 +815,7 @@
       }
     },
     "exercise.type.boxing" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -666,7 +832,7 @@
       }
     },
     "exercise.type.cardio" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -683,7 +849,7 @@
       }
     },
     "exercise.type.climbing" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -700,7 +866,7 @@
       }
     },
     "exercise.type.crossfit" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -717,7 +883,7 @@
       }
     },
     "exercise.type.cycling" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -734,7 +900,7 @@
       }
     },
     "exercise.type.dance" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -751,7 +917,7 @@
       }
     },
     "exercise.type.fencing" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -768,7 +934,7 @@
       }
     },
     "exercise.type.football" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -785,7 +951,7 @@
       }
     },
     "exercise.type.golf" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -802,7 +968,7 @@
       }
     },
     "exercise.type.hiking" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -819,7 +985,7 @@
       }
     },
     "exercise.type.other" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -836,7 +1002,7 @@
       }
     },
     "exercise.type.pilates" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -853,7 +1019,7 @@
       }
     },
     "exercise.type.rowing" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -870,7 +1036,7 @@
       }
     },
     "exercise.type.running" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -887,7 +1053,7 @@
       }
     },
     "exercise.type.skiing" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -904,7 +1070,7 @@
       }
     },
     "exercise.type.strength" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -921,7 +1087,7 @@
       }
     },
     "exercise.type.stretching" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -938,7 +1104,7 @@
       }
     },
     "exercise.type.surfing" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -955,7 +1121,7 @@
       }
     },
     "exercise.type.swimming" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -972,7 +1138,7 @@
       }
     },
     "exercise.type.tennis" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -989,7 +1155,7 @@
       }
     },
     "exercise.type.volleyball" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1006,7 +1172,7 @@
       }
     },
     "exercise.type.walking" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1023,7 +1189,7 @@
       }
     },
     "exercise.type.yoga" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1040,7 +1206,7 @@
       }
     },
     "firstName" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1152,22 +1318,6 @@
         }
       }
     },
-    "goal.calories.goalSuffix" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "/"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "/"
-          }
-        }
-      }
-    },
     "goal.calories.title" : {
       "localizations" : {
         "en" : {
@@ -1184,24 +1334,8 @@
         }
       }
     },
-    "goal.slider.goalPrefix" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "/"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "/"
-          }
-        }
-      }
-    },
     "goal.type.calories" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1218,7 +1352,7 @@
       }
     },
     "goal.type.sleep" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1235,7 +1369,7 @@
       }
     },
     "goal.type.steps" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1252,7 +1386,7 @@
       }
     },
     "goal.type.water" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1268,8 +1402,93 @@
         }
       }
     },
+    "grade.excellent" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excellent"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Excellente"
+          }
+        }
+      }
+    },
+    "grade.fair" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fair"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Correcte"
+          }
+        }
+      }
+    },
+    "grade.good" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Good"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bonne"
+          }
+        }
+      }
+    },
+    "grade.poor" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Poor"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mauvaise"
+          }
+        }
+      }
+    },
+    "grade.ungraded" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ungraded"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Non évaluée"
+          }
+        }
+      }
+    },
     "lastName" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1286,7 +1505,7 @@
       }
     },
     "password" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1302,17 +1521,8 @@
         }
       }
     },
-    "profil" : {
-
-    },
-    "Qualité moyenne" : {
-
-    },
-    "sleep" : {
-
-    },
     "sleep.button.end" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1329,7 +1539,7 @@
       }
     },
     "sleep.button.start" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1346,7 +1556,7 @@
       }
     },
     "sleep.history.title" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1363,7 +1573,7 @@
       }
     },
     "sleep.metrics.averageDuration" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1380,7 +1590,6 @@
       }
     },
     "sleep.metrics.averageQuality" : {
-      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1397,7 +1606,7 @@
       }
     },
     "sleep.metrics.status.belowGoal" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1414,7 +1623,7 @@
       }
     },
     "sleep.metrics.status.closeToGoal" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1431,7 +1640,7 @@
       }
     },
     "sleep.metrics.status.goalAchieved" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1448,7 +1657,7 @@
       }
     },
     "sleep.metrics.title" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1465,7 +1674,7 @@
       }
     },
     "sleep.modal.bedtime" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1482,7 +1691,7 @@
       }
     },
     "sleep.modal.quality" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1499,7 +1708,7 @@
       }
     },
     "sleep.modal.wakeTime" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1516,7 +1725,7 @@
       }
     },
     "sleep.state.active" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1533,7 +1742,7 @@
       }
     },
     "sleep.state.inProgress" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1550,7 +1759,7 @@
       }
     },
     "sleep.state.lastSleep" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1567,7 +1776,7 @@
       }
     },
     "sleep.state.noCycle" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1584,7 +1793,7 @@
       }
     },
     "sleep.state.since" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1596,6 +1805,54 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Depuis"
+          }
+        }
+      }
+    },
+    "tabbar.exercices" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercices"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercices"
+          }
+        }
+      }
+    },
+    "tabbar.profil" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Profil"
+          }
+        }
+      }
+    },
+    "tabbar.sleep" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sleep"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sommeil"
           }
         }
       }
@@ -1617,7 +1874,7 @@
       }
     },
     "user.deleteAccount.alert.title" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1634,7 +1891,7 @@
       }
     },
     "user.edit.button.deleteAccount" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1651,7 +1908,7 @@
       }
     },
     "user.edit.button.logout" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1732,7 +1989,7 @@
       }
     },
     "validation.email.invalid" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1749,7 +2006,7 @@
       }
     },
     "validation.password.requirements" : {
-      "extractionState" : "stale",
+      "extractionState" : "manual",
       "localizations" : {
         "en" : {
           "stringUnit" : {

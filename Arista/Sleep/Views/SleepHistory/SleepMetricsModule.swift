@@ -48,7 +48,7 @@ struct SleepMetricsModule: View {
                 }
 
                 VStack(alignment: .center, spacing: 4) {
-                    Text("Qualité moyenne")
+                    Text("sleep.metrics.averageQuality")
                         .font(.caption2)
                         .foregroundColor(.secondary)
 

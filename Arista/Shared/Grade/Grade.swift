@@ -12,11 +12,11 @@ struct Grade: Equatable {
 
     var description: String {
         switch value {
-        case 1...3: return "Mauvaise"
-        case 4...6: return "Correcte"
-        case 7...8: return "Bonne"
-        case 9...10: return "Excellente"
-        default: return "Non évaluée"
+        case 1...3: return "grade.poor".localized
+        case 4...6: return "grade.fair".localized
+        case 7...8: return "grade.good".localized
+        case 9...10: return "grade.excellent".localized
+        default: return "grade.ungraded".localized
         }
     }
 

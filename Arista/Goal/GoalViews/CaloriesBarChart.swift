@@ -72,7 +72,7 @@ struct CaloriesBarChart: View {
                     }
                 }
             }
-            .frame(height: 200)
+            .frame(height: 150)
             .padding(.horizontal)
         }
         .padding(.vertical)

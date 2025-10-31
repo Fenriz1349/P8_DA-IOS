@@ -17,21 +17,21 @@ struct ContentView: View {
                     if let accountVM = try? appCoordinator.makeUserViewModel() {
                         UserView(viewModel: accountVM)
                             .tabItem {
-                                Label("profil", systemImage: "person")
+                                Label("tabbar.profil", systemImage: "person")
                             }
                     }
 
                     if let exerciceVM = try? appCoordinator.makeExerciceViewModel() {
                         ExerciseView(viewModel: exerciceVM)
                             .tabItem {
-                                Label("exercices", systemImage: "flame")
+                                Label("tabbar.exercices", systemImage: "flame")
                             }
                     }
 
                     if let sleepVM = try? appCoordinator.makeSleepViewModel() {
                         SleepView(viewModel: sleepVM)
                             .tabItem {
-                                Label("sleep", systemImage: "moon")
+                                Label("tabbar.sleep", systemImage: "moon")
                             }
                     }
                 }

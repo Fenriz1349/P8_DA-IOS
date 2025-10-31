@@ -9,14 +9,16 @@ import SwiftUI
 
 struct GradePicker: View {
     let title: String
+    var isInLine: Bool = true
     @Binding var quality: Int
 
     var body: some View {
         let grade = Grade(quality)
 
         VStack(spacing: 8) {
+            if !isInLine { Text(title) }
             HStack {
-                Text(title)
+                if isInLine { Text(title) }
                 Text(grade.value.description)
                     .foregroundColor(grade.color)
                 Text(grade.description)
@@ -35,5 +37,6 @@ struct GradePicker: View {
 }
 
 #Preview {
+    GradePicker(title: "Qualité", isInLine: false, quality: .constant(7))
     GradePicker(title: "Qualité", quality: .constant(7))
 }
