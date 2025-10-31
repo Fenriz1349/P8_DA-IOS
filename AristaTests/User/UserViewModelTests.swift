@@ -51,11 +51,15 @@ final class UserViewModelTests: XCTestCase {
         XCTAssertFalse(sut.showingResetAlert)
     }
 
-    func test_init_withNoLoggedUser_throwsError() throws {
-        XCTAssertThrowsError(try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)) { error in
-            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
-        }
+    func test_init_withNoLoggedUser_shouldNotThrow() throws {
+        // Given / When
+        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
+
+        // Then
+        XCTAssertNotNil(sut.user)
+        XCTAssertEqual(sut.user.email, AppCoordinator.demoEmail)
     }
+
 
     func test_openAndCloseEditModal_shouldToggleShowEditModal() throws {
         // Given

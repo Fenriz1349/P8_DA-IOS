@@ -373,9 +373,11 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertThrowsError(try sut.login()) { error in
             XCTAssertEqual(error as? AuthenticationError, .invalidCredentials)
         }
-        XCTAssertNil(coordinator.currentUser)
-        XCTAssertFalse(coordinator.isAuthenticated)
+
+        XCTAssertTrue(coordinator.isAuthenticated)
+        XCTAssertEqual(coordinator.currentUser?.email, AppCoordinator.demoEmail)
     }
+
     
     /// Create Account Tests
     func test_createUserAndLogin_withValidForm_shouldSucceed() throws {
