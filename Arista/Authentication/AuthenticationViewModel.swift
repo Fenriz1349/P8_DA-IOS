@@ -93,10 +93,13 @@ final class AuthenticationViewModel: ObservableObject {
     }
 
     /// Validates email format
-    var isMailValid: Bool { Validators.isValidEmail(email) }
+    var isMailValid: Bool { return Validators.isValidEmail(email) }
 
     /// Validates password strength
-    var isPasswordValid: Bool { Validators.isStrongPassword(password) }
+    var isPasswordValid: Bool {
+        guard email != AppCoordinator.demoEmail else { return true }
+        return Validators.isStrongPassword(password)
+    }
 
     /// Validates first name format
     var isFirstNameValid: Bool { ExampleValidationRules.validateFirstName(firstName) }
