@@ -155,6 +155,7 @@
 		6816D55E2EA9FC6000ED8D20 /* IntExtensionsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IntExtensionsTests.swift; sourceTree = "<group>"; };
 		6816D5612EAA016200ED8D20 /* SleepCycleTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCycleTests.swift; sourceTree = "<group>"; };
 		6816D5632EAA024C00ED8D20 /* ExerciceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciceTests.swift; sourceTree = "<group>"; };
+		681CB9292EB4C7C000C7B1A9 /* Arista.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arista.xctestplan; sourceTree = "<group>"; };
 		6820CDDC2EAA467100A7D74A /* Goal.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Goal.swift; sourceTree = "<group>"; };
 		6820CDDF2EAA471400A7D74A /* GoalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataManager.swift; sourceTree = "<group>"; };
 		6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
@@ -245,6 +246,7 @@
 		53E587242B235E8F00E4EF99 = {
 			isa = PBXGroup;
 			children = (
+				681CB9292EB4C7C000C7B1A9 /* Arista.xctestplan */,
 				53E5872F2B235E8F00E4EF99 /* Arista */,
 				53E587452B235E9000E4EF99 /* AristaTests */,
 				686D568E2E7447110088AD98 /* Frameworks */,
