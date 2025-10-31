@@ -47,6 +47,10 @@ struct AuthenticationView: View {
             .onChange(of: viewModel.password) {
                 viewModel.onFieldChange(.password)
             }
+            if !viewModel.creationMode {
+                Text("auth.demoLogin")
+                    .font(.caption)
+            }
 
             if viewModel.creationMode {
                 CustomTextField.nameField(

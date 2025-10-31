@@ -239,6 +239,23 @@
         }
       }
     },
+    "auth.demoLogin" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Demo account is Email: demo@arista.app, Password: 1234"
+          }
+        },
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Le compte de demo est  Email: demo@arista.app, Password: 1234"
+          }
+        }
+      }
+    },
     "auth.login.button" : {
       "localizations" : {
         "en" : {
