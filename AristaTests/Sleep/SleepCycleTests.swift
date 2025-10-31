@@ -106,6 +106,6 @@ final class SleepCycleTests: XCTestCase {
 
         // Then
         XCTAssertEqual(grade.value, 9)
-        XCTAssertEqual(display.qualityDescription, "Excellente")
+        XCTAssertEqual(display.qualityDescription, "grade.excellent".localized)
     }
 }

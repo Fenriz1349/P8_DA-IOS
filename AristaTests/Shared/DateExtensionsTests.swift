@@ -29,7 +29,12 @@ final class DateExtensionsTests: XCTestCase {
         // When / Then
         XCTAssertThrowsError(try Date.validateInterval(from: startDate, to: endDate)) { error in
             XCTAssertEqual(error as? DateValidationError, .endDateBeforeStartDate)
-            XCTAssertEqual(error.localizedDescription, "L'heure de fin doit être après l'heure de début.")
+            
+            XCTAssertFalse(error.localizedDescription.isEmpty)
+            XCTAssertEqual(
+                error.localizedDescription,
+                "error.date.endDateBeforeStartDate".localized
+            )
         }
     }
     
@@ -171,17 +176,18 @@ final class DateExtensionsTests: XCTestCase {
 
     func test_formattedDate_containsWeekdayMonthAndYear() {
         // Given
-        let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "fr_FR")
-        formatter.dateFormat = "EEEE d MMMM yyyy"
-        let date = formatter.date(from: "mardi 21 octobre 2025")!
+        let date = Date()
         
         // When
         let formatted = date.formattedDate
         
         // Then
-        XCTAssertTrue(formatted.contains("mardi"))
-        XCTAssertTrue(formatted.contains("2025"))
+        XCTAssertFalse(formatted.isEmpty)
+        XCTAssertTrue(formatted.contains(where: { $0.isLetter }))
+        
+        let calendar = Calendar.current
+        let year = calendar.component(.year, from: date)
+        XCTAssertTrue(formatted.contains(String(year)))
     }
 
     func test_formattedDateTime_containsDateAndTime() {

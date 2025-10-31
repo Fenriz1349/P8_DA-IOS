@@ -32,7 +32,7 @@ struct CaloriesProgressBar: View {
                 Text("\(current)")
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(progress >= 1.0 ? .green : .orange)
-                Text("goal.calories.goalSuffix")
+                Text("/")
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                     + Text(" \(goal) kcal")

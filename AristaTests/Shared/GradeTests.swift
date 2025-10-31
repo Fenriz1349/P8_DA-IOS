@@ -17,11 +17,11 @@ final class GradeTests: XCTestCase {
     }
 
     func test_description_forDifferentValues() {
-        XCTAssertEqual(Grade(0).description, "Non évaluée")
-        XCTAssertEqual(Grade(2).description, "Mauvaise")
-        XCTAssertEqual(Grade(5).description, "Correcte")
-        XCTAssertEqual(Grade(7).description, "Bonne")
-        XCTAssertEqual(Grade(10).description, "Excellente")
+        XCTAssertEqual(Grade(0).description, "grade.ungraded".localized)
+        XCTAssertEqual(Grade(2).description, "grade.poor".localized)
+        XCTAssertEqual(Grade(5).description, "grade.fair".localized)
+        XCTAssertEqual(Grade(7).description, "grade.good".localized)
+        XCTAssertEqual(Grade(10).description, "grade.excellent".localized)
     }
 
     func test_color_forDifferentValues() {

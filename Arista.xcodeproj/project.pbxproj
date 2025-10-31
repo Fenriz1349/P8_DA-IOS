@@ -192,8 +192,6 @@
 		689510072E60473600461030 /* UserDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManager.swift; sourceTree = "<group>"; };
 		6895100A2E60711600461030 /* UserTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserTests.swift; sourceTree = "<group>"; };
 		6895100D2E607DF600461030 /* UserDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDataManagerTests.swift; sourceTree = "<group>"; };
-		6895100F2E618C5700461030 /* Arista.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arista.xctestplan; sourceTree = "<group>"; };
-		68C6C9712E618E2A00108FE9 /* Arista.xctestplan */ = {isa = PBXFileReference; lastKnownFileType = text; path = Arista.xctestplan; sourceTree = "<group>"; };
 		68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBuilder.swift; sourceTree = "<group>"; };
 		68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBuilderTests.swift; sourceTree = "<group>"; };
 		68C6C9762E61D3E000108FE9 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
@@ -247,8 +245,6 @@
 		53E587242B235E8F00E4EF99 = {
 			isa = PBXGroup;
 			children = (
-				68C6C9712E618E2A00108FE9 /* Arista.xctestplan */,
-				6895100F2E618C5700461030 /* Arista.xctestplan */,
 				53E5872F2B235E8F00E4EF99 /* Arista */,
 				53E587452B235E9000E4EF99 /* AristaTests */,
 				686D568E2E7447110088AD98 /* Frameworks */,

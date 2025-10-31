@@ -30,9 +30,7 @@ struct ExerciseHistoryRow: View {
                     .font(.subheadline)
                     .foregroundColor(.secondary)
                 HStack {
-                    Text("exercise.history.duration".localized)
-                        .font(.headline)
-                        + Text(" \(exercise.duration) min")
+                        Text(" \(exercise.duration) min")
                         .font(.headline)
                     Image(systemName: "arrow.right")
                     Text("\(exercise.caloriesBurned) ")
