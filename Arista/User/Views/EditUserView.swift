@@ -45,13 +45,15 @@ struct EditUserView: View {
                         }
 
                         HStack(spacing: 12) {
-                            Button(role: .destructive) {
-                                viewModel.showingResetAlert = true
-                            } label: {
-                                CustomButtonLabel(
-                                    message: "user.edit.button.deleteAccount".localized,
-                                    color: .red
-                                )
+                            if viewModel.userDisplay.email != AppCoordinator.demoEmail {
+                                Button(role: .destructive) {
+                                    viewModel.showingResetAlert = true
+                                } label: {
+                                    CustomButtonLabel(
+                                        message: "user.edit.button.deleteAccount".localized,
+                                        color: .red
+                                    )
+                                }
                             }
 
                             Button(role: .destructive, action: viewModel.logout) {
