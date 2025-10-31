@@ -15,10 +15,10 @@ enum GoalType: CaseIterable {
 
     var title: String {
         switch self {
-        case .water: return "Hydratation"
-        case .sleep: return "Sommeil"
-        case .calories: return "Calories"
-        case .steps: return "Pas"
+        case .water: return "goal.type.water".localized
+        case .sleep: return "goal.type.sleep".localized
+        case .calories: return "goal.type.calories".localized
+        case .steps: return "goal.type.steps".localized
         }
     }
 
@@ -31,12 +31,12 @@ enum GoalType: CaseIterable {
         }
     }
 
-    var icon: String {
+    var iconName: String {
         switch self {
-        case .water: return "💧"
-        case .sleep: return "😴"
-        case .calories: return "🔥"
-        case .steps: return "👟"
+        case .water: return "drop.fill"
+        case .sleep: return "moon.zzz.fill"
+        case .calories: return "flame.fill"
+        case .steps: return "figure.walk"
         }
     }
 

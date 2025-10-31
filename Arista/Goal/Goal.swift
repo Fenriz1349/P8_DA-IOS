@@ -21,6 +21,8 @@ extension Goal {
         return NSFetchRequest<Goal>(entityName: "Goal")
     }
 
+    /// Converts the Goal entity to a GoalDisplay view model
+    /// - Returns: GoalDisplay instance with formatted goal data including related exercises and sleep cycles
     func toDisplay() -> GoalDisplay {
         let userExercises = user.exercices?.map { $0.toDisplay } ?? []
         let userSleepCycles = user.sleepCycles?.map { $0.toDisplay } ?? []
@@ -35,11 +37,15 @@ extension Goal {
         )
     }
 
+    /// Converts an array of Goal entities to an array of GoalDisplay view models
+    /// - Parameter goals: Array of Goal entities to convert
+    /// - Returns: Array of GoalDisplay instances
     static func mapToDisplay(from goals: [Goal]) -> [GoalDisplay] {
         goals.map { $0.toDisplay() }
     }
 }
 
+/// This struct is used as an overlay to always display the fresh value from CoreData
 struct GoalDisplay: Identifiable, Equatable {
     let id: UUID
     let date: Date
@@ -81,6 +87,8 @@ struct GoalDisplay: Identifiable, Equatable {
 }
 
 extension GoalDisplay {
+    /// Converts the GoalDisplay to a DayCalories instance
+    /// - Returns: DayCalories instance with date and total calories
     func toDayCalories() -> DayCalories {
         DayCalories(
             date: date,
@@ -90,6 +98,8 @@ extension GoalDisplay {
 }
 
 extension Array where Element == GoalDisplay {
+    /// Converts an array of GoalDisplay to an array of DayCalories
+    /// - Returns: Array of DayCalories instances
     func toDayCalories() -> [DayCalories] {
         self.map { $0.toDayCalories() }
     }

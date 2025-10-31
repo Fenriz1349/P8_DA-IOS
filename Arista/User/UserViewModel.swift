@@ -22,7 +22,7 @@ final class UserViewModel: ObservableObject {
     /// UI / Published Properties
     @Published var showingResetAlert = false
     @Published var showEditModal = false
-    let alertMessage = "Êtes-vous sûr de vouloir supprimer définitivement votre compte ? Cette action est irréversible."
+    let alertMessage = String(localized: "user.deleteAccount.alert.message")
 
     /// Edit form fields
     @Published var firstName = ""
@@ -112,7 +112,13 @@ final class UserViewModel: ObservableObject {
         )
     }
 
-    /// Initialization
+    /// Initializes the ViewModel with required dependencies and validates the current user
+    /// - Parameters:
+    ///   - appCoordinator: The app coordinator managing navigation and user state
+    ///   - dataManager: Manager for user data operations
+    ///   - goalDataManager: Manager for goal data operations
+    ///   - sleepDataManager: Manager for sleep data operations
+    /// - Throws: Error if no valid user is logged in
     init(
         appCoordinator: AppCoordinator,
         dataManager: UserDataManager? = nil,
@@ -128,10 +134,13 @@ final class UserViewModel: ObservableObject {
         loadSleepData()
     }
 
+    /// Configures the toasty notification manager
+    /// - Parameter toastyManager: The ToastyManager instance to use for notifications
     func configureToasty(toastyManager: ToastyManager) {
         self.toastyManager = toastyManager
     }
 
+    /// Loads user data into the edit form fields
     func loadUserForEditing() {
         firstName = user.firstName
         lastName = user.lastName
@@ -141,6 +150,7 @@ final class UserViewModel: ObservableObject {
         stepsGoal = Int(user.stepsGoal)
     }
 
+    /// Loads today's goal data (water and steps progress)
     func loadTodayGoal() {
         do {
             if let todayGoal = try goalDataManager.fetchGoal(for: user) {
@@ -152,6 +162,7 @@ final class UserViewModel: ObservableObject {
         }
     }
 
+    /// Loads recent sleep cycles data for the user
     func loadSleepData() {
         do {
             let cycles = try sleepDataManager.fetchRecentSleepCycles(for: user)
@@ -162,11 +173,13 @@ final class UserViewModel: ObservableObject {
         }
     }
 
+    /// Refreshes all user-related data (goals and sleep)
     func refreshData() {
         loadTodayGoal()
         loadSleepData()
     }
 
+    /// Saves changes made in the edit form to the user profile
     func saveChanges() {
         do {
             let builder = UserUpdateBuilder(user: user, dataManager: dataManager)
@@ -185,15 +198,18 @@ final class UserViewModel: ObservableObject {
         }
     }
 
+    /// Opens the edit profile modal and loads current user data
     func openEditModal() {
         loadUserForEditing()
         showEditModal = true
     }
 
+    /// Closes the edit profile modal
     func closeEditModal() {
         showEditModal = false
     }
 
+    /// Logs out the current user
     func logout() {
         do {
             try appCoordinator.logout()
@@ -202,6 +218,7 @@ final class UserViewModel: ObservableObject {
         }
     }
 
+    /// Deletes the current user's account permanently
     func deleteAccount() {
         do {
             try appCoordinator.deleteCurrentUser()
@@ -210,7 +227,7 @@ final class UserViewModel: ObservableObject {
         }
     }
 
-    /// Goal Updates
+    /// Updates the water consumption for the current day
     private func updateWater() {
         Task {
             do {
@@ -221,6 +238,7 @@ final class UserViewModel: ObservableObject {
         }
     }
 
+    /// Updates the steps count for the current day
     private func updateSteps() {
         Task {
             do {

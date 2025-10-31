@@ -13,7 +13,7 @@ struct SleepHistorySection: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 12) {
-            Text("Historique (7 derniers jours)")
+            Text("sleep.history.title".localized)
                 .font(.headline)
                 .padding(.horizontal)
 
@@ -41,7 +41,6 @@ struct SleepHistorySection: View {
                         .listRowInsets(EdgeInsets())
                 }
             }
-            .frame(height: CGFloat(viewModel.historyCycles.count) * 60)
             .listStyle(.plain)
         }
         .sheet(isPresented: $viewModel.showEditModal) {

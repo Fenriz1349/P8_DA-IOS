@@ -31,13 +31,16 @@ extension User {
     /// in User goals will use this format to always use Int:
     /// calorieGoal - unit: kCal, default value: 300 kCal
     /// sleeepGoal - unit: minute, default value: 480 minutes (8hours)
-    /// waterGoal - unit: deciliter, default value: 25 dl (2,5 liter)
+    /// waterGoal - unit: deciliter, default value: 25 dl (2,5 liters)
     /// stepsGoal - unit: step, default value: 8000 steps/day
 
+    /// Creates and returns a fetch request for User entities
     @nonobjc public class func fetchRequest() -> NSFetchRequest<User> {
         return NSFetchRequest<User>(entityName: "User")
     }
 
+    /// Converts the User entity to a UserDisplay view model
+    /// - Returns: UserDisplay instance with formatted user data
     func toDisplay() -> UserDisplay {
         UserDisplay(
             id: id,
@@ -52,6 +55,7 @@ extension User {
     }
 }
 
+/// This struct is used as an overlay to always display the fresh value from CoreData
 struct UserDisplay: Identifiable, Equatable {
     let id: UUID
     let firstName: String

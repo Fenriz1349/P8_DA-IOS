@@ -29,7 +29,7 @@ struct SleepHistoryRow: View {
                             .foregroundColor(.secondary)
                     }
                 } else {
-                    Text("En cours...")
+                    Text("sleep.state.inProgress".localized)
                         .font(.subheadline)
                         .foregroundColor(.blue)
                 }

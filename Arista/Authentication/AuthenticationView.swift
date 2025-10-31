@@ -20,17 +20,17 @@ struct AuthenticationView: View {
                     .frame(width: 200, height: 200)
             }
 
-            Text("welcome")
+            Text("auth.welcome.title")
                 .font(.largeTitle)
                 .fontWeight(.semibold)
 
-            Toggle("createProfile.question", isOn: $viewModel.creationMode)
+            Toggle("auth.createProfile.toggle", isOn: $viewModel.creationMode)
 
             CustomTextField.triggered(
-                placeholder: "mailAdress",
+                placeholder: "email".localized,
                 text: $viewModel.email,
                 type: .email,
-                errorMessage: "Please enter a valid email address",
+                errorMessage: "validation.email.invalid".localized,
                 validationState: $viewModel.emailValidationState
             )
             .onChange(of: viewModel.email) {
@@ -38,10 +38,10 @@ struct AuthenticationView: View {
             }
 
             CustomTextField.triggered(
-                placeholder: "password",
+                placeholder: "password".localized,
                 text: $viewModel.password,
                 type: .password,
-                errorMessage: "Password must contain 8+ characters, uppercase, number, and special character",
+                errorMessage: "validation.password.requirements".localized,
                 validationState: $viewModel.passwordValidationState
             )
             .onChange(of: viewModel.password) {
@@ -50,7 +50,7 @@ struct AuthenticationView: View {
 
             if viewModel.creationMode {
                 CustomTextField.nameField(
-                    placeholder: "firstName",
+                    placeholder: "firstName".localized,
                     text: $viewModel.firstName,
                     validationState: $viewModel.firstNameValidationState
                 )
@@ -59,7 +59,7 @@ struct AuthenticationView: View {
                 }
 
                 CustomTextField.nameField(
-                    placeholder: "lastName",
+                    placeholder: "lastName".localized,
                     text: $viewModel.lastName,
                     validationState: $viewModel.lastNameValidationState
                 )
@@ -71,7 +71,7 @@ struct AuthenticationView: View {
             Button {
                 viewModel.handleSubmit()
             } label: {
-                Text(viewModel.creationMode ? "createProfile" : "login")
+                Text(viewModel.creationMode ? "auth.createProfile.button" : "auth.login.button")
                     .font(.headline)
                     .foregroundColor(.white)
                     .frame(maxWidth: .infinity)

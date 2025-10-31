@@ -11,10 +11,15 @@ import SwiftUI
 class ToastyManager: ObservableObject {
     @Published var currentToast: ToastyMessage?
 
+    /// Displays a toast notification with a message and type
+    /// - Parameters:
+    ///   - message: The message to display
+    ///   - type: The type of toast (default: .error)
     func show(message: String, type: ToastyType = .error) {
         currentToast = ToastyMessage(message: message, type: type)
     }
 
+    /// Dismisses the current toast notification
     func dismiss() {
         currentToast = nil
     }
@@ -23,6 +28,9 @@ class ToastyManager: ObservableObject {
         currentToast != nil
     }
 
+    /// Displays an error toast from an Error object
+    /// If the error conforms to LocalizedError, uses its description, otherwise shows a generic message
+    /// - Parameter error: The error to display
     func showError(_ error: Error) {
         let errorMessage: String
 
@@ -30,7 +38,7 @@ class ToastyManager: ObservableObject {
             errorMessage = description
         } else {
             print("⚠️ Unhandled error: \(error)")
-            errorMessage = "Une erreur inattendue s'est produite."
+            errorMessage = "error.unexpected".localized
         }
 
         show(message: errorMessage)

@@ -24,12 +24,14 @@ extension Exercice {
         return NSFetchRequest<Exercice>(entityName: "Exercice")
     }
 
-    /// Used to convert the String from coreData into ExerciceType enum
+    /// Converts the string type from CoreData into an ExerciceType enum
     var typeEnum: ExerciceType {
         get { ExerciceType(rawValue: type) ?? .other}
         set { type = newValue.rawValue}
     }
 
+    /// Converts the Exercice entity to an ExerciceDisplay view model
+    /// - Returns: ExerciceDisplay instance with formatted exercise data
     var toDisplay: ExerciceDisplay {
         ExerciceDisplay(
             id: id,
@@ -40,11 +42,15 @@ extension Exercice {
         )
     }
 
+    /// Converts an array of Exercice entities to an array of ExerciceDisplay view models
+    /// - Parameter exercices: Array of Exercice entities to convert
+    /// - Returns: Array of ExerciceDisplay instances
     static func mapToDisplay(from exercices: [Exercice]) -> [ExerciceDisplay] {
         exercices.map { $0.toDisplay }
     }
 }
 
+/// This struct is used as an overlay to always display the fresh value from CoreData
 struct ExerciceDisplay: Identifiable, Equatable {
     let id: UUID
     let date: Date

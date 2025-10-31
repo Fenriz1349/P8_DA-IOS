@@ -15,9 +15,9 @@ enum AuthenticationError: Error, LocalizedError {
 
     var errorDescription: String? {
         switch self {
-        case .invalidCredentials: return "Email ou mot de passe incorrect. Vérifiez vos identifiants."
-        case .validationFailed: return "Veuillez compléter correctement tous les champs requis."
-        case .emailAlreadyUsed: return "Cette adresse email est déjà utilisée. Utilisez une adresse différente."
+        case .invalidCredentials: return String(localized: "error.auth.invalidCredentials")
+        case .validationFailed: return String(localized: "error.auth.validationFailed")
+        case .emailAlreadyUsed: return String(localized: "error.auth.emailAlreadyUsed")
         }
     }
 }
@@ -46,7 +46,9 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    /// Properties
+    // MARK: - Published Properties
+
+    /// User input fields
     @Published var email: String = ""
     @Published var password: String = ""
     @Published var firstName: String = ""
@@ -54,56 +56,65 @@ final class AuthenticationViewModel: ObservableObject {
     @Published var creationMode: Bool = false
     @Published var buttonState: ButtonState = .disabled
 
-    /// Validation states for CustomTextFields
+    /// Validation states for each CustomTextField
     @Published var emailValidationState: ValidationState = .neutral
     @Published var passwordValidationState: ValidationState = .neutral
     @Published var firstNameValidationState: ValidationState = .neutral
     @Published var lastNameValidationState: ValidationState = .neutral
+
+    // MARK: - Initialization
 
     @MainActor
     init(appCoordinator: AppCoordinator) {
         self.appCoordinator = appCoordinator
     }
 
+    /// Configures the toast notification manager
+    /// - Parameter toastyManager: Manager for displaying toast notifications
     func configure(toastyManager: ToastyManager) {
         self.toastyManager = toastyManager
     }
 
-    /// Computed Properties
+    // MARK: - Computed Properties
+
+    /// Returns true if all required fields are valid for the current mode
     var isFormValid: Bool {
         creationMode ? isCreationFormValid : isLoginFormValid
     }
 
+    /// Returns true if email and password are valid
     var isLoginFormValid: Bool {
         return !email.isEmpty && !password.isEmpty && isMailValid && isPasswordValid
     }
 
+    /// Returns true if all account creation fields are valid
     var isCreationFormValid: Bool {
         return !firstName.isEmpty && !lastName.isEmpty && isFirstNameValid && isLastNameValid && isLoginFormValid
     }
 
-    var isMailValid: Bool {
-        Validators.isValidEmail(email)
-    }
+    /// Validates email format
+    var isMailValid: Bool { Validators.isValidEmail(email) }
 
-    var isPasswordValid: Bool {
-        Validators.isStrongPassword(password)
-    }
+    /// Validates password strength
+    var isPasswordValid: Bool { Validators.isStrongPassword(password) }
 
-    var isFirstNameValid: Bool {
-        ExampleValidationRules.validateFirstName(firstName)
-    }
+    /// Validates first name format
+    var isFirstNameValid: Bool { ExampleValidationRules.validateFirstName(firstName) }
 
-    var isLastNameValid: Bool {
-        ExampleValidationRules.validateLastName(lastName)
-    }
+    /// Validates last name format
+    var isLastNameValid: Bool { ExampleValidationRules.validateLastName(lastName) }
 
-    /// Button State Management
+    // MARK: - Button State Management
+
+    /// Updates button state based on form validity
     func updateButtonState() {
         buttonState = isFormValid ? .enabled : .disabled
     }
 
-    /// Validation Management
+    // MARK: - Validation Management
+
+    /// Resets validation state for a specific field if currently invalid
+    /// - Parameter field: The field type to reset
     func resetFieldValidation(_ field: FieldType) {
         switch field {
         case .email:
@@ -125,6 +136,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
+    /// Resets all field validation states to neutral
     func resetAllValidationStates() {
         emailValidationState = .neutral
         passwordValidationState = .neutral
@@ -132,6 +144,8 @@ final class AuthenticationViewModel: ObservableObject {
         lastNameValidationState = .neutral
     }
 
+    /// Validates all form fields and updates their validation states
+    /// - Returns: True if all fields are valid, false otherwise
     func validateAllFields() -> Bool {
         var hasErrors = false
 
@@ -160,12 +174,16 @@ final class AuthenticationViewModel: ObservableObject {
         return !hasErrors
     }
 
+    /// Called when a field value changes - updates button and resets field validation
+    /// - Parameter field: The field that was modified
     func onFieldChange(_ field: FieldType) {
         updateButtonState()
         resetFieldValidation(field)
     }
 
-    /// Submit Handling
+    // MARK: - Submit Handling
+
+    /// Handles form submission - validates and performs login or account creation
     func handleSubmit() {
         if validateAllFields() {
             Task {
@@ -185,6 +203,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
+    /// Shows visual feedback for validation errors
     private func showValidationError() {
         buttonState = .error
 
@@ -193,6 +212,7 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
+    /// Shows visual feedback for authentication errors and resets validation
     private func showAuthError() {
         resetAllValidationStates()
         buttonState = .error
@@ -202,7 +222,10 @@ final class AuthenticationViewModel: ObservableObject {
         }
     }
 
-    /// Authentication Methods
+    // MARK: - Authentication Methods
+
+    /// Attempts to log in with provided credentials
+    /// - Throws: AuthenticationError if validation fails or credentials are invalid
     func login() throws {
         guard isLoginFormValid else {
             throw AuthenticationError.validationFailed
@@ -218,6 +241,8 @@ final class AuthenticationViewModel: ObservableObject {
         try appCoordinator.login(id: user.id)
     }
 
+    /// Creates a new user account and logs in
+    /// - Throws: AuthenticationError if validation fails or email is already used
     func createUserAndLogin() throws {
         guard isCreationFormValid else {
             throw AuthenticationError.validationFailed

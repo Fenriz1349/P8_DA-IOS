@@ -19,21 +19,21 @@ struct CaloriesBarChart: View {
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Historique 7 jours")
+            Text("goal.calories.chart.title")
                 .font(.subheadline)
                 .fontWeight(.semibold)
                 .foregroundColor(.secondary)
                 .padding(.horizontal)
 
             Chart {
-                RuleMark(y: .value("Objectif", goal))
+                RuleMark(y: .value("goal.calories.chart.goalLabel", goal))
                     .foregroundStyle(.orange.opacity(0.5))
                     .lineStyle(StrokeStyle(lineWidth: 2, dash: [5, 5]))
 
                 ForEach(data) { day in
                     BarMark(
-                        x: .value("Jour", day.dayLabel),
-                        y: .value("Calories", day.calories)
+                        x: .value("goal.calories.chart.dayLabel", day.dayLabel),
+                        y: .value("goal.calories.chart.caloriesLabel", day.calories)
                     )
                     .foregroundStyle(
                         day.calories >= goal ? Color.green.gradient : Color.orange.gradient

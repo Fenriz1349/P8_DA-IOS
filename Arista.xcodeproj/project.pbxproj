@@ -97,6 +97,7 @@
 		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
 		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
 		68EFABCE2EA7AD3400E2F937 /* ExerciseTypeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */; };
+		68F1FA5A2EB2B388009D7E2C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F1FA592EB2B388009D7E2C /* String+Ext.swift */; };
 		68F4DA092E7C522500CFECA5 /* EditUserView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F4DA082E7C522500CFECA5 /* EditUserView.swift */; };
 		68F521352EAB5A27005902AB /* GoalSliderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521342EAB5A27005902AB /* GoalSliderView.swift */; };
 		68F521372EAB5CD0005902AB /* GoalType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F521362EAB5CD0005902AB /* GoalType.swift */; };
@@ -211,6 +212,7 @@
 		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCard.swift; sourceTree = "<group>"; };
+		68F1FA592EB2B388009D7E2C /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		68F4DA082E7C522500CFECA5 /* EditUserView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditUserView.swift; sourceTree = "<group>"; };
 		68F521342EAB5A27005902AB /* GoalSliderView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalSliderView.swift; sourceTree = "<group>"; };
 		68F521362EAB5CD0005902AB /* GoalType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalType.swift; sourceTree = "<group>"; };
@@ -299,6 +301,7 @@
 				6816D55B2EA9F7CB00ED8D20 /* Shared */,
 				6816D5602EA9FCAE00ED8D20 /* Authentication */,
 				68E7C2D52EA27D7E001C039B /* User */,
+				68EF9A572EB24E7400CF0BF2 /* Goal */,
 				68E7C2CD2EA26C0E001C039B /* Sleep */,
 				68E7C2D62EA293BF001C039B /* Exercice */,
 				684321262E4DB076003FDAEE /* SharedTestHelper.swift */,
@@ -444,6 +447,7 @@
 				6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */,
 				68C6C9762E61D3E000108FE9 /* Date+Ext.swift */,
 				6859510F2EA96EFD00A8744E /* Int+Ext.swift */,
+				68F1FA592EB2B388009D7E2C /* String+Ext.swift */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -613,11 +617,9 @@
 			isa = PBXGroup;
 			children = (
 				6895100A2E60711600461030 /* UserTests.swift */,
-				6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */,
 				6895100D2E607DF600461030 /* UserDataManagerTests.swift */,
 				68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */,
 				686D56912E7455900088AD98 /* UserViewModelTests.swift */,
-				6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */,
 			);
 			path = User;
 			sourceTree = "<group>";
@@ -630,6 +632,15 @@
 				6859510D2EA9518A00A8744E /* ExerciseViewModelTests.swift */,
 			);
 			path = Exercice;
+			sourceTree = "<group>";
+		};
+		68EF9A572EB24E7400CF0BF2 /* Goal */ = {
+			isa = PBXGroup;
+			children = (
+				6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */,
+				6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */,
+			);
+			path = Goal;
 			sourceTree = "<group>";
 		};
 		68EFABCB2EA7551200E2F937 /* Grade */ = {
@@ -813,6 +824,7 @@
 				6820CDDD2EAA467100A7D74A /* Goal.swift in Sources */,
 				684321252E4CC5E1003FDAEE /* PreviewDataProvider.swift in Sources */,
 				68E89C7E2E6AE5B80004F6DA /* Exercice.swift in Sources */,
+				68F1FA5A2EB2B388009D7E2C /* String+Ext.swift in Sources */,
 				6813E7612E867B97007F008C /* SleepViewModel.swift in Sources */,
 				6852289C2E97F044008E33EE /* MainSleepCycleButton.swift in Sources */,
 				685FB58E2EA805AB003E4C6D /* ExerciseTypeGrid.swift in Sources */,
