@@ -10,6 +10,7 @@ import SwiftUI
 @MainActor
 final class AppCoordinator: ObservableObject {
     @Published var currentUser: User?
+    static let demoEmail = "demo@arista.app"
 
     let dataManager: UserDataManager
     private let currentUserIdKey = "currentUserId"
@@ -18,7 +19,31 @@ final class AppCoordinator: ObservableObject {
     /// - Parameter dataManager: The user data manager for persistence operations. Defaults to a new instance.
     init(dataManager: UserDataManager = UserDataManager()) {
         self.dataManager = dataManager
+        ensureDemoUserExists()
         restoreUserSession()
+    }
+
+    private func ensureDemoUserExists() {
+        let users = dataManager.fetchAllUsers()
+
+        if users.contains(where: { $0.email == AppCoordinator.demoEmail }) { return }
+
+        do {
+            let demoUser = try dataManager.createUser(
+                email: AppCoordinator.demoEmail,
+                password: "1234",
+                firstName: "Bruce",
+                lastName: "Wayne"
+            )
+
+            try dataManager.loggedIn(id: demoUser.id)
+            currentUser = demoUser
+            UserDefaults.standard.set(demoUser.id.uuidString, forKey: currentUserIdKey)
+
+            print("✅ Demo user created and logged in")
+        } catch {
+            print("⚠️ Failed to create demo user: \(error)")
+        }
     }
 
     var isAuthenticated: Bool {

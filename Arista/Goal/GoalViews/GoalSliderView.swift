@@ -54,7 +54,7 @@ struct GoalSliderView: View {
                 Text(type.formatted(Int(current)))
                     .font(.system(size: 20, weight: .bold))
                     .foregroundColor(progress >= 1.0 ? .green : type.color)
-                Text("goal.slider.goalPrefix")
+                Text("/")
                     .font(.caption)
                     .foregroundColor(.secondary)
                     + Text(" \(type.formatted(goal))")

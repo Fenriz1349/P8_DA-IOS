@@ -1,78 +1,23 @@
-# Xcode
-#
-# gitignore contributors: remember to update Global/Xcode.gitignore, Objective-C.gitignore & Swift.gitignore
-
-## User settings
-xcuserdata/
-
-## Xcode 8 and earlier
-*.xcscmblueprint
-*.xccheckout
-
-## Xcode 3 and earlier
+# --- Xcode general ---
+.DS_Store
 build/
 DerivedData/
-*.moved-aside
-*.pbxuser
-!default.pbxuser
-*.mode1v3
-!default.mode1v3
-*.mode2v3
-!default.mode2v3
-*.perspectivev3
-!default.perspectivev3
-
-## Obj-C/Swift specific
-*.hmap
-
-## App packaging
-*.ipa
-*.dSYM.zip
-*.dSYM
-
-## Playgrounds
-timeline.xctimeline
-playground.xcworkspace
-
-# Swift Package Manager
-.build/
-.swiftpm/
-# Keep Package.resolved to lock dependencies versions
-# Package.resolved is tracked for consistency
-
-# CocoaPods
-# Pods/
-
-# Carthage
-Carthage/Build/
-
-# Accio dependency management
-Dependencies/
-.accio/
-
-# fastlane
-fastlane/report.xml
-fastlane/Preview.html
-fastlane/screenshots/**/*.png
-fastlane/test_output
-
-# Code Injection
-iOSInjectionProject/
-
-# Project specific
-Arista/.scannerwork
-.DS_Store
-*.xctestplan
-
-# CRITICAL: User-specific files that should NEVER be committed
 *.xcuserstate
-*.xcworkspace
-!*.xcworkspace/contents.xcworkspacedata
-!*.xcworkspace/xcshareddata/
+*.xccheckout
+*.xcscmblueprint
 
-# Breakpoints are user-specific
-*.xcbkptlist
+# --- Keep shared schemes so collaborators can build/test ---
+!xcshareddata/
+!*.xcscheme
 
-# User interface state (window positions, etc.)
-**/xcuserdata/*
-**/UserInterfaceState.xcuserstate
+# --- Ignore only user-specific Xcode data ---
+xcuserdata/
+
+# --- SwiftPM ---
+Packages/
+.swiftpm/
+.build/
+
+# --- CocoaPods / Carthage if used ---
+Pods/
+Carthage/
