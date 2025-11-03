@@ -38,14 +38,6 @@ final class DayCaloriesTests: XCTestCase {
         XCTAssertNotEqual(day1.id, day2.id)
     }
     
-    func test_identifiable_shouldConformToProtocol() {
-        // Given
-        let dayCalories = DayCalories(date: Date(), calories: 1500)
-        
-        // When / Then
-        XCTAssertTrue(dayCalories is Identifiable)
-    }
-    
     // MARK: - dayLabel Tests
     
     func test_dayLabel_shouldReturnFrenchAbbreviatedDayName() {

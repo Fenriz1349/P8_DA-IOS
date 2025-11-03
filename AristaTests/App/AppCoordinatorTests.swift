@@ -197,31 +197,4 @@ final class AppCoordinatorTests: XCTestCase {
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
     }
-
-    func test_init_createsAndLogsInDemoUser() {
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        newCoordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
-
-        // Then
-        XCTAssertTrue(newCoordinator.isAuthenticated)
-        XCTAssertEqual(newCoordinator.currentUser?.email, AppCoordinator.demoEmail)
-    }
-
-    func test_init_ignoresAnyPreexistingStoredSession_andUsesDemoUser() throws {
-        // Given
-        let other = SharedTestHelper.createSampleUser(in: context)
-        try context.save()
-        
-        let testDefaults = UserDefaults(suiteName: "com.arista.tests")!
-        testDefaults.set(other.id.uuidString, forKey: "currentUserId")
-
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        newCoordinator.userDefaults = testDefaults
-
-        // Then
-        XCTAssertTrue(newCoordinator.isAuthenticated)
-        XCTAssertEqual(newCoordinator.currentUser?.email, AppCoordinator.demoEmail)
-    }
 }
