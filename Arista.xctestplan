@@ -9,7 +9,6 @@
     }
   ],
   "defaultOptions" : {
-    "codeCoverage" : false,
     "targetForVariableExpansion" : {
       "containerPath" : "container:Arista.xcodeproj",
       "identifier" : "53E5872C2B235E8F00E4EF99",

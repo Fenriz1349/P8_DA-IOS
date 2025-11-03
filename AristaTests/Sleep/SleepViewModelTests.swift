@@ -26,6 +26,7 @@ final class SleepViewModelTests: XCTestCase {
         context = testContainer.container.viewContext
         sleepDataManager = SleepDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
+        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         spyToastyManager = ToastyTestHelpers.createSpyManager()
         
         let user = SharedTestHelper.createSampleUser(in: context)
@@ -42,6 +43,7 @@ final class SleepViewModelTests: XCTestCase {
         coordinator = nil
         sleepDataManager = nil
         testContainer = nil
+        UserDefaults(suiteName: "com.arista.tests")?.removePersistentDomain(forName: "com.arista.tests")
         super.tearDown()
     }
     

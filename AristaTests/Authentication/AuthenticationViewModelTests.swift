@@ -27,6 +27,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         
         dataManager = UserDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: dataManager)
+        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         
         spyToastyManager = ToastyTestHelpers.createSpyManager()
         
@@ -40,6 +41,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         testContainer.clearAllData()
         spyToastyManager = nil
         sut = nil
+        UserDefaults(suiteName: "com.arista.tests")?.removePersistentDomain(forName: "com.arista.tests")
         super.tearDown()
     }
 
