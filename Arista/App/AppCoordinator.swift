@@ -14,6 +14,7 @@ final class AppCoordinator: ObservableObject {
 
     let dataManager: UserDataManager
     private let currentUserIdKey = "currentUserId"
+    var userDefaults: UserDefaults = .standard
 
     /// Initializes the application coordinator and restores the previous user session if available.
     /// - Parameter dataManager: The user data manager for persistence operations. Defaults to a new instance.
@@ -38,7 +39,7 @@ final class AppCoordinator: ObservableObject {
 
             try dataManager.loggedIn(id: demoUser.id)
             currentUser = demoUser
-            UserDefaults.standard.set(demoUser.id.uuidString, forKey: currentUserIdKey)
+            userDefaults.set(demoUser.id.uuidString, forKey: currentUserIdKey)
 
             print("✅ Demo user created and logged in")
         } catch {
@@ -89,7 +90,7 @@ final class AppCoordinator: ObservableObject {
     /// Attempts to retrieve the user ID from persistent storage and load the user data.
     /// If the user is still logged in, the session is restored; otherwise, it is cleared.
     private func restoreUserSession() {
-        if let userIdString = UserDefaults.standard.string(forKey: currentUserIdKey),
+        if let userIdString = userDefaults.string(forKey: currentUserIdKey),
            let userId = UUID(uuidString: userIdString) {
 
             do {
@@ -108,13 +109,13 @@ final class AppCoordinator: ObservableObject {
     /// Saves the user ID to UserDefaults to persist the session.
     /// - Parameter userId: The unique identifier of the user to save.
     private func saveUserSession(_ userId: UUID) {
-        UserDefaults.standard.set(userId.uuidString, forKey: currentUserIdKey)
+        userDefaults.set(userId.uuidString, forKey: currentUserIdKey)
     }
 
     /// Clears the session data stored in UserDefaults.
     /// Removes the saved user ID, effectively resetting the session.
     private func clearStoredSession() {
-        UserDefaults.standard.removeObject(forKey: currentUserIdKey)
+        userDefaults.removeObject(forKey: currentUserIdKey)
     }
 
     /// Logs in a user with the specified ID.
