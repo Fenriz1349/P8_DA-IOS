@@ -37,6 +37,31 @@ final class AppCoordinatorTests: XCTestCase {
         super.tearDown()
     }
     
+    func test_ensureDemoUserExists_createsAndLogsDemoUser() throws {
+        // Given
+        let testDefaults = UserDefaults(suiteName: "com.arista.tests")!
+        testDefaults.removePersistentDomain(forName: "com.arista.tests")
+        
+        let dataManager = UserDataManager(container: SharedTestHelper.createTestContainer().container)
+        let coordinator = AppCoordinator(dataManager: dataManager, skipSessionRestore: true)
+        coordinator.userDefaults = testDefaults
+        
+        XCTAssertTrue(dataManager.fetchAllUsers().isEmpty, "Database should start empty")
+
+        // When
+        coordinator.ensureDemoUserExists()
+
+        // Then
+        let users = dataManager.fetchAllUsers()
+        XCTAssertEqual(users.count, 1)
+        XCTAssertEqual(users.first?.email, AppCoordinator.demoEmail)
+        XCTAssertEqual(coordinator.currentUser?.email, AppCoordinator.demoEmail)
+        XCTAssertNotNil(testDefaults.string(forKey: coordinator.currentUserIdKey))
+
+        // Cleanup
+        testDefaults.removePersistentDomain(forName: "com.arista.tests")
+    }
+
     /// Auth state
     
     func test_setCurrentUser_updatesCurrentUser_and_isAuthenticatedTrue() throws {

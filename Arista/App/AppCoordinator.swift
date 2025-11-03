@@ -13,7 +13,7 @@ final class AppCoordinator: ObservableObject {
     static let demoEmail = "demo@arista.app"
 
     let dataManager: UserDataManager
-    private let currentUserIdKey = "currentUserId"
+    internal let currentUserIdKey = "currentUserId"
     var userDefaults: UserDefaults = .standard
 
     /// Initializes the application coordinator and restores the previous user session if available.
@@ -27,7 +27,7 @@ final class AppCoordinator: ObservableObject {
         }
     }
 
-    private func ensureDemoUserExists() {
+    internal func ensureDemoUserExists() {
         let users = dataManager.fetchAllUsers()
 
         if users.contains(where: { $0.email == AppCoordinator.demoEmail }) { return }
