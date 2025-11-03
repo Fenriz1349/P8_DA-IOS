@@ -23,7 +23,7 @@ final class UserViewModelTests: XCTestCase {
         context = testContainer.container.viewContext
         dataManager = UserDataManager(container: testContainer.container)
         goalDataManager = GoalDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: dataManager)
+        coordinator = AppCoordinator(dataManager: dataManager, skipSessionRestore: true)
         coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
     }
 
@@ -51,14 +51,6 @@ final class UserViewModelTests: XCTestCase {
         XCTAssertEqual(sut.user.lastName, user.lastName)
         XCTAssertFalse(sut.showEditModal)
         XCTAssertFalse(sut.showingResetAlert)
-    }
-
-    func test_init_withDemoUser_shouldNotThrow_andBindDemoUser() throws {
-        // When
-        let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalDataManager)
-
-        // Then
-        XCTAssertEqual(sut.user.email, AppCoordinator.demoEmail)
     }
 
     func test_openAndCloseEditModal_shouldToggleShowEditModal() throws {

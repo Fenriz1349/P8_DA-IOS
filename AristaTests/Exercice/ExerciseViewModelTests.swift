@@ -24,7 +24,7 @@ final class ExerciseViewModelTests: XCTestCase {
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         dataManager = ExerciceDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
+        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container), skipSessionRestore: true)
         coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         spyToastyManager = ToastyTestHelpers.createSpyManager()
 

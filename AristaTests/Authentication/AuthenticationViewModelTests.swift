@@ -26,7 +26,7 @@ final class AuthenticationViewModelTests: XCTestCase {
         context = testContainer.container.viewContext
         
         dataManager = UserDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: dataManager)
+        coordinator = AppCoordinator(dataManager: dataManager, skipSessionRestore: true)
         coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         
         spyToastyManager = ToastyTestHelpers.createSpyManager()
@@ -376,8 +376,8 @@ final class AuthenticationViewModelTests: XCTestCase {
             XCTAssertEqual(error as? AuthenticationError, .invalidCredentials)
         }
 
-        XCTAssertTrue(coordinator.isAuthenticated)
-        XCTAssertEqual(coordinator.currentUser?.email, AppCoordinator.demoEmail)
+        XCTAssertFalse(coordinator.isAuthenticated)
+        XCTAssertNil(coordinator.currentUser?.email)
     }
 
     

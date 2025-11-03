@@ -22,7 +22,7 @@ final class AppCoordinatorTests: XCTestCase {
         persistenceController = SharedTestHelper.createTestContainer()
         manager = UserDataManager(container: persistenceController.container)
         
-        coordinator = AppCoordinator(dataManager: manager)
+        coordinator = AppCoordinator(dataManager: manager, skipSessionRestore: true)
         coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         coordinator.currentUser = nil
         context = manager.viewContext

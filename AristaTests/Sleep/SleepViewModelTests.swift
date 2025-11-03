@@ -25,7 +25,7 @@ final class SleepViewModelTests: XCTestCase {
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         sleepDataManager = SleepDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
+        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container), skipSessionRestore: true)
         coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         spyToastyManager = ToastyTestHelpers.createSpyManager()
         
