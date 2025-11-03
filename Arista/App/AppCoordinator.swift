@@ -18,10 +18,13 @@ final class AppCoordinator: ObservableObject {
 
     /// Initializes the application coordinator and restores the previous user session if available.
     /// - Parameter dataManager: The user data manager for persistence operations. Defaults to a new instance.
-    init(dataManager: UserDataManager = UserDataManager()) {
+    init(dataManager: UserDataManager = UserDataManager(), skipSessionRestore: Bool = false) {
         self.dataManager = dataManager
-        ensureDemoUserExists()
-        restoreUserSession()
+
+        if !skipSessionRestore {
+            ensureDemoUserExists()
+            restoreUserSession()
+        }
     }
 
     private func ensureDemoUserExists() {

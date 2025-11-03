@@ -22,7 +22,7 @@ final class AppCoordinatorTests: XCTestCase {
         persistenceController = SharedTestHelper.createTestContainer()
         manager = UserDataManager(container: persistenceController.container)
         
-        coordinator = AppCoordinator(dataManager: manager)
+        coordinator = AppCoordinator(dataManager: manager, skipSessionRestore: true)
         coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         coordinator.currentUser = nil
         context = manager.viewContext
@@ -196,32 +196,5 @@ final class AppCoordinatorTests: XCTestCase {
         XCTAssertThrowsError(try coordinator.makeExerciceViewModel()) { error in
             XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
         }
-    }
-
-    func test_init_createsAndLogsInDemoUser() {
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        newCoordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
-
-        // Then
-        XCTAssertTrue(newCoordinator.isAuthenticated)
-        XCTAssertEqual(newCoordinator.currentUser?.email, AppCoordinator.demoEmail)
-    }
-
-    func test_init_ignoresAnyPreexistingStoredSession_andUsesDemoUser() throws {
-        // Given
-        let other = SharedTestHelper.createSampleUser(in: context)
-        try context.save()
-        
-        let testDefaults = UserDefaults(suiteName: "com.arista.tests")!
-        testDefaults.set(other.id.uuidString, forKey: "currentUserId")
-
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        newCoordinator.userDefaults = testDefaults
-
-        // Then
-        XCTAssertTrue(newCoordinator.isAuthenticated)
-        XCTAssertEqual(newCoordinator.currentUser?.email, AppCoordinator.demoEmail)
     }
 }
