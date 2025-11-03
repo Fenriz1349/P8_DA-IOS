@@ -207,7 +207,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
 
     /// Shows visual feedback for validation errors
-    private func showValidationError() {
+    internal func showValidationError() {
         buttonState = .error
 
         DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) {
@@ -216,7 +216,7 @@ final class AuthenticationViewModel: ObservableObject {
     }
 
     /// Shows visual feedback for authentication errors and resets validation
-    private func showAuthError() {
+   internal func showAuthError() {
         resetAllValidationStates()
         buttonState = .error
 

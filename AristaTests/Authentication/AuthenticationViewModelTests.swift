@@ -380,7 +380,12 @@ final class AuthenticationViewModelTests: XCTestCase {
         XCTAssertNil(coordinator.currentUser?.email)
     }
 
-    
+    func test_isPasswordValid_shouldAlwaysBeTrueForDemoUser() {
+        sut.email = AppCoordinator.demoEmail
+        sut.password = "1234"
+        XCTAssertTrue(sut.isPasswordValid)
+    }
+
     /// Create Account Tests
     func test_createUserAndLogin_withValidForm_shouldSucceed() throws {
         // Given
@@ -444,5 +449,81 @@ final class AuthenticationViewModelTests: XCTestCase {
         sut.lastName = SharedTestHelper.sampleUserData.lastName
         
         XCTAssertTrue(sut.isFormValid)
+    }
+    
+    func test_buttonBackgroundColor_shouldReflectButtonState() {
+        sut.buttonState = .disabled
+        XCTAssertEqual(sut.buttonBackgroundColor, .gray.opacity(0.6))
+
+        sut.buttonState = .enabled
+        XCTAssertEqual(sut.buttonBackgroundColor, .green)
+
+        sut.buttonState = .error
+        XCTAssertEqual(sut.buttonBackgroundColor, .red)
+    }
+
+    func test_onFieldChange_shouldUpdateButtonAndResetValidation() {
+        sut.emailValidationState = .invalid
+        sut.email = SharedTestHelper.sampleUserData.email
+        sut.password = SharedTestHelper.sampleUserData.password
+
+        sut.onFieldChange(.email)
+
+        XCTAssertEqual(sut.emailValidationState, .neutral)
+        XCTAssertEqual(sut.buttonState, .enabled)
+    }
+
+    func test_showValidationError_shouldSetErrorThenRevert() {
+        let expectation = XCTestExpectation(description: "Button state should revert")
+
+        sut.buttonState = .enabled
+        sut.showValidationError()
+
+        XCTAssertEqual(sut.buttonState, .error)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.6) {
+            XCTAssertNotEqual(self.sut.buttonState, .error)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 2.0)
+    }
+
+    func test_showAuthError_shouldResetAllValidationsAndRevertState() {
+        let expectation = XCTestExpectation(description: "State should revert after auth error")
+
+        sut.emailValidationState = .invalid
+        sut.passwordValidationState = .invalid
+        sut.buttonState = .enabled
+
+        sut.showAuthError()
+
+        XCTAssertEqual(sut.buttonState, .error)
+        XCTAssertEqual(sut.emailValidationState, .neutral)
+        XCTAssertEqual(sut.passwordValidationState, .neutral)
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.1) {
+            XCTAssertNotEqual(self.sut.buttonState, .error)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 2.5)
+    }
+
+    func test_handleSubmit_withValidFormButWrongCredentials_shouldShowErrorToast() {
+        let expectation = XCTestExpectation(description: "Should show auth error toast")
+
+        sut.email = "unknown@email.com"
+        sut.password = "Password123!"
+
+        sut.handleSubmit()
+
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+            XCTAssertEqual(self.spyToastyManager.showCallCount, 1)
+            XCTAssertEqual(self.sut.buttonState, .error)
+            expectation.fulfill()
+        }
+
+        wait(for: [expectation], timeout: 1.0)
     }
 }
