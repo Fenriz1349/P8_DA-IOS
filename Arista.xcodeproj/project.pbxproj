@@ -29,6 +29,8 @@
 		6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */; };
 		6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67D2E85897D00501E0E /* SleepDataManager.swift */; };
 		6802E6802E858DE000501E0E /* SleepDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */; };
+		680435522EB8D7BD004CF49D /* SleepMetricsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680435512EB8D7BD004CF49D /* SleepMetricsTests.swift */; };
+		680435542EB8D857004CF49D /* DayCaloriesTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 680435532EB8D857004CF49D /* DayCaloriesTests.swift */; };
 		68089CB62EAFC74700B27567 /* GoalStepper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68089CB52EAFC74700B27567 /* GoalStepper.swift */; };
 		6813E7612E867B97007F008C /* SleepViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7602E867B97007F008C /* SleepViewModel.swift */; };
 		6813E7632E867CC9007F008C /* SleepViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6813E7622E867CC9007F008C /* SleepViewModelTests.swift */; };
@@ -144,6 +146,8 @@
 		6802E67B2E8539CE00501E0E /* ToastyManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ToastyManagerTests.swift; sourceTree = "<group>"; };
 		6802E67D2E85897D00501E0E /* SleepDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManager.swift; sourceTree = "<group>"; };
 		6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepDataManagerTests.swift; sourceTree = "<group>"; };
+		680435512EB8D7BD004CF49D /* SleepMetricsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepMetricsTests.swift; sourceTree = "<group>"; };
+		680435532EB8D857004CF49D /* DayCaloriesTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayCaloriesTests.swift; sourceTree = "<group>"; };
 		68089CB52EAFC74700B27567 /* GoalStepper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalStepper.swift; sourceTree = "<group>"; };
 		6813E7602E867B97007F008C /* SleepViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModel.swift; sourceTree = "<group>"; };
 		6813E7622E867CC9007F008C /* SleepViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepViewModelTests.swift; sourceTree = "<group>"; };
@@ -565,6 +569,7 @@
 				6816D5612EAA016200ED8D20 /* SleepCycleTests.swift */,
 				6802E67F2E858DE000501E0E /* SleepDataManagerTests.swift */,
 				6813E7622E867CC9007F008C /* SleepViewModelTests.swift */,
+				680435512EB8D7BD004CF49D /* SleepMetricsTests.swift */,
 			);
 			path = Sleep;
 			sourceTree = "<group>";
@@ -637,6 +642,7 @@
 			children = (
 				6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */,
 				6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */,
+				680435532EB8D857004CF49D /* DayCaloriesTests.swift */,
 			);
 			path = Goal;
 			sourceTree = "<group>";
@@ -872,6 +878,7 @@
 				6816D55F2EA9FC6000ED8D20 /* IntExtensionsTests.swift in Sources */,
 				6859510C2EA950DA00A8744E /* ExerciceDataManagerTests.swift in Sources */,
 				6820CDE22EAA6E8D00A7D74A /* GoalTests.swift in Sources */,
+				680435542EB8D857004CF49D /* DayCaloriesTests.swift in Sources */,
 				6820CDE42EAA75F000A7D74A /* GoalDataManagerTests.swift in Sources */,
 				6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */,
 				6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */,
@@ -880,6 +887,7 @@
 				68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */,
 				6816D55D2EA9F84E00ED8D20 /* GradeTests.swift in Sources */,
 				6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */,
+				680435522EB8D7BD004CF49D /* SleepMetricsTests.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
 				68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */,
 				6816D5622EAA016200ED8D20 /* SleepCycleTests.swift in Sources */,

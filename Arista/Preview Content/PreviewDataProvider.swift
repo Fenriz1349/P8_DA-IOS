@@ -167,6 +167,9 @@ extension PreviewDataProvider {
         let dataManager = UserDataManager(container: previewData.container)
         let coordinator = AppCoordinator(dataManager: dataManager)
 
+        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.preview")!
+        UserDefaults(suiteName: "com.arista.preview")?.removePersistentDomain(forName: "com.arista.preview")
+
         let context = previewData.container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
         if let user = try? context.fetch(request).first {
@@ -175,6 +178,7 @@ extension PreviewDataProvider {
 
         return coordinator
     }
+
 
     static var sampleToastyManager: ToastyManager {
         ToastyManager()

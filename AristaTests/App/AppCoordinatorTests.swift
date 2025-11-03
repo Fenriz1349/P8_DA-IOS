@@ -23,6 +23,7 @@ final class AppCoordinatorTests: XCTestCase {
         manager = UserDataManager(container: persistenceController.container)
         
         coordinator = AppCoordinator(dataManager: manager)
+        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         coordinator.currentUser = nil
         context = manager.viewContext
     }
@@ -32,6 +33,7 @@ final class AppCoordinatorTests: XCTestCase {
         coordinator = nil
         manager = nil
         persistenceController = nil
+        UserDefaults(suiteName: "com.arista.tests")?.removePersistentDomain(forName: "com.arista.tests")
         super.tearDown()
     }
     
@@ -196,69 +198,30 @@ final class AppCoordinatorTests: XCTestCase {
         }
     }
 
-    func test_init_withValidStoredSession_restoresCurrentUser() throws {
-        // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
-        let builder = UserUpdateBuilder(user: user, dataManager: manager)
-        try builder.isLogged(true).save()
-        UserDefaults.standard.set(user.id.uuidString, forKey: "currentUserId")
-        
+    func test_init_createsAndLogsInDemoUser() {
         // When
         let newCoordinator = AppCoordinator(dataManager: manager)
-        
+        newCoordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
+
         // Then
-        XCTAssertEqual(newCoordinator.currentUser?.id, user.id)
         XCTAssertTrue(newCoordinator.isAuthenticated)
+        XCTAssertEqual(newCoordinator.currentUser?.email, AppCoordinator.demoEmail)
     }
 
-    func test_init_withStoredSessionButUserNotLogged_clearsSession() throws {
+    func test_init_ignoresAnyPreexistingStoredSession_andUsesDemoUser() throws {
         // Given
-        let user = SharedTestHelper.createSampleUser(in: context)
+        let other = SharedTestHelper.createSampleUser(in: context)
         try context.save()
-        UserDefaults.standard.set(user.id.uuidString, forKey: "currentUserId")
         
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        
-        // Then
-        XCTAssertNil(newCoordinator.currentUser)
-        XCTAssertNil(UserDefaults.standard.string(forKey: "currentUserId"))
-    }
+        let testDefaults = UserDefaults(suiteName: "com.arista.tests")!
+        testDefaults.set(other.id.uuidString, forKey: "currentUserId")
 
-    func test_init_withInvalidStoredUserId_clearsSession() throws {
-        // Given
-        UserDefaults.standard.set("not-a-valid-uuid-format", forKey: "currentUserId")
-        
         // When
         let newCoordinator = AppCoordinator(dataManager: manager)
-        
-        // Then
-        XCTAssertNil(newCoordinator.currentUser)
-        XCTAssertEqual(UserDefaults.standard.string(forKey: "currentUserId"), "not-a-valid-uuid-format")
-    }
+        newCoordinator.userDefaults = testDefaults
 
-    func test_init_withStoredSessionButUserNotFound_clearsSession() throws {
-        // Given
-        let nonExistentUserId = UUID()
-        UserDefaults.standard.set(nonExistentUserId.uuidString, forKey: "currentUserId")
-        
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        
         // Then
-        XCTAssertNil(newCoordinator.currentUser)
-        XCTAssertNil(UserDefaults.standard.string(forKey: "currentUserId"))
-    }
-
-    func test_init_withNoStoredSession_startsWithoutUser() throws {
-        // Given
-        UserDefaults.standard.removeObject(forKey: "currentUserId")
-        
-        // When
-        let newCoordinator = AppCoordinator(dataManager: manager)
-        
-        // Then
-        XCTAssertNil(newCoordinator.currentUser)
-        XCTAssertFalse(newCoordinator.isAuthenticated)
+        XCTAssertTrue(newCoordinator.isAuthenticated)
+        XCTAssertEqual(newCoordinator.currentUser?.email, AppCoordinator.demoEmail)
     }
 }

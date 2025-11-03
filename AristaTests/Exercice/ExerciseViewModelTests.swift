@@ -25,6 +25,7 @@ final class ExerciseViewModelTests: XCTestCase {
         context = testContainer.container.viewContext
         dataManager = ExerciceDataManager(container: testContainer.container)
         coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
+        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
         spyToastyManager = ToastyTestHelpers.createSpyManager()
 
         let user = SharedTestHelper.createSampleUser(in: context)
@@ -41,6 +42,7 @@ final class ExerciseViewModelTests: XCTestCase {
         coordinator = nil
         dataManager = nil
         testContainer = nil
+        UserDefaults(suiteName: "com.arista.tests")?.removePersistentDomain(forName: "com.arista.tests")
         super.tearDown()
     }
 
