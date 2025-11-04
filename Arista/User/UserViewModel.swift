@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import CoreData
 
 @MainActor
 final class UserViewModel: ObservableObject {
