@@ -43,7 +43,7 @@ final class ExerciseViewModel: ObservableObject {
     init(appCoordinator: AppCoordinator, dataManager: ExerciceDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.exerciceDataManager = dataManager ?? ExerciceDataManager()
-        self.currentUser = try appCoordinator.validateCurrentUser()
+        self.currentUser = appCoordinator.currentUser
         reloadAll()
     }
 

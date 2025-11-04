@@ -46,7 +46,6 @@
 		6820CDE02EAA471400A7D74A /* GoalDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6820CDDF2EAA471400A7D74A /* GoalDataManager.swift */; };
 		6820CDE22EAA6E8D00A7D74A /* GoalTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */; };
 		6820CDE42EAA75F000A7D74A /* GoalDataManagerTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */; };
-		6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */; };
 		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
 		6843211F2E4CC0BC003FDAEE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */; };
@@ -84,19 +83,11 @@
 		68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */; };
 		68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */; };
 		68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9762E61D3E000108FE9 /* Date+Ext.swift */; };
-		68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C9782E61E22300108FE9 /* PasswordHasher.swift */; };
-		68C6C97B2E61E35600108FE9 /* PasswordHasherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C97A2E61E35600108FE9 /* PasswordHasherTest.swift */; };
-		68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C97C2E61E3A100108FE9 /* User+Password.swift */; };
-		68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C6C97E2E61EDE600108FE9 /* User+PasswordTests.swift */; };
-		68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */; };
 		68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E7C2C82EA242B9001C039B /* PreviewSleepDataProvider.swift */; };
-		68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */; };
-		68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */; };
 		68E89C7E2E6AE5B80004F6DA /* Exercice.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C742E6AE5B80004F6DA /* Exercice.swift */; };
 		68E89C842E6AE5B80004F6DA /* SleepCycle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */; };
 		68E89C872E6AE8C40004F6DA /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C862E6AE8C40004F6DA /* User.swift */; };
 		68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C882E6B03450004F6DA /* AppCoordinator.swift */; };
-		68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */; };
 		68E89C8F2E6B0D060004F6DA /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68E89C8E2E6B0D060004F6DA /* ContentView.swift */; };
 		68EFABCE2EA7AD3400E2F937 /* ExerciseTypeCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */; };
 		68F1FA5A2EB2B388009D7E2C /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F1FA592EB2B388009D7E2C /* String+Ext.swift */; };
@@ -164,7 +155,6 @@
 		6820CDDF2EAA471400A7D74A /* GoalDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataManager.swift; sourceTree = "<group>"; };
 		6820CDE12EAA6E8D00A7D74A /* GoalTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalTests.swift; sourceTree = "<group>"; };
 		6820CDE32EAA75F000A7D74A /* GoalDataManagerTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GoalDataManagerTests.swift; sourceTree = "<group>"; };
-		6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
 		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		684321222E4CC534003FDAEE /* Persistence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Ext.swift"; sourceTree = "<group>"; };
@@ -201,19 +191,11 @@
 		68C6C9722E61903700108FE9 /* UserUpdateBuilder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBuilder.swift; sourceTree = "<group>"; };
 		68C6C9742E61912700108FE9 /* UserUpdateBuilderTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserUpdateBuilderTests.swift; sourceTree = "<group>"; };
 		68C6C9762E61D3E000108FE9 /* Date+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Ext.swift"; sourceTree = "<group>"; };
-		68C6C9782E61E22300108FE9 /* PasswordHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordHasher.swift; sourceTree = "<group>"; };
-		68C6C97A2E61E35600108FE9 /* PasswordHasherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordHasherTest.swift; sourceTree = "<group>"; };
-		68C6C97C2E61E3A100108FE9 /* User+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Password.swift"; sourceTree = "<group>"; };
-		68C6C97E2E61EDE600108FE9 /* User+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+PasswordTests.swift"; sourceTree = "<group>"; };
-		68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationView.swift; sourceTree = "<group>"; };
 		68E7C2C82EA242B9001C039B /* PreviewSleepDataProvider.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSleepDataProvider.swift; sourceTree = "<group>"; };
-		68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+Password.swift"; sourceTree = "<group>"; };
-		68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+PasswordTests.swift"; sourceTree = "<group>"; };
 		68E89C742E6AE5B80004F6DA /* Exercice.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercice.swift; sourceTree = "<group>"; };
 		68E89C7A2E6AE5B80004F6DA /* SleepCycle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SleepCycle.swift; sourceTree = "<group>"; };
 		68E89C862E6AE8C40004F6DA /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		68E89C882E6B03450004F6DA /* AppCoordinator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinator.swift; sourceTree = "<group>"; };
-		68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModel.swift; sourceTree = "<group>"; };
 		68E89C8E2E6B0D060004F6DA /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		68EFABCD2EA7AD3400E2F937 /* ExerciseTypeCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTypeCard.swift; sourceTree = "<group>"; };
 		68F1FA592EB2B388009D7E2C /* String+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
@@ -275,7 +257,6 @@
 				68E7C2D22EA27C75001C039B /* App */,
 				68E529962E58577500371833 /* CoreData */,
 				6816D5592EA9F5FA00ED8D20 /* Shared */,
-				6816D55A2EA9F71800ED8D20 /* Authentication */,
 				68E7C2CE2EA2767A001C039B /* User */,
 				68F521412EAB9C9A005902AB /* Goal */,
 				68E7C2CA2EA24384001C039B /* Sleep */,
@@ -303,7 +284,6 @@
 				68E7C2D42EA27D67001C039B /* App */,
 				68923A562E599F8500D81620 /* CoreData */,
 				6816D55B2EA9F7CB00ED8D20 /* Shared */,
-				6816D5602EA9FCAE00ED8D20 /* Authentication */,
 				68E7C2D52EA27D7E001C039B /* User */,
 				68EF9A572EB24E7400CF0BF2 /* Goal */,
 				68E7C2CD2EA26C0E001C039B /* Sleep */,
@@ -406,16 +386,6 @@
 			path = Shared;
 			sourceTree = "<group>";
 		};
-		6816D55A2EA9F71800ED8D20 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				68E529972E5857A100371833 /* Security */,
-				68E89C8C2E6B066A0004F6DA /* AuthenticationViewModel.swift */,
-				68CA51FB2E45FDD000178C72 /* AuthenticationView.swift */,
-			);
-			path = Authentication;
-			sourceTree = "<group>";
-		};
 		6816D55B2EA9F7CB00ED8D20 /* Shared */ = {
 			isa = PBXGroup;
 			children = (
@@ -425,15 +395,6 @@
 				6816D55E2EA9FC6000ED8D20 /* IntExtensionsTests.swift */,
 			);
 			path = Shared;
-			sourceTree = "<group>";
-		};
-		6816D5602EA9FCAE00ED8D20 /* Authentication */ = {
-			isa = PBXGroup;
-			children = (
-				68E529982E5857F800371833 /* Security */,
-				6840AF502E7313FC0098F325 /* AuthenticationViewModelTests.swift */,
-			);
-			path = Authentication;
 			sourceTree = "<group>";
 		};
 		6820CDD92EAA426800A7D74A /* Views */ = {
@@ -519,26 +480,6 @@
 				684321222E4CC534003FDAEE /* Persistence+Ext.swift */,
 			);
 			path = CoreData;
-			sourceTree = "<group>";
-		};
-		68E529972E5857A100371833 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				68C6C9782E61E22300108FE9 /* PasswordHasher.swift */,
-				68C6C97C2E61E3A100108FE9 /* User+Password.swift */,
-				68E89C692E6AC3280004F6DA /* UserDataManager+Password.swift */,
-			);
-			path = Security;
-			sourceTree = "<group>";
-		};
-		68E529982E5857F800371833 /* Security */ = {
-			isa = PBXGroup;
-			children = (
-				68C6C97A2E61E35600108FE9 /* PasswordHasherTest.swift */,
-				68C6C97E2E61EDE600108FE9 /* User+PasswordTests.swift */,
-				68E89C6B2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift */,
-			);
-			path = Security;
 			sourceTree = "<group>";
 		};
 		68E7C2CA2EA24384001C039B /* Sleep */ = {
@@ -806,7 +747,6 @@
 				68E7C2C92EA242B9001C039B /* PreviewSleepDataProvider.swift in Sources */,
 				685228962E97E437008E33EE /* GradeLabel.swift in Sources */,
 				68C6C9772E61D3E000108FE9 /* Date+Ext.swift in Sources */,
-				68E89C6A2E6AC3280004F6DA /* UserDataManager+Password.swift in Sources */,
 				68F5213C2EAB999C005902AB /* CaloriesProgressBar.swift in Sources */,
 				685228982E97E8EC008E33EE /* GradePicker.swift in Sources */,
 				68E89C892E6B03450004F6DA /* AppCoordinator.swift in Sources */,
@@ -815,7 +755,6 @@
 				6852288A2E97AD6D008E33EE /* SleepClockCalculator.swift in Sources */,
 				685FB5932EA808E2003E4C6D /* PreviewExerciseDataProvider.swift in Sources */,
 				53E587632B235FF600E4EF99 /* UserView.swift in Sources */,
-				68C6C9792E61E22300108FE9 /* PasswordHasher.swift in Sources */,
 				6852288E2E97AF1D008E33EE /* SleepArcView.swift in Sources */,
 				685228882E97AD03008E33EE /* CurrentTimeIndicator.swift in Sources */,
 				6802E67E2E85897D00501E0E /* SleepDataManager.swift in Sources */,
@@ -843,13 +782,11 @@
 				68F521352EAB5A27005902AB /* GoalSliderView.swift in Sources */,
 				53E5876B2B23648500E4EF99 /* ExerciseViewModel.swift in Sources */,
 				68F521372EAB5CD0005902AB /* GoalType.swift in Sources */,
-				68C6C97D2E61E3A100108FE9 /* User+Password.swift in Sources */,
 				53E5873D2B235E9000E4EF99 /* Arista.xcdatamodeld in Sources */,
 				68F5213E2EAB9C68005902AB /* CaloriesBarChart.swift in Sources */,
 				685228942E97E329008E33EE /* EditSleepCycleModal.swift in Sources */,
 				6813E76C2E86D362007F008C /* SleepView.swift in Sources */,
 				68561AB12EA6266C00DB1F64 /* ExerciceDataManager.swift in Sources */,
-				68E89C8D2E6B066A0004F6DA /* AuthenticationViewModel.swift in Sources */,
 				685228912E97BCBB008E33EE /* SleepHistorySection.swift in Sources */,
 				689510082E60473600461030 /* UserDataManager.swift in Sources */,
 				686027AA2E3B973100BF8EA8 /* ExerciceType.swift in Sources */,
@@ -857,7 +794,6 @@
 				68C6C9732E61903700108FE9 /* UserUpdateBuilder.swift in Sources */,
 				53E5876D2B236D9E00E4EF99 /* EditExerciseModal.swift in Sources */,
 				6852289A2E97ECE9008E33EE /* CurrentStateSection.swift in Sources */,
-				68CA51FC2E45FDD000178C72 /* AuthenticationView.swift in Sources */,
 				68F4DA092E7C522500CFECA5 /* EditUserView.swift in Sources */,
 				68089CB62EAFC74700B27567 /* GoalStepper.swift in Sources */,
 				6813E76A2E86D299007F008C /* SleepClockView.swift in Sources */,
@@ -886,21 +822,17 @@
 				6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */,
 				6895100B2E60711600461030 /* UserTests.swift in Sources */,
 				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
-				68E89C6C2E6AC6BE0004F6DA /* UserDataManager+PasswordTests.swift in Sources */,
 				6816D55D2EA9F84E00ED8D20 /* GradeTests.swift in Sources */,
 				6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */,
 				680435522EB8D7BD004CF49D /* SleepMetricsTests.swift in Sources */,
 				53E587472B235E9000E4EF99 /* PersistenceTests.swift in Sources */,
-				68C6C97F2E61EDE600108FE9 /* User+PasswordTests.swift in Sources */,
 				6816D5622EAA016200ED8D20 /* SleepCycleTests.swift in Sources */,
 				6802E6802E858DE000501E0E /* SleepDataManagerTests.swift in Sources */,
 				6859510E2EA9518A00A8744E /* ExerciseViewModelTests.swift in Sources */,
 				6802E6742E8534F600501E0E /* ToastyTestHelpers.swift in Sources */,
-				6840AF512E7313FC0098F325 /* AuthenticationViewModelTests.swift in Sources */,
 				6816D5642EAA024C00ED8D20 /* ExerciceTests.swift in Sources */,
 				6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */,
 				68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */,
-				68C6C97B2E61E35600108FE9 /* PasswordHasherTest.swift in Sources */,
 				6813E7672E86CE11007F008C /* DateExtensionsTests.swift in Sources */,
 				6802E6792E85391C00501E0E /* ToastyTypeTests.swift in Sources */,
 				686D56922E7455900088AD98 /* UserViewModelTests.swift in Sources */,
