@@ -60,7 +60,7 @@ final class SleepViewModel: ObservableObject {
     init(appCoordinator: AppCoordinator, sleepDataManager: SleepDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
-        self.currentUser = try appCoordinator.validateCurrentUser()
+        self.currentUser = appCoordinator.currentUser
         reloadAllData()
     }
 

@@ -16,97 +16,15 @@ struct SharedTestHelper {
         return PersistenceController(inMemory: true)
     }
 
-    /// Sample Data
-    static let sampleUserData = (
-        firstName: "John",
-        lastName: "Cena",
-        email: "john.Cena@test.com",
-        password: "Password123!"
-    )
 
-    static let sampleUserData2 = (
-        firstName: "Jane",
-        lastName: "Cena",
-        email: "jane.Cena@test.com",
-        password: "Password123!"
-    )
-
-    /// User Creation Helpers
-    @discardableResult
-    static func createSampleUser(in context: NSManagedObjectContext) -> User {
-        let user = User(context: context)
-        user.id = UUID()
-        user.salt = UUID()
-        user.firstName = sampleUserData.firstName
-        user.lastName = sampleUserData.lastName
-        user.email = sampleUserData.email
-        user.hashPassword = PasswordHasher.hash(password: sampleUserData.password, salt: user.salt)
-        return user
-    }
-
-    @discardableResult
-    static func createSampleUser2(in context: NSManagedObjectContext) -> User {
-        let user = User(context: context)
-        user.id = UUID()
-        user.salt = UUID()
-        user.firstName = sampleUserData2.firstName
-        user.lastName = sampleUserData2.lastName
-        user.email = sampleUserData2.email
-        user.hashPassword = PasswordHasher.hash(password: sampleUserData2.password, salt: user.salt)
-        return user
-    }
-
-    @discardableResult
-    static func createUser(
-        firstName: String,
-        lastName: String,
-        email: String,
-        in context: NSManagedObjectContext
-    ) -> User {
-        let user = User(context: context)
-        user.id = UUID()
-        user.firstName = firstName
-        user.lastName = lastName
-        user.email = email
-        return user
-    }
-
-    @discardableResult
-    static func createUsers(count: Int, in context: NSManagedObjectContext) -> [User] {
-        var users: [User] = []
-
-        for i in 1...count {
-            let user = User(context: context)
-            user.id = UUID()
-            user.firstName = "User\(i)"
-            user.email = "user\(i)@test.com"
-            users.append(user)
-        }
-
-        return users
-    }
-
-    @discardableResult
-    static func createRandomUsers(in context: NSManagedObjectContext) -> [User] {
-        let randomCount: Int = Int.random(in: 1...100)
-        return createUsers(count: randomCount, in: context)
-    }
-    
-    @discardableResult
-    static func createInvalidUser(in context: NSManagedObjectContext) -> User {
-           let user = User(context: context)
-           user.id = UUID()
-           return user
-       }
-    
     static func saveContextWithErrorHandling(_ context: NSManagedObjectContext) -> Error? {
-            do {
-                try context.save()
-                return nil
-            } catch {
-                return error
-            }
+        do {
+            try context.save()
+            return nil
+        } catch {
+            return error
         }
+    }
 
     /// Save Helper
 

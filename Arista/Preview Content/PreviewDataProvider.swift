@@ -57,16 +57,12 @@ extension PreviewDataProvider {
     static func createSampleUser(in context: NSManagedObjectContext) -> User {
         let user = User(context: context)
         user.id = UUID()
-        user.salt = UUID()
         user.firstName = "Charlotte"
         user.lastName = "Corino"
-        user.email = "charlotte.corino@preview.com"
-        user.hashPassword = PasswordHasher.hash(password: "Password123!", salt: user.salt)
         user.calorieGoal = 500
         user.sleepGoal = 480 // 8 hours
         user.waterGoal = 25 // 2.5L
         user.stepsGoal = 8500
-        user.isLogged = true
         return user
     }
 }
@@ -167,14 +163,8 @@ extension PreviewDataProvider {
         let dataManager = UserDataManager(container: previewData.container)
         let coordinator = AppCoordinator(dataManager: dataManager)
 
-        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.preview")!
-        UserDefaults(suiteName: "com.arista.preview")?.removePersistentDomain(forName: "com.arista.preview")
-
         let context = previewData.container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()
-        if let user = try? context.fetch(request).first {
-            try? coordinator.login(id: user.id)
-        }
 
         return coordinator
     }
@@ -185,9 +175,6 @@ extension PreviewDataProvider {
     }
 
     /// Preview ViewModels
-    static var sampleAuthenticationViewModel: AuthenticationViewModel {
-        AuthenticationViewModel(appCoordinator: sampleCoordinator)
-    }
 
     static func makeSampleUserViewModel() -> UserViewModel {
         let goalDataManager = GoalDataManager(container: previewData.container)

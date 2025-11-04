@@ -10,13 +10,9 @@ import CoreData
 
 @objc(User)
 public class User: NSManagedObject {
-    @NSManaged public var email: String
     @NSManaged public var firstName: String
-    @NSManaged public var hashPassword: String
     @NSManaged public var id: UUID
-    @NSManaged public var isLogged: Bool
     @NSManaged public var lastName: String
-    @NSManaged public var salt: UUID
     @NSManaged public var sleepGoal: Int16
     @NSManaged public var waterGoal: Int16
     @NSManaged public var stepsGoal: Int32
@@ -46,7 +42,6 @@ extension User {
             id: id,
             firstName: firstName,
             lastName: lastName,
-            email: email,
             calorieGoal: Int(calorieGoal),
             sleepGoal: Int(sleepGoal),
             waterGoal: Int(waterGoal),
@@ -60,7 +55,6 @@ struct UserDisplay: Identifiable, Equatable {
     let id: UUID
     let firstName: String
     let lastName: String
-    let email: String
     let calorieGoal: Int
     let sleepGoal: Int
     let waterGoal: Int

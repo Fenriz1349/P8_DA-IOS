@@ -43,26 +43,6 @@ struct EditUserView: View {
                                 color: .blue
                             )
                         }
-
-                        HStack(spacing: 12) {
-                            if viewModel.userDisplay.email != AppCoordinator.demoEmail {
-                                Button(role: .destructive) {
-                                    viewModel.showingResetAlert = true
-                                } label: {
-                                    CustomButtonLabel(
-                                        message: "user.edit.button.deleteAccount".localized,
-                                        color: .red
-                                    )
-                                }
-                            }
-
-                            Button(role: .destructive, action: viewModel.logout) {
-                                CustomButtonLabel(
-                                    message: "user.edit.button.logout".localized,
-                                    color: .orange
-                                )
-                            }
-                        }
                     }
                 }
                 .padding()
@@ -80,9 +60,6 @@ struct EditUserView: View {
                 isPresented: $viewModel.showingResetAlert
             ) {
                 Button("common.button.cancel".localized, role: .cancel) { }
-                Button("common.button.delete".localized, role: .destructive) {
-                    viewModel.deleteAccount()
-                }
             } message: {
                 Text(viewModel.alertMessage)
             }

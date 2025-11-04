@@ -27,17 +27,17 @@ extension PersistenceController {
 
     /// Erase All data, used for tests
     func clearAllData() {
-           let request: NSFetchRequest<NSFetchRequestResult> = User.fetchRequest()
-           let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        let request: NSFetchRequest<NSFetchRequestResult> = User.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
 
-           do {
-               try container.viewContext.execute(deleteRequest)
-               try container.viewContext.save()
-           } catch {
-               print(String.localizedStringWithFormat(NSLocalizedString("error.cleaningMessage", comment: ""),
-                                                      error as CVarArg))
-           }
-       }
+        do {
+            try container.viewContext.execute(deleteRequest)
+            try container.viewContext.save()
+        } catch {
+            print(String.localizedStringWithFormat(NSLocalizedString("error.cleaningMessage", comment: ""),
+                                                   error as CVarArg))
+        }
+    }
 
     /// Count the number of occurency of a given Type
     func count<T: NSManagedObject>(for type: T.Type) -> Int {

@@ -24,13 +24,10 @@ final class ExerciseViewModelTests: XCTestCase {
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         dataManager = ExerciceDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container), skipSessionRestore: true)
-        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
+        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
         spyToastyManager = ToastyTestHelpers.createSpyManager()
 
-        let user = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
-        try! coordinator.login(id: user.id)
 
         sut = try! ExerciseViewModel(appCoordinator: coordinator, dataManager: dataManager)
         sut.configureToasty(toastyManager: spyToastyManager)
@@ -42,7 +39,6 @@ final class ExerciseViewModelTests: XCTestCase {
         coordinator = nil
         dataManager = nil
         testContainer = nil
-        UserDefaults(suiteName: "com.arista.tests")?.removePersistentDomain(forName: "com.arista.tests")
         super.tearDown()
     }
 
@@ -53,16 +49,6 @@ final class ExerciseViewModelTests: XCTestCase {
         XCTAssertTrue(sut.exercices.isEmpty)
         XCTAssertFalse(sut.showEditModal)
         XCTAssertEqual(sut.validationState, .neutral)
-    }
-
-    func test_init_withNoLoggedUser_throwsError() throws {
-        // Given
-        coordinator.currentUser = nil
-
-        // When / Then
-        XCTAssertThrowsError(try ExerciseViewModel(appCoordinator: coordinator, dataManager: dataManager)) { error in
-            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
-        }
     }
 
     /// Validation Tests

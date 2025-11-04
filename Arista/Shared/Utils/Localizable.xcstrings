@@ -207,87 +207,6 @@
         }
       }
     },
-    "auth.createProfile.button" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create profile"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créer un profil"
-          }
-        }
-      }
-    },
-    "auth.createProfile.toggle" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Create a profile?"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Créer un profil ?"
-          }
-        }
-      }
-    },
-    "auth.demoLogin" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demo account is Email: demo@arista.app, Password: 1234"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le compte de demo est  Email: demo@arista.app, Password: 1234"
-          }
-        }
-      }
-    },
-    "auth.login.button" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Log in"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Se connecter"
-          }
-        }
-      }
-    },
-    "auth.welcome.title" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Welcome"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bienvenue"
-          }
-        }
-      }
-    },
     "common.button.cancel" : {
       "localizations" : {
         "en" : {
@@ -351,54 +270,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Email"
-          }
-        }
-      }
-    },
-    "error.auth.emailAlreadyUsed" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "This email address is already in use."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cette adresse email est déjà utilisée."
-          }
-        }
-      }
-    },
-    "error.auth.invalidCredentials" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Invalid email or password. Please check your credentials."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Email ou mot de passe incorrect. Vérifiez vos identifiants."
-          }
-        }
-      }
-    },
-    "error.auth.validationFailed" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please complete all required fields correctly."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Veuillez compléter correctement tous les champs requis."
           }
         }
       }
@@ -647,54 +518,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Une erreur inconnue s'est produite. Veuillez réessayer."
-          }
-        }
-      }
-    },
-    "error.user.invalidInput" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "The entered data is not valid."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Les données saisies ne sont pas valides."
-          }
-        }
-      }
-    },
-    "error.user.noLoggedUser" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "No logged in user found."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Aucun utilisateur connecté trouvé."
-          }
-        }
-      }
-    },
-    "error.user.userNotFound" : {
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "User not found."
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Utilisateur introuvable."
           }
         }
       }

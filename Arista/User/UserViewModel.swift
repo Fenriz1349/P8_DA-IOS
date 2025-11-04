@@ -128,7 +128,7 @@ final class UserViewModel: ObservableObject {
         self.dataManager = dataManager ?? UserDataManager()
         self.goalDataManager = goalDataManager ?? GoalDataManager()
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
-        self.user = try appCoordinator.validateCurrentUser()
+        self.user = appCoordinator.currentUser
         loadTodayGoal()
         loadSleepData()
     }
@@ -206,24 +206,6 @@ final class UserViewModel: ObservableObject {
     /// Closes the edit profile modal
     func closeEditModal() {
         showEditModal = false
-    }
-
-    /// Logs out the current user
-    func logout() {
-        do {
-            try appCoordinator.logout()
-        } catch {
-            toastyManager?.showError(error)
-        }
-    }
-
-    /// Deletes the current user's account permanently
-    func deleteAccount() {
-        do {
-            try appCoordinator.deleteCurrentUser()
-        } catch {
-            toastyManager?.showError(error)
-        }
     }
 
     /// Updates the water consumption for the current day

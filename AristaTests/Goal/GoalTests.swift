@@ -13,24 +13,24 @@ final class GoalTests: XCTestCase {
 
     var controller: PersistenceController!
     var context: NSManagedObjectContext!
-    var user: User!
+    var testUser: User!
 
     override func setUpWithError() throws {
         controller = SharedTestHelper.createTestContainer()
         context = controller.container.viewContext
-        user = SharedTestHelper.createSampleUser(in: context)
+        testUser = UserDataManager(container: controller.container).getOrCreateUser()
         try context.save()
     }
 
     override func tearDownWithError() throws {
-        user = nil
+        testUser = nil
         context = nil
         controller = nil
     }
 
     func test_toDisplay_shouldMapBasicValues() throws {
         /// Given
-        let goal = SharedTestHelper.makeGoal(for: user, in: context, date: Date(), water: 25)
+        let goal = SharedTestHelper.makeGoal(for: testUser, in: context, date: Date(), water: 25)
         try context.save()
 
         /// When
@@ -45,13 +45,13 @@ final class GoalTests: XCTestCase {
     func test_toDisplay_shouldIncludeUserExercisesAndSleepCycles() throws {
         /// Given
         let today = Date()
-        let goal = SharedTestHelper.makeGoal(for: user, in: context, date: today, water: 15)
+        let goal = SharedTestHelper.makeGoal(for: testUser, in: context, date: today, water: 15)
         goal.totalSteps = 400
 
-        _ = SharedTestHelper.createSampleExercice(for: user, in: context,
+        _ = SharedTestHelper.createSampleExercice(for: testUser, in: context,
                                                   date: today, duration: 60, type: .running, intensity: 5)
 
-        _ = SharedTestHelper.createSampleSleepCycle(for: user, in: context,
+        _ = SharedTestHelper.createSampleSleepCycle(for: testUser, in: context,
                                                     startOffset: -8 * 3600, duration: 8 * 3600, quality: 7)
         try context.save()
 
@@ -67,7 +67,7 @@ final class GoalTests: XCTestCase {
 
     func test_mapToDisplay_shouldMapMultipleGoals() throws {
         /// Given
-        let goals = SharedTestHelper.makeWeekGoals(for: user, in: context)
+        let goals = SharedTestHelper.makeWeekGoals(for: testUser, in: context)
         try context.save()
 
         /// When
@@ -81,14 +81,14 @@ final class GoalTests: XCTestCase {
 
     func test_totalSleepMinutes_shouldIgnoreIncompleteCycles() throws {
         /// Given
-        let goal = SharedTestHelper.makeGoal(for: user, in: context, date: Date())
+        let goal = SharedTestHelper.makeGoal(for: testUser, in: context, date: Date())
 
         let cycle = SleepCycle(context: context)
         cycle.id = UUID()
         cycle.dateStart = Date()
         cycle.dateEnding = nil
         cycle.quality = 8
-        cycle.user = user
+        cycle.user = testUser
 
         try context.save()
 
@@ -102,11 +102,11 @@ final class GoalTests: XCTestCase {
     func test_totalCalories_shouldIgnoreExercisesFromOtherDays() throws {
         // Given
         let today = Date()
-        let goal = SharedTestHelper.makeGoal(for: user, in: context, date: today)
+        let goal = SharedTestHelper.makeGoal(for: testUser, in: context, date: today)
         goal.totalSteps = 0
 
         let oldDate = Calendar.current.date(byAdding: .day, value: -3, to: today)!
-        _ = SharedTestHelper.createSampleExercice(for: user, in: context,
+        _ = SharedTestHelper.createSampleExercice(for: testUser, in: context,
                                                   date: oldDate, duration: 60, intensity: 10)
         try context.save()
 
