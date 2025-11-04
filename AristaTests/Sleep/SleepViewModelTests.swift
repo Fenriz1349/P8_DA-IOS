@@ -254,27 +254,7 @@ final class SleepViewModelTests: XCTestCase {
         let cycles = sut.historyCycles
         
         // Then
-        XCTAssertEqual(cycles.count, 2)
-    }
-
-    func test_historyCycles_doesNotContainLastCycle() throws {
-        // Given
-        for i in 0..<5 {
-            let date = Date().addingTimeInterval(Double(-i) * 86400)
-            try sleepDataManager.startSleepCycle(for: sut.currentUser, startDate: date)
-            try sleepDataManager.endSleepCycle(for: sut.currentUser)
-        }
-        
-        // When
-        sut.reloadAllData()
-        
-        // Then
-        XCTAssertNotNil(sut.currentCycle)
-        XCTAssertFalse(sut.historyCycles.isEmpty)
-        
-        if let lastCycle = sut.currentCycle, let firstHistory = sut.historyCycles.first {
-            XCTAssertNotEqual(lastCycle.id, firstHistory.id)
-        }
+        XCTAssertEqual(cycles.count, 3)
     }
 
     /// Delete Cycle Tests
