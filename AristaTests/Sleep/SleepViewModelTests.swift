@@ -25,13 +25,10 @@ final class SleepViewModelTests: XCTestCase {
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
         sleepDataManager = SleepDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container), skipSessionRestore: true)
-        coordinator.userDefaults = UserDefaults(suiteName: "com.arista.tests")!
+        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
         spyToastyManager = ToastyTestHelpers.createSpyManager()
         
-        let user = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
-        try! coordinator.login(id: user.id)
         
         sut = try! SleepViewModel(appCoordinator: coordinator, sleepDataManager: sleepDataManager)
         sut.configureToasty(toastyManager: spyToastyManager)
@@ -43,7 +40,6 @@ final class SleepViewModelTests: XCTestCase {
         coordinator = nil
         sleepDataManager = nil
         testContainer = nil
-        UserDefaults(suiteName: "com.arista.tests")?.removePersistentDomain(forName: "com.arista.tests")
         super.tearDown()
     }
     
@@ -55,16 +51,6 @@ final class SleepViewModelTests: XCTestCase {
         XCTAssertEqual(sut.currentState, .none)
         XCTAssertNil(sut.currentCycle)
         XCTAssertFalse(sut.showEditModal)
-    }
-    
-    func test_init_withNoLoggedUser_throwsError() throws {
-        // Given
-        coordinator.currentUser = nil
-        
-        // When / Then
-        XCTAssertThrowsError(try SleepViewModel(appCoordinator: coordinator, sleepDataManager: sleepDataManager)) { error in
-            XCTAssertEqual(error as? UserDataManagerError, .noLoggedUser)
-        }
     }
     
     /// Current State Tests

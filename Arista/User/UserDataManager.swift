@@ -9,17 +9,14 @@ import Foundation
 import CoreData
 
 final class UserDataManager {
-
     private let container: NSPersistentContainer
 
     init(container: NSPersistentContainer = PersistenceController.shared.container) {
         self.container = container
     }
 
-    /// Fetches a user by their unique identifier
-    /// - Parameter id: The UUID of the user to fetch
-    /// - Returns: The User entity matching the provided ID
-    /// - Throws: UserDataManagerError.userNotFound if no user exists with the given ID
+    /// Fetches the existing user or creates one if none exists.
+    /// - Returns: The demoUser
     func getOrCreateUser() -> User {
         let context = container.viewContext
         let request: NSFetchRequest<User> = User.fetchRequest()

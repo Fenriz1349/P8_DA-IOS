@@ -18,7 +18,7 @@ final class SleepCycleTests: XCTestCase {
     override func setUpWithError() throws {
         controller = SharedTestHelper.createTestContainer()
         context = controller.container.viewContext
-        user = SharedTestHelper.createSampleUser(in: context)
+        user = UserDataManager(container: controller.container).getOrCreateUser()
     }
 
     override func tearDownWithError() throws {
