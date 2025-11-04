@@ -107,6 +107,9 @@
         }
       }
     },
+    "%@" : {
+
+    },
     "%@ → %@" : {
       "localizations" : {
         "en" : {
@@ -560,12 +563,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "History (Last 7 days)"
+            "value" : "History"
           }
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Historique (7 derniers jours)"
           }
         }
@@ -1401,13 +1404,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "History (Last 7 days)"
+            "value" : "History"
           }
         },
         "fr" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Historique (7 derniers jours)"
+            "value" : "Historique"
           }
         }
       }

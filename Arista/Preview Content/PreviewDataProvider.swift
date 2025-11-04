@@ -169,7 +169,6 @@ extension PreviewDataProvider {
         return coordinator
     }
 
-
     static var sampleToastyManager: ToastyManager {
         ToastyManager()
     }

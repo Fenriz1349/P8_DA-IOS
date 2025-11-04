@@ -16,8 +16,16 @@ struct SleepView: View {
         VStack(spacing: 20) {
             HStack {
                 SleepClockView(sleepCycle: viewModel.currentCycle, size: 200)
-                MainSleepCycleButton(viewModel: viewModel)
+                VStack(spacing: 10) {
+                    MainSleepCycleButton(viewModel: viewModel)
+                    if let currentCycle = viewModel.currentCycle {
+                        Text("\(currentCycle.dateStart.formattedInterval(to: currentCycle.dateEnding ?? Date()))")
+                            .font(.title3.monospacedDigit())
+                            .foregroundColor(.secondary)
+                    }
+                }
             }
+
             HStack {
                 CurrentStateSection(viewModel: viewModel)
                 if viewModel.currentState.isActive {

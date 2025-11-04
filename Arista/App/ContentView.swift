@@ -19,14 +19,14 @@ struct ContentView: View {
                             Label("tabbar.profil", systemImage: "person")
                         }
                 }
-                
+
                 if let exerciceVM = try? appCoordinator.makeExerciceViewModel() {
                     ExerciseView(viewModel: exerciceVM)
                         .tabItem {
                             Label("tabbar.exercices", systemImage: "flame")
                         }
                 }
-                
+
                 if let sleepVM = try? appCoordinator.makeSleepViewModel() {
                     SleepView(viewModel: sleepVM)
                         .tabItem {
@@ -36,7 +36,6 @@ struct ContentView: View {
             }
             .environmentObject(appCoordinator)
         }
-        
     }
 }
 
