@@ -128,4 +128,33 @@ final class AristaTests: XCTestCase {
             XCTAssertEqual(nsError.code, 1570) // NS Error Code for missing datas
         }
     }
+    
+    func testClearAllData_ShouldRemoveAllUsers() throws {
+        // Given
+        let user = User(context: context)
+        user.id = UUID()
+        user.firstName = "Test"
+        try context.save()
+        XCTAssertEqual(controller.count(for: User.self), 1)
+        
+        // When
+        controller.clearAllData()
+        
+        // Then
+        XCTAssertEqual(controller.count(for: User.self), 0)
+    }
+    
+    func testCountForEntity_ShouldNotCrashAndReturnValidNumber() {
+        // Given
+        let invalidController = PersistenceController(inMemory: true)
+        let invalidContext = invalidController.container.viewContext
+        invalidContext.reset()
+        invalidContext.persistentStoreCoordinator = nil
+
+        // When
+        let result = invalidController.count(for: User.self)
+
+        // Then
+        XCTAssertGreaterThanOrEqual(result, 0)
+    }
 }

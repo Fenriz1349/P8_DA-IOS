@@ -15,9 +15,6 @@ open Arista.xcodeproj
 
 **L'application crée automatiquement un compte de démo au premier lancement :**
 
-- **Email :** `demo@arista.app`
-- **Mot de passe :** `1234`
-
 Le compte est vide par défaut. Pour tester l'application :
 - **Exercices :** Onglet "Exercices" → Bouton "Ajouter"
 - **Sommeil :** Onglet "Sommeil" → Bouton "Commencer" puis "Terminer"
@@ -29,7 +26,6 @@ Le compte est vide par défaut. Pour tester l'application :
 - ✅ Gestion du sommeil avec horloge visuelle
 - ✅ Objectifs quotidiens (calories, pas, eau, sommeil)
 - ✅ Historique et statistiques sur 7 jours
-- ✅ Authentification avec comptes multiples
 - ✅ Persistance locale (CoreData)
 - ✅ Mots de passe hashés (SHA-256 + salt)
 
@@ -49,7 +45,6 @@ Les tests sont isolés (CoreData in-memory + UserDefaults de test).
 ```
 Arista/
 ├── App/              # AppCoordinator, ContentView
-├── Authentication/   # Login, création de compte
 ├── User/             # Profil et objectifs
 ├── Exercice/         # Gestion des exercices
 ├── Sleep/            # Gestion du sommeil
