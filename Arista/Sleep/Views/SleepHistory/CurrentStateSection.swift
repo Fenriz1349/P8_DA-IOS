@@ -31,13 +31,7 @@ struct CurrentStateSection: View {
                 }
                 .padding()
                 .background(Color(.systemGray6))
-
-            case .completed(let cycle):
-                VStack {
-                    Text("sleep.state.lastSleep".localized)
-                        .font(.headline)
-                    SleepHistoryRow(cycle: cycle)
-                }
+            default: EmptyView()
             }
         }
         .onTapGesture {

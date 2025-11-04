@@ -74,11 +74,11 @@ final class SleepViewModel: ObservableObject {
     /// Fetches recent sleep cycles and separates current cycle from history
     func reloadAllData() {
         do {
-            let cycles = try sleepDataManager.fetchRecentSleepCycles(for: currentUser)
+            let cycles = try sleepDataManager.fetchSleepCycles(for: currentUser)
             let displays = SleepCycle.mapToDisplay(from: cycles)
 
             currentCycle = displays.first
-            historyCycles = Array(displays.dropFirst())
+            historyCycles = displays
 
         } catch {
             toastyManager?.showError(error)
