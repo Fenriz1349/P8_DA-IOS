@@ -108,7 +108,14 @@
       }
     },
     "%@" : {
-
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
     },
     "%@ → %@" : {
       "localizations" : {
@@ -568,8 +575,8 @@
         },
         "fr" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Historique (7 derniers jours)"
+            "state" : "translated",
+            "value" : "Historique"
           }
         }
       }
