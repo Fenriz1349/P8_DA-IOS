@@ -22,32 +22,16 @@ final class AppCoordinator: ObservableObject {
         self.dataManager = dataManager
 
         if !skipSessionRestore {
-            ensureDemoUserExists()
-            restoreUserSession()
+            if BuildConfig.isDemo {
+                setupDemoUser()
+            } else {
+                restoreUserSession()
+            }
         }
     }
 
-    private func ensureDemoUserExists() {
-        let users = dataManager.fetchAllUsers()
-
-        if users.contains(where: { $0.email == AppCoordinator.demoEmail }) { return }
-
-        do {
-            let demoUser = try dataManager.createUser(
-                email: AppCoordinator.demoEmail,
-                password: "1234",
-                firstName: "Bruce",
-                lastName: "Wayne"
-            )
-
-            try dataManager.loggedIn(id: demoUser.id)
-            currentUser = demoUser
-            userDefaults.set(demoUser.id.uuidString, forKey: currentUserIdKey)
-
-            print("✅ Demo user created and logged in")
-        } catch {
-            print("⚠️ Failed to create demo user: \(error)")
-        }
+    private func setupDemoUser() {
+        currentUser = dataManager.getOrCreateDemoUser()
     }
 
     var isAuthenticated: Bool {
@@ -131,16 +115,20 @@ final class AppCoordinator: ObservableObject {
     }
 
     /// Logs out all users from the application.
+    /// Logout is unaivailable in demo
     /// - Throws: An error if the logout fails.
     func logout() throws {
+        guard !BuildConfig.isDemo else { return }
         try dataManager.loggedOffAllUsers()
         currentUser = nil
         clearStoredSession()
     }
 
     /// Deletes the currently logged-in user from the database.
+    /// Logout is unaivailable in demo
     /// - Throws: An error if the deletion fails.
     func deleteCurrentUser() throws {
+        guard !BuildConfig.isDemo else { return }
         guard let user = currentUser else { return }
         try dataManager.deleteUser(by: user.id)
         currentUser = nil

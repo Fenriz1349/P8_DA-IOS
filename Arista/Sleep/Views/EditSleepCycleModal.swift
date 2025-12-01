@@ -14,7 +14,15 @@ struct EditSleepCycleModal: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-                SleepClockView(sleepCycle: viewModel.editingCycle, size: 200)
+                HStack(spacing: 30) {
+                    SleepClockView(sleepCycle: viewModel.editingCycle, size: 200)
+                        .layoutPriority(1)
+                        .frame(maxWidth: .infinity)
+                    Text("\(viewModel.manualStartDate.formattedInterval(to: viewModel.manualEndDate))")
+                        .font(.title)
+                        .foregroundColor(.secondary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                }
 
                 VStack(spacing: 16) {
                     VStack(alignment: .leading, spacing: 8) {

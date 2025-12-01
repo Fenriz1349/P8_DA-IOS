@@ -107,6 +107,16 @@
         }
       }
     },
+    "%@" : {
+      "localizations" : {
+        "fr" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%@"
+          }
+        }
+      }
+    },
     "%@ → %@" : {
       "localizations" : {
         "en" : {
@@ -235,23 +245,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Créer un profil ?"
-          }
-        }
-      }
-    },
-    "auth.demoLogin" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Demo account is Email: demo@arista.app, Password: 1234"
-          }
-        },
-        "fr" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Le compte de demo est  Email: demo@arista.app, Password: 1234"
           }
         }
       }
@@ -2040,5 +2033,5 @@
       }
     }
   },
-  "version" : "1.0"
+  "version" : "1.1"
 }

@@ -32,6 +32,30 @@ final class UserDataManager {
         self.container = container
     }
 
+    /// Fetches the existing user or creates one if none exists.
+    /// - Returns: The demoUser
+    @MainActor
+    func getOrCreateDemoUser() -> User {
+        let context = container.viewContext
+        let request: NSFetchRequest<User> = User.fetchRequest()
+        request.predicate = NSPredicate(format: "email == %@", AppCoordinator.demoEmail)
+
+        if let existingUser = try? context.fetch(request).first {
+            return existingUser
+        }
+
+        let user = User(context: context)
+        user.id = UUID()
+        user.firstName = "Bruce"
+        user.lastName = "Wayne"
+        user.email = AppCoordinator.demoEmail
+        user.isLogged = true
+
+        try? context.save()
+
+        return user
+    }
+
     /// Creates a new user with the provided credentials and personal information
     /// - Parameters:
     ///   - email: User's email address

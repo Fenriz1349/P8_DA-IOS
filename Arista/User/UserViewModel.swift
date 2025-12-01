@@ -44,6 +44,15 @@ final class UserViewModel: ObservableObject {
         user.toDisplay()
     }
 
+    /// Demo Protections
+    var canEditIdentity: Bool {
+        !BuildConfig.isDemo
+    }
+
+    var canManageAccount: Bool {
+        !BuildConfig.isDemo
+    }
+
     var todayCalories: Int {
         do {
             if let todayGoal = try goalDataManager.fetchGoal(for: user) {
@@ -126,7 +135,7 @@ final class UserViewModel: ObservableObject {
         sleepDataManager: SleepDataManager? = nil
     ) throws {
         self.appCoordinator = appCoordinator
-        self.dataManager = dataManager ?? UserDataManager()
+        self.dataManager = appCoordinator.dataManager
         self.goalDataManager = goalDataManager ?? GoalDataManager()
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
         self.user = try appCoordinator.validateCurrentUser()
