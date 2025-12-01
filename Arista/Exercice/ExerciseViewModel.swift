@@ -43,7 +43,7 @@ final class ExerciseViewModel: ObservableObject {
     init(appCoordinator: AppCoordinator, dataManager: ExerciceDataManager? = nil) throws {
         self.appCoordinator = appCoordinator
         self.exerciceDataManager = dataManager ?? ExerciceDataManager()
-        self.currentUser = appCoordinator.currentUser
+        self.currentUser = try appCoordinator.validateCurrentUser()
         reloadAll()
     }
 
@@ -56,7 +56,7 @@ final class ExerciseViewModel: ObservableObject {
     /// Reloads all exercises from the last 7 days for the current user
     func reloadAll() {
         do {
-            let items = try exerciceDataManager.fetchExercices(for: currentUser)
+            let items = try exerciceDataManager.fetchLastWeekExercices(for: currentUser)
             exercices = Exercice.mapToDisplay(from: items)
         } catch {
             lastError = error

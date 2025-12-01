@@ -14,7 +14,6 @@ struct EditSleepCycleModal: View {
     var body: some View {
         NavigationStack {
             VStack(spacing: 24) {
-
                 HStack(spacing: 30) {
                     SleepClockView(sleepCycle: viewModel.editingCycle, size: 200)
                         .layoutPriority(1)

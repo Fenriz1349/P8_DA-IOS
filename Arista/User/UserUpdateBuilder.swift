@@ -11,6 +11,7 @@ import CoreData
 enum UserUpdateBuilderError: Error, Equatable {
     case emptyFirstName
     case emptyLastName
+    case emptyPassword
     case negativeCalorieGoal
     case negativeSleepGoal
     case negativeWaterGoal
@@ -49,6 +50,36 @@ class UserUpdateBuilder {
             throw UserUpdateBuilderError.emptyLastName
         }
         user.lastName = value
+        return self
+    }
+
+    /// Updates the user's password hash
+    /// - Parameter value: The new password hash (must not be empty)
+    /// - Returns: Self for method chaining
+    /// - Throws: UserUpdateBuilderError.emptyPassword if the value is empty
+    @discardableResult
+    func password(_ value: String) throws -> UserUpdateBuilder {
+        guard !value.isEmpty else {
+            throw UserUpdateBuilderError.emptyPassword
+        }
+        user.hashPassword = value
+        return self
+    }
+
+    /// Generates a new salt for the user
+    /// - Returns: Self for method chaining
+    @discardableResult
+    func salt() -> UserUpdateBuilder {
+        user.salt = UUID()
+        return self
+    }
+
+    /// Updates the user's logged-in status
+    /// - Parameter value: The new logged-in status
+    /// - Returns: Self for method chaining
+    @discardableResult
+    func isLogged(_ value: Bool) -> UserUpdateBuilder {
+        user.isLogged = value
         return self
     }
 
