@@ -33,7 +33,6 @@ struct MainAppView: View {
                             .tabItem { Label("tabbar.sleep", systemImage: "moon") }
                     }
                 }
-                .id(appCoordinator.currentUser?.id ?? UUID())
             }
         )
     }

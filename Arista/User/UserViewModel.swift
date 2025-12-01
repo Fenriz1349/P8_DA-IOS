@@ -22,6 +22,7 @@ final class UserViewModel: ObservableObject {
     /// UI / Published Properties
     @Published var showingResetAlert = false
     @Published var showEditModal = false
+    @Published var isDeleted = false
     let alertMessage = String(localized: "user.deleteAccount.alert.message")
 
     /// Edit form fields
@@ -231,6 +232,7 @@ final class UserViewModel: ObservableObject {
     func deleteAccount() {
         do {
             try appCoordinator.deleteCurrentUser()
+            isDeleted = true
         } catch {
             toastyManager?.showError(error)
         }
