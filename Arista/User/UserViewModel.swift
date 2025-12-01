@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import CoreData
 
 @MainActor
 final class UserViewModel: ObservableObject {
@@ -21,6 +22,7 @@ final class UserViewModel: ObservableObject {
     /// UI / Published Properties
     @Published var showingResetAlert = false
     @Published var showEditModal = false
+    @Published var isDeleted = false
     let alertMessage = String(localized: "user.deleteAccount.alert.message")
 
     /// Edit form fields
@@ -41,6 +43,15 @@ final class UserViewModel: ObservableObject {
     /// Computed for display
     var userDisplay: UserDisplay {
         user.toDisplay()
+    }
+
+    /// Demo Protections
+    var canEditIdentity: Bool {
+        !BuildConfig.isDemo
+    }
+
+    var canManageAccount: Bool {
+        !BuildConfig.isDemo
     }
 
     var todayCalories: Int {
@@ -125,10 +136,10 @@ final class UserViewModel: ObservableObject {
         sleepDataManager: SleepDataManager? = nil
     ) throws {
         self.appCoordinator = appCoordinator
-        self.dataManager = dataManager ?? UserDataManager()
+        self.dataManager = appCoordinator.dataManager
         self.goalDataManager = goalDataManager ?? GoalDataManager()
         self.sleepDataManager = sleepDataManager ?? SleepDataManager()
-        self.user = appCoordinator.currentUser
+        self.user = try appCoordinator.validateCurrentUser()
         loadTodayGoal()
         loadSleepData()
     }
@@ -206,6 +217,25 @@ final class UserViewModel: ObservableObject {
     /// Closes the edit profile modal
     func closeEditModal() {
         showEditModal = false
+    }
+
+    /// Logs out the current user
+    func logout() {
+        do {
+            try appCoordinator.logout()
+        } catch {
+            toastyManager?.showError(error)
+        }
+    }
+
+    /// Deletes the current user's account permanently
+    func deleteAccount() {
+        do {
+            try appCoordinator.deleteCurrentUser()
+            isDeleted = true
+        } catch {
+            toastyManager?.showError(error)
+        }
     }
 
     /// Updates the water consumption for the current day
