@@ -11,32 +11,9 @@ struct ContentView: View {
     @StateObject private var appCoordinator = AppCoordinator()
 
     var body: some View {
-        if appCoordinator.isAuthenticated {
-            NavigationStack {
-                TabView {
-                    if let accountVM = try? appCoordinator.makeUserViewModel() {
-                        UserView(viewModel: accountVM)
-                            .tabItem {
-                                Label("tabbar.profil", systemImage: "person")
-                            }
-                    }
-
-                    if let exerciceVM = try? appCoordinator.makeExerciceViewModel() {
-                        ExerciseView(viewModel: exerciceVM)
-                            .tabItem {
-                                Label("tabbar.exercices", systemImage: "flame")
-                            }
-                    }
-
-                    if let sleepVM = try? appCoordinator.makeSleepViewModel() {
-                        SleepView(viewModel: sleepVM)
-                            .tabItem {
-                                Label("tabbar.sleep", systemImage: "moon")
-                            }
-                    }
-                }
+        if BuildConfig.isDemo || appCoordinator.isAuthenticated {
+            MainAppView()
                 .environmentObject(appCoordinator)
-            }
         } else {
             AuthenticationView(viewModel: appCoordinator.makeAuthenticationViewModel)
                 .environmentObject(appCoordinator)

@@ -8,65 +8,34 @@ struct EditUserView: View {
     var body: some View {
         NavigationStack {
             ScrollView {
-                VStack(spacing: 30) {
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("user.edit.section.profile")
-                            .font(.headline)
-
-                        CustomTextField(
-                            placeholder: "firstName".localized,
-                            text: $viewModel.firstName,
-                            type: .alphaNumber
-                        )
-
-                        CustomTextField(
-                            placeholder: "lastName".localized,
-                            text: $viewModel.lastName,
-                            type: .alphaNumber
+                if viewModel.canEditIdentity {
+                    UserIdentityUpdateView(viewModel: viewModel)
+                }
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Text("user.edit.section.dailyGoals")
+                        .font(.headline)
+                    GoalStepper(type: .calories, value: $viewModel.calorieGoal)
+                    GoalStepper(type: .steps, value: $viewModel.stepsGoal)
+                    GoalStepper(type: .sleep, value: $viewModel.sleepGoal)
+                    GoalStepper(type: .water, value: $viewModel.waterGoal)
+                }
+                
+                VStack(alignment: .leading, spacing: 16) {
+                    Button(action: viewModel.saveChanges) {
+                        CustomButtonLabel(
+                            iconLeading: "checkmark",
+                            message: "common.button.save".localized,
+                            color: .blue
                         )
                     }
-
-                    VStack(alignment: .leading, spacing: 16) {
-                        Text("user.edit.section.dailyGoals")
-                            .font(.headline)
-                        GoalStepper(type: .calories, value: $viewModel.calorieGoal)
-                        GoalStepper(type: .steps, value: $viewModel.stepsGoal)
-                        GoalStepper(type: .sleep, value: $viewModel.sleepGoal)
-                        GoalStepper(type: .water, value: $viewModel.waterGoal)
-                    }
-
-                    VStack(alignment: .leading, spacing: 16) {
-                        Button(action: viewModel.saveChanges) {
-                            CustomButtonLabel(
-                                iconLeading: "checkmark",
-                                message: "common.button.save".localized,
-                                color: .blue
-                            )
-                        }
-
-                        HStack(spacing: 12) {
-                            if viewModel.userDisplay.email != AppCoordinator.demoEmail {
-                                Button(role: .destructive) {
-                                    viewModel.showingResetAlert = true
-                                } label: {
-                                    CustomButtonLabel(
-                                        message: "user.edit.button.deleteAccount".localized,
-                                        color: .red
-                                    )
-                                }
-                            }
-
-                            Button(role: .destructive, action: viewModel.logout) {
-                                CustomButtonLabel(
-                                    message: "user.edit.button.logout".localized,
-                                    color: .orange
-                                )
-                            }
-                        }
+                    
+                    if viewModel.canManageAccount {
+                        UserLogOutAndDeleteButtonsView(viewModel: viewModel)
                     }
                 }
-                .padding()
             }
+            .padding()
             .navigationTitle("user.edit.navigationTitle")
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
@@ -89,6 +58,7 @@ struct EditUserView: View {
         }
     }
 }
+
 
 #Preview {
     EditUserView(viewModel: PreviewDataProvider.makeSampleUserViewModel())
