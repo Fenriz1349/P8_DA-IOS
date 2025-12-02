@@ -22,16 +22,33 @@ final class UserViewModelTests: XCTestCase {
         context = container.container.viewContext
         dataManager = UserDataManager(container: container.container)
         goalManager = GoalDataManager(container: container.container)
-        coordinator = AppCoordinator(dataManager: dataManager)
+
+        coordinator = AppCoordinator(dataManager: dataManager, skipSessionRestore: true)
+
+        // Create and log in a user
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try! context.save()
+        try! coordinator.login(id: user.id)
     }
 
-    func test_init_loadsDemoUser() throws {
+    func test_init_loadsCurrentLoggedUser() throws {
+        // Given
+        let user = SharedTestHelper.createSampleUser(in: context)
+        try context.save()
+        try coordinator.login(id: user.id)
+
         // When
         let sut = try UserViewModel(appCoordinator: coordinator, goalDataManager: goalManager)
-        
+
         // Then
-        XCTAssertEqual(sut.user.firstName, "Bruce")
-        XCTAssertEqual(sut.user.lastName, "Wayne")
+        XCTAssertEqual(sut.user.id, user.id)
+    }
+
+    func test_getOrCreateDemoUser_createsBruceWayne() throws {
+        let user = dataManager.getOrCreateDemoUser()
+
+        XCTAssertEqual(user.firstName, "Bruce")
+        XCTAssertEqual(user.lastName, "Wayne")
     }
 
     func test_editUser_updatesValues() throws {

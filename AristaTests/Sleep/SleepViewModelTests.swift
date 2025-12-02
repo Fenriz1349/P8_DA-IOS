@@ -21,15 +21,23 @@ final class SleepViewModelTests: XCTestCase {
     
     override func setUp() {
         super.setUp()
-        
+
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
+
         sleepDataManager = SleepDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
+
+        let userManager = UserDataManager(container: testContainer.container)
+        coordinator = AppCoordinator(dataManager: userManager, skipSessionRestore: true)
+
         spyToastyManager = ToastyTestHelpers.createSpyManager()
-        
+
+        // Create & login a user
+        let user = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
-        
+        try! coordinator.login(id: user.id)
+
+        // Instantiate SUT
         sut = try! SleepViewModel(appCoordinator: coordinator, sleepDataManager: sleepDataManager)
         sut.configureToasty(toastyManager: spyToastyManager)
     }

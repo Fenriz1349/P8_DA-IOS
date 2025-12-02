@@ -78,7 +78,7 @@ final class SleepViewModel: ObservableObject {
             let displays = SleepCycle.mapToDisplay(from: cycles)
 
             currentCycle = displays.first
-            historyCycles = Array(displays.dropFirst())
+            historyCycles = displays
 
         } catch {
             toastyManager?.showError(error)
