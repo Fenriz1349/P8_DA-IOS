@@ -1,57 +1,146 @@
-# Arista - Application de Santé et Bien-être
+Arista
 
-Application iOS de suivi de santé et bien-être permettant de gérer ses exercices physiques, son sommeil et ses objectifs quotidiens.
+A simple, private, on-device health tracking app for iOS.
 
-## 🚀 Installation
-```bash
-git clone https://github.com/ton-username/arista.git
+✨ Overview
+
+Arista is a lightweight, privacy-first iOS application for daily health tracking.
+All data is stored locally using Core Data — no accounts, no servers, no network connection required.
+
+Tracks:
+
+🔥 Calories
+
+💧 Water intake
+
+🚶 Steps & activity
+
+😴 Sleep duration
+
+Designed with a clean and maintainable architecture using MVVM and an AppCoordinator.
+
+📸 Screenshots
+
+Below are a few screenshots showcasing the main modules of Arista.
+
+🏠 Dashboard (UserView)
+<img src="Screenshots/dashboard.png" width="300">
+
+😴 Sleep Tracking
+<img src="Screenshots/sleep.png" width="300">
+
+🏃 Exercise & Activity
+<img src="Screenshots/exercise.png" width="300">
+
+🧱 Architecture
+🧭 MVVM + Coordinator
+
+AppCoordinator manages navigation, login/logout, user deletion, and ViewModel creation.
+
+Each feature has its own ViewModel and Data Manager.
+
+💾 Core Data
+
+Local persistence via NSPersistentContainer
+
+Three environments:
+
+Production
+
+Demo (preloaded demo user)
+
+Unit tests (in-memory)
+
+📦 Data Managers
+
+UserDataManager
+
+GoalDataManager
+
+SleepDataManager
+
+ExerciseDataManager
+
+Ensures modularity, clarity, and testability.
+
+🎯 Features
+👤 User
+
+Create, edit, delete a local user
+
+Session restoration
+
+Secure logout
+
+🎯 Goals
+
+Daily calories, water, steps & activity objectives
+
+😴 Sleep
+
+Daily sleep tracking & progress
+
+🏃 Activity
+
+Steps & movement tracking linked to goals
+
+🔒 Privacy
+
+100% offline
+
+No analytics, no tracking, no cloud
+
+🧩 Targets
+
+Arista — main production app
+
+AristaDemo — automatically loads a demo user
+
+AristaTests — uses an isolated Core Data in-memory stack
+
+🧪 Unit Tests
+
+Covers:
+
+AppCoordinator (login, logout, delete, restore)
+
+Data Managers (User, Goal, Sleep, Exercise)
+
+ViewModels (User, Sleep, Exercise)
+
+All tests use an in-memory store for speed and safety.
+
+📂 Project Structure
+
+Arista/
+├── App/
+├── Models/
+├── DataManagers/
+├── ViewModels/
+├── Views/
+└── Tests/
+
+🚀 Installation
+
+Clone the repository:
+
+git clone https://github.com/your-username/arista.git
+
 cd arista
 open Arista.xcodeproj
-```
 
-**Prérequis :** Xcode 15.0+, iOS 17.0+
+Select the target you want to run:
 
-## 🧪 Compte de démonstration
+Arista
 
-**L'application crée automatiquement un compte de démo au premier lancement :**
+AristaDemo
 
-Le compte est vide par défaut. Pour tester l'application :
-- **Exercices :** Onglet "Exercices" → Bouton "Ajouter"
-- **Sommeil :** Onglet "Sommeil" → Bouton "Commencer" puis "Terminer"
-- **Objectifs :** Onglet "Profil" → Modifier les sliders (eau, pas)
+AristaTests
 
-## 📱 Fonctionnalités
+📜 License
 
-- ✅ Suivi des exercices (24 types d'activités)
-- ✅ Gestion du sommeil avec horloge visuelle
-- ✅ Objectifs quotidiens (calories, pas, eau, sommeil)
-- ✅ Historique et statistiques sur 7 jours
-- ✅ Persistance locale (CoreData)
-- ✅ Mots de passe hashés (SHA-256 + salt)
+This project is released under the MIT License.
 
-## 🏗️ Architecture
+👨‍💻 Author
 
-- **SwiftUI** + **MVVM**
-- **CoreData** pour la persistance
-
-## 🧪 Tests
-```bash
-Cmd + U
-```
-
-Les tests sont isolés (CoreData in-memory + UserDefaults de test).
-
-## 📝 Structure
-```
-Arista/
-├── App/              # AppCoordinator, ContentView
-├── User/             # Profil et objectifs
-├── Exercice/         # Gestion des exercices
-├── Sleep/            # Gestion du sommeil
-├── Goal/             # Objectifs quotidiens
-└── CoreData/         # Modèle de données
-```
-
-## 👥 Auteurs
-
-Julien Cotte - Développement iOS
+Developed by Julien Cotte — Junior iOS Developer passionate about clean architecture, Core Data, and privacy-focused apps.
