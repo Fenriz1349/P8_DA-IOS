@@ -21,7 +21,7 @@ final class GoalDataManagerTests: XCTestCase {
         persistenceController = SharedTestHelper.createTestContainer()
         context = persistenceController.container.viewContext
         manager = GoalDataManager(container: persistenceController.container)
-        testUser = UserDataManager(container: persistenceController.container).getOrCreateUser()
+        testUser = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
     }
 

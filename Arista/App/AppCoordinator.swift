@@ -119,7 +119,7 @@ final class AppCoordinator: ObservableObject {
     /// - Throws: An error if the logout fails.
     func logout() throws {
         guard !BuildConfig.isDemo else { return }
-        try dataManager.loggedOffAllUsers()
+        try dataManager.loggedOffCurrentUser()
         currentUser = nil
         clearStoredSession()
     }
@@ -130,7 +130,7 @@ final class AppCoordinator: ObservableObject {
     func deleteCurrentUser() throws {
         guard !BuildConfig.isDemo else { return }
         guard let user = currentUser else { return }
-        try dataManager.loggedOffAllUsers()
+        try dataManager.loggedOffCurrentUser()
         try dataManager.deleteUser(by: user.id)
         currentUser = nil
         clearStoredSession()

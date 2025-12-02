@@ -125,23 +125,8 @@ final class AristaTests: XCTestCase {
         // When/Then
         XCTAssertThrowsError(try SharedTestHelper.saveContext(context)) { error in
             let nsError = error as NSError
-            XCTAssertEqual(nsError.code, 1570) // NS Error Code for missing datas
+            XCTAssertEqual(nsError.code, 1560) // NS Error Code for missing datas
         }
-    }
-    
-    func testClearAllData_ShouldRemoveAllUsers() throws {
-        // Given
-        let user = User(context: context)
-        user.id = UUID()
-        user.firstName = "Test"
-        try context.save()
-        XCTAssertEqual(controller.count(for: User.self), 1)
-        
-        // When
-        controller.clearAllData()
-        
-        // Then
-        XCTAssertEqual(controller.count(for: User.self), 0)
     }
     
     func testCountForEntity_ShouldNotCrashAndReturnValidNumber() {

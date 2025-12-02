@@ -21,8 +21,8 @@ final class SleepDataManagerTests: XCTestCase {
         persistenceController = SharedTestHelper.createTestContainer()
         context = persistenceController.container.viewContext
         manager = SleepDataManager(container: persistenceController.container)
-        testUser = UserDataManager(container: persistenceController.container).getOrCreateUser()
         
+        testUser = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
     }
     

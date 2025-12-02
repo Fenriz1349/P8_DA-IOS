@@ -62,6 +62,10 @@
 		683E6FFA2EDE0BB100105441 /* User+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E6FF82EDE0BB100105441 /* User+Password.swift */; };
 		683E6FFC2EDE0BC700105441 /* UserDataManager+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E6FFB2EDE0BC700105441 /* UserDataManager+Password.swift */; };
 		683E6FFD2EDE0BC700105441 /* UserDataManager+Password.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E6FFB2EDE0BC700105441 /* UserDataManager+Password.swift */; };
+		683E70012EDE20AE00105441 /* PasswordHasherTest.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E70002EDE20AE00105441 /* PasswordHasherTest.swift */; };
+		683E70032EDE20C100105441 /* User+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E70022EDE20C100105441 /* User+PasswordTests.swift */; };
+		683E70052EDE20D400105441 /* UserDataManager+PasswordTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E70042EDE20D400105441 /* UserDataManager+PasswordTests.swift */; };
+		683E70072EDE20E800105441 /* AuthenticationViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 683E70062EDE20E800105441 /* AuthenticationViewModelTests.swift */; };
 		6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */; };
 		6843211C2E49B945003FDAEE /* CustomTextFields in Frameworks */ = {isa = PBXBuildFile; productRef = 6843211B2E49B945003FDAEE /* CustomTextFields */; };
 		6843211F2E4CC0BC003FDAEE /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */; };
@@ -250,6 +254,10 @@
 		683E6FF52EDE0B9A00105441 /* PasswordHasher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordHasher.swift; sourceTree = "<group>"; };
 		683E6FF82EDE0BB100105441 /* User+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+Password.swift"; sourceTree = "<group>"; };
 		683E6FFB2EDE0BC700105441 /* UserDataManager+Password.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+Password.swift"; sourceTree = "<group>"; };
+		683E70002EDE20AE00105441 /* PasswordHasherTest.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordHasherTest.swift; sourceTree = "<group>"; };
+		683E70022EDE20C100105441 /* User+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "User+PasswordTests.swift"; sourceTree = "<group>"; };
+		683E70042EDE20D400105441 /* UserDataManager+PasswordTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserDataManager+PasswordTests.swift"; sourceTree = "<group>"; };
+		683E70062EDE20E800105441 /* AuthenticationViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthenticationViewModelTests.swift; sourceTree = "<group>"; };
 		6840AF522E73156E0098F325 /* AppCoordinatorTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppCoordinatorTests.swift; sourceTree = "<group>"; };
 		6843211E2E4CC0BC003FDAEE /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		684321222E4CC534003FDAEE /* Persistence+Ext.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Persistence+Ext.swift"; sourceTree = "<group>"; };
@@ -392,6 +400,7 @@
 				68E7C2D42EA27D67001C039B /* App */,
 				68923A562E599F8500D81620 /* CoreData */,
 				6816D55B2EA9F7CB00ED8D20 /* Shared */,
+				683E6FFE2EDE207200105441 /* Authentication */,
 				68E7C2D52EA27D7E001C039B /* User */,
 				68EF9A572EB24E7400CF0BF2 /* Goal */,
 				68E7C2CD2EA26C0E001C039B /* Sleep */,
@@ -532,6 +541,25 @@
 				683E6FF52EDE0B9A00105441 /* PasswordHasher.swift */,
 				683E6FF82EDE0BB100105441 /* User+Password.swift */,
 				683E6FFB2EDE0BC700105441 /* UserDataManager+Password.swift */,
+			);
+			path = Security;
+			sourceTree = "<group>";
+		};
+		683E6FFE2EDE207200105441 /* Authentication */ = {
+			isa = PBXGroup;
+			children = (
+				683E6FFF2EDE208E00105441 /* Security */,
+				683E70062EDE20E800105441 /* AuthenticationViewModelTests.swift */,
+			);
+			path = Authentication;
+			sourceTree = "<group>";
+		};
+		683E6FFF2EDE208E00105441 /* Security */ = {
+			isa = PBXGroup;
+			children = (
+				683E70002EDE20AE00105441 /* PasswordHasherTest.swift */,
+				683E70022EDE20C100105441 /* User+PasswordTests.swift */,
+				683E70042EDE20D400105441 /* UserDataManager+PasswordTests.swift */,
 			);
 			path = Security;
 			sourceTree = "<group>";
@@ -990,7 +1018,9 @@
 				6840AF532E73156E0098F325 /* AppCoordinatorTests.swift in Sources */,
 				6895100E2E607DF600461030 /* UserDataManagerTests.swift in Sources */,
 				6895100B2E60711600461030 /* UserTests.swift in Sources */,
+				683E70012EDE20AE00105441 /* PasswordHasherTest.swift in Sources */,
 				684321272E4DB076003FDAEE /* SharedTestHelper.swift in Sources */,
+				683E70032EDE20C100105441 /* User+PasswordTests.swift in Sources */,
 				6816D55D2EA9F84E00ED8D20 /* GradeTests.swift in Sources */,
 				6802E67C2E8539CE00501E0E /* ToastyManagerTests.swift in Sources */,
 				680435522EB8D7BD004CF49D /* SleepMetricsTests.swift in Sources */,
@@ -1003,7 +1033,9 @@
 				6802E6772E85385A00501E0E /* ToastyMessageTests.swift in Sources */,
 				68C6C9752E61912700108FE9 /* UserUpdateBuilderTests.swift in Sources */,
 				6813E7672E86CE11007F008C /* DateExtensionsTests.swift in Sources */,
+				683E70072EDE20E800105441 /* AuthenticationViewModelTests.swift in Sources */,
 				6802E6792E85391C00501E0E /* ToastyTypeTests.swift in Sources */,
+				683E70052EDE20D400105441 /* UserDataManager+PasswordTests.swift in Sources */,
 				686D56922E7455900088AD98 /* UserViewModelTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -138,6 +138,15 @@ final class UserDataManager {
         let builder = UserUpdateBuilder(user: user, dataManager: self)
         try builder.isLogged(true).save()
     }
+    
+    /// Logs out curret user  by setting their isLogged flag to false
+    /// - Throws: Error if the context cannot be saved
+    func loggedOffCurrentUser() throws {
+        if let user = try? fetchLoggedUser() {
+            user.isLogged = false
+            try container.viewContext.save()
+        }
+    }
 
     /// Logs out all users by setting their isLogged flag to false
     /// - Throws: Error if the context cannot be saved
