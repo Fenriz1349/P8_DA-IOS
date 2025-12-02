@@ -9,6 +9,7 @@ import XCTest
 import CoreData
 @testable import Arista
 
+@MainActor
 final class UserUpdateBuilderTests: XCTestCase {
     var persistenceController: PersistenceController!
     var context: NSManagedObjectContext!
@@ -22,7 +23,7 @@ final class UserUpdateBuilderTests: XCTestCase {
 
     func test_updateNamesAndGoals_success() throws {
         // Given
-        let user = manager.getOrCreateUser()
+        let user = manager.getOrCreateDemoUser()
         let builder = UserUpdateBuilder(user: user, dataManager: manager)
         
         // When
@@ -45,7 +46,7 @@ final class UserUpdateBuilderTests: XCTestCase {
 
     func test_updateGoals_withNegativeValues_throws() {
         // Given
-        let user = manager.getOrCreateUser()
+        let user = manager.getOrCreateDemoUser()
         let builder = UserUpdateBuilder(user: user, dataManager: manager)
         
         // Then
@@ -57,7 +58,7 @@ final class UserUpdateBuilderTests: XCTestCase {
 
     func test_updateNames_withEmptyValues_throws() {
         // Given
-        let user = manager.getOrCreateUser()
+        let user = manager.getOrCreateDemoUser()
         let builder = UserUpdateBuilder(user: user, dataManager: manager)
         
         // Then

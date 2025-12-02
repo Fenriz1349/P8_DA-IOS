@@ -21,14 +21,23 @@ final class ExerciseViewModelTests: XCTestCase {
 
     override func setUp() {
         super.setUp()
+
         testContainer = SharedTestHelper.createTestContainer()
         context = testContainer.container.viewContext
+
         dataManager = ExerciceDataManager(container: testContainer.container)
-        coordinator = AppCoordinator(dataManager: UserDataManager(container: testContainer.container))
+
+        let userManager = UserDataManager(container: testContainer.container)
+        coordinator = AppCoordinator(dataManager: userManager, skipSessionRestore: true)
+
         spyToastyManager = ToastyTestHelpers.createSpyManager()
 
+        // Create & login a user
+        let user = SharedTestHelper.createSampleUser(in: context)
         try! context.save()
+        try! coordinator.login(id: user.id)
 
+        // Instantiate SUT
         sut = try! ExerciseViewModel(appCoordinator: coordinator, dataManager: dataManager)
         sut.configureToasty(toastyManager: spyToastyManager)
     }
