@@ -1,11 +1,18 @@
-Arista
+## Arista
 
 A simple, private, on-device health tracking app for iOS.
 
-✨ Overview
+## ✨ Overview
 
 Arista is a lightweight, privacy-first iOS application for daily health tracking.
 All data is stored locally using Core Data — no accounts, no servers, no network connection required.
+
+### 🌍 Localization
+- Fully localized in **English** and **French**
+
+### 🌓 Appearance
+- Full support for **Light** and **Dark** mode
+- All UI components adapt dynamically to system appearance
 
 Tracks:
 
@@ -19,18 +26,25 @@ Tracks:
 
 Designed with a clean and maintainable architecture using MVVM and an AppCoordinator.
 
-📸 Screenshots
+## 📸 Screenshots
 
 Below are a few screenshots showcasing the main modules of Arista.
 
-🏠 Dashboard (UserView)
-<img src="Screenshots/dashboard.png" width="300">
+### 🏠 Dashboard (UserView)
+<p align="center">
+  <img src="Screenshots/dashboard.png" width="280">
+</p>
 
-😴 Sleep Tracking
-<img src="Screenshots/sleep.png" width="300">
+### 😴 Sleep Tracking
+<p align="center">
+  <img src="Screenshots/sleep.png" width="280">
+</p>
 
-🏃 Exercise & Activity
-<img src="Screenshots/exercise.png" width="300">
+### 🏃 Exercise & Activity
+<p align="center">
+  <img src="Screenshots/exercise.png" width="280">
+</p>
+
 
 🧱 Architecture
 🧭 MVVM + Coordinator
