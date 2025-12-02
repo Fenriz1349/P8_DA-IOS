@@ -46,7 +46,7 @@ Below are a few screenshots showcasing the main modules of Arista.
 </p>
 
 
-🧱 Architecture
+## 🧱 Architecture
 🧭 MVVM + Coordinator
 
 AppCoordinator manages navigation, login/logout, user deletion, and ViewModel creation.
@@ -77,7 +77,7 @@ ExerciseDataManager
 
 Ensures modularity, clarity, and testability.
 
-🎯 Features
+## 🎯 Features
 👤 User
 
 Create, edit, delete a local user
@@ -134,7 +134,7 @@ Arista/
 ├── Views/
 └── Tests/
 
-🚀 Installation
+## 🚀 Installation
 
 Clone the repository:
 
@@ -151,10 +151,10 @@ AristaDemo
 
 AristaTests
 
-📜 License
+## 📜 License
 
 This project is released under the MIT License.
 
-👨‍💻 Author
+## 👨‍💻 Author
 
 Developed by Julien Cotte — Junior iOS Developer passionate about clean architecture, Core Data, and privacy-focused apps.
