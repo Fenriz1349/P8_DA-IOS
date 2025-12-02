@@ -1,0 +1,24 @@
+{
+  "originHash" : "7c717a0bc7bcb244b1a220162dde53daae02c044f5f51711eac7c95157694166",
+  "pins" : [
+    {
+      "identity" : "customlabels",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Fenriz1349/CustomLabels",
+      "state" : {
+        "branch" : "main",
+        "revision" : "6f0f9f8fca194c1e90d041ccb8abdeb9e5463173"
+      }
+    },
+    {
+      "identity" : "customtextfields",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Fenriz1349/CustomTextFields",
+      "state" : {
+        "branch" : "main",
+        "revision" : "f06c64780560d06b614c822ba4f9efdc62fdc41c"
+      }
+    }
+  ],
+  "version" : 3
+}
