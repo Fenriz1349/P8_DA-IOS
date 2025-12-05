@@ -32,17 +32,17 @@ Below are a few screenshots showcasing the main modules of Arista.
 
 ### 🏠 Dashboard (UserView)
 <p align="center">
-  <img src="Screenshots/dashboard.png" width="280">
+  <img src="Screenshots/dashboard.png" height="300">
 </p>
 
 ### 😴 Sleep Tracking
 <p align="center">
-  <img src="Screenshots/sleep.png" width="280">
+  <img src="Screenshots/sleep.png" height="300">
 </p>
 
 ### 🏃 Exercise & Activity
 <p align="center">
-  <img src="Screenshots/exercise.png" width="280">
+  <img src="Screenshots/exercise.png" height="300">
 </p>
 
 
